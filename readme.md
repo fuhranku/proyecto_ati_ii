@@ -2,7 +2,7 @@
 
 # Selling/Buying Real Estate Web application
 
-College project. Web application developed on LARAVEL PHP framework. It's a Sell/Buy properties application like century-21, for example.
+College project. Web application developed on LARAVEL PHP framework. It's a Selling/Buying Real Estate application like century-21, for example.
 
 ## Getting Started
 
