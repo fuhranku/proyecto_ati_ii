@@ -1,6 +1,6 @@
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
-# Sell/Buy Properties Web application
+# Sell/Buy Real Estate Web application
 
 College project. Web application developed on LARAVEL PHP framework. It's a Sell/Buy properties application like century-21, for example.
 
