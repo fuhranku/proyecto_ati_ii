@@ -35,6 +35,14 @@ git clone https://github.com/fuhranku/proyecto_ati_ii.git
 ```
 Note: If you're using XAMPP, for example, project folder needs to be inside **htdocs** directory of XAMPP
 
+#### Install composer dependencies
+
+Whenever you clone a new Laravel project you must now install all of the project dependencies. This is what actually installs Laravel itself, among other necessary packages to get started.
+
+```
+composer install
+```
+
 #### Create a copy of .env file
 
 Since .env files are not commited, it's necessary to create this file. There is a .env.example which is a template of the .env file that the project expects us to have. So we will make a copy of the .env.example file and create a .env file that we can start to fill out to do things like database configuration in the next few steps.
