@@ -1,0 +1,49 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.bg-blue{
+    background-color: #00b0f0 !important;
+}
+
+.bg-white{
+    background-color: #ffffff !important;
+}
+
+.bg-yellow{
+    background-color: #ffc000 !important;
+}
+
+.nav-link{
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.ry-corners{
+    border-top-left-radius: 8px; 
+    border-top-right-radius: 8px;
+}
+
+.mr-7{
+    margin-right: 4.0em !important;
+}
+
+.navbar {
+    padding:0rem;
+    margin-bottom:2rem;
+}
+  
+.dropdown .dropdown-menu {
+    border-radius:0;
+}
+
+  
+/* Medium devices (tablets, 768px and up) 
+The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {  
+    .dropdown:hover .dropdown-menu {
+        display: block;
+        margin-top: 0;
+    border-radius:0;
+    }
+}
+  
