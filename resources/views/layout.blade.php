@@ -31,17 +31,17 @@
         <div class="collapse navbar-collapse flex-column" id="navbar">
             <!-- First navbar ROW -->
             <ul class="navbar-nav bg-white ml-auto h-100">
-                <li class="nav-item bg-yellow ry-corners mr-2">
+                <li class="nav-item bg-yellow ry-corners mr-2 mt-1">
                         <a class="nav-link mx-3" href="#">Iniciar sesión</a>
                 </li>
-                <li class="nav-item bg-yellow ry-corners">
+                <li class="nav-item bg-yellow ry-corners mr-2 mt-1">
                         <a class="nav-link mx-3" href="#">Registrarse</a>
                 </li>
             </ul>
             <!-- Second navbar ROW -->
             <ul class="navbar-nav justify-content-center w-100 bg-blue">
                 <li class="nav-item active mr-7">
-                    <a class="nav-link" href="#">Inicio</a>
+                     <a class="nav-link" href="#">Inicio</a>
                 </li>
                 <li class="nav-item mr-7">
                     <a class="nav-link" href="#">Vivienda</a>
@@ -59,7 +59,7 @@
                     <a class="nav-link" href="#">Contáctenos</a>
                 </li>
                 <li class="nav-item mr-7">
-                    <a class="nav-link" href="#">Conócemos más</a>
+                    <a class="nav-link" href="#">Conócenos más</a>
                 </li>
                 <li class="nav-item mr-7">
                     <a class="nav-link" href="#">Idioma</a>
