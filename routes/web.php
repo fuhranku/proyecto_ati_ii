@@ -12,5 +12,38 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return redirect('/index');
 });
+
+
+// Inicio
+Route::get('/index', function () {
+    return view('main_sections.index');
+});
+
+// Registro
+Route::get('sign_up', 'MainController@sign_up')->name('main.sign_up');
+
+// Iniciar sesión
+Route::get('sign_in', 'MainController@sign_in')->name('main.sign_in');
+
+// Vivienda
+Route::get('dwelling', 'MainController@dwelling')->name('main.dwelling');
+
+// Servicios
+Route::get('services', 'MainController@services')->name('main.services');
+
+// Empleo
+Route::get('employment', 'MainController@employment')->name('main.employment');
+
+// Ayuda
+Route::get('help', 'MainController@help')->name('main.help');
+
+// Contáctenos
+Route::get('contact_us', 'MainController@contact_us')->name('main.contact_us');
+
+// Conócenos más
+Route::get('about_us', 'MainController@about_us')->name('main.about_us');
+
+// Idioma
+Route::get('languages', 'MainController@languages')->name('main.languages');
