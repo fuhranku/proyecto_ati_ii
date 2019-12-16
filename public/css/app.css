@@ -36,6 +36,71 @@ body{
     border-radius:0;
 }
 
+h1{
+    font-size:23px;
+    font-weight: bold;
+}
+
+.text-blue{
+    color: blue !important;
+}
+
+.step > div.col{
+    padding: 10px;
+    background-color: #e4e4e4;
+    margin-right: 24px;
+    margin-bottom: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color:white;
+    text-align: center;
+    padding-top: 8px;
+    padding-left: 53px;
+    padding-right: 40px;
+    padding-bottom: 7px;
+    line-height: 13px;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.step >div.col:nth-child(2){
+    padding-top: 15px;
+}
+
+.step-active:hover{
+    background-color: #69b816 !important;
+}
+
+.step-active{
+    background-color: #92d050 !important;
+    text-decoration: underline;
+    transition: 0.3s;
+    pointer-events: all !important;
+}
+
+div.bg-blue > h1{
+    color:white;
+    font-size: 20px;
+}
+
+div.row.step{
+    margin: 0px 110px;
+}
+
+/* SUB MENU STYLES */
+
+div.sub-menu > div:not(:last-child){
+    margin-right: 20px;
+}
+
+.sign-info{
+    font-size: 19px;
+}
+
+
+
+
   
 /* Medium devices (tablets, 768px and up) 
 The navbar toggle appears at this breakpoint */

@@ -10,10 +10,15 @@ use App;
 
 class MainController extends Controller
 {
-    public function sign_up()
+    public function sign_up_get($step = 1)
     {
-        //$currentPage = 'create';
-        return view('main_sections.sign_up');
+        return view('main_sections.sign_up',compact("step"));
+
+    }
+
+    public function sign_up_post($step = 1){
+       //$step = $request->input("step");
+        return view('main_sections.sign_in');
     }
 
     public function sign_in()

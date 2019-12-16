@@ -22,7 +22,9 @@ Route::get('/index', function () {
 });
 
 // Registro
-Route::get('sign_up', 'MainController@sign_up')->name('main.sign_up');
+Route::get('sign_up/{step?}', 'MainController@sign_up_get')->name('main.sign_up_get');
+
+Route::post('sign_up/{step?}', 'MainController@sign_up_post')->name('main.sign_up_post');
 
 // Iniciar sesión
 Route::get('sign_in', 'MainController@sign_in')->name('main.sign_in');
