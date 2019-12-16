@@ -19,6 +19,10 @@ class MainController extends Controller
     public function sign_in()
     {
         //$currentPage = 'create';
+        // $validatedData = $request->validate([
+        //     'Email' => 'required|email|max:255',
+        //     'Password' => 'required|max:255'
+        // ]);
         return view('main_sections.sign_in');
     }
 
