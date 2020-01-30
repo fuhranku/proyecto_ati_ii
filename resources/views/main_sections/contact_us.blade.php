@@ -41,7 +41,7 @@
             </div>
 
             <div class="col p-5 border border-primary rounded-lg">
-                <p class="text-center font-weight-bold">Formulario</p>
+                <p class="text-center font-weight-bold">Formulario de contacto</p>
 
                 <form>
                 <div class="form-group">

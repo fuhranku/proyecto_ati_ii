@@ -47,8 +47,16 @@
                 <li class="nav-item mr-7">
                     <a class="nav-link" href="{{ url('dwelling') }}">Vivienda</a>
                 </li>
-                <li class="nav-item mr-7">
-                    <a class="nav-link" href="{{ url('services') }}">Servicios</a>
+                <li class="nav-item mr-7 dropdown">
+                    <a class="nav-link dropdown-toggle" href="{{ url('services') }}" id="navbarServices" role="button" data-toggle="dropdown">Servicios</a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarServices">
+                        <a class="dropdown-item" href="#">Crear</a>
+                        <a class="dropdown-item" href="#">Buscar</a>
+                        <a class="dropdown-item" href="#">Consultar</a>
+                        <a class="dropdown-item" href="#">Modificar</a>
+                        <a class="dropdown-item" href="#">Eliminar</a>
+                    </div>
                 </li>
                 <li class="nav-item mr-7">
                     <a class="nav-link" href="{{ url('employment') }}">Empleo</a>
