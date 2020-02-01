@@ -33,7 +33,13 @@ Route::get('sign_in', 'MainController@sign_in')->name('main.sign_in');
 Route::get('dwelling', 'MainController@dwelling')->name('main.dwelling');
 
 // Servicios
-Route::get('services', 'MainController@services')->name('main.services');
+Route::get('services/search', 'ServiceController@search')->name('services.search');
+Route::get('services/delete', 'ServiceController@delete')->name('services.delete');
+Route::get('services/create', 'ServiceController@create')->name('services.create');
+Route::get('services/modify', 'ServiceController@modify')->name('services.modify');
+Route::get('services/consult', 'ServiceController@consult')->name('services.consult');
+
+
 
 // Empleo
 Route::get('employment', 'MainController@employment')->name('main.employment');

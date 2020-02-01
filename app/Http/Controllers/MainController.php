@@ -33,11 +33,6 @@ class MainController extends Controller
         return view('main_sections.dwelling');
     }
 
-    public function services()
-    {
-        //$currentPage = 'create';
-        return view('main_sections.services');
-    }
 
     public function employment()
     {
