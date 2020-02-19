@@ -13,23 +13,23 @@
                 <p>+58 (0414) 389-74-44</p>
 
                 <div>
-                <p class="font-weight-bold">Atencion al publico</p>
+                <p class="font-weight-bold">Atención al público</p>
                 <p>Lunes y viernes: de 8am a 12pm</p>
-                <p>Sabados y domingos: de 8am a 12pm</p>
+                <p>Sábados y domingos: de 8am a 12pm</p>
                 </div>
 
                 <div>
-                <p class="font-weight-bold">Correo electronico</p>
-                <p>envianos tus preguntas o comentarios a</p>
+                <p class="font-weight-bold">Correo electrónico</p>
+                <p>Envíanos tus preguntas o comentarios a</p>
                 </div>
 
                 <div>
-                <p class="font-weight-bold">enlaces de interes</p>
-                <a href="/">Preguntas de interes</a>
+                <p class="font-weight-bold">Enlaces de interés</p>
+                <a href="/">Preguntas de interés</a>
                 </div>
 
                 <div>
-                <p class="font-weight-bold">Siguenos en</p>
+                <p class="font-weight-bold">Síguenos en</p>
                 <br>
                 <a href="/">Instagram</a>
                 <br>
