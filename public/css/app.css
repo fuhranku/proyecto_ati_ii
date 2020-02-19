@@ -97,10 +97,6 @@ div.sub-menu > div:not(:last-child){
 .sign-info{
     font-size: 19px;
 }
-
-
-
-
   
 /* Medium devices (tablets, 768px and up) 
 The navbar toggle appears at this breakpoint */
@@ -111,4 +107,3 @@ The navbar toggle appears at this breakpoint */
     border-radius:0;
     }
 }
-  
