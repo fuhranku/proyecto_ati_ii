@@ -5,14 +5,23 @@
 @section('content')
 
 <div class="container">
+    
+    <div class="row bg-info">
+        <div class="col-md-12 ">
+            <h2 class="text-center font-weight-bold ">Crear Servicio</h2>
+        </div>
+    </div>
+
     <div class="row">
-        
-        <div class="col border border-primary rounded-lg">
-            <h2 class="text-center font-weight-bold bg-info">Crear Servicio</h2>
-            
+        <div class="col-md-12 border border-primary ">
             <p class="text-center font-weight-bold">Introduzca los datos del servicio que desea agregar, que se solicitan a continuación:</p>
-            
-            <form>
+        </div>
+    </div>
+
+    <form>
+
+        <div class="row">
+            <div class="col-md-12 border border-primary ">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Servicio a ofrecer</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
@@ -22,29 +31,284 @@
                     <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10" placeholder="Ej: Persona con años de experiencia en determinar, el valor de su inmueble"></textarea>
                 </div>
 
+                
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            
+            <div class="col-md-12 p-5 border border-primary">
                 <p>Tipo de Usuario</p>
                 <select name="userType" class="form-control  col-md-5" onchange="userTypeChange()" id="crt-userType" >
                     <option value="0">Persona Natural</option>
                     <option value="1">Empresa</option>
                 </select>
-
-                <div id="NaturalPersonForm" style="display:none">
-                    <p>Persona natural</p>
-                </div>
-                
-                <div id="CompanyForm" style="display:none">
-                    <p>Empresa</p>
-                </div>
-                
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Crear</button>
-                </div>
-            </form>
+    
+            </div>
         </div>
 
+        <div id="NaturalPersonForm"  class="row d-none">
+            
+            <div class="col-md-6 p-5 border border-primary">
+    
+                <p>Datos de contacto</p>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Apellido</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
+                </div>
+    
+            </div>
+    
+            <div class="col-md-6 p-5 border border-primary  ">
+    
+                <p>Dias de contacto</p>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox1">Lunes</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">Martes</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">Miercoles</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">Jueves</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">Viernes</label>
+                  </div>
+                  
+                  <div class="p-5">
+          
+                    <p>Horas de contacto</p>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Desde</label>
+                            <select id="inputState" class="form-control">
+                            <option selected>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            </select>
+
+                            <select id="inputState" class="form-control">
+                                <option selected>AM</option>
+                                <option>PM</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Hasta</label>
+                            <select id="inputState" class="form-control">
+                            <option selected>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            </select>
+
+                            <select id="inputState" class="form-control">
+                                <option selected>AM</option>
+                                <option>PM</option>
+                            </select>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+
+        </div>
         
+        <div id="CompanyForm" class="row d-none">
+
+
+            <div class="col-md-6 p-5 border border-primary">
+    
+                <p>Datos de contacto</p>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Apellido</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
+                </div>
+    
+            </div>
+    
+            <div class="col-md-6 p-5 border border-primary  ">
+    
+                <p>Dias de contacto</p>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox1">Lunes</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">Martes</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">Miercoles</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">Jueves</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">Viernes</label>
+                  </div>
+                  
+                  <div class="p-5">
+          
+                    <p>Horas de contacto</p>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Desde</label>
+                            <select id="inputState" class="form-control">
+                            <option selected>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            </select>
+
+                            <select id="inputState" class="form-control">
+                                <option selected>AM</option>
+                                <option>PM</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Hasta</label>
+                            <select id="inputState" class="form-control">
+                            <option selected>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            </select>
+
+                            <select id="inputState" class="form-control">
+                                <option selected>AM</option>
+                                <option>PM</option>
+                            </select>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-row p-5">
+            
+            <div class="form-group col-md-3">
+                <label for="inputState">Continente</label>
+                <select id="inputState" class="form-control">
+                <option selected>America</option>
+                <option>Europa</option>
+                <option>Asia</option>
+                <option>Oceania</option>
+                </select>
+            </div>
+            
+            <div class="form-group col-md-3">
+                <label for="inputState">Pais</label>
+                <select id="inputState" class="form-control">
+                <option selected>Venezuela</option>
+                <option>Canada</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="inputState">Estado</label>
+                <select id="inputState" class="form-control">
+                <option selected>Distrito Capital</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="inputState">Ciudad</label>
+                <select id="inputState" class="form-control">
+                <option selected>Caracas</option>
+                </select>
+            </div>
+
+        </div>
+    
+        <div class="row">
+
+            <div class="col-md-4"></div>
+            <div class="text-center col-md-2 p-3">
+                <button type="submit" class="btn btn-primary">Crear</button>
+            </div>
+            <div class="text-center col-md-2 p-3">
+                <button type="submit" class="btn btn-primary">Cancelar</button>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
         
-    </div>
+
+    </form>
+
+
 </div>
 
 <script>
@@ -53,14 +317,12 @@
     userTypeChange = () => {
 
         if($("#crt-userType").val() == 0){
-
-            $("#NaturalPersonForm").css('display', 'block');
-            $("#CompanyForm").css('display', 'none');
+            $("#NaturalPersonForm").removeClass("d-none");
+            $("#CompanyForm").addClass("d-none");
         }
         else{
-
-            $("#NaturalPersonForm").css('display', 'none');
-            $("#CompanyForm").css('display', 'block');
+            $("#NaturalPersonForm").addClass("d-none");
+            $("#CompanyForm").removeClass("d-none");
         }
     }
 
