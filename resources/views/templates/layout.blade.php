@@ -44,8 +44,18 @@
                 <li class="nav-item active mr-7">
                      <a class="nav-link" href="{{ url('index') }}">Inicio</a>
                 </li>
-                <li class="nav-item mr-7">
-                    <a class="nav-link" href="{{ url('dwelling') }}">Vivienda</a>
+                <li class="nav-item mr-7 dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarServices" role="button" data-toggle="dropdown">Vivienda</a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarServices">
+                        <a class="dropdown-item" href="{{ url('dwelling/publish') }}">Publicar</a>
+                        <a class="dropdown-item" href="{{ url('dwelling/look') }}">Ver Publicaciones</a>
+                        <a class="dropdown-item" href="{{ url('dwelling/search') }}">Buscar</a>
+                        <a class="dropdown-item" href="{{ url('dwelling/modify') }}">Modificar</a>
+                        <a class="dropdown-item" href="{{ url('dwelling/delete') }}">Eliminar</a>
+                        <a class="dropdown-item" href="{{ url('dwelling/enable') }}">Habilitar</a>
+                        <a class="dropdown-item" href="{{ url('dwelling/enable') }}">Deshabilitar</a>
+                    </div>
                 </li>
                 <li class="nav-item mr-7 dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarServices" role="button" data-toggle="dropdown">Servicios</a>

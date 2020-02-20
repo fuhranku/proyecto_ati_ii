@@ -30,7 +30,12 @@ Route::post('sign_up/{step?}', 'MainController@sign_up_post')->name('main.sign_u
 Route::get('sign_in', 'MainController@sign_in')->name('main.sign_in');
 
 // Vivienda
-Route::get('dwelling', 'MainController@dwelling')->name('main.dwelling');
+Route::get('dwelling/search', 'DwellingController@search')->name('dwelling.search');
+Route::get('dwelling/modify', 'DwellingController@modify')->name('dwelling.modify');
+Route::get('dwelling/create', 'DwellingController@create')->name('dwelling.create');
+Route::get('dwelling/delete', 'DwellingController@delete')->name('dwelling.delete');
+Route::get('dwelling/consult', 'DwellingController@consult')->name('dwelling.consult');
+
 
 // Servicios
 Route::get('services/search', 'ServiceController@search')->name('services.search');
