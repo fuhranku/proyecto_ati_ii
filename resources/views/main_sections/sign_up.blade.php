@@ -159,7 +159,7 @@
                 </div>
             </div>
             @if ($type == 'natural')
-                <div class="container ml-special" id="container-p-natural">
+                <div class="container ml-special mt-3" id="container-p-natural">
                     <span class="font-weight-bold">Ingrese los datos solicitados a continuación:</span>
                     <div class="row mt-3">
                         <div class="col-md-3 my-auto">
@@ -204,6 +204,32 @@
                     <div class="row">
                         <div class="col-md-3">
                             <label class="font-weight-bold"> <span style="color:red;margin-right:3px;"> *</span>Teléfono</label>
+                        </div>
+                    </div>
+                    <div class="row ml-5" >
+                        <div style="color:rgb(36,0,240);"> Seleccione el o los teléfonos de su preferencia</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="portal-web">
+                            <label class="form-check-label bg-yellow text-white tlf-checkbox" for="portal-web">Móvil</label>
+                        </div>
+                        <div class="col-md-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="portal-web">
+                            <label class="form-check-label bg-yellow text-white tlf-checkbox" for="portal-web">Fijo</label>
+                        </div>
+                    </div>
+                </div>
+                <form>
+                  <input id="phone" name="phone" type="tel">
+                  <button type="submit">Submit</button>
+                </form>
+                <div class="row mt-5">
+                    <div class="col-sm-12">
+                        <div class="text-center">
+                            <button class="btn  bg-yellow " id="singlebutton" style="font-weight:bold;color:#ffffff; padding:5px 30px">
+                                Cancelar
+                            </button>
                         </div>
                     </div>
                 </div>
