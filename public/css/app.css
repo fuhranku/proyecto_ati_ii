@@ -125,3 +125,7 @@ footer{
     background-color: rgb(0,176,240);
     color:white;
 }
+
+#busqueda-rapida{
+    display:none;
+}
