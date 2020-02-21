@@ -22,3 +22,11 @@ $(document).ready(function(){
       $('#checkbox-juridica').prop('checked', true); 
    }
 });
+
+$('#btn-b-rapida').click(function(){
+   if($('#busqueda-rapida').is(":visible")){
+      $('#busqueda-rapida').css("display",'none');
+   }else{
+      $('#busqueda-rapida').show();
+   }
+});

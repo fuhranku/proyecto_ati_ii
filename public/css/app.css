@@ -108,10 +108,20 @@ The navbar toggle appears at this breakpoint */
     }
 }
 
-<<<<<<< HEAD
 footer{
     margin-top: 100px;
 }
-=======
 
->>>>>>> 91b2fee6aca2c0d3b606ec4222cbc7aa13366819
+.search-box{
+    font-size: 10px;
+}
+
+.search-btn{
+    cursor: pointer;
+    padding:5px 10px;
+    margin-bottom:5px;
+}
+.search-btn:hover{
+    background-color: rgb(0,176,240);
+    color:white;
+}
