@@ -5,11 +5,31 @@
 @section('content')
 <section>
     <div class="container">
-    
         <div class="row">
-            <div class="col-md-3 search-box" style="margin-left:15px;">
-                <div class="search-btn border border-info rounded " id='btn-b-rapida'>
-                    <p class="font-weight-bold m-0">Búsqueda Rápida</p>
+            <div class="col-md-3  border border-info rounded">
+                <p class="font-weight-bold ">Búsqueda Rápida</p>
+            </div>
+        </div>
+
+        <div class="border border-info p-3" style="display: inline-block;">
+            <form action="">
+                <div class="form-row pt-2">
+    
+                    <div class="form-group col-auto">
+                        <span class="badge badge-info">Pais</span>
+                        <select id="country" class="form-control " onchange="" id="crt-userType" >
+                            <option value="0">Venezuela</option>
+                            <option value="1">Colombia</option>
+                        </select>
+                    </div>
+        
+                    <div class="form-group col-auto">
+                        <span class="badge badge-info">Estado</span>
+                        <select id="country" class="form-control  " onchange="" id="crt-userType" >
+                            <option value="0">Venezuela</option>
+                            <option value="1">Colombia</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="border border-info p-1" id="busqueda-rapida">
