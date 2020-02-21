@@ -159,7 +159,12 @@
                 </div>
             </div>
             @if ($type == 'natural')
-                natural
+                <div class="row">
+                    <div class="col-sm-12">
+                        Ingrese los datos solicitados a continuación
+
+                    </div>
+                </div>
             @elseif ($type == 'juridica')
                 juridica
             @endif
