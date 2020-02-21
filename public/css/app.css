@@ -129,3 +129,23 @@ footer{
 #busqueda-rapida{
     display:none;
 }
+
+.ml-special{
+    margin-left: 10%;
+}
+
+.input-section2{
+    width: auto !important;
+}
+
+#container-p-natural > .row:not(:last-child){
+    margin-bottom: 15px;
+    
+}
+
+.flexbox {
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-flow: column;
+}

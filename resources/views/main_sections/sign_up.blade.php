@@ -144,7 +144,7 @@
             $personType = 0;
         @endphp
     <section id="step-2">
-        <div class="container">
+        <div class="container justify-content-center">
             <div class='row mt-3'>
                 <div class='col-sm-3 font-weight-bold'>
                     Seleccione el tipo de usuario:
@@ -159,16 +159,58 @@
                 </div>
             </div>
             @if ($type == 'natural')
-                <div class="row">
-                    <div class="col-sm-12">
-                        Ingrese los datos solicitados a continuación
-
+                <div class="container ml-special" id="container-p-natural">
+                    <span class="font-weight-bold">Ingrese los datos solicitados a continuación:</span>
+                    <div class="row mt-3">
+                        <div class="col-md-3 my-auto">
+                            <label class="font-weight-bold"> <span style="color:red;margin-right:3px;"> *</span>Nombre</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control input-section2">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 my-auto">
+                            <label class="font-weight-bold"> <span style="color:red;margin-right:3px;"> *</span>Apellido</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control input-section2">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 my-auto">
+                            <label class="font-weight-bold"> <span style="color:red;margin-right:3px;"> *</span>Cédula/Pasaporte/DNI</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control input-section2">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 my-auto">
+                            <label class="font-weight-bold"> <span style="color:red;margin-right:3px;"> *</span>Correo Electrónico</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control input-section2">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 my-auto">
+                            <label class="font-weight-bold"> <span style="color:red;margin-right:3px;"> *</span>País de procedencia</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control input-section2">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label class="font-weight-bold"> <span style="color:red;margin-right:3px;"> *</span>Teléfono</label>
+                        </div>
                     </div>
                 </div>
             @elseif ($type == 'juridica')
                 juridica
             @endif
-        </div>
+
     </section>
         @break
     @case(3)
