@@ -107,3 +107,7 @@ The navbar toggle appears at this breakpoint */
     border-radius:0;
     }
 }
+
+footer{
+    margin-top: 100px;
+}
