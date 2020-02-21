@@ -113,7 +113,7 @@ footer{
 }
 
 .search-box{
-    font-size: 10px;
+    font-size: 1em;
 }
 
 .search-btn{
@@ -149,7 +149,9 @@ footer{
     align-items: center;
     flex-flow: column;
 }
+
 /*FONT AWESOME SOCIAL NETWORK */
+
 .fa {
     padding: 5px;
     font-size: 15px;

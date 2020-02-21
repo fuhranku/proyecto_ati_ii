@@ -32,7 +32,7 @@
                         <p class="font-weight-bold">Síguenos en</p>
                     </div>
 
-                    <div class="col-md-6 bg-info">
+                    <div class="col-md-3" style="background: rgba(0,176,240,.2); ">
                         
                         <div >
                             <a href="#" class="fa fa-facebook"></a>
