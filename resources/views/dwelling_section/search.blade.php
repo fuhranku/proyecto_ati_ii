@@ -12,7 +12,7 @@
             </div>
         </div>
 
-        <div class="border border-info" style="display: inline-block;">
+        <div class="border border-info p-3" style="display: inline-block;">
 
             <form action="">
                 <div class="form-row pt-2">
