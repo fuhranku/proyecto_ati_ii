@@ -134,7 +134,7 @@ footer{
     width: auto !important;
 }
 
-#container-p-natural > .row:not(:last-child){
+#container-p-natural > .row:not(:nth-child(7)){
     margin-bottom: 15px;
     
 }
@@ -149,6 +149,22 @@ footer{
 .sm-text{
     font-size: .7em;
 }
+
+.tlf-checkbox{
+    padding: 3px 80px;
+}
+
+.ast-required{
+    color:red;
+    margin-right:3px;
+}
+
+.dropdown-custom{
+    background-color: rgba(0,0,0,0.0) !important;
+    border: solid 1px #ced4da;
+    border-radius: .25rem;
+}
+
 
 /*FONT AWESOME SOCIAL NETWORK */
 
