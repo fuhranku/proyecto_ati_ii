@@ -95,8 +95,10 @@
 </header>
 
 <!-- Begin page content -->
-<main role="main" class="container">
-            @yield('content')
+<main role="main" class="container" id="page-container">
+    <div id="content-wrap">
+        @yield('content')
+    </div>
 </main>
 <!-- Footer Content -->
 <footer>

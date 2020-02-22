@@ -1,6 +1,8 @@
 body{
     font-family: Arial, Helvetica, sans-serif !important;
 }
+
+
 .bg-blue{
     background-color: #00b0f0 !important;
 }
@@ -108,10 +110,6 @@ The navbar toggle appears at this breakpoint */
     }
 }
 
-footer{
-    margin-top: 100px;
-}
-
 .search-box{
     font-size: 1em;
 }
@@ -171,6 +169,10 @@ footer{
     background-color: rgba(0,0,0,0.0) !important;
     border: solid 1px #ced4da;
     border-radius: .25rem;
+}
+
+.border-blue{
+    border-color: blue !important;
 }
 
 
