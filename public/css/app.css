@@ -150,6 +150,14 @@ footer{
     font-size: .7em;
 }
 
+.tiny-text{
+    font-size: .5em;
+}
+
+.really-tiny-text{
+    font-size: .25em;
+}
+
 .tlf-checkbox{
     padding: 3px 80px;
 }
@@ -287,4 +295,13 @@ color: white;
 .fa-rss {
 background: #ff6600;
 color: white;
+}
+
+
+.fa-plus{
+    background-color: #dfe4e7;
+}
+
+.fa-minus{
+    background-color: #dfe4e7;
 }
