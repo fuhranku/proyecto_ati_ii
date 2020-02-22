@@ -3,6 +3,7 @@
 @section('title','Index')
 
 @section('content')
+
     @include('sign_up_section.panel')
     <section id="content">
 

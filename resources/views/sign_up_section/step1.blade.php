@@ -2,7 +2,6 @@
     <div class='container mt-3'>
         Por favor, coméntenos, cómo se enteró de los servicios de la empresa <br>
         Es importante para nosotros porque nos ayuda a mejorar el servicio que le ofrecemos
-
         <form>
             <div class="row mt-3">
                 <div class="col-md-3 form-check">
