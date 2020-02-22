@@ -41,7 +41,7 @@ $('#btn-b-detallada').click(function(){
 
 
 
-$('.btn-number').click(function(e){
+$('.btn-number1').click(function(e){
    e.preventDefault();
    
    fieldName = $(this).attr('data-field');
