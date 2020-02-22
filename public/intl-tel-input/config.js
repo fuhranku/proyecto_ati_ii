@@ -1,4 +1,4 @@
-var input = document.querySelector("#phone");
+var input = document.querySelector("phone");
 window.intlTelInput(input, {
   // allowDropdown: false,
   // autoHideDialCode: false,
