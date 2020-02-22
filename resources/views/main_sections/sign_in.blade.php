@@ -34,7 +34,6 @@
                     </div><br />
                     @endif
                     <form method="post" action="{{ route('main.sign_in') }}">
-                       
                         <div class="form-group">
                         <div class="row">
                             <div class="col-sm-4 modal-label">
@@ -42,6 +41,7 @@
                             </div>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="Email"/>
+                                {!! $errors->first('Email', '<span class="help-block">:message</span>') !!}
                             </div>
                         </div>
                         </div>
@@ -54,6 +54,7 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" name="Password"/>
+                                    {!! $errors->first('Password', '<span class="help-block">:message</span>') !!}
                                 </div>
                             </div>
                         </div>
