@@ -20,15 +20,6 @@ class MainController extends Controller
         return view('main_sections.sign_up',compact("step", "type"));
     }
 
-<<<<<<< HEAD
-    public function sign_in()
-    {
-        //$currentPage = 'create';
-        // $validatedData = $request->validate([
-        //     'Email' => 'required|email|max:255',
-        //     'Password' => 'required|max:255'
-        // ]);
-=======
     public function sign_up_get_natural($type = 1){
         $step = 2;
         return view('main_sections.sign_up',compact("step","type"));
@@ -36,7 +27,6 @@ class MainController extends Controller
 
     public function sign_up_post($step = 1){
        //$step = $request->input("step");
->>>>>>> daadfb373f55ae285014a1c53f0e2d8dd2784d92
         return view('main_sections.sign_in');
     }
 

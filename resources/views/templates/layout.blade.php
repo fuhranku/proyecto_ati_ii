@@ -39,7 +39,7 @@
             <!-- First navbar ROW -->
             <ul class="navbar-nav bg-white ml-auto h-100">
                 <li class="nav-item bg-yellow ry-corners mr-2 mt-1">
-                        <a class="nav-link mx-3" href="{{ url('sign_in') }}">Iniciar sesión</a>
+                        <a class="nav-link mx-3" href="{{ url('sign_in') }}"data-target="#sign_in">Iniciar sesión</a>
                 </li>
                 <li class="nav-item bg-yellow ry-corners mr-2 mt-1">
                         <a class="nav-link mx-3" href="{{ url('sign_up') }}">Registrarse</a>

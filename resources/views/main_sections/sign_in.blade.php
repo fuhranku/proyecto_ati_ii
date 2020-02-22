@@ -3,6 +3,7 @@
 @section('title','Index')
 
 @section('content')
+
 <section>
 <link href="{{ asset('/css/modal.css') }}" rel="stylesheet">
     <div style="margin-top:70px">
@@ -12,13 +13,13 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Iniciar sesión</h4>
-                        <button type="button" class="close" data-dismiss="modal">
+                        <button type="button" onclick="closeModal()" class="close" data-dismiss="modal">
                             <span>-</span>
                         </button>
                         <button type="button" class="icon" data-dismiss="modal">
                             <span>&#9633;</span>
                         </button>
-                        <button type="button" class="close" data-dismiss="modal">
+                        <button type="button"  onclick="closeModal()" class="close" data-dismiss="modal">
                             <span>×</span>
                         </button>
                     </div>
@@ -77,4 +78,6 @@
 
         <!-- recuperar con cédula -->
     </div>
+    <script src="{{ asset('js/sign_in.js') }}"></script>
+
 @endsection
