@@ -57,12 +57,74 @@
             <input type="checkbox" class="form-check-input" id="portal-web">
             <label class="form-check-label" for="portal-web">Correo electrónico según sus preferencias</label>
         </div>
+        <div class="col-md-3">
+            <input type="text" class="form-control input-section2">
+        </div>
     </div>
     <div class="row mt-3">
         <div class="col-md-2"></div>
         <div class="col-md-5 form-check">
             <input type="checkbox" class="form-check-input" id="portal-web">
             <label class="form-check-label" for="portal-web">Redes sociales de la empresa</label>
+        </div>
+        <div class="col-md-3 mt-3">
+            <ul class="checkbox-dropdown">
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle"><b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><label class="checkbox"><input type="checkbox">Facebook</label></li>
+                        <li><label class="checkbox"><input type="checkbox">Twitter</label></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row mt-3 text-left">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <label class="form-check-label font-weight-bold" for="portal-web">Verifique, o inserte el número por el que desea mantenerse informado</label>      
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-5 form-check">
+            <input type="checkbox" class="form-check-input" id="portal-web">
+            <label class="form-check-label" for="portal-web">Mensaje de texto</label>
+        </div>
+        <div class="col-md-5">
+            <input type="text" class="form-control input-section2">
+        </div>
+    </div>
+    <div class="row mt-3 text-left">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <label class="form-check-label font-weight-bold" for="portal-web">Especifique los medios por los que desea mantenerse informado</label>      
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-2"></div>
+        <div class="col-md-5 form-check">
+            <input type="checkbox" class="form-check-input" id="portal-web">
+            <label class="form-check-label" for="portal-web">Otro(s)</label>
+        </div>
+        <div class="col-md-5">
+            <input type="text" class="form-control input-section2">
+        </div>
+    </div>
+    <div class="row mt-3 text-left">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <label class="form-check-label font-weight-bold" for="portal-web">Introduzca dirección de correo de Facebook para contactarlo</label>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-2"></div>
+        <div class="col-md-5 form-check">
+            <input type="checkbox" class="form-check-input" id="portal-web">
+            <label class="form-check-label" for="portal-web">Mensaje privado en mi cuenta de Facebook</label>
+        </div>
+        <div class="col-md-5">
+            <input type="text" class="form-control input-section2">
         </div>
     </div>
 </section>
