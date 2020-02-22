@@ -37,7 +37,7 @@
                         <div class="form-group">
                         <div class="row">
                             <div class="col-sm-4 modal-label">
-                                <label for="Email">{{__('words.email')}}</label>
+                                <label for="Email">Email</label>
                             </div>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="Email"/>
@@ -50,7 +50,7 @@
 
                             <div class="row">
                                 <div class="col-sm-4 modal-label">
-                                    <label for="Password">{{__('words.password')}}</label>
+                                    <label for="Password">Password</label>
                                 </div>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" name="Password"/>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="button-group">
                             <br>
-                            <button type="submit" class="btn modal-button">{{__('words.send')}}</button>
+                            <button type="submit" class="btn modal-button">Send</button>
                             <br>
                             <a class="modal-forgot" href="">Olvidé mi contraseña, o mis datos</a>
                             <!-- <a href="{{ route('main.sign_in') }}" class="btn btn-info btn-block" >{{__('words.back')}}</a> -->
