@@ -126,10 +126,6 @@ footer{
     color:white;
 }
 
-#busqueda-rapida{
-    display:none;
-}
-
 .ml-special{
     margin-left: 10%;
 }
@@ -148,6 +144,10 @@ footer{
     justify-content:center;
     align-items: center;
     flex-flow: column;
+}
+
+.sm-text{
+    font-size: .7em;
 }
 
 /*FONT AWESOME SOCIAL NETWORK */
