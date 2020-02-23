@@ -35,27 +35,27 @@
                     <div class="col-md-3" style="background: rgba(0,176,240,.2); ">
                         
                         <div >
-                            <a href="#" class="fa fa-facebook"></a>
+                            <a href="#" class="fab fa-facebook"></a>
                             <p class=" d-inline-block">Facebook</p>
                         </div>
 
                         <div >
-                            <a href="#" class="fa fa-twitter"></a>
+                            <a href="#" class="fab fa-twitter"></a>
                             <p class=" d-inline-block">Twitter</p>
                         </div>
 
                         <div >
-                            <a href="#" class="fa fa-youtube"></a>
+                            <a href="#" class="fab fa-youtube"></a>
                             <p class=" d-inline-block">Youtube</p>
                         </div>
 
                         <div>
-                            <a href="#" class="fa fa-instagram"></a>
+                            <a href="#" class="fab fa-instagram"></a>
                             <p class=" d-inline-block">Instagram</p>
                         </div>
 
                         <div>
-                            <a href="#" class="fa fa-linkedin"></a>
+                            <a href="#" class="fab fa-linkedin"></a>
                             <p class=" d-inline-block">Linkedin</p>
                         </div>
 

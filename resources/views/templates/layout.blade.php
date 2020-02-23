@@ -14,8 +14,13 @@
     <link href="{{asset('external/bootstrap.min.css')}}" rel="stylesheet">
     
     <!-- Font Awesome -->
+<<<<<<< HEAD
     <link href="{{asset('external/font-awesome.min.css')}}" rel="stylesheet">
        
+=======
+    <script src="https://kit.fontawesome.com/854217491d.js" crossorigin="anonymous"></script>
+    
+>>>>>>> JET-dev
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/modal.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
