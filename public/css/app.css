@@ -173,10 +173,15 @@ footer{
     border-radius: .25rem;
 }
 
+.border-blue{ /* not working */
+    border: solid 1px #00b0f0;
+    border-radius: .25rem;
+}
+
 
 /*FONT AWESOME SOCIAL NETWORK */
 
-.fa {
+.fab {
     padding: 5px;
     font-size: 15px;
     width: 25px;
@@ -304,4 +309,8 @@ color: white;
 
 .fa-minus{
     background-color: #dfe4e7;
+}
+
+.fa-caret-down{
+    color: #ffc000;
 }

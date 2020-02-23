@@ -10,7 +10,8 @@
             
             <div class="col-md-3 search-box" style="margin-left:15px;">
                 <div class="search-btn border border-info rounded " id='btn-b-rapida'>
-                    <p class="font-weight-bold m-0">Búsqueda Rápida</p>
+                    <i class="fas fa-caret-down d-inline"></i>
+                    <p class="font-weight-bold m-0 d-inline">Búsqueda Rápida</p>
                 </div>
 
                 <div class="border border-info p-1" id="busqueda-rapida">
@@ -76,10 +77,11 @@
                    
                 </div>
 
-                <!-- otra busqueda -->
+                <!-- BUSQUEDA DETALLADA -->
 
                 <div class="search-btn border border-info rounded " id='btn-b-detallada'>
-                    <p class="font-weight-bold m-0">Búsqueda Detallada</p>
+                    <i class="fas fa-caret-down d-inline"></i>
+                    <p class="font-weight-bold m-0 d-inline">Búsqueda Detallada</p>
                 </div>
 
                 <div class="border border-info p-1" id="busqueda-detallada">
@@ -318,7 +320,7 @@
 
                 <button type="button" class="btn btn-info">Ver Detalle</button>
                 <button type="button" class="btn btn-primary">Modificar</button>
-                <button type="button" class="btn btn-warning">Deshabilitar</button>
+                <button type="button" class="btn btn-warning text-white">Deshabilitar</button>
                 <button type="button" class="btn btn-success">Habilitar</button>
                 <button type="button" class="btn btn-danger">Eliminar</button>
 
@@ -362,9 +364,9 @@
                     </div>
 
                     <div class="col-md-9 mt-2">
-                        <button type="button" class="btn btn-info font-weight-bold">Apartamento</button>
+                        <button type="button" class="btn btn-info font-weight-bold ">Apartamento</button>
                         <button type="button" class="btn btn-primary font-weight-bold">Casa o quinta</button>
-                        <button type="button" class="btn btn-warning font-weight-bold">Apartamento y casa</button>
+                        <button type="button" class="btn btn-warning font-weight-bold text-white">Apartamento y casa</button>
                     </div>
                 </div>
 
@@ -376,7 +378,7 @@
                     <div class="col-md-9 mt-2">
                         <button type="button" class="btn btn-info font-weight-bold">Venta</button>
                         <button type="button" class="btn btn-primary font-weight-bold">Alquiler</button>
-                        <button type="button" class="btn btn-warning font-weight-bold">Alquiler y venta</button>
+                        <button type="button" class="btn btn-warning font-weight-bold text-white">Alquiler y venta</button>
                     </div>
                 </div>
 
@@ -452,7 +454,7 @@
                             </div>
 
                             <div class="col-md-6 mt-3">
-                                <button type="button" class="btn btn-warning font-weight-bold">Contactar al anunciante</button>
+                                <button type="button" class="btn btn-warning font-weight-bold text-white">Contactar al anunciante</button>
                             </div>
                         </div>
 
@@ -500,7 +502,7 @@
                             </div>
 
                             <div class="col-md-6 mt-3">
-                                <button type="button" class="btn btn-warning font-weight-bold">Contactar al anunciante</button>
+                                <button type="button" class="btn btn-warning font-weight-bold text-white">Contactar al anunciante</button>
                             </div>
                         </div>
 
