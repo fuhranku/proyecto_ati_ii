@@ -30,10 +30,6 @@
             <div class="{{ $step=='6' ? 'col step-active' : 'col' }}" id="b-step-6" onclick="window.location='{{url('sign_up/6')}}';">6- Datos de facturación</div>
         </div>
     </div>
-    @php
-        $_step_a = $step + 1;
-        $_step_s = $step - 1;  
-    @endphp
     <div class="container-fluid">
         <div class="row sub-menu">
             <div class="col-xs">
@@ -68,9 +64,10 @@
                 </h1>
             </div>
             <div class="col-xs">
-                <a class="btn btn-danger font-weight-bold" href="{{ url('sign_up/'.$_step_a) }}" role="button">
+                {{-- <button type="submit" class="btn btn-danger font-weight-bold" href="{{ url('sign_up/'.$_step_a) }}" role="button"> --}}
+                <button type="submit" class="btn btn-danger font-weight-bold" role="button">
                     Continuar >
-                </a>
+                </button>
             </div> 
         </div>
     </div>

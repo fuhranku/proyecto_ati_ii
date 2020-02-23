@@ -1,6 +1,6 @@
 function initPage(){
-    document.getElementById("sign_in").style.display="contents";
-    document.getElementById("sign_in").style.overflow="auto";
+    // document.getElementById("sign_in").style.display="contents";
+   // document.getElementById("sign_in").style.overflow="auto";
     
 }
 

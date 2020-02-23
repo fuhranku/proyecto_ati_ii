@@ -5,7 +5,7 @@
 @section('content')
 
 <section>
-<link href="{{ asset('/css/modal.css') }}" rel="stylesheet">
+
     <div style="margin-top:70px">
         <!-- sign in -->
         <div class="modal fade" id="sign_in">
@@ -79,6 +79,5 @@
 
         <!-- recuperar con cédula -->
     </div>
-    <script src="{{ asset('js/sign_in.js') }}"></script>
 
 @endsection

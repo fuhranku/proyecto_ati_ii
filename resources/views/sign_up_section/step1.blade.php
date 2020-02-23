@@ -2,39 +2,41 @@
     <div class='container mt-3'>
         Por favor, coméntenos, cómo se enteró de los servicios de la empresa <br>
         Es importante para nosotros porque nos ayuda a mejorar el servicio que le ofrecemos
-        <form>
             <div class="row mt-3">
+                {{-- Portal Web --}}
                 <div class="col-md-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="portal-web">
+                    <input value="" type="checkbox" class="form-check-input checkbox-list-1" id="portal-web" name="found_us">
                     <label class="form-check-label" for="portal-web">Portal Web de la empresa</label>
                 </div>
+                {{-- RRSS --}}
                 <div class="col-md-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="rrss">
+                    <input type="checkbox" class="form-check-input checkbox-list-1" id="rrss-checkbox" name="found_us">
                     <label class="form-check-label" for="rrss">Redes Sociales</label>
-                    <ul class="checkbox-dropdown">
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><b class="caret"></b></a>
+                    <ul class="checkbox-dropdown d-none" id="rrss-dropdown">
+                        <li class="dropdown mt-2">
+                            <a href="#" data-toggle="dropdown p-5" class="dropdown-toggle border-gray"><b class="caret text-right"></b></a>
                             <ul class="dropdown-menu">
-                                <li><label class="checkbox"><input type="checkbox">Facebook</label></li>
-                                <li><label class="checkbox"><input type="checkbox">Twitter</label></li>
-                                <li><label class="checkbox"><input type="checkbox">Instagram</label></li>
+                                <li><label class="checkbox"><input type="checkbox" value="0" name="social_media">Facebook</label></li>
+                                <li><label class="checkbox"><input type="checkbox" value="1" name="social_media">Twitter</label></li>
+                                <li><label class="checkbox"><input type="checkbox" value="2" name="social_media">Instagram</label></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
+                {{-- Amigos --}}
                 <div class="col-md-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="amigos">
+                    <input value="Amigos" type="checkbox" class="form-check-input checkbox-list-1" id="amigos" name="found_us">
                     <label class="form-check-label" for="amigos">Amigos</label>
                 </div>
+                {{-- Otro --}}
                 <div class="col-md-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="otro">
+                    <input type="checkbox" class="form-check-input checkbox-list-1" id="otro-checkbox" name="found_us">
                     <label class="form-check-label" for="otro">Otro</label>
-                    <div style="margin-left: -100px; margin-top: 30px;">
+                    <div class="mt-2 ml-n5 d-none" id="other-modal">
                         <label class="form-check-label"> <strong>Especifique cuál fue el medio por el que supo de nosotros<strong></label> 
-                        <input type="text" class="form-control" placeholder="Correo, Radio, Prensa" aria-label="medio-contacto" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control mt-2" placeholder="Correo, Radio, Prensa" name="other_text">
                     </div>
                 </div>
             </div>
-        </form>
     </div>
 </section>

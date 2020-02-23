@@ -22,12 +22,15 @@ Route::get('/index', function () {
 });
 
 // Registro
-Route::get('sign_up/{step?}', 'MainController@sign_up_get')->name('main.sign_up_get');
+Route::get('sign_up/{step?}', 'SignUpController@sign_up_get');
 
-Route::post('sign_up/{step?}', 'MainController@sign_up_post')->name('main.sign_up_post');
+// Post guardar
+Route::post('sign_up/{step?}','SignUpController@store')->name('sign_up.store');
 
-// Registro con tipo de persona
-Route::get('sign_up/2/{type}', 'MainController@sign_up_get_natural')->name('main.sign_up_get');
+// Route::post('sign_up/{step?}', 'SignUpController@sign_up_post');
+
+Route::get('sign_up/2/{type}', 'SignUpController@sign_up_get_person_type');
+
 
 // Iniciar sesión
 Route::get('sign_in', 'MainController@sign_in')->name('main.sign_in');

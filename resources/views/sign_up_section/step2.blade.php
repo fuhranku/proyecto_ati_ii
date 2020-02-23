@@ -236,5 +236,7 @@ $personType = 0;
     </div>
 </div>
 @endif
-
+Found us: {{
+    session('key')
+}}
 </section>
