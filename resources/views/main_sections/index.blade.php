@@ -155,7 +155,7 @@
 
                 <!-- BUSQUEDA DETALLADA -->
 
-                <div class="border border-info m-3" id="busqueda-detallada">
+                <div class="m-3" id="busqueda-detallada">
 
                     <div class="row p-2">
                         <div class="col-md-1"></div>
