@@ -14,13 +14,8 @@
     <link href="{{asset('external/bootstrap.min.css')}}" rel="stylesheet">
     
     <!-- Font Awesome -->
-<<<<<<< HEAD
-    <link href="{{asset('external/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('external/all.min.css')}}" rel="stylesheet">
        
-=======
-    <script src="https://kit.fontawesome.com/854217491d.js" crossorigin="anonymous"></script>
-    
->>>>>>> JET-dev
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/modal.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -176,6 +171,7 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ asset('external/all.min.js') }}"></script>
 <script src="{{ asset('external/jquery-3.3.1.slim.min.js') }}"></script>
 <script src="{{ asset('external/popper.min.js') }}"></script>
 <script src="{{ asset('external/bootstrap.min.js') }}"></script>
