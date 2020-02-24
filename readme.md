@@ -12,117 +12,73 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them. For WINDOWS:
 
+
+* PHP 7.x  **Note: You need to modify in the directory where is installed. Reference:https://www.php.net/manual/es/mongodb.installation.windows.php**
+
+    * Download dll for MongoDB in https://pecl.php.net/package/mongodb and copy **php_mongodb.dll** in folder that you install PHP 7.x
+    * In php.ini add next line:
 ```
-XAMPP/WAMPP (Which means installing Apache and MySQL)
+    extension=php_mongodb.dll 
 ```
 
-```
-PHP 7.x
-```
+* Mongo DB **Without credentials or check note in Step 2 Install dependencies and run project**
 
-```
-Composer dependencies installer
-```
+* NodeJs
+
+* Composer
+
+* Optional Dependency: Yarn
+
 
 ### Setting this project for local work enviroment and testing
 
 This is what you need to have this project up and running in your local machine
 
-#### Clone project
+#### Step 1: Clone project
 
 ```
 git clone https://github.com/fuhranku/proyecto_ati_ii.git
 ```
-Note: If you're using XAMPP, for example, project folder needs to be inside **htdocs** directory of XAMPP
 
-#### Install composer dependencies
+#### Step 2: Install dependencies and run project
 
-Whenever you clone a new Laravel project you must now install all of the project dependencies. This is what actually installs Laravel itself, among other necessary packages to get started.
-
-```
-composer install
-```
-
-#### Create a copy of .env file
-
-Since .env files are not commited, it's necessary to create this file. There is a .env.example which is a template of the .env file that the project expects us to have. So we will make a copy of the .env.example file and create a .env file that we can start to fill out to do things like database configuration in the next few steps.
+The first thing you have to do is to raise the MongoDB service with the following command in Window:
 
 ```
-cp .env.example .env
-```
-This will create a copy of the .env.example file in your project and name the copy simply .env.
-
-#### Generate an app encryption Key
-
-Laravel requires you to have an app encryption key which is generally randomly generated and stored in your .env file. The app will use this encryption key to encode various elements of your application from cookies to password hashes and more.
-
-Laravel’s command line tools thankfully make it super easy to generate this. In the terminal we can run this command to generate that key.
-```
-php artisan key:generate
-```
-If you check the .env file again, you will see that it now has a long random string of characters in the APP_KEY field. We now have a valid app encryption key.
-
-#### Create a DB for the application
-
-Turn ON XAMPP/WAMPP MySQL, then go to
-
-```
-localhost/phpmyadmin
+mongod    or    npm run mongo    or    yarn mongo
 ```
 
-and create database for project. Let's put as a convention to use *p_laravel_ati_ii*
-
-#### In the .env file, add database information to allow Laravel to connect to the database
-
-We will want to allow Laravel to connect to the database that you just created in the previous step. To do this, we must add the connection credentials in the .env file and Laravel will handle the connection from there.
-
-In the .env file fill in the DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, and DB_PASSWORD options to match the credentials of the database you just created.
-
-Usually following configuration should work:
-```
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=p_laravel_ati_ii
-DB_USERNAME=root
-DB_PASSWORD=
-```
-Note: Please check which port is WAMPP/XAMPP using for MySQL, usually is 3306, but it might change.
-
-#### Migrate the database
-
-Once your credentials are in the .env file, now you can migrate your database.
+The following depends on whether your database has credentials or not. If you don't have credentials run the following command.
+But if you have credentials skip this and go to the note.
 
 ```
-php artisan migrate
+npm run start    or    yarn start
 ```
-If this command doesn't work because table's name is too long. Fix it as follows
 
-##### Fixing table's length error
+**Note**: Is your Mongo DB need credentials run the following command in the terminal: 
 
-Go to AppServiceProvider.php file inside laravel project and put following code:
 ```
-    use Illuminate\Support\Facades\Schema;
-
-    public function boot()
-    {
-        Schema::defaultStringLength(191);
-    }
+npm run install    or    yarn install
 ```
-This should be enough. It’s not a bad idea to check your database to make sure everything migrated the way you expected.
 
-## Running project
+Complete in the generated file (.env) the credentials , user and password:
 
-To see project working turn **Apache** and **MySQL** ON from XAMPP/WAMPP server.
-
-Then, simply visit project by putting following URL
 ```
-localhost/<project_name>/public
+DB_USERNAME= yourUser
+DB_PASSWORD= yourPassword
 ```
+
+Finally execute the following command
+
+```
+npm run server-migrate    or    yarn server-migrate 
+```
+
+**Open browser in http://localhost:8000**
 
 ## Authors
 
-* **Frank Ponte** - *Initial work/Developer* - [fuhranku](https://github.com/fuhranku)
+* **Frank Ponte** - *Developer* - [fuhranku](https://github.com/fuhranku)
 * **Leonardo Pinzón** - *Developer* - [paladin601](https://github.com/paladin601)
 * **Ricardo Osuna** - *Developer* - [Osrrus](https://github.com/Osrrus)
 * **Yuliana Fernández** - *Developer* - [yuliferna](https://github.com/yuli-ferna)

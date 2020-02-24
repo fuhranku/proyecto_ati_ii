@@ -1,7 +1,16 @@
 {
     "private": true,
     "scripts": {
-        "dev": "npm run development",
+        "mongo": "mongod",
+        "install":"composer i && npm i && npm run env && npm run dev",
+        "start": "npm run install && npm run server-migrate",
+        "server-migrate": "npm run migrate && npm run server",
+        "server": "npm run clear-cache && php artisan serve --host=0.0.0.0 --port=8000",
+        "clear-cache": "php artisan cache:clear && php artisan view:clear && php artisan view:cache && php artisan route:clear && php artisan config:clear && php artisan config:cache",
+        "env": "cp .env.example .env && npm run gen-key-laravel",
+        "gen-key-laravel": "php artisan key:generate",
+        "migrate": "php artisan migrate",
+        "dev": "rm -rf public/fonts && rm -rf public/css && rm -rf public/js &&npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "npm run development -- --watch",
         "watch-poll": "npm run watch -- --watch-poll",
@@ -11,11 +20,17 @@
     },
     "devDependencies": {
         "axios": "^0.19",
-        "cross-env": "^5.1",
-        "laravel-mix": "^4.0.7",
+        "bootstrap": "^4.4.1",
+        "cross-env": "^7.0",
+        "font-awesome": "^4.7.0",
+        "jquery": "^3.4.1",
+        "laravel-mix": "^5.0.1",
         "lodash": "^4.17.13",
-        "resolve-url-loader": "^2.3.1",
+        "popper.js": "^1.16.1",
+        "resolve-url-loader": "^3.1.0",
         "sass": "^1.15.2",
-        "sass-loader": "^7.1.0"
-    }
+        "sass-loader": "^8.0.0",
+        "vue-template-compiler": "^2.6.11"
+    },
+    "dependencies": {}
 }

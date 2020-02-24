@@ -11,22 +11,18 @@
 |
 */
 
+
+// Main
 Route::get('/', function () {
-    return redirect('/index');
-});
-
-
-// Inicio
-Route::get('/index', function () {
     return view('main_sections.index');
 });
 
-// Registro
+// Register
 Route::get('sign_up/{step?}', 'MainController@sign_up_get')->name('main.sign_up_get');
 
 Route::post('sign_up/{step?}', 'MainController@sign_up_post')->name('main.sign_up_post');
 
-// Registro con tipo de persona
+// Register with type
 Route::get('sign_up/2/{type}', 'MainController@sign_up_get_natural')->name('main.sign_up_get');
 
 // Iniciar sesión
@@ -40,7 +36,7 @@ Route::get('dwelling/delete', 'DwellingController@delete')->name('dwelling.delet
 Route::get('dwelling/consult', 'DwellingController@consult')->name('dwelling.consult');
 
 
-// Servicios
+// Services
 Route::get('services/search', 'ServiceController@search')->name('services.search');
 Route::get('services/delete', 'ServiceController@delete')->name('services.delete');
 Route::get('services/create', 'ServiceController@create')->name('services.create');
@@ -49,17 +45,17 @@ Route::get('services/consult', 'ServiceController@consult')->name('services.cons
 
 
 
-// Empleo
+// Job
 Route::get('employment', 'MainController@employment')->name('main.employment');
 
-// Ayuda
+// Help
 Route::get('help', 'MainController@help')->name('main.help');
 
-// Contáctenos
+// Contact
 Route::get('contact_us', 'MainController@contact_us')->name('main.contact_us');
 
-// Conócenos más
+// About Us
 Route::get('about_us', 'MainController@about_us')->name('main.about_us');
 
-// Idioma
+// language
 Route::get('languages', 'MainController@languages')->name('main.languages');

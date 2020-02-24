@@ -174,6 +174,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        /*
+        * Mongo provider
+        */
+        Jenssegers\Mongodb\MongodbServiceProvider::class,
 
     ],
 
@@ -189,7 +193,7 @@ return [
     */
 
     'aliases' => [
-        'Requesting' => Illuminate\Support\Facades\Request::class,
+
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,

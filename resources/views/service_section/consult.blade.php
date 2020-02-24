@@ -1,4 +1,4 @@
-@extends('templates.layout')    
+@extends('layouts.base')   
 
 @section('title','Index')
 
