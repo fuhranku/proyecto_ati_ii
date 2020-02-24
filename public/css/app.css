@@ -76,9 +76,12 @@ h1{
 
 .step-active{
     background-color: #92d050 !important;
-    text-decoration: underline;
     transition: 0.3s;
     pointer-events: all !important;
+}
+
+.text-underline{
+    text-decoration: underline;
 }
 
 div.bg-blue > h1{
@@ -304,3 +307,6 @@ color: white;
     color: #ffc000;
 }
 
+.cursor-pointer{
+    cursor: pointer !important;
+}

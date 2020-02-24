@@ -35,7 +35,31 @@ $(document).ready(function(){
             $('#step2_other_menu').addClass('d-none');
        }
   });
-  
+  $('#b-step-0').addClass('text-underline');
+  $('.b-step').click(function(event) {
+    $('.b-step').not(this).removeClass('text-underline');
+    $(this).addClass('text-underline');  
+    // Remove old content
+    $("#step-"+step).addClass('d-none');
+    // Add new content
+    $('#step-'+$(this).data('step')).removeClass('d-none');
+    step = + $(this).data('step');
+    
+    if(step > 4){
+        $('#continuar-btn').addClass('invisible');
+    }
+    if(step > 0){
+        $('#atras-btn').removeClass('invisible');
+    }
+    if(step < 1){
+        $('#atras-btn').addClass('invisible');
+    }
+    if(step < 5){
+        $('#continuar-btn').removeClass('invisible');
+        $('#btns-step04').removeClass('d-none');
+        $('#btns-step5').addClass('d-none');
+    }
+  });
 });
 
 $('#btn-b-rapida').click(function(){
@@ -54,7 +78,6 @@ $('.checkbox-list-1').on('change', function() {
     if (!$('#otro-checkbox').is(':checked')){
         $('#other-modal').css("display",'none');
     }
-    
 });
 
 $('.step4_checkbox').on('change', function() {
@@ -80,6 +103,7 @@ $('#otro-checkbox').on('click', function(){
 })
 
 $('#continuar-btn').on('click', function(){
+    $('#b-step-'+step).removeClass('text-underline');
     step++;
     console.log(step);
     if(step > 4){
@@ -96,9 +120,21 @@ $('#continuar-btn').on('click', function(){
     }
     $('#panel-heading').text(panelText[step]);
     
+    if (step == 5){
+        $('#btns-step04').addClass('d-none');
+        $('#btns-step5').removeClass('d-none');
+    }
+
+    for(i=0;i<=step;i++){
+        $('#b-step-'+i).addClass('step-active');
+        $('#b-step-'+i).removeClass('text-underline');
+    }
+    $('#b-step-'+step).addClass('text-underline');
+
 })
 
 $('#atras-btn').on('click', function(){
+    $('#b-step-'+step).removeClass('text-underline');
     step--;
     console.log(step);
     if(step < 1){
@@ -111,8 +147,11 @@ $('#atras-btn').on('click', function(){
 
     if(step < 5){
         $('#continuar-btn').removeClass('invisible');
+        $('#btns-step04').removeClass('d-none');
+        $('#btns-step5').addClass('d-none');
     }
     $('#panel-heading').text(panelText[step]);
+    $('#b-step-'+step).addClass('text-underline');
 })
 
 $('#checkbox-natural').click(function() {

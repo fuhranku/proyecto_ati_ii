@@ -44,7 +44,7 @@
     
                 <div class="row mt-3">
                     <div class="col-md-3"></div>
-                    <div class="col-md-6 border border-info rounded " onclick="displaySBK()">
+                    <div class="col-md-6 border border-info rounded cursor-pointer" onclick="displaySBK()">
                         <i class="fas fa-caret-down d-inline"></i>
                         <p class="font-weight-bold  d-inline">Búsqueda por palabra clave</p>
                     </div>
@@ -67,7 +67,7 @@
 
                 <div class="row mt-3">
                     <div class="col-md-3"></div>
-                    <div class="col-md-6 border border-info rounded " onclick="displayRS()">
+                    <div class="col-md-6 border border-info rounded cursor-pointer" onclick="displayRS()">
                         <i class="fas fa-caret-down d-inline"></i>
                         <p class="font-weight-bold  d-inline" >Búsqueda rápida</p>
                     </div>
@@ -150,7 +150,7 @@
 
                 <div class="row mt-3">
                     <div class="col-md-3"></div>
-                    <div class="col-md-6 border border-info rounded " onclick="displayDS()">
+                    <div class="col-md-6 border border-info rounded cursor-pointer" onclick="displayDS()">
                         <i class="fas fa-caret-down d-inline"></i>
                         <p class="font-weight-bold  d-inline">Búsqueda detallada</p>
                     </div>

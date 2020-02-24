@@ -21,14 +21,15 @@
 
     <div class="container">
         <div class="row step m-info">
+            {{-- {{ $step>='1' ? 'col step-active' : 'col' }} --}}
             {{-- col-step-active --}}
-            <div class="col" id="b-step-1" onclick="window.location='{{url('sign_up/1')}}';">1- ¿Cómo supo de nosotros? </div>
-            <div class="col" id="b-step-2" onclick="window.location='{{url('sign_up/2')}}';">2- Registrar usuario </div>
-            <div class="col" id="b-step-3" onclick="window.location='{{url('sign_up/3')}}';">3- Idioma del adiestramiento</div>
+            <div class="col step-active b-step" id="b-step-0" data-step=0>1- ¿Cómo supo de nosotros? </div>
+            <div class="col b-step" id="b-step-1" data-step=1>2- Registrar usuario </div>
+            <div class="col b-step" id="b-step-2" data-step=2>3- Idioma del adiestramiento</div>
             <div class="w-100"></div>
-            <div class="col" id="b-step-4" onclick="window.location='{{url('sign_up/4')}}';">4- Datos de inicio de sesión</div>
-            <div class="col" id="b-step-5" onclick="window.location='{{url('sign_up/5')}}';">5- Frecuencia e información a recibir</div>
-            <div class="col" id="b-step-6" onclick="window.location='{{url('sign_up/6')}}';">6- Datos de facturación</div>
+            <div class="col b-step" id="b-step-3" data-step=3>4- Datos de inicio de sesión</div>
+            <div class="col b-step" id="b-step-4" data-step=4>5- Frecuencia e información a recibir</div>
+            <div class="col b-step" id="b-step-5" data-step=5>6- Datos de facturación</div>
         </div>
     </div>
     <div class="container-fluid">
