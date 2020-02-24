@@ -1,3 +1,14 @@
+var step = 0;
+var panelText = [
+    'Cómo supo de nosotros ',
+    'Registrar Usuario',
+    'Idioma en que desea visualizar el portal al iniciar sesión',
+    'Datos de inicio de sesión',
+    'Frecuencia e información a recibir ',
+    'Datos de Facturación',
+]
+  
+
 $(".checkbox-menu").on("change", "input[type='checkbox']", function() {
     $(this).closest("li").toggleClass("active", this.checked);
  });
@@ -16,11 +27,15 @@ $('#checkbox-juridica').on('change', function() {
 });   
 
 $(document).ready(function(){
-   if(type === 'natural'){
-      $('#checkbox-natural').prop('checked', true);
-   }else if(type === 'juridica'){
-      $('#checkbox-juridica').prop('checked', true); 
-   }
+   $('#panel-heading').text(panelText[step]);
+   $('.step4_checkbox').click(function(event) {
+       if( $(this).is("#step4_checkbox4")){
+            $('#step2_other_menu').removeClass('d-none');
+       }else{
+            $('#step2_other_menu').addClass('d-none');
+       }
+  });
+  
 });
 
 $('#btn-b-rapida').click(function(){
@@ -42,6 +57,9 @@ $('.checkbox-list-1').on('change', function() {
     
 });
 
+$('.step4_checkbox').on('change', function() {
+    $('.step4_checkbox').not(this).prop('checked', false);  
+});
 
 $('#rrss-checkbox').on('click', function(){
     if($('#rrss-dropdown').is(":visible")){
@@ -54,9 +72,107 @@ $('#rrss-checkbox').on('click', function(){
 
 $('#otro-checkbox').on('click', function(){
     if($('#other-modal').is(":visible")){
-        $('#other-modal').css("display",'none');
+        $('#other-modal').addClass('d-none');
     }else{
         $('#other-modal').removeClass('d-none');
         $('#other-modal').show();
     }
 })
+
+$('#continuar-btn').on('click', function(){
+    step++;
+    console.log(step);
+    if(step > 4){
+        $('#continuar-btn').addClass('invisible');
+    }
+    // Remove old content
+    $("#step-"+(step-1)).addClass('d-none');
+
+    // Add new content
+    $('#step-'+step).removeClass('d-none');
+
+    if(step > 0){
+        $('#atras-btn').removeClass('invisible');
+    }
+    $('#panel-heading').text(panelText[step]);
+    
+})
+
+$('#atras-btn').on('click', function(){
+    step--;
+    console.log(step);
+    if(step < 1){
+        $('#atras-btn').addClass('invisible');
+    }
+    // Remove old content
+    $("#step-"+(step+1)).addClass('d-none');
+    // Add new content
+    $('#step-'+step).removeClass('d-none');
+
+    if(step < 5){
+        $('#continuar-btn').removeClass('invisible');
+    }
+    $('#panel-heading').text(panelText[step]);
+})
+
+$('#checkbox-natural').click(function() {
+    if($('#container-p-juridica').is(':visible')){
+        $('#container-p-juridica').addClass('d-none');
+    }
+    if($(this).prop("checked") == true){
+        $('#container-p-natural').removeClass('d-none');
+    }else{
+        $('#container-p-natural').addClass('d-none');
+    }    
+});
+
+$('#checkbox-juridica').click(function() {
+    if($('#container-p-natural').is(':visible')){
+        $('#container-p-natural').addClass('d-none');
+    }
+    if($(this).prop("checked") == true){
+        $('#container-p-juridica').removeClass('d-none');
+    }else{
+        $('#container-p-juridica').addClass('d-none');
+    }  
+});
+
+$('#rrss-empresa-checkbox').click(function(){
+    if($(this).prop("checked") == true){
+        $('#checkbox-dropdown-rrss').removeClass('invisible');
+    }else{
+        $('#checkbox-dropdown-rrss').addClass('invisible');
+    }  
+});
+
+$('#sms-checkbox-step4').click(function(){
+    if($(this).prop("checked") == true){
+        $('.sms-other-step4').css('visibility','visible');
+    }else{
+        $('.sms-other-step4').css('visibility','hidden');
+    }  
+});
+
+$('#checkbox-medios-other-step4').click(function(){
+    if($(this).prop("checked") == true){
+        $('.medios-other-step4').css('visibility','visible');
+    }else{
+        $('.medios-other-step4').css('visibility','hidden');
+    }  
+});
+
+$('#checkbox-email-other-step4').click(function(){
+    if($(this).prop("checked") == true){
+        $('#email-other-step4').css('visibility','visible');
+    }else{
+        $('#email-other-step4').css('visibility','hidden');
+    }  
+});
+
+$('#checkbox-fb-account-other-step4').click(function(){
+    if($(this).prop("checked") == true){
+        $('.fb-account-other-step4').css('visibility','visible');
+    }else{
+        $('.fb-account-other-step4').css('visibility','hidden');
+    }  
+});

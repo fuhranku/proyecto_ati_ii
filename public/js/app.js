@@ -7,8 +7,6 @@ $('#btn-b-detallada').click(function(){
    }
 });
 
-
-
 $('.btn-number1').click(function(e){
    e.preventDefault();
    
@@ -27,7 +25,6 @@ $('.btn-number1').click(function(e){
            }
 
        } else if(type == 'plus') {
-
            if(currentVal < input.attr('max')) {
                input.val(currentVal + 1).change();
            }
@@ -46,7 +43,7 @@ $('#counterBath').focusin(function(){
 
 $('#counterRoom').focusin(function(){
    $(this).data('oldValue', $(this).val());
- });
+});
 
 $('#counterParking').focusin(function(){
    $(this).data('oldValue', $(this).val());
@@ -81,21 +78,19 @@ $('#counterRoom').change(function() {
    valueCurrent = parseInt($(this).val());
    
    name = $(this).attr('name');
-   if(valueCurrent >= minValue) {
+   if(valueCurrent >= minValue){
        $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
-   } else {
+   }else{
        alert('Sorry, the minimum value was reached');
        $(this).val($(this).data('oldValue'));
    }
-   if(valueCurrent <= maxValue) {
+   if(valueCurrent <= maxValue){
        $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
-   } else {
+   }else{
        alert('Sorry, the maximum value was reached');
        $(this).val($(this).data('oldValue'));
    }
 });
-
-
 
 $('#counterPark').change(function() {
    
@@ -117,7 +112,6 @@ $('#counterPark').change(function() {
        $(this).val($(this).data('oldValue'));
    }
 });
-
 
 $("#counterBath").keydown(function (e) {
    // Allow: backspace, delete, tab, escape, enter and .
@@ -166,3 +160,4 @@ $("#counterPark").keydown(function (e) {
          e.preventDefault();
       }
 });
+

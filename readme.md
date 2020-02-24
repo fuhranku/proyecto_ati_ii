@@ -80,12 +80,13 @@ In the .env file fill in the DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, and DB_
 
 Usually following configuration should work:
 ```
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=p_laravel_ati_ii
-DB_USERNAME=root
-DB_PASSWORD=
+DB_CONNECTION= mysql
+DB_HOST= 85.10.205.173
+DB_PORT= 3306
+DB_DATABASE= justo_atiempo
+DB_USERNAME= justo_atiempo
+DB_PASSWORD= 12345678
+
 ```
 Note: Please check which port is WAMPP/XAMPP using for MySQL, usually is 3306, but it might change.
 

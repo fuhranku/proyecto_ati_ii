@@ -12,14 +12,13 @@ use App\User;
 
 class SignUpController extends Controller
 {
-    public function sign_up_get(Request $request,$step = 1)
-    {
-        Cookie::queue('probando1', 'valorprobando1', 60);
-        Cookie::queue('probando2', 'valorprobando2', 60);
-        Cookie::queue('probando3', 'valorprobando3', 60);
-        $type = 'none';
+    public function sign_up_get(){
+        // Cookie::queue('probando1', 'valorprobando1', 60);
+        // Cookie::queue('probando2', 'valorprobando2', 60);
+        // Cookie::queue('probando3', 'valorprobando3', 60);
+        // $type = 'none';
 
-        return view('main_sections.sign_up',compact("step", "type"));
+        return view('main_sections.sign_up');
     }
 
     public function sign_up_get_person_type($type = 1){
@@ -114,6 +113,6 @@ class SignUpController extends Controller
             $type = 'none';
             return view('main_sections.sign_up',compact("step","type"));
         }
-        
+
     }
 }
