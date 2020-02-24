@@ -22,7 +22,9 @@ Route::get('/index', function () {
 });
 
 // Registro
-Route::get('sign_up/{step?}', 'SignUpController@sign_up_get');
+// Route::get('sign_up/{step?}', 'SignUpController@sign_up_get');
+
+Route::get('sign_up', 'SignUpController@sign_up_get');
 
 // Post guardar
 Route::post('sign_up/{step?}','SignUpController@store')->name('sign_up.store');

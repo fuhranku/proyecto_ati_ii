@@ -3,33 +3,33 @@
 @section('title','Index')
 
 @section('content')
-<form method="post" action="/sign_up/{{$_step_a}}">
+<form>
     @csrf
     @include('sign_up_section.panel')
     <section id="content">
         {{-- 1 - Cómo Supo de Nosotros --}}
-            @include('sign_up_section.step1')
+            @include('sign_up_section.step0')
         {{-- 2 - Registrar Usuario --}}
-            @include('sign_up_section.step2')
+            @include('sign_up_section.step1')
         {{-- 3 - Idioma del adiestramiento --}}
-            @include('sign_up_section.step3')
+            @include('sign_up_section.step2')
         {{-- 4 - Datos de inicio de sesión --}}
-            @include('sign_up_section.step4')
+            @include('sign_up_section.step3')
         {{-- 5 - Frecuencia de información a recibir --}}
-            @include('sign_up_section.step5')
+            @include('sign_up_section.step4')
         {{-- 6 - Datos de facturación --}}
-            @include('sign_up_section.step6')       
+            @include('sign_up_section.step5')       
         {{-- Botones final --}}
             <div class="row mt-5">
                 <div class="col-sm-12">
                     <div class="text-center">
-                        <button class="btn  bg-yellow " id="singlebutton" style="font-weight:bold;color:#ffffff; padding:5px 30px">
+                    <a class="btn bg-yellow " id="singlebutton" style="font-weight:bold;color:#ffffff; padding:5px 30px" href="{{ url('index') }}">
                             Cancelar
-                        </button>
+                    </a>
                     </div>
                 </div>
             </div>
-            <div class="row mt-5">
+            <div class="row mt-5 d-none">
                 <div class="col-sm-4"></div>
                 <div class="col-sm-2">
                     <div class="text-center">
@@ -40,18 +40,18 @@
                 </div>
                 <div class="col-sm-2">
                     <div class="text-center">
-                        <button class="btn  bg-yellow " id="singlebutton" style="font-weight:bold;color:#ffffff; padding:5px 30px">
+                        <a class="btn  bg-yellow " id="singlebutton" style="font-weight:bold;color:#ffffff; padding:5px 30px" href="{{ url('index') }}">
                             Cancelar
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
     </section>
 </form>
 
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     var step = "{{$step}}";
     var type = "{{$type}}";
-</script>
+</script> --}}
 
 @endsection

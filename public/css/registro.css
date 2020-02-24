@@ -24,3 +24,8 @@ ul{
     border: 1px solid #ced4da !important;
     border-radius: .25em;
 }
+
+.sms-other-step4, .medios-other-step4, #email-other-step4
+,.fb-account-other-step4{
+    visibility: hidden;
+}

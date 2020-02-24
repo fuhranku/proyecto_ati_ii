@@ -21,53 +21,34 @@
 
     <div class="container">
         <div class="row step m-info">
-            <div class="{{ $step>='1' ? 'col step-active' : 'col' }}" id="b-step-1" onclick="window.location='{{url('sign_up/1')}}';">1- ¿Cómo supo de nosotros? </div>
-            <div class="{{ $step>='2' ? 'col step-active' : 'col' }}" id="b-step-2" onclick="window.location='{{url('sign_up/2')}}';">2- Registrar usuario </div>
-            <div class="{{ $step>='3' ? 'col step-active' : 'col' }}" id="b-step-3" onclick="window.location='{{url('sign_up/3')}}';">3- Idioma del adiestramiento</div>
+            {{-- col-step-active --}}
+            <div class="col" id="b-step-1" onclick="window.location='{{url('sign_up/1')}}';">1- ¿Cómo supo de nosotros? </div>
+            <div class="col" id="b-step-2" onclick="window.location='{{url('sign_up/2')}}';">2- Registrar usuario </div>
+            <div class="col" id="b-step-3" onclick="window.location='{{url('sign_up/3')}}';">3- Idioma del adiestramiento</div>
             <div class="w-100"></div>
-            <div class="{{ $step>='4' ? 'col step-active' : 'col' }}" id="b-step-4" onclick="window.location='{{url('sign_up/4')}}';">4- Datos de inicio de sesión</div>
-            <div class="{{ $step>='5' ? 'col step-active' : 'col' }}" id="b-step-5" onclick="window.location='{{url('sign_up/5')}}';">5- Frecuencia e información a recibir</div>
-            <div class="{{ $step=='6' ? 'col step-active' : 'col' }}" id="b-step-6" onclick="window.location='{{url('sign_up/6')}}';">6- Datos de facturación</div>
+            <div class="col" id="b-step-4" onclick="window.location='{{url('sign_up/4')}}';">4- Datos de inicio de sesión</div>
+            <div class="col" id="b-step-5" onclick="window.location='{{url('sign_up/5')}}';">5- Frecuencia e información a recibir</div>
+            <div class="col" id="b-step-6" onclick="window.location='{{url('sign_up/6')}}';">6- Datos de facturación</div>
         </div>
     </div>
     <div class="container-fluid">
         <div class="row sub-menu">
             <div class="col-xs">
-                <a class="{{ $step == '1' ? 'btn btn-danger font-weight-bold invisible' : 'btn btn-danger font-weight-bold'}}"
-                href="{{ url('sign_up/'.$_step_s) }}" role="button">
+                {{-- <a class="{{ $step == '1' ? 'btn btn-danger font-weight-bold invisible' : 'btn btn-danger font-weight-bold'}}"
+                href="{{ url('sign_up/'.$_step_s) }}" role="button"> --}}
+                <a class="btn btn-danger font-weight-bold text-white invisible" id="atras-btn" role="button">
                     < Atrás
                 </a>
             </div>
             <div class="col-md bg-blue rounded pt-2">
-                <h1 class="text-center text-uppercase">
-                    @switch($step)
-                        @case(1)
-                            Cómo supo de nosotros 
-                            @break
-                        @case(2)
-                            Registrar Usuario
-                            @break
-                        @case(3)
-                            Idioma en que desea visualizar el portal al iniciar sesión
-                            @break
-                        @case(4)
-                            Datos de inicio de sesión
-                            @break
-                        @case(5)
-                            Frecuencia e información a recibir 
-                            @break
-                        @case(6)
-                            Datos de Facturación
-                            @break                            
-                    @endswitch    
-                
+                <h1 class="text-center text-uppercase" id="panel-heading">                      
                 </h1>
             </div>
             <div class="col-xs">
                 {{-- <button type="submit" class="btn btn-danger font-weight-bold" href="{{ url('sign_up/'.$_step_a) }}" role="button"> --}}
-                <button type="submit" class="btn btn-danger font-weight-bold" role="button">
+                <a class="btn btn-danger font-weight-bold text-white" id="continuar-btn" role="button">
                     Continuar >
-                </button>
+                </a>
             </div> 
         </div>
     </div>
