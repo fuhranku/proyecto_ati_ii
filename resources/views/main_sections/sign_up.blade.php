@@ -34,19 +34,20 @@
                 <div class="col-sm-4"></div>
                 <div class="col-sm-2">
                     <div class="text-center">
-                        <button type="submit" class="btn  bg-yellow " id="singlebutton" style="font-weight:bold;color:#ffffff; padding:5px 30px">
+                        <a type="submit" class="btn  bg-yellow " id="sign-up-btn" style="font-weight:bold;color:#ffffff; padding:5px 30px">
                             Registrarme
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div class="col-sm-2">
                     <div class="text-center">
-                        <a class="btn  bg-yellow " id="singlebutton" style="font-weight:bold;color:#ffffff; padding:5px 30px" href="{{ url('index') }}">
+                        <a class="btn  bg-yellow " id="sign-up-cancel-btn" style="font-weight:bold;color:#ffffff; padding:5px 30px" href="{{ url('index') }}">
                             Cancelar
                         </a>
                     </div>
                 </div>
             </div>
+
     </section>
 </form>
 

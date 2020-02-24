@@ -29,3 +29,18 @@ ul{
 ,.fb-account-other-step4{
     visibility: hidden;
 }
+
+.modal-open{
+    height: 100vh;
+    overflow-y: hidden;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.modal-bg{
+    background-color: rgba(0,0,0,0.5);
+    z-index: 100;
+    overflow: hidden;
+    width: 100%;
+}

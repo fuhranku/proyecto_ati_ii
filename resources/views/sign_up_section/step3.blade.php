@@ -20,7 +20,7 @@
             </div>
             <div class="row mt-3">
                 <div class="col-md-12 my-auto">
-                    <input type="checkbox" class="form-check-input" id="news">
+                    <input type="checkbox" class="form-check-input" id="checkbox-frecuencia">
                     <label class="form-check-label text-blue" for="rrss">
                         Quiero mantenerme informado acerca de los servicios que
                         ofrece la empresa, y otros aspectos de interés

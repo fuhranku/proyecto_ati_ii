@@ -99,6 +99,10 @@
         @yield('content')
     </div>
 </main>
+{{-- Final sign up modal --}}
+<div class="container d-none modal-bg" id='sign-up-modal'>
+
+</div>
 <!-- Footer Content -->
 <footer>
     <div class="navbar navbar-expand-md">
