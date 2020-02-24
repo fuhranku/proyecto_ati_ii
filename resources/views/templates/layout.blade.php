@@ -181,6 +181,7 @@
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script> --}}
 <script src="{{ asset('js/app.js') }}"></script> 
+<script src="{{ asset('js/dwelling.js') }}"></script>
 <script src="{{ asset('js/sign_up.js') }}"></script> 
 <script src="{{ asset('js/sign_in.js') }}"></script>
  <script>

@@ -63,6 +63,8 @@
                     <div class="col-md-3"></div>
                 </div>
 
+                <!-- BUSQUEDA RAPIDA BOTON -->
+
                 <div class="row mt-3">
                     <div class="col-md-3"></div>
                     <div class="col-md-6 border border-info rounded " onclick="displayRS()">
@@ -144,9 +146,11 @@
 
                 <!-- FIN BUSQUEDA RAPIDA -->
 
-                <div class="row">
+                <!-- BUSQUEDA DETALLADA BOTON -->
+
+                <div class="row mt-3">
                     <div class="col-md-3"></div>
-                    <div class="col-md-6 border border-info rounded ">
+                    <div class="col-md-6 border border-info rounded " onclick="displayDS()">
                         <i class="fas fa-caret-down d-inline"></i>
                         <p class="font-weight-bold  d-inline">Búsqueda detallada</p>
                     </div>
@@ -284,21 +288,21 @@
                             </div>
 
                             <div class="row p-2">
-                                <div class="col-md-12">
+                                <div class="col-md-4 sm-text">
                                     <p >Habitaciones</p>
                                 </div>
                                 
-                                <div class="col-md-12">
-                                    <div class="input-group">
+                                <div class="col-md-8">
+                                    <div class="input-group" style="width: max-content; max-width: 120px;">
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                                                <span class="fa fa-minus"></span>
+                                                <span class="fas fa-minus"></span>
                                             </button>
                                         </span>
                                         <input type="text" name="quant[1]" id="counterRoom" class="form-control input-number" value="1" min="1" max="10">
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
-                                                <span class="fa fa-plus"></span>
+                                                <span class="fas fa-plus"></span>
                                             </button>
                                         </span>
                                     </div>
@@ -306,12 +310,12 @@
                             </div>
         
                             <div class="row p-2">
-                                <div class="col-md-12">
+                                <div class="col-md-4 sm-text">
                                     <p>Baños</p>
                                 </div>
 
-                                <div class="col-md-12">
-                                    <div class="input-group">
+                                <div class="col-md-8">
+                                    <div class="input-group" style="width: max-content; max-width: 120px;">
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[2]">
                                                 <span class="fa fa-minus"></span>
@@ -328,12 +332,12 @@
                             </div>
         
                             <div class="row p-2">
-                                <div class="col-md-12">
+                                <div class="col-md-4 sm-text">
                                     <p>Estacionamientos</p>
                                 </div>
 
-                                <div class="col-md-12">
-                                    <div class="input-group">
+                                <div class="col-md-8">
+                                    <div class="input-group" style="width: max-content; max-width: 120px;">
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[3]">
                                                 <span class="fa fa-minus"></span>
@@ -350,31 +354,55 @@
                             </div>
         
                         </div>
+
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12 form-check">
+                                    <ul class="checkbox-dropdown" >
+                                        <li class="dropdown mt-2">
+                                            <p data-toggle="dropdown" class="dropdown-toggle border-gray pl-2 tiny-text">Seleccione comodidades</p>
+                                            <ul class="dropdown-menu">
+                                                <li><label class="checkbox sm-text"><input type="checkbox" value="0" name="social_media">Cocina</label></li>
+                                                <li><label class="checkbox sm-text"><input type="checkbox" value="1" name="social_media">Nevera</label></li>
+                                                <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Microondas</label></li>
+                                                <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Lavadora</label></li>
+                                                <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Secadora</label></li>
+                                                <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">TV en sala</label></li>
+                                                <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">TV en habitación</label></li>
+                                                <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Comedor</label></li>
+                                                <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Muebles</label></li>
+                                                <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Cama matrimonial</label></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12 form-check">
+                                    <ul class="checkbox-dropdown" >
+                                        <li class="dropdown mt-2">
+                                            <p data-toggle="dropdown" class="dropdown-toggle border-gray pl-2 sm-text">Servicios</p>
+                                            <ul class="dropdown-menu">
+                                                <li><label class="checkbox sm-text"><input type="checkbox" value="0" name="social_media">Luz</label></li>
+                                                <li><label class="checkbox sm-text"><input type="checkbox" value="1" name="social_media">Agua</label></li>
+                                                <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Teléfono</label></li>
+                                                <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Internet residencial</label></li>
+                                                <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">otro</label></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                    
                     
                     <div class="row p-2">
-                        <div class="col-md-12">
-                            <span class="badge badge-info">Comodidades</span>
-                            <select id="country" class="form-control " onchange="" id="crt-userType" >
-                                <option value="0">Asia</option>
-                                <option value="1">Europa</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row p-2">
-                        <div class="col-md-12">
-                            <span class="badge badge-info">Servicios</span>
-                            <select id="country" class="form-control  " onchange="" id="crt-userType" >
-                                <option value="0">Venezuela</option>
-                                <option value="1">Colombia</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row p-2">
-                        <div class="col-12">
+                        <div class="col-md-2"></div>
+                        <div class="col-5">
                             <span class="badge badge-info">Precio</span>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
@@ -391,15 +419,40 @@
                                 </label>
                             </div>
                         </div>
+                        <div class="col-md-1"></div>
+
+                        <div class="col-md-4">
+                            <span class="badge badge-info">Listar resultados de forma</span>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                <label class="form-check-label sm-text" for="exampleRadios1">
+                                    Alquiler
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                <label class="form-check-label sm-text" for="exampleRadios2">
+                                    Venta
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                                <label class="form-check-label sm-text" for="exampleRadios3">
+                                    Alquiler y venta
+                                </label>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="row pt-2">
-                        <div class="text-center col-6">
+                        <div class="col-md-3"></div>
+                        <div class="text-center col-3">
                             <button type="submit" class="btn btn-primary">Buscar</button>
                         </div>
-                        <div class="text-center col-6">
+                        <div class="text-center col-3">
                             <button type="submit" class="btn btn-primary">Cancelar</button>
                         </div>
+                        <div class="col-md-3"></div>
                     </div>
                    
                 </div>

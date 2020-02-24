@@ -1,4 +1,3 @@
-
 $('#btn-b-rapida').click(function(){
     if($('#busqueda-rapida').is(":visible")){
        $('#busqueda-rapida').css("display",'none');
@@ -15,9 +14,7 @@ $('#btn-b-rapida').click(function(){
     }
  });
  
- 
- 
- $('.btn-number1').click(function(e){
+ $('.btn-number').click(function(e){
     e.preventDefault();
     
     fieldName = $(this).attr('data-field');
