@@ -59,6 +59,10 @@ $(document).ready(function(){
         $('#btns-step04').removeClass('d-none');
         $('#btns-step5').addClass('d-none');
     }
+    if(step == 5){
+        $('#btns-step04').addClass('d-none');
+        $('#btns-step5').removeClass('d-none');
+    }
   });
 });
 
@@ -105,52 +109,91 @@ $('#otro-checkbox').on('click', function(){
 $('#continuar-btn').on('click', function(){
     $('#b-step-'+step).removeClass('text-underline');
     step++;
-    console.log(step);
+    // If  frecuencia not checked (go to step 5)
+    if (step == 4 && !$('#checkbox-frecuencia').is(':checked')){
+            step = 5;
+            // Remove old content
+            $("#step-3").addClass('d-none');
+            // Add new content
+            $('#step-'+step).removeClass('d-none');
+            $('#b-step-'+4).removeClass('step-active');
+            $('#b-step-'+4).removeClass('text-underline');
+            // Mark step 5 as active
+            $('#b-step-'+5).addClass('step-active');
+    }else if (step==4 && $('#checkbox-frecuencia').is(':checked')){
+        console.log('checked');
+        // Unmark step 5 
+        $('#b-step-'+5).removeClass('step-active');
+        $('#b-step-'+5).removeClass('text-underline');
+        // Mark step 4 as active now
+        $('#b-step-'+4).addClass('step-active');
+        $('#b-step-'+4).addClass('text-underline');
+    }else{
+        // Remove old content
+        $("#step-"+(step-1)).addClass('d-none');
+    
+        // Add new content
+        $('#step-'+step).removeClass('d-none');
+        // Mark all previous steps as active
+        for(i=0;i<=step;i++){
+            $('#b-step-'+i).addClass('step-active');
+            $('#b-step-'+i).removeClass('text-underline');
+        }
+    }
+    // Hide continuar button
     if(step > 4){
         $('#continuar-btn').addClass('invisible');
     }
-    // Remove old content
-    $("#step-"+(step-1)).addClass('d-none');
-
-    // Add new content
-    $('#step-'+step).removeClass('d-none');
-
+    // Remove 'atras' button
     if(step > 0){
         $('#atras-btn').removeClass('invisible');
     }
+    // Put step text
     $('#panel-heading').text(panelText[step]);
     
+    // Put different buttons if page it's on step 5
     if (step == 5){
         $('#btns-step04').addClass('d-none');
         $('#btns-step5').removeClass('d-none');
     }
 
-    for(i=0;i<=step;i++){
-        $('#b-step-'+i).addClass('step-active');
-        $('#b-step-'+i).removeClass('text-underline');
-    }
+    // Underline current step
     $('#b-step-'+step).addClass('text-underline');
-
 })
 
 $('#atras-btn').on('click', function(){
     $('#b-step-'+step).removeClass('text-underline');
     step--;
-    console.log(step);
     if(step < 1){
         $('#atras-btn').addClass('invisible');
     }
-    // Remove old content
-    $("#step-"+(step+1)).addClass('d-none');
-    // Add new content
-    $('#step-'+step).removeClass('d-none');
 
+    if( step == 4 && $('#checkbox-frecuencia').is(':checked')){
+        // Remove old content
+        $("#step-"+(step+1)).addClass('d-none');
+        // Add new content
+        $('#step-'+step).removeClass('d-none');
+    }else if (step == 4 && !$('#checkbox-frecuencia').is(':checked')){
+        console.log('hey');
+        // Remove old content
+        $("#step-"+(step+1)).addClass('d-none');
+        $('#b-step-5').removeClass('step-active');
+        step = 3;
+        // Add new content
+        $('#step-'+step).removeClass('d-none');
+    }
+
+
+
+    // Unhide 'continuar' button and hide last button set from step 5
     if(step < 5){
         $('#continuar-btn').removeClass('invisible');
         $('#btns-step04').removeClass('d-none');
         $('#btns-step5').addClass('d-none');
     }
+    // Put step heading text
     $('#panel-heading').text(panelText[step]);
+    // Underline current step
     $('#b-step-'+step).addClass('text-underline');
 })
 
@@ -214,4 +257,17 @@ $('#checkbox-fb-account-other-step4').click(function(){
     }else{
         $('.fb-account-other-step4').css('visibility','hidden');
     }  
+});
+
+$('#sign-up-btn').click(function(){
+    // $('#sign-up-modal').removeClass('d-none');
+    // $('body').addClass('.body-modal');
+    $('body').prepend('\
+            <div class="modal-bg">\
+            </div>\
+    ');
+    $('#sign-up-modal').appendTo('.modal-bg');
+    $('#sign-up-modal').removeClass('d-none');
+
+    $('body').addClass('overflow-hidden');
 });
