@@ -1,20 +1,12 @@
-function initPage(){
-    // document.getElementById("sign_in").style.display="contents";
-   // document.getElementById("sign_in").style.overflow="auto";
-    
-}
+$(document).ready(function(){
+    $('#sign_in').css('display','contents');
+    $('#sign_in').css('overflow','auto');
+});
 
-function closeModal()
-{    
-    document.getElementById("sign_in").style.display="none";
-}
+$('#sign-in-close-btn').click(function(){
+    $('#sign_in').addClass('d-none');
+});
 
-function maxModal(){
-
-}
-
-function minModal(){
-
-}
-
-initPage();
+$('#sign-in-min-btn').click(function(){
+    $('#sign_in').addClass('d-none');
+});
