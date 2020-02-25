@@ -421,8 +421,300 @@
         </div>
 
         <!-- precio y moneda -->
+        <div class="row m-3">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="badge badge-info">Cantidad de videos</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Precio">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="badge badge-info">Moneda</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <select id="country" class="form-control sm-text" onchange="">
+                            <option value="0">USD</option>
+                            <option value="1">EUR</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
         <div class="row">
 
+            <div class="col-md-7 mt-3">
+
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 bg-warning text-center">
+                        <p class="h5 text-white font-weight-bold mt-2">Datos de contacto</p>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md 12 border border-primary mt-1">
+                        <div class="row m-3">
+                            <div class="col-md-6 my-auto">
+                                <label class="font-weight-bold"> <span class="ast-required"> *</span>Nombre</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control input-section2">
+                            </div>
+                        </div>
+        
+                        <div class="row m-3">
+                            <div class="col-md-6 my-auto">
+                                <label class="font-weight-bold"> <span class="ast-required"> *</span>Apellido</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control input-section2">
+                            </div>
+                        </div>
+        
+                        <div class="row m-3">
+                            <div class="col-md-6">
+                                <label class="font-weight-bold"> <span class="ast-required"> *</span>Correo electrónico</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control input-section2">
+                            </div>
+                        </div>
+                    
+                        <div class="row m-3" >
+                            <div class="col-md-12">
+                                <div class="text-blue"> Seleccione el o los teléfonos de su preferencia</div>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5 form-check">
+                                <input type="checkbox" class="form-check-input" id="portal-web">
+                                <label class="form-check-label bg-yellow text-white tlf-checkbox" for="portal-web">Móvil</label>
+                            </div>
+                            <div class="col-md-5 form-check">
+                                <input type="checkbox" class="form-check-input" id="portal-web">
+                                <label class="form-check-label bg-yellow text-white tlf-checkbox" for="portal-web">Fijo</label>
+                            </div>
+                            <div class="col-md-1"></div>
+                        </div>
+        
+                        <div class="row m-3">
+                            <div class="col-md-5"> 
+                            <input class="phone form-control" name="phone1" type="tel">
+                            </div>
+                            <div class="col-md-7"></div>
+                        </div>
+        
+                        <div class="row m-3">
+                            <div class="col-md-5"> 
+                            <input class="phone form-control" name="phone2" type="tel">
+                            </div>
+                            <div class="col-md-2 font-weight-bold my-auto">
+                                    Ext
+                            </div>
+                            <div class="col-md-5"> 
+                                <input type="text" class="form-control" style="margin-left: -50px;" placeholder="Opcional">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-5">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row m-3">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6 bg-warning text-center">
+                                <p class="h5 text-white font-weight-bold mt-2">Dias de contacto</p>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+        
+                        <div class="border border-primary">
+        
+                            <div class="row m-2">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <p>Lunes</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <p>Martes</p>
+                                    </div>
+                                </div>
+        
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <p>Miercoles</p>
+                                    </div>
+                                </div>
+        
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <p>Jueves</p>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="row m-2">
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <p>Viernes</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <p>Sabado</p>
+                                    </div>
+                                </div>
+        
+                                <div class="col-md-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <p>Domingo</p>
+                                    </div>
+                                </div>
+        
+                                <div class="col-md-3"></div>
+                            </div>
+        
+                            <div class="row m-2">
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <p>Fines de semana</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <p>Lunes a viernes</p>
+                                    </div>
+                                </div>
+        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row m-3">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6 bg-warning text-center">
+                                <p class="h5 text-white font-weight-bold mt-2">Hora de contacto</p>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row m-3">
+
+                    <div class="col-md-6">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Desde</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 form-check">
+                                <ul class="checkbox-dropdown" >
+                                    <li class="dropdown">
+                                        <p data-toggle="dropdown" class="dropdown-toggle border-gray pl-2 tiny-text">V</p>
+                                        <ul class="dropdown-menu">
+                                            <li><label class="checkbox "><input type="checkbox" value="0" >1</label></li>
+                                            <li><label class="checkbox "><input type="checkbox" value="2" >2</label></li>
+                                            <li><label class="checkbox "><input type="checkbox" value="0" >3</label></li>
+                                            <li><label class="checkbox "><input type="checkbox" value="2" >4</label></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 form-check">
+                                <ul class="checkbox-dropdown" >
+                                    <li class="dropdown">
+                                        <p data-toggle="dropdown" class="dropdown-toggle border-gray pl-2 tiny-text">V</p>
+                                        <ul class="dropdown-menu">
+                                            <li><label class="checkbox "><input type="checkbox" value="0">am</label></li>
+                                            <li><label class="checkbox "><input type="checkbox" value="2">pm</label></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-md-6">
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Hasta</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 form-check">
+                                <ul class="checkbox-dropdown" >
+                                    <li class="dropdown">
+                                        <p data-toggle="dropdown" class="dropdown-toggle border-gray pl-2 tiny-text">V</p>
+                                        <ul class="dropdown-menu">
+                                            <li><label class="checkbox "><input type="checkbox" value="0" >1</label></li>
+                                            <li><label class="checkbox "><input type="checkbox" value="2" >2</label></li>
+                                            <li><label class="checkbox "><input type="checkbox" value="0" >3</label></li>
+                                            <li><label class="checkbox "><input type="checkbox" value="2" >4</label></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 form-check">
+                                <ul class="checkbox-dropdown" >
+                                    <li class="dropdown">
+                                        <p data-toggle="dropdown" class="dropdown-toggle border-gray pl-2 tiny-text">V</p>
+                                        <ul class="dropdown-menu">
+                                            <li><label class="checkbox "><input type="checkbox" value="0">am</label></li>
+                                            <li><label class="checkbox "><input type="checkbox" value="2">pm</label></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
 
     </div>
