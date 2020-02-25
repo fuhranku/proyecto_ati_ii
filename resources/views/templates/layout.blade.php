@@ -54,12 +54,12 @@
 
                     <div class="dropdown-menu" aria-labelledby="navbarServices">
                         <a class="dropdown-item" href="{{ url('dwelling/publish') }}">Publicar</a>
-                        <a class="dropdown-item" href="{{ url('dwelling/look') }}">Ver Publicaciones</a>
+                        <a class="dropdown-item" href="{{ url('dwelling/publication') }}">Ver Publicaciones</a>
                         <a class="dropdown-item" href="{{ url('dwelling/search') }}">Buscar</a>
                         <a class="dropdown-item" href="{{ url('dwelling/modify') }}">Modificar</a>
                         <a class="dropdown-item" href="{{ url('dwelling/delete') }}">Eliminar</a>
                         <a class="dropdown-item" href="{{ url('dwelling/enable') }}">Habilitar</a>
-                        <a class="dropdown-item" href="{{ url('dwelling/enable') }}">Deshabilitar</a>
+                        <a class="dropdown-item" href="{{ url('dwelling/disable') }}">Deshabilitar</a>
                     </div>
                 </li>
                 <li class="nav-item mr-7 dropdown">

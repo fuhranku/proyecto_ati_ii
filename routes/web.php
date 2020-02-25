@@ -38,11 +38,13 @@ Route::get('sign_up/2/{type}', 'SignUpController@sign_up_get_person_type');
 Route::get('sign_in', 'MainController@sign_in')->name('main.sign_in');
 
 // Vivienda
+Route::get('dwelling/publish', 'DwellingController@publish')->name('dwelling.publish');
+Route::get('dwelling/publication', 'DwellingController@publication')->name('dwelling.publication');
 Route::get('dwelling/search', 'DwellingController@search')->name('dwelling.search');
 Route::get('dwelling/modify', 'DwellingController@modify')->name('dwelling.modify');
-Route::get('dwelling/create', 'DwellingController@create')->name('dwelling.create');
 Route::get('dwelling/delete', 'DwellingController@delete')->name('dwelling.delete');
-Route::get('dwelling/consult', 'DwellingController@consult')->name('dwelling.consult');
+Route::get('dwelling/enable', 'DwellingController@enable')->name('dwelling.disable');
+Route::get('dwelling/disable', 'DwellingController@disable')->name('dwelling.disable');
 
 
 // Servicios
