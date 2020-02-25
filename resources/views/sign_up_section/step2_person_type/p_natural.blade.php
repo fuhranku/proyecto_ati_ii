@@ -50,20 +50,20 @@
     </div>
     <div class="row">
         <div class="col-md-3 form-check">
-            <input type="checkbox" class="form-check-input" id="portal-web">
+            <input type="checkbox" class="form-check-input" id="mobile-checkbox-natural">
             <label class="form-check-label bg-yellow text-white tlf-checkbox" for="portal-web">Móvil</label>
         </div>
         <div class="col-md-3 form-check">
-            <input type="checkbox" class="form-check-input" id="portal-web">
+            <input type="checkbox" class="form-check-input" id="landline-checkbox-natural">
             <label class="form-check-label bg-yellow text-white tlf-checkbox" for="portal-web">Fijo</label>
         </div>
     </div>
-    <div class="row">
+    <div class="row d-none" id='input-mobile-natural'>
         <div class="col-sm-3"> 
         <input class="phone form-control" name="phone1" type="tel">
         </div>
     </div>
-    <div class="row">
+    <div class="row d-none landline-phone" id='input-landline-natural'>
         <div class="col-sm-3"> 
         <input class="phone form-control" name="phone2" type="tel">
         </div>

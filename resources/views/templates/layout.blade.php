@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="_token" content="{{ csrf_token() }}">
     <link rel="icon" href="favicon.ico">
 
     <title>@yield('title') - tuPropiedad</title>
@@ -179,7 +179,7 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="{{ asset('external/all.min.js') }}"></script>
-<script src="{{ asset('external/jquery-3.3.1.slim.min.js') }}"></script>
+<script src="{{ asset('external/jquery-3.3.1.min.js') }}"></script>
 <script src="{{ asset('external/popper.min.js') }}"></script>
 <script src="{{ asset('external/bootstrap.min.js') }}"></script>
 <script src="{{ asset('intl-tel-input/build/js/intlTelInput.js')}}"></script>
