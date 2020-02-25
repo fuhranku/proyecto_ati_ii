@@ -27,7 +27,7 @@ Route::get('/index', function () {
 Route::get('sign_up', 'SignUpController@sign_up_get');
 
 // Post guardar
-Route::post('sign_up/{step?}','SignUpController@store')->name('sign_up.store');
+Route::post('sign_up','SignUpController@store')->name('sign_up.store');
 
 // Route::post('sign_up/{step?}', 'SignUpController@sign_up_post');
 

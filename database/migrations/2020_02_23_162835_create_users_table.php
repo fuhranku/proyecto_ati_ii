@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string("found_us");
+            $table->string("other_source");
             $table->string("person_type");
             // Natural person
             $table->string("first_name");
