@@ -15,6 +15,17 @@ body{
     background-color: #ffc000 !important;
 }
 
+.btn-yellow{
+    background-color: #ffc000 !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.btn-yellow:hover{
+    background-color: #e9af03 !important;
+    text-decoration: underline !important;
+}
+
 .nav-link{
     color: #ffffff;
     font-weight: bold;
@@ -41,6 +52,10 @@ body{
 h1{
     font-size:23px;
     font-weight: bold;
+}
+
+.w-30{
+    width: 30% !important;
 }
 
 .text-blue{

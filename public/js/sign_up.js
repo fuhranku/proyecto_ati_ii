@@ -59,6 +59,10 @@ $(document).ready(function(){
         $('#btns-step04').removeClass('d-none');
         $('#btns-step5').addClass('d-none');
     }
+    if(step == 5){
+        $('#btns-step04').addClass('d-none');
+        $('#btns-step5').removeClass('d-none');
+    }
   });
 });
 
@@ -256,7 +260,14 @@ $('#checkbox-fb-account-other-step4').click(function(){
 });
 
 $('#sign-up-btn').click(function(){
-    $('html').addClass('modal-open');
+    // $('#sign-up-modal').removeClass('d-none');
+    // $('body').addClass('.body-modal');
+    $('body').prepend('\
+            <div class="modal-bg">\
+            </div>\
+    ');
+    $('#sign-up-modal').appendTo('.modal-bg');
     $('#sign-up-modal').removeClass('d-none');
-    $('body').unbind('touchmove');
+
+    $('body').addClass('overflow-hidden');
 });

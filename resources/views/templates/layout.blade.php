@@ -24,7 +24,6 @@
 </head>
 
 <body>
-
 <header>
     <nav class="navbar navbar-expand-md sticky-top">
         <!-- One of the primary actions on mobile is to call a business - This displays a phone button on mobile only -->
@@ -36,12 +35,12 @@
 
         <div class="collapse navbar-collapse flex-column" id="navbar">
             <!-- First navbar ROW -->
-            <ul class="navbar-nav bg-white ml-auto h-100">
-                <li class="nav-item bg-yellow ry-corners mr-2 mt-1">
-                        <a class="nav-link mx-3" href="{{ url('sign_in') }}"data-target="#sign_in">Iniciar sesión</a>
+            <ul class="navbar-nav bg-white ml-auto h-100 mr-2">
+                <li class="nav-item">
+                        <a class="nav-link mx-3 btn-yellow ry-corners mr-2 mt-1 p-2 pr-3 pl-3" href="{{ url('sign_in') }}">Iniciar sesión</a>
                 </li>
-                <li class="nav-item bg-yellow ry-corners mr-2 mt-1">
-                        <a class="nav-link mx-3" href="{{ url('sign_up') }}">Registrarse</a>
+                <li class="nav-item">
+                        <a class="nav-link mx-3 btn-yellow ry-corners mr-2 mt-1 p-2 pr-3 pl-3 ml-n2" href="{{ url('sign_up') }}">Registrarse</a>
                 </li>
             </ul>
             <!-- Second navbar ROW -->
@@ -99,10 +98,6 @@
         @yield('content')
     </div>
 </main>
-{{-- Final sign up modal --}}
-<div class="container d-none modal-bg" id='sign-up-modal'>
-
-</div>
 <!-- Footer Content -->
 <footer>
     <div class="navbar navbar-expand-md">
@@ -114,13 +109,13 @@
         </div>
 
         <div class="collapse navbar-collapse flex-column" id="navbar">
-            <!-- First navbar ROW -->
-            <ul class="navbar-nav bg-white ml-auto h-100">
-                <li class="nav-item bg-yellow ry-corners mr-2 mt-1">
-                        <a class="nav-link mx-3" href="{{ url('sign_in') }}">Iniciar sesión</a>
+             <!-- First navbar ROW -->
+             <ul class="navbar-nav bg-white ml-auto h-100 mr-2">
+                <li class="nav-item">
+                        <a class="nav-link mx-3 btn-yellow ry-corners mr-2 mt-1 p-2 pr-3 pl-3" href="{{ url('sign_in') }}">Iniciar sesión</a>
                 </li>
-                <li class="nav-item bg-yellow ry-corners mr-2 mt-1">
-                        <a class="nav-link mx-3" href="{{ url('sign_up') }}">Registrarse</a>
+                <li class="nav-item">
+                        <a class="nav-link mx-3 btn-yellow ry-corners mr-2 mt-1 p-2 pr-3 pl-3 ml-n2" href="{{ url('sign_up') }}">Registrarse</a>
                 </li>
             </ul>
             <!-- Second navbar ROW -->
