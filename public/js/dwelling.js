@@ -1,16 +1,51 @@
+// for index page
 $('#btn-b-rapida').click(function(){
-    if($('#busqueda-rapida').is(":visible")){
-       $('#busqueda-rapida').css("display",'none');
+    if($('#busqueda-rapida').hasClass("d-none")){
+        $('#busqueda-rapida').removeClass("d-none");
     }else{
-       $('#busqueda-rapida').show();
+        $('#busqueda-rapida').addClass("d-none");
     }
- });
+});
  
  $('#btn-b-detallada').click(function(){
-    if($('#busqueda-detallada').is(":visible")){
-       $('#busqueda-detallada').css("display",'none');
+    if($('#busqueda-detallada').hasClass("d-none")){
+        $('#busqueda-detallada').removeClass("d-none");
     }else{
-       $('#busqueda-detallada').show();
+        $('#busqueda-detallada').addClass("d-none");
+    }
+ });
+
+ //for publication dwelling
+ $('#btn-b-rapida1').click(function(){
+    if($('#busqueda-rapida1').hasClass("d-none")){
+        $('#busqueda-rapida1').removeClass("d-none");
+    }else{
+        $('#busqueda-rapida1').addClass("d-none");
+    }
+});
+ 
+ $('#btn-b-detallada1').click(function(){
+    if($('#busqueda-detallada1').hasClass("d-none")){
+        $('#busqueda-detallada1').removeClass("d-none");
+    }else{
+        $('#busqueda-detallada1').addClass("d-none");
+    }
+ });
+
+ //for search dwelling
+ $('#btn-b-rapida2').click(function(){
+    if($('#busqueda-rapida2').hasClass("d-none")){
+        $('#busqueda-rapida2').removeClass("d-none");
+    }else{
+        $('#busqueda-rapida2').addClass("d-none");
+    }
+});
+ 
+ $('#btn-b-detallada2').click(function(){
+    if($('#busqueda-detallada2').hasClass("d-none")){
+        $('#busqueda-detallada2').removeClass("d-none");
+    }else{
+        $('#busqueda-detallada2').addClass("d-none");
     }
  });
  
