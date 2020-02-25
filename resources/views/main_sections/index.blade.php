@@ -33,7 +33,7 @@
         </div>
 
         <!-- Opción buscar vivienda -->
-        <div class="row" id="search-dwelling">
+        <div class="row d-none" id="search-dwelling">
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-12 text-center">
@@ -44,14 +44,14 @@
     
                 <div class="row mt-3">
                     <div class="col-md-3"></div>
-                    <div class="col-md-6 border border-info rounded cursor-pointer" onclick="displaySBK()">
+                    <div class="search-btn col-md-6 border border-info rounded cursor-pointer" onclick="displaySBK()">
                         <i class="fas fa-caret-down d-inline"></i>
                         <p class="font-weight-bold  d-inline">Búsqueda por palabra clave</p>
                     </div>
                     <div class="col-md-3"></div>
                 </div>
 
-                <div class="row mt-3" id="search-key">
+                <div class="row mt-3 d-none" id="search-key">
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
                         <form class="form-inline active-cyan-4">
@@ -67,7 +67,7 @@
 
                 <div class="row mt-3">
                     <div class="col-md-3"></div>
-                    <div class="col-md-6 border border-info rounded cursor-pointer" onclick="displayRS()">
+                    <div class="search-btn col-md-6 border border-info rounded cursor-pointer" onclick="displayRS()">
                         <i class="fas fa-caret-down d-inline"></i>
                         <p class="font-weight-bold  d-inline" >Búsqueda rápida</p>
                     </div>
@@ -76,7 +76,7 @@
 
                 <!-- BUSQUEDA RAPIDA -->
 
-                <div class="m-3" id="busqueda-rapida" >
+                <div class="m-3 d-none" id="busqueda-rapida" >
 
                     <div class="row p-2">
                         <div class="col-md-3"></div>
@@ -150,7 +150,7 @@
 
                 <div class="row mt-3">
                     <div class="col-md-3"></div>
-                    <div class="col-md-6 border border-info rounded cursor-pointer" onclick="displayDS()">
+                    <div class="search-btn col-md-6 border border-info rounded cursor-pointer" onclick="displayDS()">
                         <i class="fas fa-caret-down d-inline"></i>
                         <p class="font-weight-bold  d-inline">Búsqueda detallada</p>
                     </div>
@@ -159,7 +159,7 @@
 
                 <!-- BUSQUEDA DETALLADA -->
 
-                <div class="m-3" id="busqueda-detallada">
+                <div class="m-3 d-none" id="busqueda-detallada">
 
                     <div class="row p-2">
                         <div class="col-md-1"></div>
@@ -461,7 +461,7 @@
         </div>
 
         <!-- Opción Vender o alquilar vivienda -->
-        <div class="row" id="sellrent-dwelling">
+        <div class="row d-none" id="sellrent-dwelling">
             <div class="col-md-12">
 
                 <div class="row mt-5">

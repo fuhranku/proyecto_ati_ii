@@ -49,9 +49,9 @@
                      <a class="nav-link" href="{{ url('index') }}">Inicio</a>
                 </li>
                 <li class="nav-item mr-7 dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarServices" role="button" data-toggle="dropdown">Vivienda</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDwelling" role="button" data-toggle="dropdown">Vivienda</a>
 
-                    <div class="dropdown-menu" aria-labelledby="navbarServices">
+                    <div class="dropdown-menu" aria-labelledby="navbarDwelling">
                         <a class="dropdown-item" href="{{ url('dwelling/publish') }}">Publicar</a>
                         <a class="dropdown-item" href="{{ url('dwelling/publication') }}">Ver Publicaciones</a>
                         <a class="dropdown-item" href="{{ url('dwelling/search') }}">Buscar</a>
@@ -81,12 +81,20 @@
                 <li class="nav-item mr-7">
                     <a class="nav-link" href="{{ url('contact_us') }}">Contáctenos</a>
                 </li>
+
                 <li class="nav-item mr-7">
                     <a class="nav-link" href="{{ url('about_us') }}">Conócenos más</a>
                 </li>
-                <li class="nav-item mr-7">
-                    <a class="nav-link" href="{{ url('languages') }}">Idioma</a>
+
+                <li class="nav-item mr-7 dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarLanguage" role="button" data-toggle="dropdown">Idioma</a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarLanguage">
+                        <a class="dropdown-item" href="{{ url('services/create') }}">Español</a>
+                        <a class="dropdown-item" href="{{ url('services/search') }}">Ingles</a>
+                    </div>
                 </li>
+                
             </ul>
         </div>
     </nav>
