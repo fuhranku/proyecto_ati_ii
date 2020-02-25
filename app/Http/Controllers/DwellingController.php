@@ -10,23 +10,23 @@ use Requesting;
 class DwellingController extends Controller
 {
     //
-    public function search()
+    public function publish()
     {
         //$currentPage = 'create';
-        return view('dwelling_section.search');
+        return view('dwelling_section.publish');
     }
     
-    public function delete()
+    public function publication()
     {
         //$currentPage = 'create';
-        return view('dwelling_section.delete');
+        return view('dwelling_section.publication');
     }
 
-    public function consult()
+    public function search()
     {
         
         //$currentPage = 'create';
-        return view('dwelling_section.consult');
+        return view('dwelling_section.search');
     }
 
     public function modify()
@@ -35,9 +35,23 @@ class DwellingController extends Controller
         return view('dwelling_section.modify');
     }
 
-    public function publish()
+    public function delete()
     {
         //$currentPage = 'create';
-        return view('dwelling_section.publish');
+        return view('dwelling_section.delete');
     }
+
+    public function enable()
+    {
+        //$currentPage = 'create';
+        return view('dwelling_section.enable');
+    }
+
+    public function disable()
+    {
+        //$currentPage = 'create';
+        return view('dwelling_section.disable');
+    }
+
+
 }

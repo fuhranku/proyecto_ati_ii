@@ -16,6 +16,26 @@ ul{
 
 .checkbox-dropdown .dropdown-toggle{
     border: 1px solid #000000;
-    padding: 5px 10px;
-    color: #000000;
+    padding: 5px 20px 5px 122px;
+    color: #495057;
+}
+
+.border-gray{
+    border: 1px solid #ced4da !important;
+    border-radius: .25em;
+}
+
+.sms-other-step4, .medios-other-step4, #email-other-step4
+,.fb-account-other-step4{
+    visibility: hidden;
+}
+
+.modal-bg{
+    background-color: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1030;
 }

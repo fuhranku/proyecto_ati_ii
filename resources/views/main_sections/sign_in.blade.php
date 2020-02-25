@@ -5,7 +5,7 @@
 @section('content')
 
 <section>
-<link href="{{ asset('/css/modal.css') }}" rel="stylesheet">
+
     <div style="margin-top:70px">
         <!-- sign in -->
         <div class="modal fade" id="sign_in">
@@ -13,13 +13,13 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Iniciar sesión</h4>
-                        <button type="button" onclick="closeModal('sign_in')" class="close" data-dismiss="modal">
+                        <button type="button" id='sign-in-min-btn' class="close" data-dismiss="modal">
                             <span>-</span>
                         </button>
                         <button type="button" class="icon" data-dismiss="modal">
                             <span>&#9633;</span>
                         </button>
-                        <button type="button"  onclick="closeModal('sign_in')" class="close" data-dismiss="modal">
+                        <button type="button" id='sign-in-close-btn' class="close" data-dismiss="modal">
                             <span>×</span>
                         </button>
                     </div>
@@ -58,11 +58,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="button-group">
-                            <br>
-                            <button type="submit" class="btn modal-button">Send</button>
-                            <br>
-                            <a id="modal-forgot" data-toggle="modal" data-target="#forgot">Olvidé mi contraseña, o mis datos</a>
+                        <div class="button-group text-center">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-yellow">Iniciar sesión</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a class="modal-forgot mt-2" href="">Olvidé mi contraseña, o mis datos</a>
+                                </div>
+                            </div>
                             <!-- <a href="{{ route('main.sign_in') }}" class="btn btn-info btn-block" >{{__('words.back')}}</a> -->
 
                         </div>
@@ -272,6 +278,5 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('js/sign_in.js') }}"></script>
 
 @endsection

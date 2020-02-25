@@ -1,6 +1,8 @@
 body{
     font-family: Arial, Helvetica, sans-serif !important;
 }
+
+
 .bg-blue{
     background-color: #00b0f0 !important;
 }
@@ -11,6 +13,17 @@ body{
 
 .bg-yellow{
     background-color: #ffc000 !important;
+}
+
+.btn-yellow{
+    background-color: #ffc000 !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.btn-yellow:hover{
+    background-color: #e9af03 !important;
+    text-decoration: underline !important;
 }
 
 .nav-link{
@@ -39,6 +52,10 @@ body{
 h1{
     font-size:23px;
     font-weight: bold;
+}
+
+.w-30{
+    width: 30% !important;
 }
 
 .text-blue{
@@ -74,9 +91,12 @@ h1{
 
 .step-active{
     background-color: #92d050 !important;
-    text-decoration: underline;
     transition: 0.3s;
     pointer-events: all !important;
+}
+
+.text-underline{
+    text-decoration: underline;
 }
 
 div.bg-blue > h1{
@@ -106,10 +126,6 @@ The navbar toggle appears at this breakpoint */
         margin-top: 0;
     border-radius:0;
     }
-}
-
-footer{
-    margin-top: 100px;
 }
 
 .search-box{
@@ -173,10 +189,14 @@ footer{
     border-radius: .25rem;
 }
 
+.border-blue{
+    border-color: blue !important;
+}
+
 
 /*FONT AWESOME SOCIAL NETWORK */
 
-.fa {
+.fab {
     padding: 5px;
     font-size: 15px;
     width: 25px;
@@ -298,10 +318,10 @@ color: white;
 }
 
 
-.fa-plus{
-    background-color: #dfe4e7;
+.fa-caret-down{
+    color: #ffc000;
 }
 
-.fa-minus{
-    background-color: #dfe4e7;
+.cursor-pointer{
+    cursor: pointer !important;
 }

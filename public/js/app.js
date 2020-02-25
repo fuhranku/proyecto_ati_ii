@@ -2,35 +2,6 @@ $(".checkbox-menu").on("change", "input[type='checkbox']", function() {
     $(this).closest("li").toggleClass("active", this.checked);
  });
 
- $(document).on('click', '.allow-focus', function (e) {
-    e.stopPropagation();
-  });
-
-$('#checkbox-natural').on('change', function() {
-   $('#checkbox-juridica').prop('checked', false); 
-    
-});   
-
-$('#checkbox-juridica').on('change', function() {
-   $('#checkbox-natural').prop('checked', false);  
-});   
-
-$(document).ready(function(){
-   if(type === 'natural'){
-      $('#checkbox-natural').prop('checked', true);
-   }else if(type === 'juridica'){
-      $('#checkbox-juridica').prop('checked', true); 
-   }
-});
-
-$('#btn-b-rapida').click(function(){
-   if($('#busqueda-rapida').is(":visible")){
-      $('#busqueda-rapida').css("display",'none');
-   }else{
-      $('#busqueda-rapida').show();
-   }
-});
-
 $('#btn-b-detallada').click(function(){
    if($('#busqueda-detallada').is(":visible")){
       $('#busqueda-detallada').css("display",'none');
@@ -38,8 +9,6 @@ $('#btn-b-detallada').click(function(){
       $('#busqueda-detallada').show();
    }
 });
-
-
 
 $('.btn-number1').click(function(e){
    e.preventDefault();
@@ -59,7 +28,6 @@ $('.btn-number1').click(function(e){
            }
 
        } else if(type == 'plus') {
-
            if(currentVal < input.attr('max')) {
                input.val(currentVal + 1).change();
            }
@@ -78,33 +46,20 @@ $('#counterBath').focusin(function(){
 
 $('#counterRoom').focusin(function(){
    $(this).data('oldValue', $(this).val());
- });
-
-$('#counterParking').focusin(function(){
-   $(this).data('oldValue', $(this).val());
 });
 
-$('#counterBath').change(function() {
-   
-   minValue =  parseInt($(this).attr('min'));
-   maxValue =  parseInt($(this).attr('max'));
-   valueCurrent = parseInt($(this).val());
-   
-   name = $(this).attr('name');
-   if(valueCurrent >= minValue) {
-       $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
-   } else {
-       alert('Sorry, the minimum value was reached');
-       $(this).val($(this).data('oldValue'));
-   }
-   if(valueCurrent <= maxValue) {
-       $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
-   } else {
-       alert('Sorry, the maximum value was reached');
-       $(this).val($(this).data('oldValue'));
-   }
-});
+ $(document).on('click', '.allow-focus', function (e) {
+    e.stopPropagation();
+  });
 
+$('#checkbox-natural').on('change', function() {
+   $('#checkbox-juridica').prop('checked', false); 
+    
+});   
+
+$('#checkbox-juridica').on('change', function() {
+   $('#checkbox-natural').prop('checked', false);  
+});   
 
 $('#counterRoom').change(function() {
    
@@ -113,21 +68,19 @@ $('#counterRoom').change(function() {
    valueCurrent = parseInt($(this).val());
    
    name = $(this).attr('name');
-   if(valueCurrent >= minValue) {
+   if(valueCurrent >= minValue){
        $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
-   } else {
+   }else{
        alert('Sorry, the minimum value was reached');
        $(this).val($(this).data('oldValue'));
    }
-   if(valueCurrent <= maxValue) {
+   if(valueCurrent <= maxValue){
        $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
-   } else {
+   }else{
        alert('Sorry, the maximum value was reached');
        $(this).val($(this).data('oldValue'));
    }
 });
-
-
 
 $('#counterPark').change(function() {
    
@@ -149,7 +102,6 @@ $('#counterPark').change(function() {
        $(this).val($(this).data('oldValue'));
    }
 });
-
 
 $("#counterBath").keydown(function (e) {
    // Allow: backspace, delete, tab, escape, enter and .
@@ -198,3 +150,4 @@ $("#counterPark").keydown(function (e) {
          e.preventDefault();
       }
 });
+
