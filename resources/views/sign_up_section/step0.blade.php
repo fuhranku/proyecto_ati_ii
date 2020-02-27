@@ -1,13 +1,11 @@
 <section id="step-0">
     <form id='form-step-0'>
         @csrf
-        <div class='row d-none' id="errors-row">
-            <div class='col-sm-1'></div>
-            <div class='col-sm-4'>
-                <ul class="alert alert-danger" id='errors-ul'>
-                </ul>
-            </div>
-        </div>
+        @component('components.general_error')
+            @slot('error_id')
+                errors-row-step0
+            @endslot
+        @endcomponent
         <div class='container mt-3'>
             Por favor, coméntenos, cómo se enteró de los servicios de la empresa <br>
             Es importante para nosotros porque nos ayuda a mejorar el servicio que le ofrecemos
@@ -26,9 +24,9 @@
                         <li class="dropdown mt-2">
                             <a href="#" data-toggle="dropdown p-5" class="dropdown-toggle border-gray"><b class="caret text-right"></b></a>
                             <ul class="dropdown-menu">
-                                <li><label class="checkbox"><input type="checkbox" value="fb" name="social_media">Facebook</label></li>
-                                <li><label class="checkbox"><input type="checkbox" value="tw" name="social_media">Twitter</label></li>
-                                <li><label class="checkbox"><input type="checkbox" value="ig" name="social_media">Instagram</label></li>
+                                @foreach($socialMedias as $socialMedia)
+                                <li><label class="checkbox"><input type="checkbox" value="{{$socialMedia->name}}" name="social_media">{{$socialMedia->name}}</label></li>
+                                @endforeach
                             </ul>
                         </li>
                     </ul>
@@ -46,7 +44,7 @@
                     <label class="form-check-label" for="otro">Otro</label>
                     <div class="mt-2 ml-n5 d-none" id="other-modal">
                         <label class="form-check-label font-weight-bold">Especifique cuál fue el medio por el que supo de nosotros</label> 
-                        <input type="text" class="form-control mt-2" placeholder="Correo, Radio, Prensa" name="other_text">
+                        <input type="text" class="form-control mt-2" placeholder="Correo, Radio, Prensa" name="other_text" maxlength="50">
                     </div>
                 </div>
             </div>

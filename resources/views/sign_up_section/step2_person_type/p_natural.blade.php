@@ -5,42 +5,88 @@
             <label class="font-weight-bold"> <span class="ast-required"> *</span>Nombre</label>
         </div>
         <div class="col-md-3">
-            <input type="text" class="form-control input-section2">
+            <input type="text" class="form-control" name='nombre_pn'>
         </div>
     </div>
-    <div class="row">
+    @component('components.field_error')
+        @slot('error_row_id')
+            error_row_nombre_pn
+        @endslot
+        @slot('error_ul_id')
+        error_ul_nombre_pn
+        @endslot
+    @endcomponent
+    <div class="row input-row">
         <div class="col-md-3 my-auto">
-            <label class="font-weight-bold"> <span class="ast-required"> *</span>Apellido</label>
+            <label class="font-weight-bold "> <span class="ast-required"> *</span>Apellido</label>
         </div>
         <div class="col-md-3">
-            <input type="text" class="form-control input-section2">
+            <input type="text" class="form-control" name='apellido_pn'>
         </div>
     </div>
-    <div class="row">
+    @component('components.field_error')
+        @slot('error_row_id')
+            error_row_apellido_pn
+        @endslot
+        @slot('error_ul_id')
+            error_ul_apellido_pn
+        @endslot
+    @endcomponent
+    <div class="row input-row">
         <div class="col-md-3 my-auto">
             <label class="font-weight-bold"> <span class="ast-required"> *</span>Cédula/Pasaporte/DNI</label>
         </div>
         <div class="col-md-3">
-            <input type="text" class="form-control input-section2">
+            <input type="text" class="form-control" name='user_id_pn'>
         </div>
     </div>
-    <div class="row">
+    @component('components.field_error')
+    @slot('error_row_id')
+        error_row_user_id_pn
+    @endslot
+    @slot('error_ul_id')
+        error_ul_user_id_pn
+    @endslot
+    @endcomponent
+    <div class="row input-row">
         <div class="col-md-3 my-auto">
             <label class="font-weight-bold"> <span class="ast-required"> *</span>Correo Electrónico</label>
         </div>
         <div class="col-md-3">
-            <input type="text" class="form-control input-section2">
+            <input type="text" class="form-control" name='email_pn'>
         </div>
     </div>
-    <div class="row">
+    @component('components.field_error')
+    @slot('error_row_id')
+        error_row_email_pn
+    @endslot
+    @slot('error_ul_id')
+        error_ul_email_pn
+    @endslot
+    @endcomponent
+    <div class="row input-row">
         <div class="col-md-3 my-auto">
             <label class="font-weight-bold"> <span class="ast-required"> *</span>País de procedencia</label>
         </div>
         <div class="col-md-3">
-            <input type="text" class="form-control input-section2">
+            <select class="form-control" id='country_pn'>
+                <option value='' label="Seleccione su país" disabled selected value></option>
+                @foreach($countries as $country)
+                <option value={{$country->name}}>{{$country->name}}</option>
+                @endforeach
+            </select>
         </div>
     </div>
-    <div class="row">
+    @component('components.field_error')
+    @slot('error_row_id')
+        error_row_country_pn
+    @endslot
+    @slot('error_ul_id')
+        error_ul_country_pn
+    @endslot
+    @endcomponent
+
+    <div class="row input-row">
         <div class="col-md-3">
             <label class="font-weight-bold"> <span class="ast-required"> *</span>Teléfono</label>
         </div>

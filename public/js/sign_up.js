@@ -111,7 +111,7 @@ $('#otro-checkbox').on('click', function(){
 
 $('#continuar-btn').on('click', function(e){
     var validation = true;
-    $('#errors-step-0').empty();
+
     // AJAX VALIDATION
     e.preventDefault();
     $.ajaxSetup({
@@ -119,48 +119,92 @@ $('#continuar-btn').on('click', function(e){
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
         }
     });
-    
+    data = {
+        step: step
+    };
+    $('.form-error').empty();
     switch(step){
-        case 0:
-            var found_us,
-            data = {
-                step: step
-            };
+        // Step 0
+        case 0:{
+
+            var found_us;
             $.each($("input[name='found_us']:checked"), function(){
                 found_us = $(this).val();
             });
             data['found_us'] = found_us;
-            // If RRSS option was choose
-            if (found_us === 'rrss'){
-                var social_media = [];
-                $.each($("input[name='social_media']:checked"), function(){
-                    social_media.push($(this).val());
-                });
-                data['social_media'] = social_media;
+            switch(found_us){
+                // Social media choice
+                case 'rrss':
+                    var social_media = [];
+                    $.each($("input[name='social_media']:checked"), function(){
+                        social_media.push($(this).val());
+                    });
+                    data['social_media'] = social_media;
+                    break;
+                // Otro choice
+                case 'otro':
+                    data['other_text'] = $('input[name="other_text"]').val();
+                    break;
             }
-            else if (found_us === 'otro'){
-                data['other_text'] = $('input[name="other_text"]').val();
-            }
+            // Ajax POST request
             $.ajax({
                 url: form_post_url,
                 method: 'post',
                 data: data,
                 async: false,
-                success: function(data, callback){
-                   if( data.errors.length > 0 ){
-                       validation = false;
-                   }
-                    // if (data.errors.length )
-                    $.each(data.errors, function(key, value){
-                        $('#errors-row').removeClass('d-none');
-                        $('#errors-ul').append('<li>'+value+'</li>');
-                    });
+                success: function(data){
+                    // If there's an error don't let go to next step
+                    if( !$.isEmptyObject(data.errors) ){
+                        validation = false;
+                        $('#errors-row-step0').removeClass('d-none');
+                        $.each(data.errors, function(key, value){
+                            console.log(value);
+                            $('.form-error').append('<li>'+value+'</li>');
+                        });
+                    }else{
+                        validation = true;
+                    }
                 }
             })
-
             break;
-        case 1:
+        }
+        case 1:{
+            data['person_type'] = $('input[name="person_type"]:checked').val();
+            // Caso persona natural
+            if ( data['person_type'] === 'nat'){
+                data['nombre_pn'] = $('input[name="nombre_pn"]').val();
+                data['apellido_pn'] = $('input[name="apellido_pn"]').val();
+                data['user_id_pn'] = $('input[name="user_id_pn"]').val();
+                data['email_pn'] = $('input[name="email_pn"]').val();
+                data['country_pn'] = $('#country_pn').children('option:selected').val();
+                // Ajax POST request
+                $.ajax({
+                    url: form_post_url,
+                    method: 'post',
+                    data: data,
+                    async: false,
+                    success: function(data){
+                        // If there's an error don't let go to next step
+                        if( !$.isEmptyObject(data.errors) ){
+                            validation = false;                        
+                            $.each(data.errors, function(key, value){
+                                $('#error_row_'+key).removeClass('d-none');
+                                $.each(value, function(key2,value2){
+                                    $('#error_ul_'+key).append('<li>'+value2+'</li>');
+                                })
+                            });
+                        }else{
+                            //$('.error-row').addClass('d-none');
+                            validation = true;
+                        }
+                    }
+                })
+            // Caso persona jurídica
+            }else{
+                
+            }
             break;
+        }
         case 2:
             break;
         case 3:
@@ -170,9 +214,11 @@ $('#continuar-btn').on('click', function(e){
         case 5:
             break;
     }
-    console.log(validation);
+
     // Run this code iff ajax validation were passed
     if (validation == true){
+        $('#errors-row-step0').addClass('d-none');
+        $('#errors-row-step1').addClass('d-none');
         // Regular logic
         $('#b-step-'+step).removeClass('text-underline');
         step++;
@@ -239,6 +285,13 @@ $('#continuar-btn').on('click', function(e){
             $('#b-step-'+i).removeClass('text-underline'); 
         }
     }
+        // Remove all empty error divs
+        $.each($('.form-error'),function(){
+            console.log($(this).children().length);
+            if ($(this).children().length == 0){
+                $(this).closest(".error-row").addClass('d-none');
+            }
+        });
 })
 
 $('#atras-btn').on('click', function(){
@@ -295,6 +348,7 @@ $('#checkbox-natural').click(function() {
     }else{
         $('#container-p-natural').addClass('d-none');
     }    
+    $('.form-error').empty();
 });
 
 $('#checkbox-juridica').click(function() {
@@ -306,6 +360,7 @@ $('#checkbox-juridica').click(function() {
     }else{
         $('#container-p-juridica').addClass('d-none');
     }  
+    $('.form-error').empty();
 });
 
 $('#rrss-empresa-checkbox').click(function(){
