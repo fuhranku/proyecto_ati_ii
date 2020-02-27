@@ -106,12 +106,12 @@
     </div>
     <div class="row d-none" id='input-mobile-natural'>
         <div class="col-sm-3"> 
-        <input class="phone form-control" name="phone1" type="tel">
+        <input class="phone-step0 form-control" name="phone1" type="tel" id='mobile-pn'>
         </div>
     </div>
     <div class="row d-none landline-phone" id='input-landline-natural'>
         <div class="col-sm-3"> 
-        <input class="phone form-control" name="phone2" type="tel">
+        <input class="phone-step0 form-control" name="phone2" type="tel">
         </div>
         <div class="col-sm-1 font-weight-bold my-auto">
                 Ext

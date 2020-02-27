@@ -66,7 +66,20 @@ $(document).ready(function(){
     }
     // Update form step attribute
     $('#continuar-btn').attr('form','form-step-'+step);
-  });
+    });
+    // Initialize intl-tlf input plugin
+    // $(".phone-step0").intlTelInput({
+    //     utilsScript: utilsScript
+    // });
+    var input = document.querySelector("#mobile-pn");
+    var iti = window.intlTelInput(input,{
+        utilsScript: utilsScript
+    });
+    var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
+    if(!iti.isValidNumber()){
+        var errorCode = iti.getValidationError();
+        console.log(errorCode);
+    }
 });
 
 $('#btn-b-rapida').click(function(){
