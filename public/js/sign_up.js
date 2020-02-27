@@ -44,7 +44,8 @@ $(document).ready(function(){
     // Add new content
     $('#step-'+$(this).data('step')).removeClass('d-none');
     step = + $(this).data('step');
-    
+    // Update panel heading text
+    $('#panel-heading').text(panelText[step]);
     if(step > 4){
         $('#continuar-btn').addClass('invisible');
     }
@@ -63,7 +64,22 @@ $(document).ready(function(){
         $('#btns-step04').addClass('d-none');
         $('#btns-step5').removeClass('d-none');
     }
-  });
+    // Update form step attribute
+    $('#continuar-btn').attr('form','form-step-'+step);
+    });
+    // Initialize intl-tlf input plugin
+    // $(".phone-step0").intlTelInput({
+    //     utilsScript: utilsScript
+    // });
+    var input = document.querySelector("#mobile-pn");
+    var iti = window.intlTelInput(input,{
+        utilsScript: utilsScript
+    });
+    var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
+    if(!iti.isValidNumber()){
+        var errorCode = iti.getValidationError();
+        console.log(errorCode);
+    }
 });
 
 $('#btn-b-rapida').click(function(){
@@ -106,59 +122,189 @@ $('#otro-checkbox').on('click', function(){
     }
 })
 
-$('#continuar-btn').on('click', function(){
-    $('#b-step-'+step).removeClass('text-underline');
-    step++;
-    // If  frecuencia not checked (go to step 5)
-    if (step == 4 && !$('#checkbox-frecuencia').is(':checked')){
-            step = 5;
-            // Remove old content
-            $("#step-3").addClass('d-none');
-            // Add new content
-            $('#step-'+step).removeClass('d-none');
-            $('#b-step-'+4).removeClass('step-active');
-            $('#b-step-'+4).removeClass('text-underline');
-            // Mark step 5 as active
-            $('#b-step-'+5).addClass('step-active');
-    }else if (step==4 && $('#checkbox-frecuencia').is(':checked')){
-        console.log('checked');
-        // Unmark step 5 
-        $('#b-step-'+5).removeClass('step-active');
-        $('#b-step-'+5).removeClass('text-underline');
-        // Mark step 4 as active now
-        $('#b-step-'+4).addClass('step-active');
-        $('#b-step-'+4).addClass('text-underline');
-    }else{
-        // Remove old content
-        $("#step-"+(step-1)).addClass('d-none');
-    
-        // Add new content
-        $('#step-'+step).removeClass('d-none');
-        // Mark all previous steps as active
-        for(i=0;i<=step;i++){
-            $('#b-step-'+i).addClass('step-active');
-            $('#b-step-'+i).removeClass('text-underline');
+$('#continuar-btn').on('click', function(e){
+    var validation = true;
+
+    // AJAX VALIDATION
+    e.preventDefault();
+    $.ajaxSetup({
+        headers:{
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
         }
-    }
-    // Hide continuar button
-    if(step > 4){
-        $('#continuar-btn').addClass('invisible');
-    }
-    // Remove 'atras' button
-    if(step > 0){
-        $('#atras-btn').removeClass('invisible');
-    }
-    // Put step text
-    $('#panel-heading').text(panelText[step]);
-    
-    // Put different buttons if page it's on step 5
-    if (step == 5){
-        $('#btns-step04').addClass('d-none');
-        $('#btns-step5').removeClass('d-none');
+    });
+    data = {
+        step: step
+    };
+    $('.form-error').empty();
+    switch(step){
+        // Step 0
+        case 0:{
+
+            var found_us;
+            $.each($("input[name='found_us']:checked"), function(){
+                found_us = $(this).val();
+            });
+            data['found_us'] = found_us;
+            switch(found_us){
+                // Social media choice
+                case 'rrss':
+                    var social_media = [];
+                    $.each($("input[name='social_media']:checked"), function(){
+                        social_media.push($(this).val());
+                    });
+                    data['social_media'] = social_media;
+                    break;
+                // Otro choice
+                case 'otro':
+                    data['other_text'] = $('input[name="other_text"]').val();
+                    break;
+            }
+            // Ajax POST request
+            $.ajax({
+                url: form_post_url,
+                method: 'post',
+                data: data,
+                async: false,
+                success: function(data){
+                    // If there's an error don't let go to next step
+                    if( !$.isEmptyObject(data.errors) ){
+                        validation = false;
+                        $('#errors-row-step0').removeClass('d-none');
+                        $.each(data.errors, function(key, value){
+                            console.log(value);
+                            $('.form-error').append('<li>'+value+'</li>');
+                        });
+                    }else{
+                        validation = true;
+                    }
+                }
+            })
+            break;
+        }
+        case 1:{
+            data['person_type'] = $('input[name="person_type"]:checked').val();
+            // Caso persona natural
+            if ( data['person_type'] === 'nat'){
+                data['nombre_pn'] = $('input[name="nombre_pn"]').val();
+                data['apellido_pn'] = $('input[name="apellido_pn"]').val();
+                data['user_id_pn'] = $('input[name="user_id_pn"]').val();
+                data['email_pn'] = $('input[name="email_pn"]').val();
+                data['country_pn'] = $('#country_pn').children('option:selected').val();
+                // Ajax POST request
+                $.ajax({
+                    url: form_post_url,
+                    method: 'post',
+                    data: data,
+                    async: false,
+                    success: function(data){
+                        // If there's an error don't let go to next step
+                        if( !$.isEmptyObject(data.errors) ){
+                            validation = false;                        
+                            $.each(data.errors, function(key, value){
+                                $('#error_row_'+key).removeClass('d-none');
+                                $.each(value, function(key2,value2){
+                                    $('#error_ul_'+key).append('<li>'+value2+'</li>');
+                                })
+                            });
+                        }else{
+                            //$('.error-row').addClass('d-none');
+                            validation = true;
+                        }
+                    }
+                })
+            // Caso persona jurídica
+            }else{
+                
+            }
+            break;
+        }
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
     }
 
-    // Underline current step
-    $('#b-step-'+step).addClass('text-underline');
+    // Run this code iff ajax validation were passed
+    if (validation == true){
+        $('#errors-row-step0').addClass('d-none');
+        $('#errors-row-step1').addClass('d-none');
+        // Regular logic
+        $('#b-step-'+step).removeClass('text-underline');
+        step++;
+        // If  frecuencia not checked (go to step 5)
+        if (step == 4 && !$('#checkbox-frecuencia').is(':checked')){
+                step = 5;
+                // Remove old content
+                $("#step-3").addClass('d-none');
+                // Add new content
+                $('#step-'+step).removeClass('d-none');
+                $('#b-step-'+4).removeClass('step-active');
+                $('#b-step-'+4).removeClass('text-underline');
+                // Mark step 5 as active
+                $('#b-step-'+5).addClass('step-active');
+
+        }else if (step==4 && $('#checkbox-frecuencia').is(':checked')){
+            console.log('checked');
+            // Unmark step 5 
+            $('#b-step-'+5).removeClass('step-active');
+            $('#b-step-'+5).removeClass('text-underline');
+            // Mark step 4 as active now
+            $('#b-step-'+4).addClass('step-active');
+            $('#b-step-'+4).addClass('text-underline');
+
+            // Remove old content
+            $("#step-"+(step-1)).addClass('d-none');
+            // Add new content
+            $('#step-'+step).removeClass('d-none');
+        }else{
+            // Remove old content
+            $("#step-"+(step-1)).addClass('d-none');
+        
+            // Add new content
+            $('#step-'+step).removeClass('d-none');
+            // Mark all previous steps as active
+            for(i=0;i<=step;i++){
+                $('#b-step-'+i).addClass('step-active');
+                $('#b-step-'+i).removeClass('text-underline');
+            }
+        }
+        // Hide continuar button
+        if(step > 4){
+            $('#continuar-btn').addClass('invisible');
+        }
+        // Remove 'atras' button
+        if(step > 0){
+            $('#atras-btn').removeClass('invisible');
+        }
+        // Put step text
+        $('#panel-heading').text(panelText[step]);
+        
+        // Put different buttons if page it's on step 5
+        if (step == 5){
+            $('#btns-step04').addClass('d-none');
+            $('#btns-step5').removeClass('d-none');
+        }
+        // Update form step attribute
+        $(this).attr('form','form-step-'+step);
+        // Underline current step
+        $('#b-step-'+step).addClass('text-underline');
+    }else{
+        for(i = step+1; i<6;i++){
+            $('#b-step-'+i).removeClass('step-active');
+            $('#b-step-'+i).removeClass('text-underline'); 
+        }
+    }
+        // Remove all empty error divs
+        $.each($('.form-error'),function(){
+            console.log($(this).children().length);
+            if ($(this).children().length == 0){
+                $(this).closest(".error-row").addClass('d-none');
+            }
+        });
 })
 
 $('#atras-btn').on('click', function(){
@@ -167,7 +313,7 @@ $('#atras-btn').on('click', function(){
     if(step < 1){
         $('#atras-btn').addClass('invisible');
     }
-
+    console.log(step);
     if( step == 4 && $('#checkbox-frecuencia').is(':checked')){
         // Remove old content
         $("#step-"+(step+1)).addClass('d-none');
@@ -181,9 +327,14 @@ $('#atras-btn').on('click', function(){
         step = 3;
         // Add new content
         $('#step-'+step).removeClass('d-none');
+    }else{
+        // Remove old content
+        $("#step-"+(step+1)).addClass('d-none');
+
+        // Add new content
+        $('#step-'+step).removeClass('d-none');
+        $('#b-step-'+step+1).removeClass('step-active');
     }
-
-
 
     // Unhide 'continuar' button and hide last button set from step 5
     if(step < 5){
@@ -193,9 +344,13 @@ $('#atras-btn').on('click', function(){
     }
     // Put step heading text
     $('#panel-heading').text(panelText[step]);
+    // Update form step attribute
+    $('#continuar-btn').attr('form','form-step-'+step);
     // Underline current step
     $('#b-step-'+step).addClass('text-underline');
 })
+
+
 
 $('#checkbox-natural').click(function() {
     if($('#container-p-juridica').is(':visible')){
@@ -206,6 +361,7 @@ $('#checkbox-natural').click(function() {
     }else{
         $('#container-p-natural').addClass('d-none');
     }    
+    $('.form-error').empty();
 });
 
 $('#checkbox-juridica').click(function() {
@@ -217,6 +373,7 @@ $('#checkbox-juridica').click(function() {
     }else{
         $('#container-p-juridica').addClass('d-none');
     }  
+    $('.form-error').empty();
 });
 
 $('#rrss-empresa-checkbox').click(function(){
@@ -270,4 +427,43 @@ $('#sign-up-btn').click(function(){
     $('#sign-up-modal').removeClass('d-none');
 
     $('body').addClass('overflow-hidden');
+});
+
+!$('#checkbox-frecuencia').click(function(){
+    if( !$(this).is(':checked')){
+        $('#b-step-'+4).removeClass('step-active');
+        $('#b-step-'+4).removeClass('text-underline');
+    }
+});
+
+$('#mobile-checkbox-natural').click(function(){
+    if( $(this).is(':checked')){
+        $('#input-mobile-natural').removeClass('d-none');
+    }else{
+        $('#input-mobile-natural').addClass('d-none');
+    }
+});
+
+$('#landline-checkbox-natural').click(function(){
+    if( $(this).is(':checked')){
+        $('#input-landline-natural').removeClass('d-none');
+    }else{
+        $('#input-landline-natural').addClass('d-none');
+    }
+});
+
+$('#mobile-checkbox-juridica').click(function(){
+    if( $(this).is(':checked')){
+        $('#input-mobile-juridica').removeClass('d-none');
+    }else{
+        $('#input-mobile-juridica').addClass('d-none');
+    }
+});
+
+$('#landline-checkbox-juridica').click(function(){
+    if( $(this).is(':checked')){
+        $('#input-landline-juridica').removeClass('d-none');
+    }else{
+        $('#input-landline-juridica').addClass('d-none');
+    }
 });

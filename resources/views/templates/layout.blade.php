@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="_token" content="{{ csrf_token() }}">
     <link rel="icon" href="favicon.ico">
 
     <title>@yield('title') - tuPropiedad</title>
@@ -179,46 +179,43 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="{{ asset('external/all.min.js') }}"></script>
-<script src="{{ asset('external/jquery-3.3.1.slim.min.js') }}"></script>
+<script src="{{ asset('external/jquery-3.3.1.min.js') }}"></script>
 <script src="{{ asset('external/popper.min.js') }}"></script>
 <script src="{{ asset('external/bootstrap.min.js') }}"></script>
-<script src="{{ asset('intl-tel-input/build/js/intlTelInput.js')}}"></script>
-{{-- <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script> --}}
 <script src="{{ asset('js/app.js') }}"></script> 
 <script src="{{ asset('js/dwelling.js') }}"></script>
 <script src="{{ asset('js/sign_up.js') }}"></script> 
 <script src="{{ asset('js/sign_in.js') }}"></script>
- <script>
-    var input = document.querySelectorAll(".phone");
-    for (i=0; i<input.length;i++){
-        console.log(i);
-        window.intlTelInput(input[i], {
-            // allowDropdown: false,
-            // autoHideDialCode: false,
-            // autoPlaceholder: "off",
-            // dropdownContainer: document.body,
-            // excludeCountries: ["us"],
-            formatOnDisplay: true,
-            // geoIpLookup: function(callback) {
-            //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
-            //     var countryCode = (resp && resp.country) ? resp.country : "";
-            //     callback(countryCode);
-            //   });
-            // },
-            // hiddenInput: "full_number",
-            // initialCountry: "auto",
-            // localizedCountries: { 'de': 'Deutschland' },
-            // nationalMode: false,
-            // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
-            // placeholderNumberType: "MOBILE",
-            // preferredCountries: ['cn', 'jp'],
-            // separateDialCode: true,
-            utilsScript: "{{asset('intl-tel-input/build/js/utils.js')}}",
-        });
-    }
+<script src="{{ asset('intl-tel-input/build/js/intlTelInput.js')}}"></script>
+<script>
+     var utilsScript = "{{asset('intl-tel-input/build/js/utils.js')}}";
+    // var input = document.querySelectorAll(".phone");
+    // for (i=0; i<input.length;i++){
+    //     console.log(i);
+    //     window.intlTelInput(input[i], {
+    //         // allowDropdown: false,
+    //         // autoHideDialCode: false,
+    //         // autoPlaceholder: "off",
+    //         // dropdownContainer: document.body,
+    //         // excludeCountries: ["us"],
+    //         //formatOnDisplay: true,
+    //         // geoIpLookup: function(callback) {
+    //         //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+    //         //     var countryCode = (resp && resp.country) ? resp.country : "";
+    //         //     callback(countryCode);
+    //         //   });
+    //         // },
+    //         // hiddenInput: "full_number",
+    //         // initialCountry: "auto",
+    //         // localizedCountries: { 'de': 'Deutschland' },
+    //         // nationalMode: false,
+    //          onlyCountries: ['ve', 'es'],
+    //         // placeholderNumberType: "MOBILE",
+    //         // preferredCountries: ['cn', 'jp'],
+    //         // separateDialCode: true,
+    //         utilsScript: "{{asset('intl-tel-input/build/js/utils.js')}}",
+    //     });
+    // }
 
  </script>
 </html>

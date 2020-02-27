@@ -3,8 +3,6 @@
 @section('title','Index')
 
 @section('content')
-<form>
-    @csrf
     @include('sign_up_section.panel')
     <section id="content">
         {{-- 1 - Cómo Supo de Nosotros --}}
@@ -34,9 +32,9 @@
                 <div class="col-sm-4"></div>
                 <div class="col-sm-2">
                     <div class="text-center">
-                        <a type="submit" class="btn btn-yellow" id="sign-up-btn" style="font-weight:bold;color:#ffffff; padding:5px 30px">
+                        <button type="submit" class="btn btn-yellow" id="sign-up-btn" style="font-weight:bold;color:#ffffff; padding:5px 30px">
                             Registrarme
-                        </a>
+                        </button>
                     </div>
                 </div>
                 <div class="col-sm-2">
@@ -49,11 +47,9 @@
             </div>
     </section>
     @include('sign_up_section.sign_up_modal')
-</form>
 
-{{-- <script type="text/javascript">
-    var step = "{{$step}}";
-    var type = "{{$type}}";
-</script> --}}
+<script type="text/javascript">
+    var form_post_url = "{{ url('/sign_up')}}";
+</script>
 
 @endsection
