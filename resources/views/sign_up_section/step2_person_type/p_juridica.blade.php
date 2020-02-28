@@ -12,53 +12,103 @@
                     <label class="font-weight-bold"> <span class="ast-required"> *</span>Nombre de la empresa</label>
                 </div>
                 <div class="col-md-6">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="nombre_empresa_pj">
                 </div>
             </div>
+            @component('components.field_error')
+                @slot('grid_size')
+                    12
+                @endslot
+                @slot('error_row_id')
+                    error_row_nombre_empresa_pj
+                @endslot
+                @slot('error_ul_id')
+                    error_ul_nombre_empresa_pj
+                @endslot
+            @endcomponent
             <div class="row mt-3">
                 <div class="col-md-6 my-auto">
                     <label class="font-weight-bold"> <span class="ast-required"> *</span>Razón social/RIF</label>
                 </div>
                 <div class="col-md-6">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name='rif_empresa_pj'>
                 </div>
             </div>
+            @component('components.field_error')
+                @slot('grid_size')
+                    12
+                @endslot
+                @slot('error_row_id')
+                    error_row_rif_empresa_pj
+                @endslot
+                @slot('error_ul_id')
+                    error_ul_rif_empresa_pj
+                @endslot
+            @endcomponent
             <div class="row mt-3">
                 <div class="col-md-6 my-auto">
                     <label class="font-weight-bold"> <span class="ast-required"> *</span>País de procedencia</label>
                 </div>
                 <div class="col-md-6">
-                    <select class="form-control" id="sel1">
-                    <option label=" " disabled selected value></option>
-                    <option >Venezuela</option>
-                    <option>España</option>
+                    <select class="form-control" id="country_empresa_pj">
+                        <option value='' label="Seleccione su país" disabled selected value></option>
+                        @foreach($countries as $country)
+                        <option value={{$country->id}}>{{$country->name}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
+            @component('components.field_error')
+                @slot('grid_size')
+                    12
+                @endslot
+                @slot('error_row_id')
+                    error_row_country_empresa_pj
+                @endslot
+                @slot('error_ul_id')
+                    error_ul_country_empresa_pj
+                @endslot
+            @endcomponent
             <div class="row mt-3">
                 <div class="col-md-6 my-auto">
                     <label class="font-weight-bold"> <span class="ast-required"> *</span>Ciudad</label>
                 </div>
                 <div class="col-md-6">
-                    <select class="form-control" id="sel1">
-                    <option label=" " disabled selected value></option>
-                    <option >1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
+                    <select class="form-control" id="cities_empresa_pj">
+                    <option label="Seleccione su ciudad" disabled selected value></option>
                     </select>
                 </div>
             </div>
+            @component('components.field_error')
+                @slot('grid_size')
+                    12
+                @endslot
+                @slot('error_row_id')
+                    error_row_cities_empresa_pj
+                @endslot
+                @slot('error_ul_id')
+                    error_ul_cities_empresa_pj
+                @endslot
+            @endcomponent
             <div class="row mt-3">
                 <div class="col-md-6 my-auto">
                     <label class="font-weight-bold"> <span class="ast-required"> *</span>Dirección</label>
                 </div>
                 <div class="col-md-6">
-                    <textarea class="form-control overflow-auto" style="resize:none;"></textarea>
+                    <textarea class="form-control overflow-auto" style="resize:none;" name="address_empresa_pj"></textarea>
                 </div>
             </div>
-
-
+            @component('components.field_error')
+                @slot('grid_size')
+                    12
+                @endslot
+                @slot('error_row_id')
+                    error_row_address_empresa_pj
+                @endslot
+                @slot('error_ul_id')
+                    error_ul_address_empresa_pj
+                @endslot
+            @endcomponent
         </div>
         <div class="col-sm-6 pl-5">
             <div class="text-center">
@@ -68,20 +118,61 @@
             </div>
                 <div class="row mt-3">
                     <div class="col-md-6 my-auto">
-                        <label class="font-weight-bold"> <span class="ast-required"> *</span>Nombre y Apellido</label>
+                        <label class="font-weight-bold"> <span class="ast-required">*</span>Nombre</label>
                     </div>
                     <div class="col-md-6">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name="nombre_rep_pj">
                     </div>
                 </div>
+                @component('components.field_error')
+                    @slot('grid_size')
+                    12
+                @endslot
+                    @slot('error_row_id')
+                        error_row_nombre_rep_pj
+                    @endslot
+                    @slot('error_ul_id')
+                        error_ul_nombre_rep_pj
+                    @endslot
+                @endcomponent
+                <div class="row mt-3">
+                    <div class="col-md-6 my-auto">
+                        <label class="font-weight-bold"> <span class="ast-required">*</span>Apellido</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" name="apellido_rep_pj">
+                    </div>
+                </div>
+                @component('components.field_error')
+                    @slot('grid_size')
+                    12
+                @endslot
+                    @slot('error_row_id')
+                        error_row_apellido_rep_pj
+                    @endslot
+                    @slot('error_ul_id')
+                        error_ul_apellido_rep_pj
+                    @endslot
+                @endcomponent
                 <div class="row mt-3">
                     <div class="col-md-6 my-auto">
                         <label class="font-weight-bold"> <span class="ast-required"> *</span>Correo electrónico</label>
                     </div>
                     <div class="col-md-6">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name='email_rep_pj'>
                     </div>
                 </div>
+                @component('components.field_error')
+                    @slot('grid_size')
+                    12
+                @endslot
+                    @slot('error_row_id')
+                        error_row_email_rep_pj
+                    @endslot
+                    @slot('error_ul_id')
+                        error_ul_email_rep_pj
+                    @endslot
+                @endcomponent
                 <div class="row mt-3">
                     <div class="col-md-6 my-auto">
                         <label class="font-weight-bold"> <span class="ast-required"> *</span>Teléfono</label>

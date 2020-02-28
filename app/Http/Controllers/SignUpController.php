@@ -12,6 +12,7 @@ use Session;
 use App\Models\Sign_up\User;
 use App\Models\Sign_up\SocialMedia;
 use App\Models\Sign_up\Country;
+use App\Models\Sign_up\City;
 
 class SignUpController extends Controller
 {
@@ -23,6 +24,14 @@ class SignUpController extends Controller
         $socialMedias = SocialMedia::all()->sortBy('name');
         $countries = Country::all()->sortBy('name');
         return view('main_sections.sign_up',compact('socialMedias','countries'));
+    }
+
+    public function getCities(Request $request){
+        $cities = Country::find($request->get('country'))->cities()->pluck('id','name');
+        return response()->json([
+            'success'=>'post succesfully done',
+            'cities'=>$cities
+        ]);
     }
 
     public function sign_up_get_person_type($type = 1){
@@ -56,7 +65,6 @@ class SignUpController extends Controller
                 if ($validator->fails()){                
                     return response()->json(['errors'=>$validator->errors()->all()]);
                 }
-                return response()->json(['success'=>'post succesfully done']);
             break;
             case 1:
                 $validations = [];
@@ -71,25 +79,51 @@ class SignUpController extends Controller
                         $validations['country_pn'] = 'required';
                     break;
                     case 'jur':
+                        $validations['nombre_empresa_pj'] = 'required|regex:/^[a-zA-Z\s]*$/|max:255';
+                        $validations['rif_empresa_pj'] = 'required|string';
+                        $validations['country_empresa_pj'] = 'required';
+                        $validations['cities_empresa_pj'] = 'required';
+                        $validations['address_empresa_pj'] = 'required|string';
+                        $validations['nombre_rep_pj'] = 'required|regex:/^[a-zA-Z\s]*$/|max:255';
+                        $validations['apellido_rep_pj'] = 'required|regex:/^[a-zA-Z\s]*$/|max:255';
+                        $validations['email_rep_pj'] = 'required|email';
                     break;
+                    default:
+                    $validator = Validator::make($request->all(), $validations);
+                    if ($validator->fails()){                
+                        return response()->json(['errors'=>$validator->getMessageBag()]);
+                    }
                 }
                 // Validate what needs to be validated
                 $validator = Validator::make($request->all(), $validations);
                 if ($validator->fails()){                
                     return response()->json(['errors'=>$validator->getMessageBag()]);
                 }
-                return response()->json(['success'=>'post succesfully done']);
             break;
             case 2:
+                // Validate person-type checkbox
+                $validations['lang'] = 'required';
+                // Validate what needs to be validated
+                $validator = Validator::make($request->all(), $validations);
+                if ($validator->fails()){                
+                    return response()->json(['errors'=>$validator->errors()->all()]);
+                }
             break;
             case 3:
+                $validations['email_login'] = 'required|email';
+                $validations['pw_login'] = 'required';
+                // Validate what needs to be validated
+                $validator = Validator::make($request->all(), $validations);
+                if ($validator->fails()){                
+                    return response()->json(['errors'=>$validator->getMessageBag()]);
+                }
             break;
             case 4:
             break;
             case 5:
             break;
         }
-        return response()->json(['success'=>'holi']);
+        return response()->json(['success'=>'post succesfully done']);
     }
 }
 

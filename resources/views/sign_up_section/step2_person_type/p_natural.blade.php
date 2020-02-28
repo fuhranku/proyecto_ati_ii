@@ -9,11 +9,14 @@
         </div>
     </div>
     @component('components.field_error')
+        @slot('grid_size')
+            6
+        @endslot
         @slot('error_row_id')
             error_row_nombre_pn
         @endslot
         @slot('error_ul_id')
-        error_ul_nombre_pn
+            error_ul_nombre_pn
         @endslot
     @endcomponent
     <div class="row input-row">
@@ -25,6 +28,9 @@
         </div>
     </div>
     @component('components.field_error')
+        @slot('grid_size')
+            6
+        @endslot
         @slot('error_row_id')
             error_row_apellido_pn
         @endslot
@@ -41,6 +47,9 @@
         </div>
     </div>
     @component('components.field_error')
+        @slot('grid_size')
+            6
+        @endslot
     @slot('error_row_id')
         error_row_user_id_pn
     @endslot
@@ -57,6 +66,9 @@
         </div>
     </div>
     @component('components.field_error')
+        @slot('grid_size')
+            6
+        @endslot
     @slot('error_row_id')
         error_row_email_pn
     @endslot
@@ -78,6 +90,9 @@
         </div>
     </div>
     @component('components.field_error')
+        @slot('grid_size')
+            6
+        @endslot
     @slot('error_row_id')
         error_row_country_pn
     @endslot

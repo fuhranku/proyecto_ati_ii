@@ -139,7 +139,6 @@ $('#continuar-btn').on('click', function(e){
     switch(step){
         // Step 0
         case 0:{
-
             var found_us;
             $.each($("input[name='found_us']:checked"), function(){
                 found_us = $(this).val();
@@ -213,14 +212,111 @@ $('#continuar-btn').on('click', function(e){
                     }
                 })
             // Caso persona jurídica
+            }else if ( data['person_type'] === 'jur'){
+                data['nombre_empresa_pj'] = $('input[name="nombre_empresa_pj"]').val();
+                data['rif_empresa_pj'] = $('input[name="rif_empresa_pj"]').val();
+                data['country_empresa_pj'] = $('#country_empresa_pj').children('option:selected').val();
+                data['cities_empresa_pj'] = $('#cities_empresa_pj').children('option:selected').val();
+                data['address_empresa_pj'] = $('textarea[name="address_empresa_pj"]').val();
+                data['nombre_rep_pj'] = $('input[name="nombre_rep_pj"]').val();
+                data['apellido_rep_pj'] = $('input[name="apellido_rep_pj"]').val();
+                data['email_rep_pj'] = $('input[name="email_rep_pj"]').val();
+
+                console.log('address_empresa_pj: '+data['address_empresa_pj']);
+                // Ajax POST request
+                $.ajax({
+                    url: form_post_url,
+                    method: 'post',
+                    data: data,
+                    async: false,
+                    success: function(data){
+                        // If there's an error don't let go to next step
+                        if( !$.isEmptyObject(data.errors) ){
+                            validation = false;                        
+                            $.each(data.errors, function(key, value){
+                                $('#error_row_'+key).removeClass('d-none');
+                                $.each(value, function(key2,value2){
+                                    $('#error_ul_'+key).append('<li>'+value2+'</li>');
+                                })
+                            });
+                        }else{
+                            //$('.error-row').addClass('d-none');
+                            validation = true;
+                        }
+                    }
+                })
             }else{
-                
+                console.log('undefined case');
+                $.ajax({
+                    url: form_post_url,
+                    method: 'post',
+                    data: data,
+                    async: false,
+                    success: function(data){
+                        // If there's an error don't let go to next step
+                        if( !$.isEmptyObject(data.errors) ){
+                            validation = false;
+                            $('#error_row_person_type').removeClass('d-none');
+                            $.each(data.errors, function(key, value){
+                                console.log(value);
+                                $('#error_ul_person_type').append('<li>'+value+'</li>');
+                            });
+                        }else{
+                            validation = true;
+                        }
+                    }
+                })
             }
             break;
         }
-        case 2:
+        case 2:{
+            data['lang'] = $('input[name="lang"]:checked').val();
+            if ( data['lang'] == null){
+                $.ajax({
+                    url: form_post_url,
+                    method: 'post',
+                    data:  data,
+                    async: false,
+                    success: function(data){
+                        // If there's an error don't let go to next step
+                        if( !$.isEmptyObject(data.errors) ){
+                            validation = false;
+                            $('#errors-row-step2').removeClass('d-none');
+                            $.each(data.errors, function(key, value){
+                                console.log(value);
+                                $('.form-error').append('<li>'+value+'</li>');
+                            });
+                        }else{
+                            validation = true;
+                        }
+                    }
+                })
+            }
             break;
+        }
         case 3:
+            data['email_login'] = $('input[name="email_login"]').val();
+            data['pw_login'] = $('input[name="pw_login"]').val();
+            $.ajax({
+                url: form_post_url,
+                method: 'post',
+                data:  data,
+                async: false,
+                success: function(data){
+                    // If there's an error don't let go to next step
+                    if( !$.isEmptyObject(data.errors) ){
+                        validation = false;                        
+                        $.each(data.errors, function(key, value){
+                            $('#error_row_'+key).removeClass('d-none');
+                            $.each(value, function(key2,value2){
+                                $('#error_ul_'+key).append('<li>'+value2+'</li>');
+                            })
+                        });
+                    }else{
+                        validation = true;
+                    }
+                }
+            })
             break;
         case 4:
             break;
@@ -361,7 +457,15 @@ $('#checkbox-natural').click(function() {
     }else{
         $('#container-p-natural').addClass('d-none');
     }    
-    $('.form-error').empty();
+    
+    // Remove all empty error divs
+    $.each($('.form-error'),function(){
+        $(this).empty();
+        console.log($(this).children().length);
+        if ($(this).children().length == 0){
+            $(this).closest(".error-row").addClass('d-none');
+        }
+    });
 });
 
 $('#checkbox-juridica').click(function() {
@@ -373,7 +477,14 @@ $('#checkbox-juridica').click(function() {
     }else{
         $('#container-p-juridica').addClass('d-none');
     }  
-    $('.form-error').empty();
+    // Remove all empty error divs
+    $.each($('.form-error'),function(){
+        $(this).empty();
+        console.log($(this).children().length);
+        if ($(this).children().length == 0){
+            $(this).closest(".error-row").addClass('d-none');
+        }
+    });
 });
 
 $('#rrss-empresa-checkbox').click(function(){
@@ -466,4 +577,31 @@ $('#landline-checkbox-juridica').click(function(){
     }else{
         $('#input-landline-juridica').addClass('d-none');
     }
+});
+
+$('#country_empresa_pj').change(function(e){
+    $('#cities_empresa_pj').children('option:not([disabled])').remove();
+    // AJAX VALIDATION
+    e.preventDefault();
+    $.ajaxSetup({
+        headers:{
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+    // Ajax POST request
+    $.ajax({
+        url: retrieve_cities_url,
+        method: 'post',
+        data: {
+            country: $(this).children('option:not([disabled]):selected').val()
+        },
+        async: false,
+        success: function(data){
+            $.each(data.cities, function(city, id){
+                $('#cities_empresa_pj').append('<option value='+id+'>'+city+'</option>');
+            });
+            // If there's an error don't let go to next step
+            console.log(data['cities']);
+        }
+    })
 });

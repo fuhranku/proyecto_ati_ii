@@ -6,6 +6,9 @@ $personType = 0;
         @csrf
         {{-- Errors List --}}
         @component('components.field_error')
+            @slot('grid_size')
+                12
+            @endslot
             @slot('error_row_id')
                 error_row_person_type
             @endslot
