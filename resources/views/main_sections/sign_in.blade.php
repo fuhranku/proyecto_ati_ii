@@ -1,8 +1,4 @@
-@extends('templates.layout')     
 
-@section('title','Index')
-
-@section('content')
 
 <section>
 
@@ -278,5 +274,3 @@
             </div>
         </div>
     </div>
-
-@endsection
