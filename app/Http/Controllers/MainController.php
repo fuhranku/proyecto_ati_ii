@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Requesting;
 use Cookie;
-
 use App;
 
 class MainController extends Controller

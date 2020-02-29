@@ -50,6 +50,7 @@
 
 <script type="text/javascript">
     var form_post_url = "{{ url('/sign_up')}}";
+    var retrieve_cities_url = "{{ url('/getCities')}}";
 </script>
 
 @endsection

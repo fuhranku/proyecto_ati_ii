@@ -33,6 +33,7 @@ Route::post('sign_up','SignUpController@store')->name('sign_up.store');
 
 Route::get('sign_up/2/{type}', 'SignUpController@sign_up_get_person_type');
 
+Route::post('getCities','SignUpController@getCities');
 
 // Iniciar sesión
 Route::get('sign_in', 'MainController@sign_in')->name('main.sign_in');
