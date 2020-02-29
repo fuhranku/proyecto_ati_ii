@@ -10,7 +10,7 @@ $('#btn-b-detallada').click(function(){
    }
 });
 
-$('#sign_in_button').click(function(e) {
+$('.sign_in_button').click(function(e) {
     console.log(e);
     $('#sign_in').modal('show');
 })
