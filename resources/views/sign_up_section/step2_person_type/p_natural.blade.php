@@ -111,30 +111,63 @@
     </div>
     <div class="row">
         <div class="col-md-3 form-check">
-            <input type="checkbox" class="form-check-input" id="mobile-checkbox-natural">
+            <input type="checkbox" class="form-check-input" id="mobile-checkbox-natural" name='phone_checkbox_pn' value='mobile'>
             <label class="form-check-label bg-yellow text-white tlf-checkbox" for="portal-web">Móvil</label>
         </div>
         <div class="col-md-3 form-check">
-            <input type="checkbox" class="form-check-input" id="landline-checkbox-natural">
+            <input type="checkbox" class="form-check-input" id="landline-checkbox-natural" name='phone_checkbox_pn' value='landline'>
             <label class="form-check-label bg-yellow text-white tlf-checkbox" for="portal-web">Fijo</label>
         </div>
     </div>
-    <div class="row d-none" id='input-mobile-natural'>
+    @component('components.field_error')
+        @slot('grid_size')
+            6
+        @endslot
+        @slot('error_row_id')
+            error_row_phone_checkbox_pn
+        @endslot
+        @slot('error_ul_id')
+            error_ul_phone_checkbox_pn
+        @endslot
+    @endcomponent
+    <div class="row d-none mt-3" id='input-mobile-natural'>
         <div class="col-sm-3"> 
-        <input class="phone-step0 form-control" name="phone1" type="tel" id='mobile-pn'>
+        <input class="phone-step0 form-control" name="mobile_pn" type="tel" id='mobile-pn'>
         </div>
     </div>
-    <div class="row d-none landline-phone" id='input-landline-natural'>
+    @component('components.field_error')
+        @slot('grid_size')
+            6
+        @endslot
+        @slot('error_row_id')
+            error_row_mobile_pn
+        @endslot
+        @slot('error_ul_id')
+            error_ul_mobile_pn
+        @endslot
+    @endcomponent
+    <div class="row d-none landline-phone mt-3" id='input-landline-natural'>
         <div class="col-sm-3"> 
-        <input class="phone-step0 form-control" name="phone2" type="tel">
+        <input class="phone-step0 form-control" name="landline_pn" type="tel" id='landline-pn'>
         </div>
         <div class="col-sm-1 font-weight-bold my-auto">
                 Ext
         </div>
         <div class="col-sm-3"> 
-            <input type="text" class="form-control" style="margin-left: -50px;" placeholder="Opcional">
+            <input type="text" class="form-control" style="margin-left: -50px;" placeholder="Opcional" name='landline_ext_pn'>
         </div>
     </div>
+    @component('components.field_error')
+        @slot('grid_size')
+            6
+        @endslot
+        @slot('error_row_id')
+            error_row_landline_pn
+        @endslot
+        @slot('error_ul_id')
+            error_ul_landline_pn
+        @endslot
+    @endcomponent
     <div class="row" >
         <div class="col-sm-8"> 
             <div class="text-blue text-justify font-weight-bold mt-3"><span class="ast-required"> *</span>

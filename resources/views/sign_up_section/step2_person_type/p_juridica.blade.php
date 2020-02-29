@@ -183,31 +183,63 @@
                 </div>
                 <div class="row pl-5 mt-3 mb-3">
                         <div class="col-md-6 form-check">
-                            <input type="checkbox" class="form-check-input" id="mobile-checkbox-juridica">
+                            <input type="checkbox" class="form-check-input" id="mobile-checkbox-juridica" name='phone_checkbox_pj' value='mobile'>
                             <label class="form-check-label bg-yellow text-white tlf-checkbox pt-1 pb-1 pl-5 pr-5" for="portal-web">Móvil</label>
                         </div>
                         <div class="col-md-6 form-check">
-                            <input type="checkbox" class="form-check-input" id="landline-checkbox-juridica">
+                            <input type="checkbox" class="form-check-input" id="landline-checkbox-juridica" name='phone_checkbox_pj' value='landline'>
                             <label class="form-check-label bg-yellow text-white tlf-checkbox pt-1 pb-1 pl-5 pr-5" for="portal-web">Fijo</label>
                         </div>
                 </div>
-
+                @component('components.field_error')
+                    @slot('grid_size')
+                        12  
+                    @endslot
+                    @slot('error_row_id')
+                        error_row_phone_checkbox_pj
+                    @endslot
+                    @slot('error_ul_id')
+                        error_ul_phone_checkbox_pj
+                    @endslot
+                @endcomponent
                 <div class="row mb-3 d-none" id="input-mobile-juridica">
                     <div class="col-sm-6"> 
-                    <input class="phone form-control" name="phone1" type="tel">
+                    <input class="phone form-control" name="mobile_pj" type="tel" id='mobile-pj'>
                     </div>
                 </div>
+                @component('components.field_error')
+                    @slot('grid_size')
+                        12
+                    @endslot
+                    @slot('error_row_id')
+                        error_row_mobile_pj
+                    @endslot
+                    @slot('error_ul_id')
+                        error_ul_mobile_pj
+                    @endslot
+                @endcomponent
                 <div class="row d-none" id="input-landline-juridica">
                     <div class="col-md-6"> 
-                    <input class="phone form-control" name="phone2" type="tel">
+                    <input class="phone form-control" name="landline_pj" type="tel" id='landline-pj'>
                     </div>
                     <div class="col-sm-2 font-weight-bold my-auto">
                             Ext
                     </div>
                     <div class="col-md-4"> 
-                        <input type="text" class="form-control"  style="margin-left:-30px;" placeholder="Opcional">
+                        <input type="text" class="form-control"  style="margin-left:-30px;" placeholder="Opcional" name='landline_ext_pj'>
                     </div>
                 </div>
+                @component('components.field_error')
+                    @slot('grid_size')
+                        12
+                    @endslot
+                    @slot('error_row_id')
+                        error_row_landline_pj
+                    @endslot
+                    @slot('error_ul_id')
+                        error_ul_landline_pj
+                    @endslot
+                @endcomponent
         </div>
     </div>
     <div class="row mt-5">

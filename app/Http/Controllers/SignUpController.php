@@ -77,6 +77,7 @@ class SignUpController extends Controller
                         $validations['user_id_pn'] = 'required|string';
                         $validations['email_pn'] = 'required|email';
                         $validations['country_pn'] = 'required';
+                        $validations['phone_checkbox_pn'] = 'required';
                     break;
                     case 'jur':
                         $validations['nombre_empresa_pj'] = 'required|regex:/^[a-zA-Z\s]*$/|max:255';
@@ -87,6 +88,7 @@ class SignUpController extends Controller
                         $validations['nombre_rep_pj'] = 'required|regex:/^[a-zA-Z\s]*$/|max:255';
                         $validations['apellido_rep_pj'] = 'required|regex:/^[a-zA-Z\s]*$/|max:255';
                         $validations['email_rep_pj'] = 'required|email';
+                        $validations['phone_checkbox_pj'] = 'required';
                     break;
                     default:
                     $validator = Validator::make($request->all(), $validations);
@@ -119,6 +121,15 @@ class SignUpController extends Controller
                 }
             break;
             case 4:
+                $validations['frequency_checkbox'] = 'required';
+                if ($request->get('frequency_checkbox') == 'other'){
+                    
+                }
+                // Validate what needs to be validated
+                $validator = Validator::make($request->all(), $validations);
+                if ($validator->fails()){                
+                    return response()->json(['errors'=>$validator->getMessageBag()]);
+                }
             break;
             case 5:
             break;

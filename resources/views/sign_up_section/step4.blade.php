@@ -1,4 +1,15 @@
 <section class="d-none" id="step-4">
+    @component('components.field_error')
+    @slot('grid_size')
+        4
+    @endslot
+    @slot('error_row_id')
+        error_row_frequency_checkbox
+    @endslot
+    @slot('error_ul_id')
+        error_ul_frequency_checkbox
+    @endslot
+    @endcomponent
     <div class="row mt-3">
         <div class="col-sm-12">       
             <p class="font-weight-bold text-center">
@@ -9,20 +20,20 @@
     <div class="row">
         <div class="col-md-2 mr-5"></div>
         <div class="col-md-2 form-check mr-3">
-            <input class="form-check-input step4_checkbox" type="radio" name="1vez" id="step4_checkbox1" value="1vez">
-            <label class="form-check-label" for="portal-web">1 vez a la semana</label>
+            <input class="form-check-input step4_checkbox" type="radio" id="step4_checkbox1" name="frequency_checkbox" value=7>
+            <label class="form-check-label">1 vez a la semana</label>
         </div>
         <div class="col-md-2 form-check mr-3">
-            <input class="form-check-input step4_checkbox" type="radio" name="2veces" id="step4_checkbox2" value="2veces">
-            <label class="form-check-label" for="portal-web">Cada 2 semanas</label>
+            <input class="form-check-input step4_checkbox" type="radio" id="step4_checkbox2" name="frequency_checkbox" value=14>
+            <label class="form-check-label">Cada 2 semanas</label>
         </div>
         <div class="col-md-2 form-check mr-3">
-            <input class="form-check-input step4_checkbox" type="radio" name="1mes" id="step4_checkbox3" value="3veces">
-            <label class="form-check-label" for="portal-web">1 vez al mes</label>
+            <input class="form-check-input step4_checkbox" type="radio" id="step4_checkbox3" name="frequency_checkbox" value=30>
+            <label class="form-check-label">1 vez al mes</label>
         </div>
         <div class="col-md-2 form-check ">
-            <input class="form-check-input step4_checkbox" type="radio" name="otra_step4" id="step4_checkbox4" value="otra"> 
-            <label class="form-check-label" for="portal-web">Otra</label>
+            <input class="form-check-input step4_checkbox" type="radio" id="step4_checkbox4" name="frequency_checkbox" value="other"> 
+            <label class="form-check-label">Otra</label>
         </div>
     </div>
     {{-- Opciones para 'Otra' --}}

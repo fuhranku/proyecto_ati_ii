@@ -7,7 +7,9 @@ var panelText = [
     'Frecuencia e información a recibir ',
     'Datos de Facturación',
 ]
-  
+var mobile_pn, landline_pn, mobile_pj, landline_pj;
+var telephoneErrorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
+
 
 $(".checkbox-menu").on("change", "input[type='checkbox']", function() {
     $(this).closest("li").toggleClass("active", this.checked);
@@ -71,15 +73,39 @@ $(document).ready(function(){
     // $(".phone-step0").intlTelInput({
     //     utilsScript: utilsScript
     // });
-    var input = document.querySelector("#mobile-pn");
-    var iti = window.intlTelInput(input,{
-        utilsScript: utilsScript
+    // Initialize sign_up screen phones input tag
+    var mobile_pn_input = document.querySelector("#mobile-pn");
+    var landline_pn_input = document.querySelector("#landline-pn");
+    var mobile_pj_input = document.querySelector("#mobile-pj");
+    var landline_pj_input = document.querySelector("#landline-pj");
+    // Initialize natural mobile number input
+    mobile_pn = window.intlTelInput(mobile_pn_input,{
+        utilsScript: utilsScript,
+        onlyCountries: ['es','ve'],
+        separateDialCode:true,
+        initialCountry:""
     });
-    var errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
-    if(!iti.isValidNumber()){
-        var errorCode = iti.getValidationError();
-        console.log(errorCode);
-    }
+    // Initialize natural legal number input
+    landline_pn = window.intlTelInput(landline_pn_input,{
+        utilsScript: utilsScript,
+        onlyCountries: ['es','ve'],
+        separateDialCode:true,
+        initialCountry:""
+    });
+    // Initialize legal mobile number input
+    mobile_pj = window.intlTelInput(mobile_pj_input,{
+        utilsScript: utilsScript,
+        onlyCountries: ['es','ve'],
+        separateDialCode:true,
+        initialCountry:""
+    });
+    // Initialize legal legal number input
+    landline_pj = window.intlTelInput(landline_pj_input,{
+        utilsScript: utilsScript,
+        onlyCountries: ['es','ve'],
+        separateDialCode:true,
+        initialCountry:""
+    });
 });
 
 $('#btn-b-rapida').click(function(){
@@ -137,7 +163,7 @@ $('#continuar-btn').on('click', function(e){
     };
     $('.form-error').empty();
     switch(step){
-        // Step 0
+        // Step 0 - Como supo de nosotros
         case 0:{
             var found_us;
             $.each($("input[name='found_us']:checked"), function(){
@@ -180,15 +206,22 @@ $('#continuar-btn').on('click', function(e){
             })
             break;
         }
+        // Step 1 - Registrar usuario (Natural o jurídico)
         case 1:{
             data['person_type'] = $('input[name="person_type"]:checked').val();
             // Caso persona natural
             if ( data['person_type'] === 'nat'){
+                
                 data['nombre_pn'] = $('input[name="nombre_pn"]').val();
                 data['apellido_pn'] = $('input[name="apellido_pn"]').val();
                 data['user_id_pn'] = $('input[name="user_id_pn"]').val();
                 data['email_pn'] = $('input[name="email_pn"]').val();
                 data['country_pn'] = $('#country_pn').children('option:selected').val();
+                data['phone_checkbox_pn'] = $('input[name="phone_checkbox_pn"]:checked').val();
+                data['mobile_pn'] = mobile_pn.getNumber();
+                data['landline_pn'] = landline_pn.getNumber();
+                data['landline_ext_pn'] = $('input[name="landline_ext_pn"]').val();
+
                 // Ajax POST request
                 $.ajax({
                     url: form_post_url,
@@ -196,6 +229,21 @@ $('#continuar-btn').on('click', function(e){
                     data: data,
                     async: false,
                     success: function(data){
+                        // Validate mobile number
+                        if( $('#mobile-checkbox-natural').is(':checked') && !mobile_pn.isValidNumber()){
+                            validation = false;
+                            var errorCode = mobile_pn.getValidationError();
+                            $('#error_row_mobile_pn').removeClass('d-none');
+                            $('#error_ul_mobile_pn').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
+                        }
+                        // Validate landline number
+                        if ($('#landline-checkbox-natural').is(':checked') && !landline_pn.isValidNumber()){
+                            validation = false;
+                            var errorCode = landline_pn.getValidationError();
+                            $('#error_row_landline_pn').removeClass('d-none');
+                            $('#error_ul_landline_pn').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
+                        }
+                        // AJAX VALIDATION
                         // If there's an error don't let go to next step
                         if( !$.isEmptyObject(data.errors) ){
                             validation = false;                        
@@ -205,14 +253,12 @@ $('#continuar-btn').on('click', function(e){
                                     $('#error_ul_'+key).append('<li>'+value2+'</li>');
                                 })
                             });
-                        }else{
-                            //$('.error-row').addClass('d-none');
-                            validation = true;
                         }
                     }
                 })
+            }
             // Caso persona jurídica
-            }else if ( data['person_type'] === 'jur'){
+            else if ( data['person_type'] === 'jur'){
                 data['nombre_empresa_pj'] = $('input[name="nombre_empresa_pj"]').val();
                 data['rif_empresa_pj'] = $('input[name="rif_empresa_pj"]').val();
                 data['country_empresa_pj'] = $('#country_empresa_pj').children('option:selected').val();
@@ -221,8 +267,10 @@ $('#continuar-btn').on('click', function(e){
                 data['nombre_rep_pj'] = $('input[name="nombre_rep_pj"]').val();
                 data['apellido_rep_pj'] = $('input[name="apellido_rep_pj"]').val();
                 data['email_rep_pj'] = $('input[name="email_rep_pj"]').val();
-
-                console.log('address_empresa_pj: '+data['address_empresa_pj']);
+                data['phone_checkbox_pj'] = $('input[name="phone_checkbox_pj"]:checked').val();
+                data['mobile_pj'] = mobile_pj.getNumber();
+                data['landline_pj'] = landline_pj.getNumber();
+                data['landline_ext_pj'] = $('input[name="landline_ext_pj"]').val();
                 // Ajax POST request
                 $.ajax({
                     url: form_post_url,
@@ -230,6 +278,21 @@ $('#continuar-btn').on('click', function(e){
                     data: data,
                     async: false,
                     success: function(data){
+                        // Validate mobile number
+                        if( $('#mobile-checkbox-juridica').is(':checked') && !mobile_pj.isValidNumber()){
+                            validation = false;
+                            var errorCode = mobile_pj.getValidationError();
+                            $('#error_row_mobile_pj').removeClass('d-none');
+                            $('#error_ul_mobile_pj').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
+                        }
+                        // Validate landline number
+                        if ($('#landline-checkbox-juridica').is(':checked') && !landline_pj.isValidNumber()){
+                            validation = false;
+                            var errorCode = landline_pj.getValidationError();
+                            $('#error_row_landline_pj').removeClass('d-none');
+                            $('#error_ul_landline_pj').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
+                        }
+                        // AJAX VALIDATION
                         // If there's an error don't let go to next step
                         if( !$.isEmptyObject(data.errors) ){
                             validation = false;                        
@@ -239,13 +302,12 @@ $('#continuar-btn').on('click', function(e){
                                     $('#error_ul_'+key).append('<li>'+value2+'</li>');
                                 })
                             });
-                        }else{
-                            //$('.error-row').addClass('d-none');
-                            validation = true;
                         }
                     }
                 })
-            }else{
+            }
+            // Other case
+            else{
                 console.log('undefined case');
                 $.ajax({
                     url: form_post_url,
@@ -269,6 +331,7 @@ $('#continuar-btn').on('click', function(e){
             }
             break;
         }
+        // Step 2 - Idioma
         case 2:{
             data['lang'] = $('input[name="lang"]:checked').val();
             if ( data['lang'] == null){
@@ -294,7 +357,8 @@ $('#continuar-btn').on('click', function(e){
             }
             break;
         }
-        case 3:
+        // Step 3 - Datos de Inicio de sesión
+        case 3:{
             data['email_login'] = $('input[name="email_login"]').val();
             data['pw_login'] = $('input[name="pw_login"]').val();
             $.ajax({
@@ -318,8 +382,46 @@ $('#continuar-btn').on('click', function(e){
                 }
             })
             break;
-        case 4:
+        }
+        // Step 4 - Frecuencia de info
+        case 4:{
+            data['frequency_checkbox'] = $('input[name="frequency_checkbox"]:checked').val();
+            if( data['frequency_checkbox'] === 'other'){
+                data['custom_frequency'] = Number($('#custom_month_freq').children('option:selected').val() * 30) + Number($('#custom_days_freq').children('option:selected').val());
+                var interest_services = [];
+                $.each($("input[name='interest_service']:checked"), function(){
+                    interest_services.push($(this).val());
+                });
+                data['interest_services'] = interest_services;
+                var news_means = [];
+                $.each($("input[name='news_mean']:checked"),function(){
+                    news_means.push($(this).val());
+                });
+                data['news_means'] = news_means;
+                console.log(data['custom_frequency']);
+            }
+            $.ajax({
+                url: form_post_url,
+                method: 'post',
+                data:  data,
+                async: false,
+                success: function(data){
+                    // If there's an error don't let go to next step
+                    if( !$.isEmptyObject(data.errors) ){
+                        validation = false;
+                        $.each(data.errors, function(key, value){
+                            $('#error_row_'+key).removeClass('d-none');
+                            $.each(value, function(key2,value2){
+                                $('#error_ul_'+key).append('<li>'+value2+'</li>');
+                            })
+                        });
+                    }else{
+                        validation = true;
+                    }
+                }
+            })
             break;
+        }
         case 5:
             break;
     }
@@ -550,32 +652,49 @@ $('#sign-up-btn').click(function(){
 $('#mobile-checkbox-natural').click(function(){
     if( $(this).is(':checked')){
         $('#input-mobile-natural').removeClass('d-none');
+        $('#error_row_phone_checkbox_pn').addClass('d-none');
+        $('#error_ul_phone_checkbox_pn').empty();
     }else{
         $('#input-mobile-natural').addClass('d-none');
+        $('#error_row_mobile_pn').addClass('d-none');
+        $('#error_ul_mobile_pn').empty();
+
     }
 });
 
 $('#landline-checkbox-natural').click(function(){
     if( $(this).is(':checked')){
         $('#input-landline-natural').removeClass('d-none');
+        $('#error_row_phone_checkbox_pn').addClass('d-none');
+        $('#error_ul_phone_checkbox_pn').empty();    
     }else{
         $('#input-landline-natural').addClass('d-none');
+        $('#error_row_landline_pn').addClass('d-none');
+        $('#error_ul_landline_pn').empty();
     }
 });
 
 $('#mobile-checkbox-juridica').click(function(){
     if( $(this).is(':checked')){
         $('#input-mobile-juridica').removeClass('d-none');
+        $('#error_row_phone_checkbox_pj').addClass('d-none');
+        $('#error_ul_phone_checkbox_pj').empty();  
     }else{
         $('#input-mobile-juridica').addClass('d-none');
+        $('#error_row_mobile_pj').addClass('d-none');
+        $('#error_ul_mobile_pj').empty();
     }
 });
 
 $('#landline-checkbox-juridica').click(function(){
     if( $(this).is(':checked')){
         $('#input-landline-juridica').removeClass('d-none');
+        $('#error_row_phone_checkbox_pj').addClass('d-none');
+        $('#error_ul_phone_checkbox_pj').empty(); 
     }else{
         $('#input-landline-juridica').addClass('d-none');
+        $('#error_row_landline_pj').addClass('d-none');
+        $('#error_ul_landline_pj').empty();
     }
 });
 
