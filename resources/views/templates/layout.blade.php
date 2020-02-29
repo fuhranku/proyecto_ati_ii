@@ -121,7 +121,7 @@
              <!-- First navbar ROW -->
              <ul class="navbar-nav bg-white ml-auto h-100 mr-2">
                 <li class="nav-item">
-                        <a class="nav-link mx-3 btn-yellow ry-corners mr-2 mt-1 p-2 pr-3 pl-3 sign_in_button">Iniciara sesión</a>
+                        <a class="nav-link mx-3 btn-yellow ry-corners mr-2 mt-1 p-2 pr-3 pl-3 sign_in_button">Iniciar sesión</a>
                 </li>
                 <li class="nav-item">
                         <a class="nav-link mx-3 btn-yellow ry-corners mr-2 mt-1 p-2 pr-3 pl-3 ml-n2" href="{{ url('sign_up') }}">Registrarse</a>
