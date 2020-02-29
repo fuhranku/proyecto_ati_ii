@@ -92,21 +92,21 @@
                 </div>
                 <div class="row pl-5 mt-3 mb-3">
                         <div class="col-md-6 form-check">
-                            <input type="checkbox" class="form-check-input" id="portal-web">
+                            <input type="checkbox" class="form-check-input" id="mobile-checkbox-juridica">
                             <label class="form-check-label bg-yellow text-white tlf-checkbox pt-1 pb-1 pl-5 pr-5" for="portal-web">Móvil</label>
                         </div>
                         <div class="col-md-6 form-check">
-                            <input type="checkbox" class="form-check-input" id="portal-web">
+                            <input type="checkbox" class="form-check-input" id="landline-checkbox-juridica">
                             <label class="form-check-label bg-yellow text-white tlf-checkbox pt-1 pb-1 pl-5 pr-5" for="portal-web">Fijo</label>
                         </div>
                 </div>
 
-                <div class="row mb-3">
+                <div class="row mb-3 d-none" id="input-mobile-juridica">
                     <div class="col-sm-6"> 
                     <input class="phone form-control" name="phone1" type="tel">
                     </div>
                 </div>
-                <div class="row">
+                <div class="row d-none" id="input-landline-juridica">
                     <div class="col-md-6"> 
                     <input class="phone form-control" name="phone2" type="tel">
                     </div>

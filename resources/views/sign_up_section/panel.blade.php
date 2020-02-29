@@ -47,9 +47,9 @@
             </div>
             <div class="col-xs">
                 {{-- <button type="submit" class="btn btn-danger font-weight-bold" href="{{ url('sign_up/'.$_step_a) }}" role="button"> --}}
-                <a class="btn btn-danger font-weight-bold text-white" id="continuar-btn" role="button">
+                <button class="btn btn-danger font-weight-bold text-white" id="continuar-btn" role="button" form='form-step-0'>
                     Continuar >
-                </a>
+                </button>
             </div> 
         </div>
     </div>
