@@ -16,7 +16,7 @@
         </div>
         <div class="row mt-5">
             <div class="col-sm-6 mt-2">
-                <a class="btn btn-yellow text-center" href="{{ url('sign_in') }}">Iniciar sesión</a>
+                <a class="btn btn-yellow text-center" id="sign_in_button">Iniciar sesión</a>
             </div>
             <div class="col-sm-6 mt-2">
                 <a class="btn btn-yellow text-center" href="{{ url('index') }}">Volver al inicio</a>
