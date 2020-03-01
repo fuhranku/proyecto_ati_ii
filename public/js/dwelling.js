@@ -80,18 +80,13 @@ $('#btn-b-rapida').click(function(){
     }
  });
  
- $('#counterBath').focusin(function(){
-   $(this).data('oldValue', $(this).val());
- });
  
- $('#counterRoom').focusin(function(){
+
+ $('#counterBath').focusin(function(){
     $(this).data('oldValue', $(this).val());
   });
- 
- $('#counterParking').focusin(function(){
-    $(this).data('oldValue', $(this).val());
- });
- 
+  
+
  $('#counterBath').change(function() {
     
     minValue =  parseInt($(this).attr('min'));
@@ -112,6 +107,10 @@ $('#btn-b-rapida').click(function(){
         $(this).val($(this).data('oldValue'));
     }
  });
+ 
+ $('#counterRoom').focusin(function(){
+    $(this).data('oldValue', $(this).val());
+  });
  
  
  $('#counterRoom').change(function() {
@@ -135,6 +134,11 @@ $('#btn-b-rapida').click(function(){
     }
  });
  
+
+ 
+ $('#counterPark').focusin(function(){
+    $(this).data('oldValue', $(this).val());
+ });
  
  
  $('#counterPark').change(function() {

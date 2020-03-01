@@ -4,44 +4,38 @@
         <div class="col-md-2 font-weight-bold">
             Frecuencia
         </div>
-        <div class="col-md-1">
-            <select class="form-control" id='custom_month_freq'>
-                <option value='' label="--" disabled selected value></option>
-                <option value=0>0</option>
-                <option value=1>1</option>
-                <option value=2>2</option>
-                <option value=3>3</option>
-                <option value=4>4</option>
-                <option value=5>5</option>
-                <option value=6>6</option>
-                <option value=7>7</option>
-                <option value=8>8</option>
-                <option value=9>9</option>
-                <option value=10>10</option>
-                <option value=11>11</option>
-                <option value=12>12</option>
-            </select>
+        <div class="col-md-2">
+            <div class="input-group" style="width: max-content; max-width: 120px;">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[4]">
+                        <span class="fas fa-minus"></span>
+                    </button>
+                </span>
+                <input type="text" name="quant[4]" id="counterMonths" class="form-control input-number" value="1" min="1" max="12">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[4]">
+                        <span class="fas fa-plus"></span>
+                    </button>
+                </span>
+            </div>
         </div>
         <div class="col-md-1 font-weight-bold my-auto">
             Meses
         </div>
-        <div class="col-md-1">
-            <select class="form-control" id='custom_days_freq'>
-                <option value='' label="--" disabled selected value></option>
-                <option value=0>0</option>
-                <option value=1>1</option>
-                <option value=2>2</option>
-                <option value=3>3</option>
-                <option value=4>4</option>
-                <option value=5>5</option>
-                <option value=6>6</option>
-                <option value=7>7</option>
-                <option value=8>8</option>
-                <option value=9>9</option>
-                <option value=10>10</option>
-                <option value=11>11</option>
-                <option value=12>12</option>
-            </select>
+        <div class="col-md-2">
+            <div class="input-group" style="width: max-content; max-width: 120px;">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[5]">
+                        <span class="fas fa-minus"></span>
+                    </button>
+                </span>
+                <input type="text" name="quant[5]" id="counterDays" class="form-control input-number" value="1" min="1" max="31">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[5]">
+                        <span class="fas fa-plus"></span>
+                    </button>
+                </span>
+            </div>
         </div>
         <div class="col-md-1 font-weight-bold my-auto">
             Días
