@@ -78,6 +78,7 @@ $(document).ready(function(){
     var landline_pn_input = document.querySelector("#landline-pn");
     var mobile_pj_input = document.querySelector("#mobile-pj");
     var landline_pj_input = document.querySelector("#landline-pj");
+    var phone_step4_input = document.querySelector("#phone-step4");
     // Initialize natural mobile number input
     mobile_pn = window.intlTelInput(mobile_pn_input,{
         utilsScript: utilsScript,
@@ -99,8 +100,15 @@ $(document).ready(function(){
         separateDialCode:true,
         initialCountry:""
     });
-    // Initialize legal legal number input
+    // Initialize legal number input
     landline_pj = window.intlTelInput(landline_pj_input,{
+        utilsScript: utilsScript,
+        onlyCountries: ['es','ve'],
+        separateDialCode:true,
+        initialCountry:""
+    });
+    // Initialize phone of step4 number input
+    phone_step4 = window.intlTelInput(phone_step4_input,{
         utilsScript: utilsScript,
         onlyCountries: ['es','ve'],
         separateDialCode:true,
@@ -344,10 +352,10 @@ $('#continuar-btn').on('click', function(e){
                         // If there's an error don't let go to next step
                         if( !$.isEmptyObject(data.errors) ){
                             validation = false;
-                            $('#errors-row-step2').removeClass('d-none');
+                            console.log(data.errors);
                             $.each(data.errors, function(key, value){
-                                console.log(value);
-                                $('.form-error').append('<li>'+value+'</li>');
+                                $('#error_row_step02').removeClass('d-none');
+                                $('#error_ul_step02').append('<li>'+value+'</li>');
                             });
                         }else{
                             validation = true;
@@ -393,12 +401,26 @@ $('#continuar-btn').on('click', function(e){
                     interest_services.push($(this).val());
                 });
                 data['interest_services'] = interest_services;
-                var news_means = [];
+                var news_means = {};
+
                 $.each($("input[name='news_mean']:checked"),function(){
-                    news_means.push($(this).val());
+                    var x = $(this).val()+"_input";
+                    if ($(this).val() === 'rrss'){
+                        var rrss_array = [];
+                        $.each($("input[name='rrss_input']:checked"), function(){
+                            rrss_array.push($(this).val());
+                        });
+                        if (rrss_array.length == 0){
+                            news_means[$(this).val()] = "";
+                        }else{
+                            news_means[$(this).val()] = rrss_array;
+                        }
+                    }else{
+                        news_means[$(this).val()] = $('input[name='+x+']').val();
+                    }
                 });
                 data['news_means'] = news_means;
-                console.log(data['custom_frequency']);
+                console.log(data['news_means']);
             }
             $.ajax({
                 url: form_post_url,
@@ -406,17 +428,27 @@ $('#continuar-btn').on('click', function(e){
                 data:  data,
                 async: false,
                 success: function(data){
+                    // Validate mobile number
+                    if( $('#sms-checkbox-step4').is(':checked') && !phone_step4.isValidNumber()){
+                        validation = false;
+                        var errorCode = mobile_pj.getValidationError();
+                        $('#error_row_phone_step4').removeClass('d-none');
+                        $('#error_ul_phone_step4').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
+                    }
                     // If there's an error don't let go to next step
                     if( !$.isEmptyObject(data.errors) ){
                         validation = false;
+                        console.log(data.errors);
                         $.each(data.errors, function(key, value){
+                            if (key.includes('.')){
+                                var n = key.indexOf('.');
+                                key = key.substring(0,n) + '\\' + key.substring(n);
+                            }
                             $('#error_row_'+key).removeClass('d-none');
                             $.each(value, function(key2,value2){
                                 $('#error_ul_'+key).append('<li>'+value2+'</li>');
                             })
                         });
-                    }else{
-                        validation = true;
                     }
                 }
             })

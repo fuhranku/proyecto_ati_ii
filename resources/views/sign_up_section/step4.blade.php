@@ -1,7 +1,7 @@
 <section class="d-none" id="step-4">
     @component('components.field_error')
     @slot('grid_size')
-        4
+        12
     @endslot
     @slot('error_row_id')
         error_row_frequency_checkbox

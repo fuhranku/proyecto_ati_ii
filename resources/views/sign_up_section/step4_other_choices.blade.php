@@ -48,15 +48,15 @@
         </div>
     </div>
     @component('components.field_error')
-    @slot('grid_size')
-        6
-    @endslot
-    @slot('error_row_id')
-        error_row_custom_frequency
-    @endslot
-    @slot('error_ul_id')
-        error_ul_custom_frequency
-    @endslot
+        @slot('grid_size')
+            6
+        @endslot
+        @slot('error_row_id')
+            error_row_custom_frequency
+        @endslot
+        @slot('error_ul_id')
+            error_ul_custom_frequency
+        @endslot
     @endcomponent
     <div class="row mt-3">
         <div class="col-md-2"></div>
@@ -83,10 +83,10 @@
             12
         @endslot
         @slot('error_row_id')
-            error_row_cities_empresa_pj
+            error_row_interest_services
         @endslot
         @slot('error_ul_id')
-            error_ul_cities_empresa_pj
+            error_ul_interest_services
         @endslot
     @endcomponent
     <div class="row mt-3">
@@ -95,6 +95,17 @@
             Medio(s) por los que le gustaría mantenerse informado
         </div>
     </div>
+    @component('components.field_error')
+        @slot('grid_size')
+            6
+        @endslot
+        @slot('error_row_id')
+            error_row_news_means
+        @endslot
+        @slot('error_ul_id')
+            error_ul_news_means
+        @endslot
+    @endcomponent
     <div class="row mt-3">
         <div class="col-md-2"></div>
         <div class="col-md-5 form-check">
@@ -102,9 +113,20 @@
             <label class="form-check-label" for="portal-web">Correo electrónico según sus preferencias</label>
         </div>
         <div class="col-md-3">
-            <input type="text" class="form-control input-section2" id="email-other-step4">
+            <input type="text" class="form-control input-section2" id="email-other-step4" placeholder="Ingrese correo" name='mail_input'>
         </div>
     </div>
+    @component('components.field_error')
+        @slot('grid_size')
+            6
+        @endslot
+        @slot('error_row_id')
+            error_row_news_means.mail 
+        @endslot
+        @slot('error_ul_id')
+            error_ul_news_means.mail
+        @endslot
+    @endcomponent
     <div class="row mt-4">
         <div class="col-md-2"></div>
         <div class="col-md-5 form-check">
@@ -117,14 +139,26 @@
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle"><b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><label class="checkbox"><input type="checkbox">Facebook</label></li>
-                            <li><label class="checkbox"><input type="checkbox">Twitter</label></li>
+                            @foreach($socialMedias as $socialMedia)
+                            <li><label class="checkbox"><input type="checkbox" value="{{$socialMedia->id}}" name="rrss_input">{{$socialMedia->name}}</label></li>
+                            @endforeach
                         </ul>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
+    @component('components.field_error')
+        @slot('grid_size')
+            6
+        @endslot
+        @slot('error_row_id')
+            error_row_news_means.rrss 
+        @endslot
+        @slot('error_ul_id')
+            error_ul_news_means.rrss
+        @endslot
+    @endcomponent
     <div class="row mt-3 sms-other-step4">
         <div class="col-md-6"></div>
         <div class="col-md-6">
@@ -138,10 +172,20 @@
             <label class="form-check-label" for="portal-web">Mensaje de texto</label>
         </div>
         <div class="col-md-5 sms-other-step4">
-            <input type="text" class="form-control input-section2">
+            <input class="phone-step0 form-control" name="phone_step4" type="tel" id='phone-step4'>
         </div>
     </div>
-
+    @component('components.field_error')
+        @slot('grid_size')
+            6
+        @endslot
+        @slot('error_row_id')
+            error_row_phone_step4
+        @endslot
+        @slot('error_ul_id')
+            error_ul_phone_step4
+        @endslot
+    @endcomponent
     <div class="row mt-3 medios-other-step4">
         <div class="col-md-6"></div>
         <div class="col-md-6">
@@ -155,9 +199,20 @@
             <label class="form-check-label" for="portal-web">Otro(s)</label>
         </div>
         <div class="col-md-5 medios-other-step4">
-            <input type="text" class="form-control input-section2">
+            <input type="text" class="form-control input-section2" placeholder="Indique preferencia" name='other_input'>
         </div>
     </div>
+    @component('components.field_error')
+        @slot('grid_size')
+            6
+        @endslot
+        @slot('error_row_id')
+            error_row_news_means.other 
+        @endslot
+        @slot('error_ul_id')
+            error_ul_news_means.other
+        @endslot
+    @endcomponent
     <div class="row mt-3">
         <div class="col-md-6"></div>
         <div class="col-md-6 fb-account-other-step4">
@@ -167,11 +222,22 @@
     <div class="row mt-3">
         <div class="col-md-2"></div>
         <div class="col-md-5 form-check">
-            <input type="checkbox" class="form-check-input" id="checkbox-fb-account-other-step4" name="news_mean" value="facebook">
+            <input type="checkbox" class="form-check-input" id="checkbox-fb-account-other-step4" name="news_mean" value="facebook_acc">
             <label class="form-check-label" for="portal-web">Mensaje privado en mi cuenta de Facebook</label>
         </div>
         <div class="col-md-5">
-            <input type="text" class="form-control input-section2 fb-account-other-step4">
+            <input type="text" class="form-control input-section2 fb-account-other-step4" name='facebook_acc_input' placeholder="Correo de Facebook">
         </div>
     </div>
+    @component('components.field_error')
+        @slot('grid_size')
+            6
+        @endslot
+        @slot('error_row_id')
+            error_row_news_means.facebook_acc 
+        @endslot
+        @slot('error_ul_id')
+            error_ul_news_means.facebook_acc
+        @endslot
+    @endcomponent
 </div>

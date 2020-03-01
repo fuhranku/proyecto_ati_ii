@@ -123,7 +123,20 @@ class SignUpController extends Controller
             case 4:
                 $validations['frequency_checkbox'] = 'required';
                 if ($request->get('frequency_checkbox') == 'other'){
-                    
+                    $validations['interest_services'] = 'required';
+                    $validations['news_means'] = 'required';
+                    if($request->has('news_means.mail')){
+                        $validations['news_means.mail'] = 'required|email';
+                    }
+                    if($request->has('news_means.rrss')){
+                        $validations['news_means.rrss'] = 'required';
+                    }
+                    if($request->has('news_means.other')){
+                        $validations['news_means.other'] = 'required|string';
+                    }
+                    if($request->has('news_means.facebook_acc')){
+                        $validations['news_means.facebook_acc'] = 'required|email';
+                    }
                 }
                 // Validate what needs to be validated
                 $validator = Validator::make($request->all(), $validations);

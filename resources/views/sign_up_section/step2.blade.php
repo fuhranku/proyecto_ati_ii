@@ -1,9 +1,15 @@
 <section class="d-none" id="step-2">
-    <form id='form-step-0'>
+    <form id='form-step-2'>
         @csrf
-        @component('components.general_error')
-            @slot('error_id')
-                errors-row-step2
+        @component('components.field_error')
+            @slot('grid_size')
+                12
+            @endslot
+            @slot('error_row_id')
+                error_row_step02
+            @endslot
+            @slot('error_ul_id')
+                error_ul_step02
             @endslot
         @endcomponent
         <div class="row mt-5">
