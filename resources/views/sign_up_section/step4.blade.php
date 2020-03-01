@@ -1,4 +1,5 @@
 <section class="d-none" id="step-4">
+    <form id='form-step-4'>
     @component('components.field_error')
     @slot('grid_size')
         12
@@ -38,6 +39,5 @@
     </div>
     {{-- Opciones para 'Otra' --}}
     @include('sign_up_section/step4_other_choices')
-
-  
+    </form>
 </section>

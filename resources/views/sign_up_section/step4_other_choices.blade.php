@@ -71,8 +71,8 @@
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle"><b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><label class="checkbox"><input type="checkbox" name="interest_service">Apartamentos de mi interés</label></li>
-                        <li><label class="checkbox"><input type="checkbox" name="interest_service">Asesoría profesional</label></li>
+                        <li><label class="checkbox"><input type="checkbox" name="interest_service" value='apts'>Apartamentos de mi interés</label></li>
+                        <li><label class="checkbox"><input type="checkbox" name="interest_service" value='asesoria'>Asesoría profesional</label></li>
                     </ul>
                 </li>
             </ul>

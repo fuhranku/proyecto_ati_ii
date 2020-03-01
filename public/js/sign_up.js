@@ -9,7 +9,7 @@ var panelText = [
 ]
 var mobile_pn, landline_pn, mobile_pj, landline_pj;
 var telephoneErrorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
-
+var validation;
 
 $(".checkbox-menu").on("change", "input[type='checkbox']", function() {
     $(this).closest("li").toggleClass("active", this.checked);
@@ -157,7 +157,7 @@ $('#otro-checkbox').on('click', function(){
 })
 
 $('#continuar-btn').on('click', function(e){
-    var validation = true;
+    validation = true;
 
     // AJAX VALIDATION
     e.preventDefault();
@@ -208,7 +208,7 @@ $('#continuar-btn').on('click', function(e){
                             $('.form-error').append('<li>'+value+'</li>');
                         });
                     }else{
-                        validation = true;
+                        console.log(data.success['step0']);
                     }
                 }
             })
@@ -261,6 +261,8 @@ $('#continuar-btn').on('click', function(e){
                                     $('#error_ul_'+key).append('<li>'+value2+'</li>');
                                 })
                             });
+                        }else{
+                            console.log(data.success['step1']);
                         }
                     }
                 })
@@ -310,6 +312,8 @@ $('#continuar-btn').on('click', function(e){
                                     $('#error_ul_'+key).append('<li>'+value2+'</li>');
                                 })
                             });
+                        }else{
+                            console.log(data.success['step1']);
                         }
                     }
                 })
@@ -332,7 +336,7 @@ $('#continuar-btn').on('click', function(e){
                                 $('#error_ul_person_type').append('<li>'+value+'</li>');
                             });
                         }else{
-                            validation = true;
+                            console.log(data.success['step1']);
                         }
                     }
                 })
@@ -342,7 +346,6 @@ $('#continuar-btn').on('click', function(e){
         // Step 2 - Idioma
         case 2:{
             data['lang'] = $('input[name="lang"]:checked').val();
-            if ( data['lang'] == null){
                 $.ajax({
                     url: form_post_url,
                     method: 'post',
@@ -358,11 +361,11 @@ $('#continuar-btn').on('click', function(e){
                                 $('#error_ul_step02').append('<li>'+value+'</li>');
                             });
                         }else{
-                            validation = true;
+                            console.log('step2');
+                            console.log(data.success['step2']);
                         }
                     }
                 })
-            }
             break;
         }
         // Step 3 - Datos de Inicio de sesión
@@ -385,7 +388,7 @@ $('#continuar-btn').on('click', function(e){
                             })
                         });
                     }else{
-                        validation = true;
+                        console.log(data.success['step3']);
                     }
                 }
             })
@@ -420,7 +423,6 @@ $('#continuar-btn').on('click', function(e){
                     }
                 });
                 data['news_means'] = news_means;
-                console.log(data['news_means']);
             }
             $.ajax({
                 url: form_post_url,
@@ -432,8 +434,8 @@ $('#continuar-btn').on('click', function(e){
                     if( $('#sms-checkbox-step4').is(':checked') && !phone_step4.isValidNumber()){
                         validation = false;
                         var errorCode = mobile_pj.getValidationError();
-                        $('#error_row_phone_step4').removeClass('d-none');
-                        $('#error_ul_phone_step4').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
+                        $('#error_row_phone_step4git').removeClass('d-none');
+                        $('#error_ul_phone_step4git').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
                     }
                     // If there's an error don't let go to next step
                     if( !$.isEmptyObject(data.errors) ){
@@ -449,13 +451,13 @@ $('#continuar-btn').on('click', function(e){
                                 $('#error_ul_'+key).append('<li>'+value2+'</li>');
                             })
                         });
+                    }else{
+                        console.log(data.success['step4']);
                     }
                 }
             })
             break;
         }
-        case 5:
-            break;
     }
 
     // Run this code iff ajax validation were passed
@@ -661,18 +663,6 @@ $('#checkbox-fb-account-other-step4').click(function(){
     }  
 });
 
-$('#sign-up-btn').click(function(){
-    // $('#sign-up-modal').removeClass('d-none');
-    // $('body').addClass('.body-modal');
-    $('body').prepend('\
-            <div class="modal-bg">\
-            </div>\
-    ');
-    $('#sign-up-modal').appendTo('.modal-bg');
-    $('#sign-up-modal').removeClass('d-none');
-
-    $('body').addClass('overflow-hidden');
-});
 
 !$('#checkbox-frecuencia').click(function(){
     if( !$(this).is(':checked')){
@@ -755,4 +745,56 @@ $('#country_empresa_pj').change(function(e){
             console.log(data['cities']);
         }
     })
+});
+
+$('#sign-up-btn').on('click', function(e){
+    validation = true;
+    // AJAX VALIDATION
+    e.preventDefault();
+    $.ajaxSetup({
+        headers:{
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+    data = {
+        step: step
+    };
+    data['banco_origen'] = $('input[name="banco_origen"]').val();
+    data['banco_destino'] = $('input[name="banco_destino"]').val();
+    data['country_facturacion'] = $('#country_facturacion').children('option:selected').val();
+    $('.form-error').empty();
+    // Ajax POST request
+    $.ajax({
+        url: form_post_url,
+        method: 'post',
+        data: data,
+        async: false,
+        success: function(data){
+            // AJAX VALIDATION
+            // If there's an error don't let go to next step
+            if( !$.isEmptyObject(data.errors) ){
+                validation = false;                        
+                $.each(data.errors, function(key, value){
+                    $('#error_row_'+key).removeClass('d-none');
+                    $.each(value, function(key2,value2){
+                        $('#error_ul_'+key).append('<li>'+value2+'</li>');
+                    })
+                });
+            }else{
+                console.log(data.success);
+            }
+        }
+    })
+    if (validation){
+        $('.error-row').addClass('d-none');
+        $('.form-error').addClass('d-none');
+        $('body').prepend('\
+        <div class="modal-bg">\
+        </div>\
+        ');
+        $('#sign-up-modal').appendTo('.modal-bg');
+        $('#sign-up-modal').removeClass('d-none');
+
+        $('body').addClass('overflow-hidden');
+    }
 });
