@@ -44,11 +44,13 @@
                         </label>
                     </div>
                     <div class="col-sm-7 ml-n-3 my-auto">
-                        <select class="form-control" id="sel1">
-                            <option label="Seleccione país de ubicación del banco" disabled selected value></option>
-                            <option>Venezuela</option>
-                            <option>España</option>
+                        <select class="form-control" id="country_facturacion">
+                            <option value='' label="Seleccione su país" disabled selected value></option>
+                            @foreach($countries as $country)
+                            <option value={{$country->id}}>{{$country->name}}</option>
+                            @endforeach
                         </select>
+                    </div>
                     </div>
                 </div>
                 <div class="row">
@@ -76,7 +78,7 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-sm-12 my-auto">
-                        <input type="text" class="form-control" placeholder="Seleccione el banco donde depositó o transfirió los fondos">
+                        Seleccione el banco donde depositó o transfirió los fondos
                     </div>
                 </div>
                 <div class="row mt-2">
