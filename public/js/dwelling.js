@@ -80,18 +80,19 @@ $('#btn-b-rapida').click(function(){
     }
  });
  
- $('#counterBath').focusin(function(){
-   $(this).data('oldValue', $(this).val());
- });
  
- $('#counterRoom').focusin(function(){
+$('#counterRoom').focusin(function(){
     $(this).data('oldValue', $(this).val());
-  });
- 
- $('#counterParking').focusin(function(){
+});
+
+$('#counterParking').focusin(function(){
     $(this).data('oldValue', $(this).val());
- });
- 
+});
+    
+$('#counterBath').focusin(function(){
+    $(this).data('oldValue', $(this).val());
+});
+
  $('#counterBath').change(function() {
     
     minValue =  parseInt($(this).attr('min'));
