@@ -9,12 +9,12 @@
         <div class="row">
             
             <div class="col-md-3 search-box" style="margin-left:15px;">
-                <div class="search-btn border border-info rounded " id='btn-b-rapida'>
+                <div class="search-btn border border-info rounded " id='btn-b-rapida1'>
                     <i class="fas fa-caret-down d-inline"></i>
                     <p class="font-weight-bold m-0 d-inline">Búsqueda Rápida</p>
                 </div>
 
-                <div class="border border-info p-1" id="busqueda-rapida">
+                <div class="border border-info p-1" id="busqueda-rapida1">
 
                     <div class="row p-2">
                         <div class="col-md-6">
@@ -79,12 +79,12 @@
 
                 <!-- BUSQUEDA DETALLADA -->
 
-                <div class="search-btn border border-info rounded " id='btn-b-detallada'>
+                <div class="search-btn border border-info rounded " id='btn-b-detallada1'>
                     <i class="fas fa-caret-down d-inline"></i>
                     <p class="font-weight-bold m-0 d-inline">Búsqueda Detallada</p>
                 </div>
 
-                <div class="border border-info p-1" id="busqueda-detallada">
+                <div class="border border-info p-1" id="busqueda-detallada1">
 
                     <div class="row p-2">
                         <div class="col-md-6">
