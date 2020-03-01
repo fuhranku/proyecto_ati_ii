@@ -1,11 +1,12 @@
 <section class="d-none" id="step-5">
+    <form id='form-step-5'>
         <div class="row mt-3">
             <div class="col-md-1"></div>
             <div class="col-md-3 font-weight-bold my-auto">
                 Su código de cliente es:
             </div>
             <div class="col-md-3 ml-n5 my-auto">
-               <h1>915962</h1> 
+               <h1 id='user_unique_id'>{{$users_count}}</h1> 
             </div>
             <div class="col-md-5 border border-blue">
                 Es importante que usted <span class="text-danger font-weight-bold">FORMALICE  su pago para poder
@@ -34,9 +35,20 @@
                         </label>
                     </div>
                     <div class="col-sm-7 ml-n-3 my-auto">
-                        <input type="text" class="form-control" placeholder="Banco desde el que realiza la operación">
+                        <input type="text" class="form-control" placeholder="Banco desde el que realiza la operación" name='banco_origen'>
                     </div>
                 </div>
+                @component('components.field_error')
+                    @slot('grid_size')
+                        12
+                    @endslot
+                    @slot('error_row_id')
+                        error_row_banco_origen
+                    @endslot
+                    @slot('error_ul_id')
+                        error_ul_banco_origen
+                    @endslot
+                @endcomponent
                 <div class="row mt-2">
                     <div class="col-sm-4 bg-blue text-white font-weight-bold ml-3">
                         <label class="pt-2 pb-2 pl-3 pr-3">
@@ -51,8 +63,18 @@
                             @endforeach
                         </select>
                     </div>
-                    </div>
                 </div>
+                @component('components.field_error')
+                    @slot('grid_size')
+                        12
+                    @endslot
+                    @slot('error_row_id')
+                        error_row_country_facturacion
+                    @endslot
+                    @slot('error_ul_id')
+                        error_ul_country_facturacion
+                    @endslot
+                @endcomponent
                 <div class="row">
                     <div class="col-md-12 m-3 border border-blue p-3">
                         <div class="row font-weight-bold text-danger ml-1">
@@ -83,9 +105,20 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-sm-12 my-auto">
-                        <input type="text" class="form-control" placeholder="Banesco Panamá - Cuenta nro: 201800948693">
+                        <input type="text" class="form-control" placeholder="Banesco Panamá - Cuenta nro: 201800948693" name="banco_destino">
                     </div>
                 </div>
+                @component('components.field_error')
+                    @slot('grid_size')
+                        12
+                    @endslot
+                    @slot('error_row_id')
+                        error_row_banco_destino
+                    @endslot
+                    @slot('error_ul_id')
+                        error_ul_banco_destino
+                    @endslot
+                @endcomponent
                 <div class="row ml-3">
                     <div class="col-md-12 m-3 border border-blue p-3">
                         <div class="row font-weight-bold text-danger ml-1">
@@ -114,5 +147,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+    </div>
+    </form>
 </section>

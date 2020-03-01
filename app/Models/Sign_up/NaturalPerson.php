@@ -17,7 +17,6 @@ class NaturalPerson extends Model
         'lastName',
         'personID',
         'email',
-        'countryID-FK',
         'mobileNumber',
         'landlineNumber',
         'landlineNumberExt',

@@ -4,7 +4,7 @@
     <div class="w-30 mx-auto text-center bg-white pb-3">
         <div class="row">
             <div class="col-sm-12">
-                <div class="bg-blue text-white p-2">
+                <div class="bg-blue text-white p-2 font-weight-bold">
                     Registro Exitoso
                 </div>
             </div>
@@ -16,7 +16,7 @@
         </div>
         <div class="row mt-5">
             <div class="col-sm-6 mt-2">
-                <a class="btn btn-yellow text-center" href="{{ url('sign_in') }}">Iniciar sesión</a>
+                <a class="btn btn-yellow text-center" id="sign_in_button">Iniciar sesión</a>
             </div>
             <div class="col-sm-6 mt-2">
                 <a class="btn btn-yellow text-center" href="{{ url('index') }}">Volver al inicio</a>

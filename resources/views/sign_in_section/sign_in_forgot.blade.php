@@ -62,7 +62,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <a class="modal-forgot mt-2" href="">Olvidé mi contraseña, o mis datos</a>
+                                    <a class="modal-forgot mt-2" id="forgot_button">Olvidé mi contraseña, o mis datos</a>
                                 </div>
                             </div>
                             <!-- <a href="{{ route('main.sign_in') }}" class="btn btn-info btn-block" >{{__('words.back')}}</a> -->
@@ -81,13 +81,13 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Recuperar contraseña, o mis datos</h4>
-                        <button type="button" onclick="closeModal('forgot')" class="close" data-dismiss="modal">
+                        <button type="button" class="close" data-dismiss="modal">
                             <span>-</span>
                         </button>
                         <button type="button" class="icon" data-dismiss="modal">
                             <span>&#9633;</span>
                         </button>
-                        <button type="button"  onclick="closeModal('forgot')" class="close" data-dismiss="modal">
+                        <button type="button"  class="close" data-dismiss="modal">
                             <span>×</span>
                         </button>
                     </div>

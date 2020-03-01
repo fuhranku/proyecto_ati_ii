@@ -59,10 +59,16 @@
     font-weight: 500;
 }
 
-.modal-forgot{
-    text-decoration: underline;
+#modal-forgot{
+    text-decoration: none !important;
+    color: #007bff !important;
+    cursor: pointer !important;
 }
-
+#modal-forgot:hover{
+    text-decoration: underline !important;
+    color: #007bff !important;
+    cursor: pointer !important;
+}
 .modal-label{
     text-align: end;
 }

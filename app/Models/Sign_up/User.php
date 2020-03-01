@@ -21,17 +21,25 @@ class User extends Model
         return $this->hasOne('App\Models\Sign_up\LegalPerson');
     }
     
+    protected $casts = [
+        'found_us' => 'array',
+        'interest_services' => 'array',
+        'news_means' => 'array',
+    ];
+
     protected $fillable = [
         "natPerID-FK",
         "legPerID-FK",
-        "foundUsSM-FK",
+        "found_us",
         "dateReg",
+        "user_unique_id",
         "role",
         "foundUsCheckbox",
         "foundUsOther",
         "lang",
         "email",
         "password",
+        "interest_services",
         "infoFreq",
         "daysFreq",
         "emailFreq",

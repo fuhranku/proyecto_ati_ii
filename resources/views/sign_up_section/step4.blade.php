@@ -1,14 +1,15 @@
 <section class="d-none" id="step-4">
+    <form id='form-step-4'>
     @component('components.field_error')
-    @slot('grid_size')
-        12
-    @endslot
-    @slot('error_row_id')
-        error_row_frequency_checkbox
-    @endslot
-    @slot('error_ul_id')
-        error_ul_frequency_checkbox
-    @endslot
+        @slot('grid_size')
+            12
+        @endslot
+        @slot('error_row_id')
+            error_row_frequency_checkbox
+        @endslot
+        @slot('error_ul_id')
+            error_ul_frequency_checkbox
+        @endslot
     @endcomponent
     <div class="row mt-3">
         <div class="col-sm-12">       
@@ -38,6 +39,5 @@
     </div>
     {{-- Opciones para 'Otra' --}}
     @include('sign_up_section/step4_other_choices')
-
-  
+    </form>
 </section>

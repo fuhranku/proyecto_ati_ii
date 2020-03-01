@@ -11,7 +11,7 @@
                         <span class="fas fa-minus"></span>
                     </button>
                 </span>
-                <input type="text" name="quant[4]" id="counterMonths" class="form-control input-number" value="1" min="1" max="12">
+                <input type="text" name="quant[4]" id="custom_month_freq" class="form-control input-number p-2" value="0" min="0" max="12">
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[4]">
                         <span class="fas fa-plus"></span>
@@ -19,7 +19,7 @@
                 </span>
             </div>
         </div>
-        <div class="col-md-1 font-weight-bold my-auto">
+        <div class="col-md-1 font-weight-bold my-auto ml-n4">
             Meses
         </div>
         <div class="col-md-2">
@@ -29,7 +29,7 @@
                         <span class="fas fa-minus"></span>
                     </button>
                 </span>
-                <input type="text" name="quant[5]" id="counterDays" class="form-control input-number" value="1" min="1" max="31">
+                <input type="text" name="quant[5]" id="custom_days_freq" class="form-control input-number p-2" value="0" min="0" max="31">
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[5]">
                         <span class="fas fa-plus"></span>
@@ -37,7 +37,7 @@
                 </span>
             </div>
         </div>
-        <div class="col-md-1 font-weight-bold my-auto">
+        <div class="col-md-1 font-weight-bold my-auto  ml-n4">
             Días
         </div>
     </div>
@@ -65,8 +65,8 @@
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle"><b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><label class="checkbox"><input type="checkbox" name="interest_service">Apartamentos de mi interés</label></li>
-                        <li><label class="checkbox"><input type="checkbox" name="interest_service">Asesoría profesional</label></li>
+                        <li><label class="checkbox"><input type="checkbox" name="interest_service" value='apts'>Apartamentos de mi interés</label></li>
+                        <li><label class="checkbox"><input type="checkbox" name="interest_service" value='asesoria'>Asesoría profesional</label></li>
                     </ul>
                 </li>
             </ul>
