@@ -397,6 +397,8 @@ $('#continuar-btn').on('click', function(e){
         // Step 4 - Frecuencia de info
         case 4:{
             data['frequency_checkbox'] = $('input[name="frequency_checkbox"]:checked').val();
+            // This variable keep days in backend
+            data['custom_frequency'] = $('input[name="frequency_checkbox"]:checked').val();
             if( data['frequency_checkbox'] === 'other'){
                 data['custom_frequency'] = Number($('#custom_month_freq').val() * 30) + Number($('#custom_days_freq').val());
                 var interest_services = [];

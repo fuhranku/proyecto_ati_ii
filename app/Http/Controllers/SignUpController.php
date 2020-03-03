@@ -10,6 +10,7 @@ use Requesting;
 use Cookie;
 use App;
 use Session;
+use Log;
 
 // Database Models
 use App\Models\Sign_up\User;
@@ -26,7 +27,6 @@ class SignUpController extends Controller
         // Cookie::queue('probando2', 'valorprobando2', 60);
         // Cookie::queue('probando3', 'valorprobando3', 60);
         // $type = 'none';
-        //Session::flush();
         $socialMedias = SocialMedia::all()->sortBy('name');
         $countries = Country::all()->sortBy('name');
         $users = User::all();
@@ -53,69 +53,27 @@ class SignUpController extends Controller
         return view('main_sections.index');
     }
 
-    private function saveUserIntoDatabase(){
-        $data = Session::all();
-        $user = new User;
-        // Step 0  (Cómo supo de nosotros)
-            $user->found_us = $data['found_us'];
-        // Step 1  (Registrar usuario [Natural|Jurídico])
-            $user->person_type = $data['person_type'];
-            // Create model based in person type
-            switch($data['person_type']){
-                case 'nat':
-                    $user_type = new NaturalPerson;
-                    $user_type->name = $data['nombre_pn'];
-                    $user_type->last_name = $data['apellido_pn'];
-                    $user_type->person_id = $data['user_id_pn'];
-                    $user_type->email = $data['email_pn'];
-                    // Esta no va (OJOOOOOO)
-                    // $user_type->countryID_FK = $data['country_pn'];
-                    $user_type->mobile_number = $data['mobile_pn'];
-                    $user_type->landline_number = $data['landline_pn'];
-                    $user_type->landline_number_ext = $data['landline_ext_pn'];
-                case 'jur':
-                    $user_type = new LegalPerson;
-            }
-        // Step 2 (Idioma)
-            $user->lang = $data['lang'];
-        // Step 3 (Login info)
-            $user->email = $data['email_login'];
-            $user->password = $data['password'];
-        // Step 4 (Frequency info)
-            $user->days_freq = $data['days_frequency'];
-            $user->interest_services = $data['interest_services'];
-            $user->news_means = $data['news_means'];
-        // Step 5 (Facturacion info)
-            $user->user_unique_id = $data['user_unique_id'];
-            $user->banco_origen = $data['banco_origen'];
-            $user->banco_destino = $data['banco_destino'];
-            $user->country_facturacion = $data['country_facturacion'];
-        // Insertar usuario antes de las tablas con sus relaciones
-            $user->save();
-        // Insertar modelo user_type (el Foreign key se asigna automáticamente con el llamada a save())
-            if($data['person_type'] == 'nat'){
-                $user->naturalPerson()->save($user_type);
-            }else{
-                $user->legalPerson()->save($user_type);
-            }
-    }
-
     public function store(Request $request){
         // $step = $request->get('step');
         switch($request->get('step')){
             case 0:
-                $step0 = [];
+                $step0 = $this->initialize(0);
                 $validations = [];
                 $validations['found_us'] = 'required';
                 // Checkbox choices
-                $step0['found_us'] = $request->get('found_us');
+                $found_us = [
+                    'option' => null,
+                    'social_media' => null,
+                    'other_text' => null,
+                ];
+                $found_us['option'] = $request->get('found_us');
                 switch($request->get('found_us')){
                     case 'rrss':
-                        $step0['rrss.social_media'] = $request->get('social_media');
+                        $found_us['social_media'] = $request->get('social_media');
                         $validations['social_media'] = 'required';
                     break;
                     case 'otro':
-                        $step0['rrss.other_text'] = $request->get('other_text');
+                        $found_us['other_text'] = $request->get('other_text');
                         $validations['other_text'] = 'required|regex:/^[a-zA-Z\s]*$/|max:255';
                     break;
                 }
@@ -124,11 +82,12 @@ class SignUpController extends Controller
                 if ($validator->fails()){                
                     return response()->json(['errors'=>$validator->errors()->all()]);
                 }
+                $step0['found_us'] = $found_us;
                 Session::put('step0',$step0);
             break;
             case 1:
                 $validations = [];
-                $step1 = [];
+                $step1 = $this->initialize(1);
                 // Validate person-type checkbox
                 $validations['person_type'] = 'required';
                 $step1['person_type'] = $request->get('person_type');
@@ -165,7 +124,7 @@ class SignUpController extends Controller
                         $step1['nombre_empresa_pj'] = $request->get('nombre_empresa_pj');
                         $step1['rif_empresa_pj'] = $request->get('rif_empresa_pj');
                         $step1['country_empresa_pj'] = $request->get('country_empresa_pj');
-                        $step1['cities_empresa_pj'] = $request->get('cities_empresa_pj');
+                        $step1['city_empresa_pj'] = $request->get('cities_empresa_pj');
                         $step1['address_empresa_pj'] = $request->get('address_empresa_pj');
                         $step1['nombre_rep_pj'] = $request->get('nombre_rep_pj');
                         $step1['apellido_rep_pj'] = $request->get('apellido_rep_pj');
@@ -188,7 +147,7 @@ class SignUpController extends Controller
                 Session::put('step1',$step1);
             break;
             case 2:
-                $step2 = [];
+                $step2 = $this->initialize(2);
                 // Validate person-type checkbox
                 $validations['lang'] = 'required';
                 // Validate what needs to be validated
@@ -201,7 +160,7 @@ class SignUpController extends Controller
                 Session::put('step2',$step2);
             break;
             case 3:
-                $step3 = [];
+                $step3 = $this->initialize(3);;
                 $validations['email_login'] = 'required|email';
                 $validations['pw_login'] = 'required';
                 // Validate what needs to be validated
@@ -215,7 +174,7 @@ class SignUpController extends Controller
                 Session::put('step3',$step3);
             break;
             case 4:
-                $step4 = [];
+                $step4 = $this->initialize(4);
                 $validations['frequency_checkbox'] = 'required';
                 $step4['frequency_checkbox'] = $request->get('frequency_checkbox');
                 if ($request->get('frequency_checkbox') == 'other'){
@@ -251,7 +210,7 @@ class SignUpController extends Controller
                 Session::put('step4',$step4);
             break;
             case 5:
-                $step5 = [];
+                $step5 = $this->initialize(5);
                 $validations['banco_origen'] = 'required|string';
                 $validations['banco_destino'] = 'required|string';
                 $validations['country_facturacion'] = 'required';
@@ -265,12 +224,144 @@ class SignUpController extends Controller
                 $step5['banco_destino'] = $request->get('banco_destino');
                 $step5['country_facturacion'] = $request->get('country_facturacion');
                 Session::put('step5',$step5);
-                //saveUserIntoDatabase();
+                $this->saveUserIntoDatabase();
             break;
         }
         return response()->json(['success'=>Session::all()]);
     }
 
+    private function initialize($step){
+        switch($step){
+            case 0:
+                return [
+                    'found_us' => null
+                ];
+            case 1:
+                return [
+                    'person_type' => null,
+                    'nombre_pn' => null,
+                    'apellido_pn' => null,
+                    'user_id_pn' => null,
+                    'email_pn' => null,
+                    'country_pn' => null,
+                    'phone_checkbox_pn' => null,
+                    'mobile_pn' => null,
+                    'landline_pn' => null,
+                    'landline_ext_pn' => null,
+                    'nombre_empresa_pj' => null,
+                    'rif_empresa_pj' => null,
+                    'country_empresa_pj' => null,
+                    'cities_empresa_pj' => null,
+                    'address_empresa_pj' => null,
+                    'nombre_rep_pj' => null,
+                    'apellido_rep_pj' => null,
+                    'email_rep_pj' => null,
+                    'phone_checkbox_pj' => null,
+                    'nombre_empresa_pj' => null,
+                    'rif_empresa_pj' => null,
+                    'country_empresa_pj' => null,
+                    'city_empresa_pj' => null,
+                    'address_empresa_pj' => null,
+                    'nombre_rep_pj' => null,
+                    'apellido_rep_pj' => null,
+                    'email_rep_pj' => null,
+                    'mobile_pj' => null,
+                    'landline_pj' => null,
+                    'landline_ext_pj' => null,
+                ];
+            case 2:
+                return [
+                    'lang' => null,
+                ];
+            case 3:
+                return [
+                    'email_login' => null,
+                    'pw_login' => null,
+                ];
+            case 4:
+                return [
+                    'frequency_checkbox' => null,
+                    'days_frequency' => null,
+                    'interest_services' => null,
+                    'news_means' => null,
+                ];
+            case 5:
+                return [
+                    'user_unique_id' => null,
+                    'banco_origen' => null,
+                    'banco_destino' => null,
+                    'country_facturacion' => null,
+                ];
+        }
+    }
 
+    private function saveUserIntoDatabase(){
+        $session_data = Session::all();
+        $data = [];
+        for($i = 0; $i<6;$i++){
+            foreach ($session_data['step'.$i] as $key => $value){
+                $data[$key] = $value;
+            }
+        }
+        Log::info('Data to put into DB:');
+        Log::info($data);
+        $user = new User;
+        // Set date
+        $user->date_reg = date('Y-m-d');
+        // Set User role (Default as regular)
+        $user->role = 'regular';
+        // Step 0  (Cómo supo de nosotros)
+            $user->found_us = $data['found_us'];
+        // Step 1  (Registrar usuario [Natural|Jurídico])
+            $user->person_type = $data['person_type'];
+            // Create model based in person type
+            switch($data['person_type']){
+                case 'nat':
+                    $user_type = new NaturalPerson;
+                    $user_type->country_id = $data['country_pn'];
+                    $user_type->name = $data['nombre_pn'];
+                    $user_type->last_name = $data['apellido_pn'];
+                    $user_type->person_id = $data['user_id_pn'];
+                    $user_type->email = $data['email_pn'];
+                    $user_type->mobile_number = $data['mobile_pn'];
+                    $user_type->landline_number = $data['landline_pn'];
+                    $user_type->landline_number_ext = $data['landline_ext_pn'];
+                case 'jur':
+                    $user_type = new LegalPerson;
+                    $user_type->country_id = $data['country_empresa_pj'];
+                    $user_type->city_id = $data['city_empresa_pj'];
+                    $user_type->name_comp = $data['nombre_empresa_pj'];
+                    $user_type->rif = $data['rif_empresa_pj'];
+                    $user_type->address_comp = $data['address_empresa_pj'];
+                    $user_type->name_rep = $data['nombre_rep_pj'];
+                    $user_type->last_name_rep = $data['apellido_rep_pj'];
+                    $user_type->email_rep = $data['email_rep_pj'];
+                    $user_type->mobile_number = $data['mobile_pj'];
+                    $user_type->landline_number = $data['landline_pj'];
+                    $user_type->landline_number_ext = $data['landline_ext_pj'];
+            }
+        // Step 2 (Idioma)
+            $user->lang = $data['lang'];
+        // Step 3 (Login info)
+            $user->email = $data['email_login'];
+            $user->password = $data['pw_login'];
+        // Step 4 (Frequency info)
+            $user->days_freq = $data['days_frequency'];
+            $user->interest_services = $data['interest_services'];
+            $user->news_means = $data['news_means'];
+        // Step 5 (Facturacion info)
+            $user->user_unique_id = $data['user_unique_id'];
+            $user->banco_origen = $data['banco_origen'];
+            $user->banco_destino = $data['banco_destino'];
+            $user->country_facturacion = $data['country_facturacion'];
+        // Insertar usuario antes de las tablas con sus relaciones
+            $user->save();
+        // Insertar modelo user_type (el Foreign key se asigna automáticamente con la llamada a save())
+            if($data['person_type'] == 'nat'){
+                $user->naturalPerson()->save($user_type);
+            }else{
+                $user->legalPerson()->save($user_type);
+            }
+    }
 }
 

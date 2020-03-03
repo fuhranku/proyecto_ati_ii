@@ -9,16 +9,12 @@ class User extends Model
     // To put a custom table name use this
     // protected $table = 'my_flights';
 
-    public function socialMedias(){
-        return $this->belongsToMany('App\Models\Sign_up\SocialMedia');
-    }
-
     public function naturalPerson(){
-        return $this->hasOne('App\Models\Sign_up\NaturalPerson');
+        return $this->hasOne('App\Models\Sign_up\NaturalPerson', 'user_id');
     }
     
     public function legalPerson(){
-        return $this->hasOne('App\Models\Sign_up\LegalPerson');
+        return $this->hasOne('App\Models\Sign_up\LegalPerson', 'user_id');
     }
     
     protected $casts = [
@@ -27,28 +23,22 @@ class User extends Model
         'news_means' => 'array',
     ];
 
+    public $timestamps = false;
+
     protected $fillable = [
-        "natPerID-FK",
-        "legPerID-FK",
-        "found_us",
-        "dateReg",
-        "user_unique_id",
-        "role",
-        "foundUsCheckbox",
-        "foundUsOther",
-        "lang",
-        "email",
-        "password",
-        "interest_services",
-        "infoFreq",
-        "daysFreq",
-        "emailFreq",
-        "socialFreq",
-        "phoneFreq",
-        "otherFreq",
-        "profileFBFreq",
-        "bank",
-        "bankCountry",
-        "bankDest",
+        'date_reg',
+        'role',
+        'found_us',
+        'person_type',
+        'lang',
+        'email',
+        'password',
+        'days_freq',
+        'interest_services',
+        'news_means',
+        'user_unique_id',
+        'banco_origen',
+        'banco_destino',
+        'country_facturacion'
     ];
 }

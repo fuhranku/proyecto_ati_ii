@@ -9,16 +9,20 @@ class NaturalPerson extends Model
     public function country(){
         $this->hasOne('App\Models\Sign_up\Country');
     }
-
+    
     protected $table = 'naturalPeople';
+    public $timestamps = false;
     protected $fillable = [
+        // Foreign Keys
         'user_id',
+        'country_id',
+        // Data
         'name',
-        'lastName',
-        'personID',
+        'last_name',
+        'person_id',  // This id refers to user country data identification (La cédula)
         'email',
-        'mobileNumber',
-        'landlineNumber',
-        'landlineNumberExt',
+        'mobile_number',
+        'landline_number',
+        'landline_number_ext',
     ];
 }

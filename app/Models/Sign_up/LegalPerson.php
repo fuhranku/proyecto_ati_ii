@@ -9,19 +9,27 @@ class LegalPerson extends Model
     public function country(){
         $this->hasOne('App\Models\Sign_up\Country');
     }
+
+    public function city(){
+        $this->hasOne('App\Models\Sign_up\City');
+    }
     
+    public $timestamps = false;
     protected $table = 'legalPeople';
     protected $fillable = [
+        // Foreign Keys
         'user_id',
-        'nameComp',
-        'nameRep',
-        'RIF',
-        'countryID-FK',
-        'cityID-FK',
-        'mobileNumber',
-        'landlineNumber',
-        'landlineNumberExt',
-        'emailRep',
-        'addressComp',
+        'country_id',
+        'city_id',
+        // Data
+        'name_comp',
+        'rif',
+        'address_comp',
+        'name_rep',
+        'last_name_rep',
+        'email_rep',
+        'mobile_number',
+        'landline_number',
+        'landline_number_ext',
     ];
 }
