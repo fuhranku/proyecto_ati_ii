@@ -326,6 +326,7 @@ class SignUpController extends Controller
                     $user_type->mobile_number = $data['mobile_pn'];
                     $user_type->landline_number = $data['landline_pn'];
                     $user_type->landline_number_ext = $data['landline_ext_pn'];
+                break;
                 case 'jur':
                     $user_type = new LegalPerson;
                     $user_type->country_id = $data['country_empresa_pj'];
@@ -339,6 +340,7 @@ class SignUpController extends Controller
                     $user_type->mobile_number = $data['mobile_pj'];
                     $user_type->landline_number = $data['landline_pj'];
                     $user_type->landline_number_ext = $data['landline_ext_pj'];
+                break;
             }
         // Step 2 (Idioma)
             $user->lang = $data['lang'];
