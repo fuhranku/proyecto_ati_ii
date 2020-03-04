@@ -32,7 +32,7 @@
                 <div class="col-sm-4"></div>
                 <div class="col-sm-2">
                     <div class="text-center">
-                        <button type="submit" class="btn btn-yellow" id="sign-up-btn" style="font-weight:bold;color:#ffffff; padding:5px 30px">
+                        <button type="submit" class="btn btn-yellow" id="sign-up-btn" style="font-weight:bold;color:#ffffff; padding:5px 30px" form='form-step-5'>
                             Registrarme
                         </button>
                     </div>
@@ -50,6 +50,7 @@
 
 <script type="text/javascript">
     var form_post_url = "{{ url('/sign_up')}}";
+    var retrieve_cities_url = "{{ url('/getCities')}}";
 </script>
 
 @endsection

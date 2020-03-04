@@ -150,8 +150,8 @@ The navbar toggle appears at this breakpoint */
     width: auto !important;
 }
 
-#container-p-natural > .row:not(:nth-child(7)){
-    margin-bottom: 15px;
+.input-row{
+    margin-top: 15px;
     
 }
 

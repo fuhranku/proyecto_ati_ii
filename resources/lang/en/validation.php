@@ -133,6 +133,45 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'found_us' => [
+            'required' => 'You have to select at least one option'
+        ],
+        'social_media' => [
+            'required' => 'You have to select at least one social media'
+        ],
+        'other_text' => [
+            'required' => 'Please, tell us how did you find us'
+        ],
+        'person_type' => [
+            'required' => 'You have to select at least one option'
+        ],
+        'phone_checkbox_pn' => [
+            'required' => 'You have to select at least one option'
+        ],
+        'country_empresa_pj' => [
+            'required' => 'You have to choose your country of origin'
+        ],
+        'cities_empresa_pj' => [
+            'required' => 'You have to choose a city'
+        ],
+        'phone_checkbox_pj' => [
+            'required' => 'You have to select at least one option'
+        ],
+        'lang' => [
+            'required' => 'You have to select a language'
+        ],
+        'frequency_checkbox' => [
+            'required' => 'You have to select an option'
+        ],
+        'interest_services' => [
+            'required' => 'You have to pick at least one service'
+        ],
+        'news_means' => [
+            'required' => 'You have to choose at least one option'
+        ],
+        'news_means.rrss' => [
+            'required' => 'You have to choose at least one social media'
+        ],
     ],
 
     /*
@@ -146,6 +185,23 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'nombre_pn' => 'name',
+        'apellido_pn' => 'last name',
+        'user_id_pn' => 'identification',
+        'email_pn' => 'e-mail address',
+        'country_pn' => 'country of origin',
+        'nombre_empresa_pj' => 'company name',
+        'rif_empresa_pj' => 'TIR',
+        'address_empresa_pj' => 'company address',
+        'nombre_rep_pj' => 'name',
+        'apellido_rep_pj' => 'last name',
+        'email_rep_pj' => 'e-mail address',
+        'email_login' => 'e-mail address',
+        'pw_login' => 'password',
+        'news_means.mail' => 'e-mail address',
+        'news_means.other' => 'other',
+        'news_means.facebook_acc' => 'facebook e-mail address',
+    ],
 
 ];

@@ -4,7 +4,7 @@
     <div class="w-30 mx-auto text-center bg-white pb-3">
         <div class="row">
             <div class="col-sm-12">
-                <div class="bg-blue text-white p-2">
+                <div class="bg-blue text-white p-2 font-weight-bold">
                     Registro Exitoso
                 </div>
             </div>
