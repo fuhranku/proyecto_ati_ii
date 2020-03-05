@@ -76,7 +76,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <input type="text" class="form-control" name="Email"/>
+                        <input type="email" class="form-control" name="Email"/>
                         {!! $errors->first('Email', '<span class="help-block">:message</span>') !!}
                     </div>
                 </div>

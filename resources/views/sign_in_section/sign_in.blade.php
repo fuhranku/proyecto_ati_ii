@@ -13,6 +13,7 @@
             @endslot
             @slot('content')
             <form method="post" action="{{ route('main.sign_in') }}">
+                {{-- Email --}}
                 <div class="form-group">
                 <div class="row">
                     <div class="col-sm-4 modal-label">
@@ -24,6 +25,7 @@
                     </div>
                 </div>
                 </div>
+                {{-- Password --}}
                 <div class="form-group">
                     @csrf
 
@@ -37,6 +39,7 @@
                         </div>
                     </div>
                 </div>
+                {{-- Buttons --}}
                 <div class="button-group text-center">
                     <div class="row">
                         <div class="col-md-12">
