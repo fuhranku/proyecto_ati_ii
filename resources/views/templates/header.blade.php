@@ -27,14 +27,14 @@
                 </li>
 
                 <li class="nav-item">
-                        <a class="nav-link mx-3 btn-yellow ry-corners mr-2 mt-1 p-2 pr-3 pl-3 sign_in_button">Iniciar sesión</a>
+                        <a class="nav-link mx-3 btn-yellow ry-corners mr-2 mt-1 pr-3 pl-3 sign_in_button">Iniciar sesión</a>
                 </li>
                 <li class="nav-item">
-                        <a class="nav-link mx-3 btn-yellow ry-corners mr-2 mt-1 p-2 pr-3 pl-3 ml-n2" href="{{ url('sign_up') }}">Registrarse</a>
+                        <a class="nav-link mx-3 btn-yellow ry-corners mt-1 pr-3 pl-3 ml-n2" href="{{ url('sign_up') }}">Registrarse</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link mx-3 dropdown-toggle btn-yellow ry-corners mr-2 mt-1 pt-2 pb-2 pr-5 pl-5" href="#" id="navbarUser" role="button" data-toggle="dropdown">Usuario</a>
-                    <div class="dropdown-menu mt-n1 ml-3 user-dropdown p-0" aria-labelledby="navbarUser">
+                <li class="nav-item dropdown" id='nav-item-dropdown'>
+                    <a class="nav-link mx-3 dropdown-toggle btn-yellow ry-corners ml-n2 mr-2 mt-1 pr-5 pl-5" href="#" id="navbarUser" role="button" data-toggle="dropdown">Usuario</a>
+                    <div class="dropdown-menu mt-n1 ml-3 user-dropdown ml-n2" aria-labelledby="navbarUser">
                         <a class="dropdown-item user-option font-weight-bold p-2" href="#"> Datos de usuario </a>
                         <a class="dropdown-item user-option font-weight-bold p-2" href="#"> Cerrar sesión </a>
                     </div>
