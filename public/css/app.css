@@ -325,3 +325,35 @@ color: white;
 .cursor-pointer{
     cursor: pointer !important;
 }
+
+.avatar-image{
+    width: 35px;
+    padding: 6px 0px;
+}
+
+.log-in-text{
+    font-size: 14px;
+}
+
+.button-menu:hover{
+    color: yellow;
+    text-decoration: underline !important;
+}
+
+.user-dropdown{
+    border: 3px solid #ffc000;
+}
+
+.user-option{
+    padding: 7px 25px !important;
+    font-size: 14px !important;
+}
+.user-option:first-child{
+    border-bottom: 3px solid #ffc000;
+}
+
+.user-option:hover{
+    background-color: #ffc000;
+    color:white;
+
+}
