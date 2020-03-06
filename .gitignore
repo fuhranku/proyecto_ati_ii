@@ -2,5 +2,7 @@
 /vendor
 # Enviroment configuration
 .env
+/node_modules
+/.vscode
 
 
