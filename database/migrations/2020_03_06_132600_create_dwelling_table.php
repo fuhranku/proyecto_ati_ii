@@ -13,7 +13,7 @@ class CreateDwellingTable extends Migration
      */
     public function up()
     {
-        Schema::table('dwelling', function (Blueprint $table) {
+        Schema::create('dwelling', function (Blueprint $table) {
             //
             $table->bigIncrements('id_dwelling');
             $table->integer('continentID');
@@ -29,6 +29,7 @@ class CreateDwellingTable extends Migration
             $table->string("serviceTransportDetails");
             $table->string("exactLocation");
             $table->integer('price');
+            $table->integer('id_currency');
 
             //Contact Data
             $table->string("contactName");
@@ -41,8 +42,6 @@ class CreateDwellingTable extends Migration
 
             $table->dateTime('contactHourFrom');
             $table->dateTime('contactHourTo');
-
-
 
         });
     }

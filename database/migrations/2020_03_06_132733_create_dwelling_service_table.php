@@ -13,7 +13,7 @@ class CreateDwellingServiceTable extends Migration
      */
     public function up()
     {
-        Schema::table('dwellingService', function (Blueprint $table) {
+        Schema::create('dwellingService', function (Blueprint $table) {
             //
             $table->integer('id_dwelling');
             $table->integer("id_service");

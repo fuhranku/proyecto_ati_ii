@@ -13,7 +13,7 @@ class CreateCurrencyTable extends Migration
      */
     public function up()
     {
-        Schema::table('currency', function (Blueprint $table) {
+        Schema::create('currency', function (Blueprint $table) {
             //
             $table->bigIncrements('id_currency');
             $table->string("name_currency");

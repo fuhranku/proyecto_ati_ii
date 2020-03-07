@@ -13,7 +13,7 @@ class CreateConfortTable extends Migration
      */
     public function up()
     {
-        Schema::table('confort', function (Blueprint $table) {
+        Schema::create('confort', function (Blueprint $table) {
             //
             $table->bigIncrements('id_confort');
             $table->string("name_confort");

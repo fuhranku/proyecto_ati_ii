@@ -27,6 +27,7 @@ class Dwelling extends Model implements DAO
         'extraDetails',
         'serviceTransportDetails',
         'exactLocation',
+        'id_currency',
         'price',
 
         //Contact Data

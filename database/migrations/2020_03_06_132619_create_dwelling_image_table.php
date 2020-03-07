@@ -13,7 +13,7 @@ class CreateDwellingImageTable extends Migration
      */
     public function up()
     {
-        Schema::table('dwellingImage', function (Blueprint $table) {
+        Schema::create('dwellingImage', function (Blueprint $table) {
             //
             $table->integer('IDUser');
             $table->string("url");
