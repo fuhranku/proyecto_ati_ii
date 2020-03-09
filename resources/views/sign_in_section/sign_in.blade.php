@@ -14,28 +14,28 @@
             @slot('content')
             <form method="post" action="{{ route('main.sign_in') }}">
                 {{-- Email --}}
-                <div class="form-group">
+            <div class="form-group " {{ $errors->has('email') ? 'style="color:red;"' : '' }}>
                 <div class="row">
                     <div class="col-sm-4 modal-label">
-                        <label for="Email">Email</label>
+                        <label for="email">Email</label>
                     </div>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="Email"/>
-                        {!! $errors->first('Email', '<span class="help-block">:message</span>') !!}
+                        <input type="text" class="form-control" name="email"/>
+                        {{-- {!! $errors->first('email', '<span class="help-block">:message</span>') !!} --}}
                     </div>
                 </div>
                 </div>
                 {{-- Password --}}
-                <div class="form-group">
+                <div class="form-group " {{ $errors->has('password') ? 'style="color:red;"' : '' }}>
                     @csrf
 
                     <div class="row">
                         <div class="col-sm-4 modal-label">
-                            <label for="Password">Password</label>
+                            <label for="password">Password</label>
                         </div>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="Password"/>
-                            {!! $errors->first('Password', '<span class="help-block">:message</span>') !!}
+                            <input type="password" class="form-control" name="password"/>
+                            {{-- {!! $errors->first('password', '<span class="help-block">:message</span>') !!} --}}
                         </div>
                     </div>
                 </div>

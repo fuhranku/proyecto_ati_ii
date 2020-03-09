@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\Auth;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -18,6 +19,11 @@ class SignInController extends Controller
 {
     public function login(Request $request)
     {
+        $credentials = $this->validate(request(), [
+            'email' => 'email|required|string',
+            'password' => 'required|string'
+        ]);
+        // dd($credentials);
         $emailQ = $request->get('email');
         $passQ = Hash::make($request->get('password'));
         $emailQ = 'asd@sd.vs';
@@ -31,12 +37,21 @@ class SignInController extends Controller
             // print_r($queryUser);
             // die();
             // $request->session()->put('info', $queryUser);
-            $reqInfo = $request->session()->get('info');
+            session(['info' => $queryUser]);
+            $sessionInfo = session('info');
+            echo $sessionInfo->email;
+            dd($sessionInfo);
+            // $reqInfo = $request->session()->get('info');
             // $result = json_decode($reqInfo, true);
-            dd( $reqInfo->email);
+            // dd( $reqInfo->email);
         }
         else {
             echo 'hi';
         }
+    }
+
+    public function getSessionInfo()
+    {
+        return session('info');
     }
 }

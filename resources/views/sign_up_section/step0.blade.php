@@ -24,7 +24,7 @@
                         <li class="dropdown mt-2">
                             <a href="#" data-toggle="dropdown p-5" class="dropdown-toggle border-gray"><b class="caret text-right"></b></a>
                             <ul class="dropdown-menu">
-                                @foreach($socialMedias as $socialMedia)
+                                @foreach($socialMedias ?? '' as $socialMedia)
                                 <li><label class="checkbox"><input type="checkbox" value="{{$socialMedia->id}}" name="social_media">{{$socialMedia->name}}</label></li>
                                 @endforeach
                             </ul>
