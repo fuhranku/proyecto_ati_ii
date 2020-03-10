@@ -38,7 +38,7 @@ Route::post('getCities','SignUpController@getCities');
 // Iniciar sesión
 Route::post('sign_in', 'SignInController@login')->name('main.sign_in');
 Route::get('sign_in', 'SignInController@getSessionInfo')->name('sign_in.get');
-Route::get('sign_in', 'SignInController@logout')->name('sign_in.logout');
+Route::get('sign_in', 'SignInController@logout')->name('logout');
 
 // Vivienda
 Route::get('dwelling/publish', 'DwellingController@publish')->name('dwelling.publish');

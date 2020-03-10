@@ -46,7 +46,12 @@
                     @endif
 
                 <li class="nav-item">
-                        <a class="nav-link mx-3 btn-yellow ry-corners mr-2 mt-1 pr-3 pl-3 sign_in_button">Iniciar sesión</a>
+                    @if (Session::has('info'))
+                    <a class="nav-link mx-3 btn-yellow ry-corners mr-2 mt-1 pr-3 pl-3 log_out_button" href="{{ url('logout') }}">Cerrar sesión</a>
+                    @else
+                    
+                    <a class="nav-link mx-3 btn-yellow ry-corners mr-2 mt-1 pr-3 pl-3 sign_in_button">Iniciar sesión</a>
+                    @endif
                 </li>
                 <li class="nav-item">
                         <a class="nav-link mx-3 btn-yellow ry-corners mt-1 pr-3 pl-3 ml-n2" href="{{ url('sign_up') }}">Registrarse</a>
