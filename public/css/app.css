@@ -361,3 +361,7 @@ color: white;
 #navbarUser{
     height: 38px;
 }
+
+.profile-item{
+    width: 11vw;
+}
