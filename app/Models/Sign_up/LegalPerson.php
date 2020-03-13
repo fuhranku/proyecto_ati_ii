@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class LegalPerson extends Model
 {
     public function country(){
-        $this->hasOne('App\Models\Sign_up\Country');
+        $this->hasOne('App\Models\Location\Country');
     }
 
     public function city(){
-        $this->hasOne('App\Models\Sign_up\City');
+        $this->hasOne('App\Models\Location\City');
     }
     
     public $timestamps = false;

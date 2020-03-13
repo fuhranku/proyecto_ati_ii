@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Sign_up;
+namespace App\Models\Location;
 
 use Illuminate\Database\Eloquent\Model;
 

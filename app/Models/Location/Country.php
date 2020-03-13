@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Sign_up;
+namespace App\Models\Location;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,7 +15,7 @@ class Country extends Model
     }
 
     public function cities(){
-        return $this->hasMany('App\Models\Sign_up\City');
+        return $this->hasMany('App\Models\Location\City');
     }
 
     protected $table = 'countries';
