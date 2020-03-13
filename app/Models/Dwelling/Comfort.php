@@ -4,15 +4,15 @@ namespace App\Models\Dwelling;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DwellingConfort extends Model
+class Confort extends Model
 {
     //
 
     public $timestamps = false;
 
     protected $fillable = [
-        'id_dwelling',
-        'id_service',
+        'id_comfort',
+        'name_comfort',
     ];
 
     public function remove($id){
@@ -22,11 +22,11 @@ class DwellingConfort extends Model
         
         // $this->Nombre=$data->input("Nombre");
 
-        // $this->create();
+        //$this->create();
     }
     
     public function find($property){
-        return $this->where('id_dwelling', $property)->first();
+        return $this->where('id_comfort', $property)->first();
     }
     
     public function create(){

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDwellingConfortTable extends Migration
+class CreateComfortTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateDwellingConfortTable extends Migration
      */
     public function up()
     {
-        Schema::create('dwellingConfort', function (Blueprint $table) {
+        Schema::create('comfort', function (Blueprint $table) {
             //
-            $table->integer('id_dwelling');
-            $table->integer("id_confort");
+            $table->bigIncrements('id_comfort');
+            $table->string("name_comfort");
         });
     }
 
@@ -27,7 +27,7 @@ class CreateDwellingConfortTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dwellingConfort');
+        Schema::dropIfExists('comfort');
 
     }
 }
