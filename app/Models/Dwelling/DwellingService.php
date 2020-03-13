@@ -3,9 +3,8 @@
 namespace App\Models\Dwelling;
 
 use Illuminate\Database\Eloquent\Model;
-use app\Patterns\Dao as DAO;
 
-class DwellingService extends Model implements DAO
+class DwellingService extends Model
 {
     //
     public $timestamps = false;

@@ -18,8 +18,13 @@ class Country extends Model
         return $this->hasMany('App\Models\Location\City');
     }
 
+    public function states(){
+        return $this->hasMany('App\Models\Location\State');
+    }
+
     protected $table = 'countries';
     protected $fillable = [
-        'name',
+        'continent_id',
+        'name'
     ];
 }

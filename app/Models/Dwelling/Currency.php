@@ -3,9 +3,8 @@
 namespace App\Models\Dwelling;
 
 use Illuminate\Database\Eloquent\Model;
-use app\Patterns\Dao as DAO;
 
-class Currency extends Model implements DAO
+class Currency extends Model
 {
     //
 
