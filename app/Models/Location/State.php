@@ -11,7 +11,7 @@ class State extends Model
         return $this->hasMany('App\Models\Location\City');
     }
 
-    protected $table = 'state';
+    protected $table = 'states';
     protected $fillable = [
         'country_id',
         'name'

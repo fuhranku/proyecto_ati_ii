@@ -3,39 +3,44 @@
     <div class="col-md-2">
         <span class="badge badge-info">Continente</span>
         <select id="country" class="form-control sm-text" onchange="" id="crt-userType" >
-            <option value="Asia">Asia</option>
-            <option value="Europa">Europa</option>
+            @foreach($continents as $continent)
+                <option value={{$continent->id}}>{{$continent->name}}</option>
+            @endforeach
         </select>
     </div>
     <div class="col-md-2">
         <span class="badge badge-info">Pais</span>
         <select id="country" class="form-control  sm-text" onchange="" id="crt-userType" >
-            <option value="Venezuela">Venezuela</option>
-            <option value="Colombia">Colombia</option>
+            @foreach($countries as $country)
+                <option value={{$country->id}}>{{$country->name}}</option>
+            @endforeach
         </select>
     </div>
 
     <div class="col-md-2">
         <span class="badge badge-info">Estado</span>
         <select id="country" class="form-control sm-text" onchange="" id="crt-userType" >
-            <option value="Monagas">Monagas</option>
-            <option value="Amazonas">Amazonas</option>
+            @foreach($states as $state)
+                <option value={{$state->id}}>{{$state->name}}</option>
+            @endforeach
         </select>
     </div>
 
     <div class="col-md-2">
         <span class="badge badge-info">Ciudad</span>
         <select id="country" class="form-control sm-text " onchange="" id="crt-userType" >
-            <option value="Caracas">Caracas</option>
-            <option value="Caracasx2">Caracasx2</option>
+            @foreach($cities as $city)
+                <option value={{$city->id}}>{{$city->name}}</option>
+            @endforeach
         </select>
     </div>
 
     <div class="col-md-2">
         <span class="badge badge-info">Zona</span>
         <select id="country" class="form-control sm-text " onchange="" id="crt-userType" >
-            <option value="Caracas">Caracas</option>
-            <option value="Caracasx2">Caracasx2</option>
+            @foreach($zones as $zone)
+                <option value={{$zone->id}}>{{$zone->name}}</option>
+            @endforeach
         </select>
     </div>
 

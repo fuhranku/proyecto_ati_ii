@@ -118,16 +118,9 @@
                 <li class="dropdown mt-2">
                     <p data-toggle="dropdown" class="dropdown-toggle border-gray pl-2 tiny-text">Seleccione comodidades</p>
                     <ul class="dropdown-menu">
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="0" name="social_media">Cocina</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="1" name="social_media">Nevera</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Microondas</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Lavadora</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Secadora</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">TV en sala</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">TV en habitación</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Comedor</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Muebles</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Cama matrimonial</label></li>
+                        @foreach ($comforts as $comfort)
+                    <li><label class="checkbox sm-text"><input type="checkbox" value={{$comfort->id}} name="social_media">{{$comfort->name}}</label></li>
+                        @endforeach
                     </ul>
                 </li>
             </ul>
@@ -142,11 +135,9 @@
                 <li class="dropdown mt-2">
                     <p data-toggle="dropdown" class="dropdown-toggle border-gray pl-2 sm-text">Servicios</p>
                     <ul class="dropdown-menu">
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="0" name="social_media">Luz</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="1" name="social_media">Agua</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Teléfono</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Internet residencial</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">otro</label></li>
+                        @foreach ($services as $service)
+                            <li><label class="checkbox sm-text"><input type="checkbox" value={{$service->id}} name="social_media">{{$service->name}}</label></li>
+                        @endforeach
                     </ul>
                 </li>
             </ul>
