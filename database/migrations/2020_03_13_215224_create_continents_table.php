@@ -16,6 +16,7 @@ class CreateContinentsTable extends Migration
         Schema::create('continents', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->string("name_continent");
         });
     }
 
