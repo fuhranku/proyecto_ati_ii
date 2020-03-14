@@ -39,13 +39,14 @@ Route::post('getCities','SignUpController@getCities');
 Route::get('sign_in', 'MainController@sign_in')->name('main.sign_in');
 
 // Vivienda
-Route::get('dwelling/publish', 'DwellingController@publish')->name('dwelling.publish');
+Route::get('dwelling/publish', 'Dwelling\PublishDwellingController@publish')->name('dwelling.publish');
+Route::post('dwelling/post_image', 'Dwelling\PublishDwellingController@post_image')->name('dwelling.post_image');
 Route::get('dwelling/publication', 'DwellingController@publication')->name('dwelling.publication');
-Route::get('dwelling/search', 'DwellingController@search')->name('dwelling.search');
-Route::get('dwelling/modify', 'DwellingController@modify')->name('dwelling.modify');
-Route::get('dwelling/delete', 'DwellingController@delete')->name('dwelling.delete');
-Route::get('dwelling/enable', 'DwellingController@enable')->name('dwelling.disable');
-Route::get('dwelling/disable', 'DwellingController@disable')->name('dwelling.disable');
+Route::get('dwelling/search', 'Dwelling\SearchDwellingController@search')->name('dwelling.search');
+Route::get('dwelling/modify', 'Dwelling\DwellingController@modify')->name('dwelling.modify');
+Route::get('dwelling/delete', 'Dwelling\DwellingController@delete')->name('dwelling.delete');
+Route::get('dwelling/enable', 'Dwelling\DwellingController@enable')->name('dwelling.disable');
+Route::get('dwelling/disable', 'Dwelling\DwellingController@disable')->name('dwelling.disable');
 
 
 // Servicios

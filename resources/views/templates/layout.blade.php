@@ -20,6 +20,7 @@
     <link href="{{ asset('css/modal.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/registro.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dwelling.css') }}" rel="stylesheet">
     <link href="{{ asset('intl-tel-input/build/css/intlTelInput.css')}}" rel="stylesheet">
 </head>
 
