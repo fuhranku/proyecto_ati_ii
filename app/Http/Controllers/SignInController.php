@@ -63,8 +63,10 @@ class SignInController extends Controller
     }
     public function logout()
     {
-        // Session::forget('info');
-        // Session::forget('info_specific');
-        Session::flush();
+        Session::forget('info');
+        Session::forget('info_specific');
+        // Session::flush();
+        // echo 'hi';
+        return redirect()->back();
     }
 }

@@ -47,7 +47,7 @@
 
                 <li class="nav-item">
                     @if (Session::has('info'))
-                    <a class="nav-link mx-3 btn-yellow ry-corners mr-2 mt-1 pr-3 pl-3 log_out_button" href="{{ url('logout') }}">Cerrar sesión</a>
+                    <a class="nav-link mx-3 btn-yellow ry-corners mr-2 mt-1 pr-3 pl-3 log_out_button" href="{{  action('SignInController@logout') }}">Cerrar sesión</a>
                     @else
                     
                     <a class="nav-link mx-3 btn-yellow ry-corners mr-2 mt-1 pr-3 pl-3 sign_in_button">Iniciar sesión</a>
