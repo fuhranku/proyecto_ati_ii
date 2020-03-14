@@ -19,14 +19,14 @@
                     <div class="row p-2">
                         <div class="col-md-6">
                             <span class="badge badge-info">Pais</span>
-                            <select id="country" class="form-control sm-text" onchange="" id="crt-userType" >
+                            <select id="country" class="form-control sm-text" onchange=""   >
                                 <option value="0">Venezuela</option>
                                 <option value="1">Colombia</option>
                             </select>
                         </div>
                         <div class="col-md-6">
                             <span class="badge badge-info">Estado</span>
-                            <select id="country" class="form-control sm-text " onchange="" id="crt-userType" >
+                            <select id="country" class="form-control sm-text " onchange=""   >
                                 <option value="0">Venezuela</option>
                                 <option value="1">Colombia</option>
                             </select>
@@ -58,7 +58,7 @@
             
                         <div class="form-group col-6">
                             <span class="badge badge-info">Tipo de inmueble</span>
-                            <select id="country" class="form-control  sm-text" onchange="" id="crt-userType" >
+                            <select id="country" class="form-control  sm-text" onchange=""   >
                                 <option value="0">Apartamento</option>
                                 <option value="1">Casa</option>
                                 <option value="2">Apartamento y Casa</option>
@@ -89,14 +89,14 @@
                     <div class="row p-2">
                         <div class="col-md-6">
                             <span class="badge badge-info">Continente</span>
-                            <select id="country" class="form-control sm-text" onchange="" id="crt-userType" >
+                            <select id="country" class="form-control sm-text" onchange=""   >
                                 <option value="0">Asia</option>
                                 <option value="1">Europa</option>
                             </select>
                         </div>
                         <div class="col-md-6">
                             <span class="badge badge-info">Pais</span>
-                            <select id="country" class="form-control  sm-text" onchange="" id="crt-userType" >
+                            <select id="country" class="form-control  sm-text" onchange=""   >
                                 <option value="0">Venezuela</option>
                                 <option value="1">Colombia</option>
                             </select>
@@ -107,14 +107,14 @@
                         
                         <div class="col-md-6">
                             <span class="badge badge-info">Estado</span>
-                            <select id="country" class="form-control sm-text" onchange="" id="crt-userType" >
+                            <select id="country" class="form-control sm-text" onchange=""   >
                                 <option value="0">Monagas</option>
                                 <option value="1">Amazonas</option>
                             </select>
                         </div>
                         <div class="col-md-6">
                             <span class="badge badge-info">Ciudad</span>
-                            <select id="country" class="form-control sm-text " onchange="" id="crt-userType" >
+                            <select id="country" class="form-control sm-text " onchange=""   >
                                 <option value="0">Caracas</option>
                                 <option value="1">Caracasx2</option>
                             </select>
@@ -264,7 +264,7 @@
                     <div class="row p-2">
                         <div class="col-md-12">
                             <span class="badge badge-info">Comodidades</span>
-                            <select id="country" class="form-control " onchange="" id="crt-userType" >
+                            <select id="country" class="form-control " onchange=""   >
                                 <option value="0">Asia</option>
                                 <option value="1">Europa</option>
                             </select>
@@ -274,7 +274,7 @@
                     <div class="row p-2">
                         <div class="col-md-12">
                             <span class="badge badge-info">Servicios</span>
-                            <select id="country" class="form-control  " onchange="" id="crt-userType" >
+                            <select id="country" class="form-control  " onchange=""   >
                                 <option value="0">Venezuela</option>
                                 <option value="1">Colombia</option>
                             </select>

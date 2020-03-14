@@ -2,7 +2,7 @@
 <div class="row p-2">
     <div class="col-md-2">
         <span class="badge badge-info">Continente</span>
-        <select id="country" class="form-control sm-text" onchange="" id="crt-userType" >
+        <select id="country" class="form-control sm-text" onchange=""   >
             @foreach($continents as $continent)
                 <option value={{$continent->id}}>{{$continent->name}}</option>
             @endforeach
@@ -10,7 +10,7 @@
     </div>
     <div class="col-md-2">
         <span class="badge badge-info">Pais</span>
-        <select id="country" class="form-control  sm-text" onchange="" id="crt-userType" >
+        <select id="country" class="form-control  sm-text" onchange=""   >
             @foreach($countries as $country)
                 <option value={{$country->id}}>{{$country->name}}</option>
             @endforeach
@@ -19,7 +19,7 @@
 
     <div class="col-md-2">
         <span class="badge badge-info">Estado</span>
-        <select id="country" class="form-control sm-text" onchange="" id="crt-userType" >
+        <select id="country" class="form-control sm-text" onchange=""   >
             @foreach($states as $state)
                 <option value={{$state->id}}>{{$state->name}}</option>
             @endforeach
@@ -28,7 +28,7 @@
 
     <div class="col-md-2">
         <span class="badge badge-info">Ciudad</span>
-        <select id="country" class="form-control sm-text " onchange="" id="crt-userType" >
+        <select id="country" class="form-control sm-text " onchange=""   >
             @foreach($cities as $city)
                 <option value={{$city->id}}>{{$city->name}}</option>
             @endforeach
@@ -37,7 +37,7 @@
 
     <div class="col-md-2">
         <span class="badge badge-info">Zona</span>
-        <select id="country" class="form-control sm-text " onchange="" id="crt-userType" >
+        <select id="country" class="form-control sm-text " onchange=""   >
             @foreach($zones as $zone)
                 <option value={{$zone->id}}>{{$zone->name}}</option>
             @endforeach

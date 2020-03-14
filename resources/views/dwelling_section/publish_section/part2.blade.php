@@ -87,7 +87,7 @@
                 </div>
 
                 <div class="col-md-5">
-                    <select id="country" class="form-control sm-text" onchange="" id="crt-userType">
+                    <select id="country" class="form-control sm-text" onchange=""  >
                         <option value="0">Hasta 2</option>
                         <option value="1">Hasta 5</option>
                     </select>

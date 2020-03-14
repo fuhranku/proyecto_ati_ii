@@ -9,16 +9,18 @@
     <div class="row p-2">
         <div class="col-md-6">
             <span class="badge badge-info">Continente</span>
-            <select id="country" class="form-control sm-text" onchange="" id="crt-userType" >
-                <option value="0">Asia</option>
-                <option value="1">Europa</option>
+            <select id="country" class="form-control sm-text" onchange=""   >
+                @foreach ($continents as $continent)
+                    <option value={{$continent->id}}>{{$continent->name}}</option>
+                @endforeach
             </select>
         </div>
         <div class="col-md-6">
             <span class="badge badge-info">Pais</span>
-            <select id="country" class="form-control  sm-text" onchange="" id="crt-userType" >
-                <option value="0">Venezuela</option>
-                <option value="1">Colombia</option>
+            <select id="country" class="form-control  sm-text" onchange=""   >
+                @foreach ($countries as $country)
+                    <option value={{$country->id}}>{{$country->name}}</option>
+                @endforeach
             </select>
         </div>
     </div>
@@ -27,16 +29,18 @@
         
         <div class="col-md-6">
             <span class="badge badge-info">Estado</span>
-            <select id="country" class="form-control sm-text" onchange="" id="crt-userType" >
-                <option value="0">Monagas</option>
-                <option value="1">Amazonas</option>
+            <select id="country" class="form-control sm-text" onchange=""   >
+                @foreach ($states as $state)
+                    <option value={{$state->id}}>{{$state->name}}</option>
+                @endforeach
             </select>
         </div>
         <div class="col-md-6">
             <span class="badge badge-info">Ciudad</span>
-            <select id="country" class="form-control sm-text " onchange="" id="crt-userType" >
-                <option value="0">Caracas</option>
-                <option value="1">Caracasx2</option>
+            <select id="country" class="form-control sm-text " onchange=""   >
+                @foreach ($cities as $city)
+                    <option value={{$city->id}}>{{$city->name}}</option>
+                @endforeach
             </select>
         </div>
     </div>
@@ -184,9 +188,10 @@
     <div class="row p-2">
         <div class="col-md-12">
             <span class="badge badge-info">Comodidades</span>
-            <select id="country" class="form-control " onchange="" id="crt-userType" >
-                <option value="0">Asia</option>
-                <option value="1">Europa</option>
+            <select id="country" class="form-control " onchange=""   >
+                @foreach ($comforts as $comfort)
+                    <option value={{$comfort->id}}>{{$comfort->name}}</option>
+                @endforeach
             </select>
         </div>
     </div>
@@ -194,9 +199,10 @@
     <div class="row p-2">
         <div class="col-md-12">
             <span class="badge badge-info">Servicios</span>
-            <select id="country" class="form-control  " onchange="" id="crt-userType" >
-                <option value="0">Venezuela</option>
-                <option value="1">Colombia</option>
+            <select id="country" class="form-control  " onchange=""   >
+                @foreach ($services as $service)
+                    <option value={{$service->id}}>{{$service->name}}</option>
+                @endforeach
             </select>
         </div>
     </div>

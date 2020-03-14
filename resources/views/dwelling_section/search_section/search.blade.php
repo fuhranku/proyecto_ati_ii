@@ -13,6 +13,10 @@
             
         </div>
 
+        <script>
+            var quickSearch_post_url = "{{ url('/dwelling/quick_search')}}";
+        </script>
+
 
     </div>
 @endsection

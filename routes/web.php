@@ -42,7 +42,10 @@ Route::get('sign_in', 'MainController@sign_in')->name('main.sign_in');
 Route::get('dwelling/publish', 'Dwelling\PublishDwellingController@publish_get')->name('dwelling.publish');
 Route::post('dwelling/post_image', 'Dwelling\PublishDwellingController@post_image')->name('dwelling.post_image');
 Route::get('dwelling/publication', 'DwellingController@publication')->name('dwelling.publication');
-Route::get('dwelling/search', 'Dwelling\SearchDwellingController@search')->name('dwelling.search');
+
+Route::get('dwelling/search', 'Dwelling\SearchDwellingController@search_get')->name('dwelling.search');
+Route::post('dwelling/quick_search', 'Dwelling\SearchDwellingController@quick_search')->name('dwelling.quick_search');
+
 Route::get('dwelling/modify', 'Dwelling\DwellingController@modify')->name('dwelling.modify');
 Route::get('dwelling/delete', 'Dwelling\DwellingController@delete')->name('dwelling.delete');
 Route::get('dwelling/enable', 'Dwelling\DwellingController@enable')->name('dwelling.disable');
