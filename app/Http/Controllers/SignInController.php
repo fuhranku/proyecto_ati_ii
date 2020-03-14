@@ -47,13 +47,15 @@ class SignInController extends Controller
             $sessionInfo = Session::get('info');
             // echo $sessionInfo->email;
             // dd($sessionInfo);
-            return redirect('about_us');
+            return redirect()->back();
             // $reqInfo = $request->session()->get('info');
             // $result = json_decode($reqInfo, true);
             // dd( $reqInfo->email);
         }
         else {
-            echo 'hi';
+            return redirect()->back()
+            ->withErrors(['email' => 'Invalid input']);
+
         }
     }
 
