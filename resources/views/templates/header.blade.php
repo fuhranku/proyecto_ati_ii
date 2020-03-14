@@ -34,7 +34,7 @@
                 </li>
                 <li class="nav-item dropdown" id='nav-item-dropdown'>
                     <a class="nav-link mx-3 dropdown-toggle btn-yellow ry-corners ml-n2 mr-2 mt-1 pr-5 pl-5" href="#" id="navbarUser" role="button" data-toggle="dropdown">Usuario</a>
-                    <div class="dropdown-menu mt-n1 ml-3 user-dropdown ml-n2" aria-labelledby="navbarUser">
+                    <div class="dropdown-menu mt-n1 ml-3 user-dropdown ml-n2 pt-0 pb-0" aria-labelledby="navbarUser">
                         <a class="dropdown-item user-option font-weight-bold p-2" href="#"> Datos de usuario </a>
                         <a class="dropdown-item user-option font-weight-bold p-2" href="#"> Cerrar sesión </a>
                     </div>
