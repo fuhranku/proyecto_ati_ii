@@ -45,24 +45,24 @@
                 </li>
                     @endif
 
+                @if (!Session::has('info'))
                 <li class="nav-item">
-                    @if (Session::has('info'))
-                    <a class="nav-link mx-3 btn-yellow ry-corners mr-2 mt-1 pr-3 pl-3 log_out_button" href="{{  action('SignInController@logout') }}">Cerrar sesión</a>
-                    @else
-                    
+                    {{-- <a class="nav-link mx-3 btn-yellow ry-corners mr-2 mt-1 pr-3 pl-3 log_out_button" href="{{  action('SignInController@logout') }}">Cerrar sesión</a> --}}
                     <a class="nav-link mx-3 btn-yellow ry-corners mr-2 mt-1 pr-3 pl-3 sign_in_button">Iniciar sesión</a>
-                    @endif
                 </li>
                 <li class="nav-item">
-                        <a class="nav-link mx-3 btn-yellow ry-corners mt-1 pr-3 pl-3 ml-n2" href="{{ url('sign_up') }}">Registrarse</a>
+                    <a class="nav-link mx-3 btn-yellow ry-corners mt-1 pr-3 pl-3 ml-n2" href="{{ url('sign_up') }}">Registrarse</a>
                 </li>
+                @else
                 <li class="nav-item dropdown" id='nav-item-dropdown'>
                     <a class="nav-link mx-3 dropdown-toggle btn-yellow ry-corners ml-n2 mr-2 mt-1 pr-5 pl-5" href="#" id="navbarUser" role="button" data-toggle="dropdown">Usuario</a>
                     <div class="dropdown-menu mt-n1 ml-3 user-dropdown ml-n2" aria-labelledby="navbarUser">
                         <a class="dropdown-item user-option font-weight-bold p-2" href="#"> Datos de usuario </a>
-                        <a class="dropdown-item user-option font-weight-bold p-2" href="#"> Cerrar sesión </a>
+                        <a class="dropdown-item user-option font-weight-bold p-2" href="{{  action('SignInController@logout') }}"> Cerrar sesión </a>
                     </div>
                 </li>
+                    
+                @endif
             </ul>
             <!-- Second navbar ROW -->
             <ul class="navbar-nav justify-content-center w-100 bg-blue">
@@ -73,13 +73,19 @@
                     <a class="nav-link dropdown-toggle button-menu" href="#" id="navbarDwelling" role="button" data-toggle="dropdown">Vivienda</a>
 
                     <div class="dropdown-menu" aria-labelledby="navbarDwelling">
+                        @if (Session::get('info')->role == 'ceo')
                         <a class="dropdown-item" href="{{ url('dwelling/publish') }}">Publicar</a>
                         <a class="dropdown-item" href="{{ url('dwelling/publication') }}">Ver Publicaciones</a>
+                        @endif
                         <a class="dropdown-item" href="{{ url('dwelling/search') }}">Buscar</a>
+                        @if (Session::get('info')->role == 'ceo')
                         <a class="dropdown-item" href="{{ url('dwelling/modify') }}">Modificar</a>
+                        @endif
+                        @if (Session::get('info')->role == 'ceo' || Session::get('info')->role == 'adm')
                         <a class="dropdown-item" href="{{ url('dwelling/delete') }}">Eliminar</a>
                         <a class="dropdown-item" href="{{ url('dwelling/enable') }}">Habilitar</a>
                         <a class="dropdown-item" href="{{ url('dwelling/disable') }}">Deshabilitar</a>
+                        @endif
                     </div>
                 </li>
                 <li class="nav-item mr-7 dropdown">
@@ -119,4 +125,5 @@
             </ul>
         </div>
     </nav>
+    <p style="text-align:right">Síguenos o compártelo por:</p>
 </header>

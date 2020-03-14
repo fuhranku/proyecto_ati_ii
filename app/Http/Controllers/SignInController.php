@@ -26,8 +26,8 @@ class SignInController extends Controller
         // dd($credentials);
         $emailQ = $request->get('email');
         $passQ = Hash::make($request->get('password'));
-        $emailQ = 'asd@sd.vs';
-        $passQ = '$2y$10$0BL4UZmQ0X9tXu2PgV.UtebS0Bp7/3QKPYwHD2Yk8BRtGeDKPVdL.';
+        // $emailQ = 'asd@sd.vs';
+        // $passQ = '$2y$10$0BL4UZmQ0X9tXu2PgV.UtebS0Bp7/3QKPYwHD2Yk8BRtGeDKPVdL.';
         $queryUser = DB::table('users')->select('*')->where('email', '=', $emailQ)->where('password', '=', $passQ)->first();
         
         if ($queryUser) {
@@ -57,16 +57,12 @@ class SignInController extends Controller
         }
     }
 
-    public function getSessionInfo()
-    {
-        return session('info');
-    }
     public function logout()
     {
         Session::forget('info');
         Session::forget('info_specific');
         // Session::flush();
         // echo 'hi';
-        return redirect()->back();
+        return redirect()->route('dwelling.publication');
     }
 }

@@ -41,6 +41,7 @@ Route::get('sign_in', 'SignInController@getSessionInfo')->name('sign_in.get');
 Route::get('sign_in', 'SignInController@logout')->name('sign_in.logout');
 
 // Vivienda
+Route::get('dwelling', 'DwellingController@dwelling_get');
 Route::get('dwelling/publish', 'DwellingController@publish')->name('dwelling.publish');
 Route::get('dwelling/publication', 'DwellingController@publication')->name('dwelling.publication');
 Route::get('dwelling/search', 'DwellingController@search')->name('dwelling.search');
