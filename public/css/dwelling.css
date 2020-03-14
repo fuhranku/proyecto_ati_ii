@@ -1,0 +1,11 @@
+.image-box{
+    height: 70px;
+    padding-left: 0px;
+    padding-right: 0px;
+    /* border-style: none !important; */
+}
+
+.uploaded-image{
+    max-width: 100%;
+    height: 100%;
+}
