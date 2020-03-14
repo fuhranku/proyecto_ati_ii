@@ -26,8 +26,11 @@ class SignInController extends Controller
         // dd($credentials);
         $emailQ = $request->get('email');
         $passQ = Hash::make($request->get('password'));
-        // $emailQ = 'asd@sd.vs';
-        // $passQ = '$2y$10$0BL4UZmQ0X9tXu2PgV.UtebS0Bp7/3QKPYwHD2Yk8BRtGeDKPVdL.';
+        // $emailQ = 'testmegatest@gmail.com';
+        // $passQ = '$2y$10$CRWVCdC09mlI7dGK9kq8a.zrGDxU03eWKnYQZQ6KO8dO6Dup2ZWEC';
+        
+        $emailQ = 'asd@sd.vs';
+        $passQ = '$2y$10$0BL4UZmQ0X9tXu2PgV.UtebS0Bp7/3QKPYwHD2Yk8BRtGeDKPVdL.';
         $queryUser = DB::table('users')->select('*')->where('email', '=', $emailQ)->where('password', '=', $passQ)->first();
         
         if ($queryUser) {
