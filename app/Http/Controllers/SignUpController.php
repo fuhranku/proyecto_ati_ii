@@ -13,10 +13,10 @@ use Session;
 use Log;
 
 // Database Models
+use App\Models\Location\Country;
+use App\Models\Location\City;
 use App\Models\Sign_up\User;
 use App\Models\Sign_up\SocialMedia;
-use App\Models\Sign_up\Country;
-use App\Models\Sign_up\City;
 use App\Models\Sign_up\NaturalPerson;
 use App\Models\Sign_up\LegalPerson;
 

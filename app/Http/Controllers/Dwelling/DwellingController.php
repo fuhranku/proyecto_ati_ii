@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dwelling;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Requesting;
-
+use App\Http\Controllers\Controller;
 
 class DwellingController extends Controller
 {
@@ -22,12 +22,7 @@ class DwellingController extends Controller
         return view('dwelling_section.publication');
     }
 
-    public function search()
-    {
-        
-        //$currentPage = 'create';
-        return view('dwelling_section.search');
-    }
+
 
     public function modify()
     {

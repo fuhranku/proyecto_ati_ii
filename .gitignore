@@ -1,5 +1,6 @@
 # Dependencies
 /vendor
+/node_modules
 # Enviroment configuration
 .env
 /node_modules

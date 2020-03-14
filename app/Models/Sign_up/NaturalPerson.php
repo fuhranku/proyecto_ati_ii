@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class NaturalPerson extends Model
 {
     public function country(){
-        $this->hasOne('App\Models\Sign_up\Country');
+        $this->hasOne('App\Models\Location\Country');
     }
     
     protected $table = 'naturalPeople';
