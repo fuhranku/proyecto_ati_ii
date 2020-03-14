@@ -335,6 +335,10 @@ color: white;
     font-size: 14px;
 }
 
+.sign_in_button{
+    cursor: pointer;
+}
+
 .button-menu:hover{
     color: yellow;
     text-decoration: underline !important;
