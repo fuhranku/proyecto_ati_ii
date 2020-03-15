@@ -67,23 +67,22 @@
             <!-- Second navbar ROW -->
             <ul class="navbar-nav justify-content-center w-100 bg-blue">
                 <li class="nav-item active mr-7">
-                     <a class="nav-link button-menu" href="{{ url('index') }}">Inicio</a>
+                    <a class="nav-link button-menu" href="{{ url('index') }}">Inicio</a>
                 </li>
                 <li class="nav-item mr-7 dropdown">
                     <a class="nav-link dropdown-toggle button-menu" href="#" id="navbarDwelling" role="button" data-toggle="dropdown">Vivienda</a>
 
                     <div class="dropdown-menu" aria-labelledby="navbarDwelling">
                     
-                        @if (Session::has('info') && Session::get('info')->role == 'ceo')
+                        @if (Session::has('info'))
                         <a class="dropdown-item" href="{{ url('dwelling/publish') }}">Publicar</a>
                         <a class="dropdown-item" href="{{ url('dwelling/publication') }}">Ver Publicaciones</a>
                         @endif
                         <a class="dropdown-item" href="{{ url('dwelling/search') }}">Buscar</a>
-                    
-                        @if (Session::has('info') && Session::get('info')->role == 'ceo')
+                        @if (Session::has('info'))
+                        {{-- @if (Session::has('info') && !Session::get('info')->role == 'adm') --}}
                         <a class="dropdown-item" href="{{ url('dwelling/modify') }}">Modificar</a>
-                        @endif 
-                        @if (Session::has('info') && (Session::get('info')->role == 'ceo' || Session::get('info')->role == 'adm'))
+                        {{-- @endif  --}}
                         <a class="dropdown-item" href="{{ url('dwelling/delete') }}">Eliminar</a>
                         <a class="dropdown-item" href="{{ url('dwelling/enable') }}">Habilitar</a>
                         <a class="dropdown-item" href="{{ url('dwelling/disable') }}">Deshabilitar</a>
@@ -127,5 +126,21 @@
             </ul>
         </div>
     </nav>
-    <p style="text-align:right">Síguenos o compártelo por:</p>
+    @if (Session::has('info'))
+        <div class="row siguenos-text">
+            
+            <div class="col-md-10">
+                <p class="">
+                    Síguenos o compártelo por:
+                </p>
+            </div>
+            <div class="col-md-2 text align-top">
+                <a href="#" class="fab fa-facebook-square my-auto"></a>
+                <a href="#" class="fab fa-twitter-square my-auto"></a>
+                <a href="#" class="fab fa-instagram-square my-auto"></a>
+                <a href="#" class="far fa-envelope my-auto"></a>
+            </div>
+        </div>
+    
+    @endif
 </header>

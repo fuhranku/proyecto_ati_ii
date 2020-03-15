@@ -320,14 +320,12 @@
 
                 <button type="button" class="btn btn-info">Ver Detalle</button>
                 @if (Session::has('info'))
-                    @if (Session::get('info')->role == 'ceo')
                     <button type="button" class="btn btn-primary">Modificar</button>
-                    @endif
-                    @if (Session::get('info')->role == 'ceo' || Session::get('info')->role == 'adm')
                     <button type="button" class="btn btn-warning text-white">Deshabilitar</button>
                     <button type="button" class="btn btn-success">Habilitar</button>
+                    {{-- @if (!Session::get('info')->role == 'adm') --}}
                     <button type="button" class="btn btn-danger">Eliminar</button>
-                    @endif
+                    {{-- @endif --}}
                 @endif
 
                 <p class="h5 pt-4">Haz clic en la vivienda de tu preferencia, para ver más información</p>
