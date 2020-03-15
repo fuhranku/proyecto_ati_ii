@@ -41,8 +41,14 @@ Route::get('sign_in', 'SignInController@getSessionInfo')->name('sign_in.get');
 Route::get('sign_in', 'SignInController@logout')->name('sign_in.logout');
 
 // Vivienda
-Route::get('dwelling/publish', 'Dwelling\PublishDwellingController@publish')->name('dwelling.publish');
+// Publish routes
+Route::get('dwelling/publish', 'Dwelling\PublishDwellingController@publish_get')->name('dwelling.publish');
 Route::post('dwelling/post_image', 'Dwelling\PublishDwellingController@post_image')->name('dwelling.post_image');
+Route::post('dwelling/remove_image', 'Dwelling\PublishDwellingController@remove_image')->name('dwelling.remove_image');
+Route::post('dwelling/post_video', 'Dwelling\PublishDwellingController@post_video')->name('dwelling.post_video');
+Route::post('dwelling/remove_video', 'Dwelling\PublishDwellingController@remove_video')->name('dwelling.remove_video');
+
+
 Route::get('dwelling/publication', 'Dwelling\DwellingController@publication')->name('dwelling.publication');
 Route::get('dwelling/search', 'Dwelling\SearchDwellingController@search')->name('dwelling.search');
 Route::get('dwelling/modify', 'Dwelling\DwellingController@modify')->name('dwelling.modify');

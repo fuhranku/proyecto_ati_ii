@@ -5,7 +5,88 @@
     /* border-style: none !important; */
 }
 
+.video-box{
+    height: 70px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 .uploaded-image{
     max-width: 100%;
     height: 100%;
+}
+
+
+/* .image-box > div{
+
+} */
+
+.image-box:hover .overlay{
+    opacity: 1;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease-out;
+    background-color: rgba(184, 184, 179, 0.5);
+}
+
+.dragspace-overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(40, 82, 236);
+    z-index: 1;
+}
+
+.overlay > div.icon-container {
+    transform: translateX(60%);
+}
+
+.icon-container{
+    cursor:pointer;
+}
+
+.close-btn{
+    z-index:1000;
+    left: 41%;
+    position: absolute;
+}
+
+.close-btn:hover{
+    color: white;
+    transition: .5s ease;
+}
+
+.expanded-image{
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    height: 50%;
+    width: 50%;
+}
+
+.icon-container-modal{
+    left: 96%;
+    position: absolute;
+    top: 2%;
+    font-size: 31px;
+    color: white;
+    cursor: pointer;
+}
+
+#video-drop-text{
+    top: 35%;
+    z-index: 1;
 }

@@ -60,7 +60,4 @@
         </div>
     </div>
 
-    <script>
-        var image_post_url = "{{ url('/dwelling/post_image')}}";
-    </script>
 @endsection

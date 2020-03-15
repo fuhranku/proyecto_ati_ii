@@ -369,3 +369,37 @@ color: white;
 .profile-item{
     width: 11vw;
 }
+
+.inner-border {
+
+    /* box-shadow: inset 0px 0px 0px 10px #727271;
+    box-sizing: border-box; Include padding and border in element's width and height */
+    outline: 4px dashed rgba(114, 114, 113, .5);
+    outline-offset:-4px;
+}
+
+.centered-overlay{
+    top: 50%;
+    left: 48%;
+    transform: translateX(-50%);
+    text-align:center;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    color:rgba(114, 114, 113, .5);
+    letter-spacing: 2px;
+
+}
+
+.preloader1{
+    left: 50%;
+    top: 50%;
+    margin-left: -35px;
+    margin-top: -35px;
+    width: 70px;
+    z-index: 1000;
+}
+
+.hover-state:hover{
+    cursor:pointer;
+}
