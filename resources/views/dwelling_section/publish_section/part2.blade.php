@@ -71,6 +71,7 @@
             <div class="dragspace-overlay d-none" id='dragspace-video-publish'></div>
             {{-- End Preloader --}}
             
+
             <div class="position-absolute centered-overlay d-none" id="video-drop-text"> Arrastra un video aquí </div>
 
             <div class="row m-3">
@@ -110,7 +111,15 @@
                 </div>
                 
                 <div class="row m-3 d-flex justify-content-center" id="video-container">
-                    <div class="col-md-2 border border-primary ml-n1 video-box"></div>
+                    <div class="col-md-2 border border-primary ml-n1 video-box">
+                        <div class='video-overlay'></div>
+                        <div class='icon-container play-btn'><i class="far fa-play-circle play-icon"></i></div>
+                        <video class="video-tag" id="frag1" preload="metadata" width="720px" height="540px">
+                            <source src="http://localhost:8000/uploads/videos/flower.webm#t=3.0"
+                                    type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'
+                            >
+                        </video>
+                    </div>
                     <div class="col-md-2 border border-primary ml-3 video-box"></div>
                     <div class="col-md-2 border border-primary ml-3 video-box d-none"></div>
                     <div class="col-md-2 border border-primary ml-3 video-box d-none"></div>

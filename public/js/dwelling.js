@@ -461,7 +461,14 @@ $('.image-box').on('click','.close-btn',function(e){
          'src': src
         },
         success: function(data){
-            
+            var iconContainer = "<div class='overlay'><div class='icon-container close-btn'><i class='far fa-times-circle'></i></div></div>";
+            var imageContainer = '<video class="uploaded-image" src="'+data['url']+'">';
+            var imageQuery = $('.image-box:not(:has(*)):first');
+            imageQuery.append(iconContainer);
+            imageQuery.append(imageContainer);
+            imageQuery.addClass('hover-state');
+            $('#preloader-image-publish').addClass('d-none');
+            $('#dragspace-image-publish').addClass('d-none'); 
         }
     });
 })
