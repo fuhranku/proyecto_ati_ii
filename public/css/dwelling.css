@@ -163,3 +163,6 @@
 .hour-dropdown{
     min-width: 4rem;
 }
+.cursor-pointer{
+    cursor:pointer;
+}

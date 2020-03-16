@@ -31,16 +31,16 @@ class Dwelling extends Model
         'price',
         'currency_id',
 
-        // //Contact Data
-        // 'contactName',
-        // 'contactLastName',
-        // 'contactEmail',
-        // 'contactMobileNumber',
-        // 'contactLandlineNumber',
-        // 'contactLandlineNumberEXT',
-        // 'contactDays',
-        // 'contactHourFrom',
-        // 'contactHourTo',
+        //Contact Data
+        'contact_name',
+        'contact_lastname',
+        'contact_email',
+        'contact_mobilenumber',
+        'contact_landlinenumber',
+        'contact_landlinenumberEXT',
+        'contact_days',
+        'contact_hourfrom',
+        'contact_hourto',
 
     ];
 }

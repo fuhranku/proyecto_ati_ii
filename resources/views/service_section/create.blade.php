@@ -33,7 +33,7 @@
 
         <div class="row p-2 border border-primary">
             <p class="col-md-3 text-blue">Tipo de Usuario</p>
-            <select class="col-md-9" name="userType" class="form-control  col-md-5" onchange="userTypeChange()" id="crt-userType" >
+            <select class="col-md-9" name="userType" class="form-control  col-md-5" onchange="userTypeChange()"   >
                 <option value="0">Persona Natural</option>
                 <option value="1">Empresa</option>
             </select>

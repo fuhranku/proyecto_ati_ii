@@ -26,14 +26,14 @@
         <div class="row p-2">
             <div class="col-md-2">
                 <span class="badge badge-info">Continente</span>
-                <select id="country" class="form-control sm-text" onchange="" id="crt-userType" >
+                <select id="country" class="form-control sm-text" onchange="">
                     <option value="0">Asia</option>
                     <option value="1">Europa</option>
                 </select>
             </div>
             <div class="col-md-2">
                 <span class="badge badge-info">Pais</span>
-                <select id="country" class="form-control  sm-text" onchange="" id="crt-userType" >
+                <select id="country" class="form-control  sm-text" onchange="">
                     <option value="0">Venezuela</option>
                     <option value="1">Colombia</option>
                 </select>
@@ -41,7 +41,7 @@
 
             <div class="col-md-2">
                 <span class="badge badge-info">Estado</span>
-                <select id="country" class="form-control sm-text" onchange="" id="crt-userType" >
+                <select id="country" class="form-control sm-text" onchange=""   >
                     <option value="0">Monagas</option>
                     <option value="1">Amazonas</option>
                 </select>
@@ -49,7 +49,7 @@
 
             <div class="col-md-2">
                 <span class="badge badge-info">Ciudad</span>
-                <select id="country" class="form-control sm-text " onchange="" id="crt-userType" >
+                <select id="country" class="form-control sm-text " onchange=""   >
                     <option value="0">Caracas</option>
                     <option value="1">Caracasx2</option>
                 </select>
@@ -57,7 +57,7 @@
 
             <div class="col-md-2">
                 <span class="badge badge-info">Zona</span>
-                <select id="country" class="form-control sm-text " onchange="" id="crt-userType" >
+                <select id="country" class="form-control sm-text " onchange=""   >
                     <option value="0">Caracas</option>
                     <option value="1">Caracasx2</option>
                 </select>
@@ -344,7 +344,7 @@
                         </div>
 
                         <div class="col-md-5">
-                            <select id="country" class="form-control sm-text" onchange="" id="crt-userType">
+                            <select id="country" class="form-control sm-text" onchange=""  >
                                 <option value="0">Hasta 2</option>
                                 <option value="1">Hasta 5</option>
                             </select>
