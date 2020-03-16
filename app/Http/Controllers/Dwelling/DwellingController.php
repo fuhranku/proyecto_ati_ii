@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 class DwellingController extends Controller
 {
     //
+    public $info;
+    public $info_specific;
     public function publish()
     {
         //$currentPage = 'create';
@@ -48,5 +50,16 @@ class DwellingController extends Controller
         return view('dwelling_section.disable');
     }
 
-
+    public function dwelling_get()
+    {
+        if (Session::has('info') && Session::get('info_specific')) {
+            # code...
+            $info = Session::get('info');
+            $info_specific = Session::get('info_specific');
+        }else {
+            # code...
+            $info = '';
+            $info_specific = '';
+        }
+    }
 }

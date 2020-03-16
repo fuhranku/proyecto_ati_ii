@@ -172,6 +172,20 @@ return [
         'news_means.rrss' => [
             'required' => 'You have to choose at least one social media'
         ],
+        'continent_select' => [
+            'required' => 'You must choose a continent',
+        ],
+        'country_select' => [
+            'required' => 'You must choose a country',
+
+        ],
+        'state_select' => [
+            'required' => 'You must choose a state',
+
+        ],
+        'city_select' => [
+            'required' => 'You must choose a city',
+        ],
     ],
 
     /*

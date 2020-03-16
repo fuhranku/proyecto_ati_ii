@@ -36,13 +36,20 @@ Route::get('sign_up/2/{type}', 'SignUpController@sign_up_get_person_type');
 Route::post('getCities','SignUpController@getCities');
 
 // Iniciar sesión
-Route::get('sign_in', 'MainController@sign_in')->name('main.sign_in');
+Route::post('sign_in', 'SignInController@login')->name('main.sign_in');
+Route::get('sign_in', 'SignInController@getSessionInfo')->name('sign_in.get');
+Route::get('sign_in', 'SignInController@logout')->name('sign_in.logout');
 
 // Vivienda
+// Publish routes
 Route::get('dwelling/publish', 'Dwelling\PublishDwellingController@publish_get')->name('dwelling.publish');
 Route::post('dwelling/post_image', 'Dwelling\PublishDwellingController@post_image')->name('dwelling.post_image');
-Route::get('dwelling/publication', 'DwellingController@publication')->name('dwelling.publication');
-
+Route::post('dwelling/remove_image', 'Dwelling\PublishDwellingController@remove_image')->name('dwelling.remove_image');
+Route::post('dwelling/post_video', 'Dwelling\PublishDwellingController@post_video')->name('dwelling.post_video');
+Route::post('dwelling/remove_video', 'Dwelling\PublishDwellingController@remove_video')->name('dwelling.remove_video');
+Route::post('dwelling/store_dwelling', 'Dwelling\PublishDwellingController@store_dwelling')->name('dwelling.store_dwelling');
+Route::get('dwelling/publication', 'Dwelling\DwellingController@publication')->name('dwelling.publication');
+// Search routes
 Route::get('dwelling/search', 'Dwelling\SearchDwellingController@search_get')->name('dwelling.search');
 Route::post('dwelling/quick_search', 'Dwelling\SearchDwellingController@quick_search')->name('dwelling.quick_search');
 Route::post('dwelling/detailed_search', 'Dwelling\SearchDwellingController@detailed_search')->name('dwelling.detailed_search');

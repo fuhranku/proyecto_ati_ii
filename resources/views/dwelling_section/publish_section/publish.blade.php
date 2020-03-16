@@ -43,7 +43,7 @@
         {{-- Final Buttons --}}
         <div class="row mt-5" id="btns-publish-dwelling">
             <div class="col-sm-4"></div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="text-center">
                     <button type="submit" class="btn btn-yellow" id="publish_btn_dwelling" style="font-weight:bold;color:#ffffff; padding:5px 30px">
                         Publicar vivienda
@@ -60,7 +60,11 @@
         </div>
     </div>
 
+    @include('dwelling_section.publish_section.publishedModal')
+
     <script>
-        var image_post_url = "{{ url('/dwelling/post_image')}}";
+        var post_dwelling = "{{ url('/dwelling/store_dwelling')}}";
+        var preloader_route = "{{url('/images/preloader1.svg')}}";
     </script>
+
 @endsection

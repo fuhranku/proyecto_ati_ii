@@ -461,7 +461,7 @@
         </div>
 
         <!-- Opción Vender o alquilar vivienda -->
-        <div class="row d-none" id="sellrent-dwelling">
+        <div class="row" id="sellrent-dwelling">
             <div class="col-md-12">
 
                 <div class="row mt-5">
