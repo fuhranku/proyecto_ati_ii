@@ -15,6 +15,7 @@
 
         <script>
             var quickSearch_post_url = "{{ url('/dwelling/quick_search')}}";
+            var detailedSearch_post_url = "{{ url('/dwelling/detailed_search')}}";
         </script>
 
 

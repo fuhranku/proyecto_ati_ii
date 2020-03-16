@@ -45,6 +45,7 @@ Route::get('dwelling/publication', 'DwellingController@publication')->name('dwel
 
 Route::get('dwelling/search', 'Dwelling\SearchDwellingController@search_get')->name('dwelling.search');
 Route::post('dwelling/quick_search', 'Dwelling\SearchDwellingController@quick_search')->name('dwelling.quick_search');
+Route::post('dwelling/detailed_search', 'Dwelling\SearchDwellingController@detailed_search')->name('dwelling.detailed_search');
 
 Route::get('dwelling/modify', 'Dwelling\DwellingController@modify')->name('dwelling.modify');
 Route::get('dwelling/delete', 'Dwelling\DwellingController@delete')->name('dwelling.delete');

@@ -45,7 +45,6 @@ class SearchDwellingController extends Controller
         //     ...
         // ])
 
-
         $country = $request->get('country');
         $state = $request->get('state');
         $status = $request->get('status');
@@ -67,6 +66,78 @@ class SearchDwellingController extends Controller
                                 'zones.name as zone_name')
                         ->where($match)
                         ->get();
+
+        return Response::json(json_encode($dwelling));
+    }
+
+    public function detailed_search(Request $request){
+
+        $continent = $request->get('continent');
+        $country = $request->get('country');
+        $state = $request->get('state');
+        $status = $request->get('status');
+        $property_type = $request->get('property_type');
+        $room = $request->get("room");
+        $bathroom = $request->get("bathroom");
+        $park = $request->get("park");
+        $comfort = $request->get("comfort");
+        $service = $request->get("service");
+        $active_price = $request->get("active_price");
+        $minimum_price = $request->get("minimum_price");
+        $maximum_price = $request->get("maximum_price");
+
+        $dwelling;
+
+        if($active_price == 1){ //case searching with price max min
+
+            $dwelling = DB::table('dwellings')
+                            ->join('continents','dwellings.continent_id','=','continents.id')
+                            ->join('countries','dwellings.country_id','=','countries.id')
+                            ->join('states','dwellings.state_id','=','states.id')
+                            ->join('zones','dwellings.zone_id','=','zones.id')
+                            ->select('dwellings.*',
+                                    'countries.name as country_name',
+                                    'states.name as state_name',
+                                    'zones.name as zone_name')
+                            ->where('dwellings.continent_id', '=',$continent)
+                            ->where('dwellings.country_id', '=', $country) 
+                            ->where('dwellings.state_id','=', $state)
+                            ->where('dwellings.status','=',$status)
+                            ->where('dwellings.property_type','=',$property_type)
+                            ->where('dwellings.rooms','=', $room)
+                            ->where('dwellings.bathrooms','=', $bathroom)
+                            ->where('dwellings.parking','=',$park)
+                            ->where('dwellings.price','<=',$maximum_price)
+                            ->where('dwellings.price','>=',$minimum_price)
+                            ->whereJsonContains('dwellings.comforts->array', $comfort)
+                            ->whereJsonContains('dwellings.services->array', $service)
+                            ->get();
+
+        }
+        else if($active_price == 2){ //case searching any price
+            $dwelling = DB::table('dwellings')
+                            ->join('continents','dwellings.continent_id','=','continents.id')
+                            ->join('countries','dwellings.country_id','=','countries.id')
+                            ->join('states','dwellings.state_id','=','states.id')
+                            ->join('zones','dwellings.zone_id','=','zones.id')
+                            ->select('dwellings.*',
+                                    'countries.name as country_name',
+                                    'states.name as state_name',
+                                    'zones.name as zone_name')
+                            ->where('dwellings.continent_id', '=',$continent)
+                            ->where('dwellings.country_id', '=', $country) 
+                            ->where('dwellings.state_id','=', $state)
+                            ->where('dwellings.status','=',$status)
+                            ->where('dwellings.property_type','=',$property_type)
+                            ->where('dwellings.rooms','=', $room)
+                            ->where('dwellings.bathrooms','=', $bathroom)
+                            ->where('dwellings.parking','=',$park)
+                            ->whereJsonContains('dwellings.comforts->array', $comfort)
+                            ->whereJsonContains('dwellings.services->array', $service)
+                            ->get();
+
+        }
+
 
         return Response::json(json_encode($dwelling));
     }
