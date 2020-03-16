@@ -30,12 +30,11 @@ class PublishDwellingController extends Controller
         $countries = Country::all()->sortBy('name');
         $states = State::all()->sortBy('name');
         $cities = City::all()->sortBy('name');
-        $zones = Zone::all()->sortBy('name');
         $comforts = Comfort::all()->sortBy('name');
         $services = Service::all()->sortBy('name');
         $currency = Currency::all()->sortBy('name');
 
-        return view('dwelling_section.publish_section.publish',compact('continents','countries','states','cities','zones','comforts','services','currency'));
+        return view('dwelling_section.publish_section.publish',compact('continents','countries','states','cities','comforts','services','currency'));
     }
 
     public function post_image(Request $request){
@@ -48,7 +47,6 @@ class PublishDwellingController extends Controller
     public function remove_image(Request $request){
         $image_src = $request->get('src');
         $image_src = basename($image_src);
-        Log::info($request->get('src'));
         Storage::disk('publicImage')->delete($image_src);
         return response()->json(['success' => 'success!']);
     }
@@ -62,6 +60,27 @@ class PublishDwellingController extends Controller
     }
 
     public function remove_video(Request $request){
+        $video_src = $request->get('src');
+        $video_src = basename($video_src);
+        Storage::disk('publicVideo')->delete($video_src);
         return response()->json(['success' => 'success!']);
+    }
+
+    public function store_dwelling(Request $request){
+        $validations = [
+            'continent_select' =>  'required',
+            'country_select' =>    'required',
+            'state_select' =>      'required',
+            'city_select' =>       'required',
+            'checkbox_dropdown_comfort' => 'required',            
+            'services_publish_dwelling_dropdown' => 'required',                          
+        ];
+        if($request->get('other_services_choice') != 1){
+            $validations['other_services_choice'] = 'required|regex:/^[a-zA-Z\s]*$/';
+        }
+        $validator = Validator::make($request->all(), $validations);
+        if ($validator->fails()){                
+            return response()->json(['errors'=>$validator->getMessageBag()]);
+        }
     }
 }

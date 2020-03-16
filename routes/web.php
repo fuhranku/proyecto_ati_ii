@@ -47,6 +47,7 @@ Route::post('dwelling/post_image', 'Dwelling\PublishDwellingController@post_imag
 Route::post('dwelling/remove_image', 'Dwelling\PublishDwellingController@remove_image')->name('dwelling.remove_image');
 Route::post('dwelling/post_video', 'Dwelling\PublishDwellingController@post_video')->name('dwelling.post_video');
 Route::post('dwelling/remove_video', 'Dwelling\PublishDwellingController@remove_video')->name('dwelling.remove_video');
+Route::post('dwelling/store_dwelling', 'Dwelling\PublishDwellingController@store_dwelling')->name('dwelling.store_dwelling');
 
 
 Route::get('dwelling/publication', 'Dwelling\DwellingController@publication')->name('dwelling.publication');

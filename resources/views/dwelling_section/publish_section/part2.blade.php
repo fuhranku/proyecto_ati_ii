@@ -65,14 +65,8 @@
             </div>
         </div>
 
-        <div class="border border-primary mt-2" id="video-drop-container" >
-            {{-- Preloader --}}
-            <img class="loading-image position-absolute d-none preloader1" src="{{url('/images/preloader1.svg')}}" id='preloader-video-publish'>
-            <div class="dragspace-overlay d-none" id='dragspace-video-publish'></div>
-            {{-- End Preloader --}}
-            
+        <div class="border border-primary mt-2 position-relative" id="video-drop-container" >
 
-            <div class="position-absolute centered-overlay d-none" id="video-drop-text"> Arrastra un video aquí </div>
 
             <div class="row m-3">
                 <div class="col-md-2"></div>
@@ -94,7 +88,19 @@
                 </div>
                 <div class="col-md-2"></div>
             </div>
+
+            
             <div class ="container" id="video-info-yes">
+                <div class="row m-1">
+                    <div class="col-md-12 text-center font-weight-bold">
+                        <p>Arrastre los videos que desee cargar</p>
+                    </div>
+                </div>
+                {{-- Preloader --}}
+                <img class="loading-image position-absolute d-none preloader1" src="{{url('/images/preloader1.svg')}}" id='preloader-video-publish'>
+                <div class="dragspace-overlay d-none" id='dragspace-video-publish'></div>
+                {{-- End Preloader --}}
+            <div class="position-absolute centered-overlay d-none" id="video-drop-text"> Arrastra un video aquí </div>
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-4">
@@ -111,15 +117,7 @@
                 </div>
                 
                 <div class="row m-3 d-flex justify-content-center" id="video-container">
-                    <div class="col-md-2 border border-primary ml-n1 video-box">
-                        <div class='video-overlay'></div>
-                        <div class='icon-container play-btn'><i class="far fa-play-circle play-icon"></i></div>
-                        <video class="video-tag" id="frag1" preload="metadata" width="720px" height="540px">
-                            <source src="http://localhost:8000/uploads/videos/flower.webm#t=3.0"
-                                    type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'
-                            >
-                        </video>
-                    </div>
+                    <div class="col-md-2 border border-primary ml-n1 video-box"></div>
                     <div class="col-md-2 border border-primary ml-3 video-box"></div>
                     <div class="col-md-2 border border-primary ml-3 video-box d-none"></div>
                     <div class="col-md-2 border border-primary ml-3 video-box d-none"></div>
