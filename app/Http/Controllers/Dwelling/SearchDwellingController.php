@@ -38,35 +38,55 @@ class SearchDwellingController extends Controller
 
     public function quick_search(Request $request){
 
-        // $query->where([
-        //     ['column_1', '=', 'value_1'],
-        //     ['column_2', '<>', 'value_2'],
-        //     [COLUMN, OPERATOR, VALUE],
-        //     ...
-        // ])
-
         $country = $request->get('country');
         $state = $request->get('state');
         $status = $request->get('status');
         $property_type = $request->get('property_type');
 
-        $match = ['dwellings.country_id' => $country, 
-                'dwellings.state_id' => $state, 
-                'dwellings.status' => $status,
-                'dwellings.property_type' => $property_type
-                ];
+        $dwelling;
+        
+        if($property_type == 2){
 
-        $dwelling = DB::table('dwellings')
-                        ->join('countries','dwellings.country_id','=','countries.id')
-                        ->join('states','dwellings.state_id','=','states.id')
-                        ->join('zones','dwellings.zone_id','=','zones.id')
-                        ->select('dwellings.*',
-                                'countries.name as country_name',
-                                'states.name as state_name',
-                                'zones.name as zone_name')
-                        ->where($match)
-                        ->get();
+            $match = ['dwellings.country_id' => $country, 
+            'dwellings.state_id' => $state, 
+            'dwellings.status' => $status,
+            'dwellings.property_type' => 0,
+            'dwellings.property_type' => 1
+            ];
 
+            $dwelling = DB::table('dwellings')
+                            ->join('countries','dwellings.country_id','=','countries.id')
+                            ->join('states','dwellings.state_id','=','states.id')
+                            ->join('zones','dwellings.zone_id','=','zones.id')
+                            ->select('dwellings.*',
+                                    'countries.name as country_name',
+                                    'states.name as state_name',
+                                    'zones.name as zone_name')
+                            ->where($match)
+                            ->get();
+
+        }
+        else{
+
+            $match = ['dwellings.country_id' => $country, 
+            'dwellings.state_id' => $state, 
+            'dwellings.status' => $status,
+            'dwellings.property_type' => $property_type
+            ];
+
+            $dwelling = DB::table('dwellings')
+                            ->join('countries','dwellings.country_id','=','countries.id')
+                            ->join('states','dwellings.state_id','=','states.id')
+                            ->join('zones','dwellings.zone_id','=','zones.id')
+                            ->select('dwellings.*',
+                                    'countries.name as country_name',
+                                    'states.name as state_name',
+                                    'zones.name as zone_name')
+                            ->where($match)
+                            ->get();
+
+        }
+        
         return Response::json(json_encode($dwelling));
     }
 
