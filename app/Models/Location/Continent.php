@@ -9,4 +9,10 @@ class Continent extends Model
     public function countries(){
         return $this->hasMany('App\Models\Location\Country');
     }
+
+    protected $table = 'continents';
+    protected $fillable = [
+        // Data
+        'name',
+    ];
 }

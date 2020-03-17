@@ -4,70 +4,57 @@ namespace App\Models\Dwelling;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Dwelling extends Model
 {
-    //
+    public function images(){
+        return $this->hasMany('App\Models\Dwelling\Image');
+    }
+
+    public function videos(){
+        return $this->hasMany('App\Models\Dwelling\Video');
+    }
+
+    protected $casts = [
+        'comforts' => 'array',
+        'services' => 'array',
+        'contact_days' => 'array',
+        'contact_days' => 'array',
+    ];
 
     public $timestamps = false;
 
     protected $fillable = [
-        'id_dwelling',
-        'continentID',
-        'countryID',
-        'stateID',
-        'cityID',
-        'zoneID',
-        'dwellingState',
-        'propertyState',
-        'propertyType',
+        // Foreign key
+        'continent_id',
+        'country_id',
+        'state_id',
+        'city_id',
+        // Value cols
+        'user_id',
+        'enable',
+        'status',
+        'property_type',
         'rooms',
         'bathrooms',
         'parking',
-        'extraDetails',
-        'serviceTransportDetails',
-        'exactLocation',
-        'id_currency',
+        'comforts',
+        'services',
+        'details',
+        'transport_details',
+        'location_details',
         'price',
-
+        'currency_id',
         //Contact Data
-        'contactName',
-        'contactLastName',
-        'contactEmail',
-        'contactMobileNumber',
-        'contactLandlineNumber',
-        'contactLandlineNumberEXT',
-        'contactDays',
-        'contactHourFrom',
-        'contactHourTo',
+        'contact_name',
+        'contact_lastname',
+        'contact_email',
+        'contact_mobilenumber',
+        'contact_landlinenumber',
+        'contact_landlinenumberEXT',
+        'contact_days',
+        'contact_hourfrom',
+        'contact_hourto',
 
     ];
-
-    public function remove($id){
-        $this->find($id)->delete();
-    }
-    public function edit($data){
-        
-        // $this->name_curr=$data->input("name_curr");
-
-        // $this->create();
-    }
-    
-    public function find($property){
-        return $this->where('id_curr', $property)->first();
-    }
-    
-    public function create(){
-        $this->save();
-    }
-    
-    public function isEmpty(){
-        if($this->count()==0){
-            return TRUE;
-        }else{
-            return FALSE;
-        }
-    }
-    public function findAll(){
-        return $this->all();
-    }
 }

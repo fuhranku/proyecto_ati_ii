@@ -1,3 +1,4 @@
+<div class="row p-2">
 <!-- tipo de inmueble -->
 <div class="col-md-2">
     <div class="row">
@@ -8,8 +9,8 @@
 
     <div class="row">
         <div class="col-md-12 ml-3">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Apartamento" checked>
-            <label class="form-check-label sm-text" for="exampleRadios1">
+            <input class="form-check-input" type="radio" value="0" name="dwelling_type" checked>
+            <label class="form-check-label sm-text">
                 Apartamento
             </label>
         </div>
@@ -17,18 +18,9 @@
 
     <div class="row">
         <div class="col-md-12 ml-3">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="Casa o quinta">
-            <label class="form-check-label sm-text" for="exampleRadios2">
+            <input class="form-check-input" type="radio" value="1" name="dwelling_type">
+            <label class="form-check-label sm-text">
                 Casa o quinta
-            </label>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12 ml-3">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="Apartamento o casa">
-            <label class="form-check-label sm-text" for="exampleRadios3">
-                Apartamento o casa
             </label>
         </div>
     </div>
@@ -114,25 +106,29 @@
 <div class="col-md-2">
     <div class="row">
         <div class="col-md-12 form-check">
-            <ul class="checkbox-dropdown" >
+            <ul class="checkbox-dropdown" id='checkbox-dropdown-comfort'>
                 <li class="dropdown mt-2">
                     <p data-toggle="dropdown" class="dropdown-toggle border-gray pl-2 tiny-text">Seleccione comodidades</p>
-                    <ul class="dropdown-menu">
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="0" name="social_media">Cocina</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="1" name="social_media">Nevera</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Microondas</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Lavadora</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Secadora</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">TV en sala</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">TV en habitación</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Comedor</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Muebles</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Cama matrimonial</label></li>
+                    <ul class="dropdown-menu" data-flip="false">
+                        @foreach ($comforts as $comfort)
+                    <li><label class="checkbox sm-text"><input type="checkbox" value={{$comfort->id}} name="comforts">{{$comfort->name}}</label></li>
+                        @endforeach
                     </ul>
                 </li>
             </ul>
         </div>
     </div>
+    @component('components.field_error')
+        @slot('grid_size')
+            12
+        @endslot
+        @slot('error_row_id')
+            error_row_checkbox_dropdown_comfort
+        @endslot
+        @slot('error_ul_id')
+            error_ul_checkbox_dropdown_comfort
+        @endslot
+    @endcomponent
 </div>
 
 <div class="col-md-2">
@@ -141,16 +137,38 @@
             <ul class="checkbox-dropdown" >
                 <li class="dropdown mt-2">
                     <p data-toggle="dropdown" class="dropdown-toggle border-gray pl-2 sm-text">Servicios</p>
-                    <ul class="dropdown-menu">
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="0" name="social_media">Luz</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="1" name="social_media">Agua</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Teléfono</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">Internet residencial</label></li>
-                        <li><label class="checkbox sm-text"><input type="checkbox" value="2" name="social_media">otro</label></li>
+                    <ul class="dropdown-menu" id="services-publish-dwelling-dropdown">
+                        @foreach ($services as $service)
+                            @if ($service->id != 5)
+                                <li><label class="checkbox sm-text"><input type="checkbox" value={{$service->id}} name="services">{{$service->name}}</label></li>
+                            @endif
+                        @endforeach
+                            <li><label class="checkbox sm-text"><input type="checkbox" value="other" name="services" id="service-dwelling-other-input-text">Otro</label></li>
+                            <li class='d-none' id="other-li">
+                                <div class="row sm-text" >
+                                    <div class="col-sm-12">
+                                        Especifique
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="dwelling-other-input" name='other-spec'>
+                                    </div>
+                                </div>
+                            </li>
                     </ul>
                 </li>
             </ul>
         </div>
     </div>
+    @component('components.field_error')
+    @slot('grid_size')
+        12
+    @endslot
+    @slot('error_row_id')
+        error_row_services_publish_dwelling_dropdown
+    @endslot
+    @slot('error_ul_id')
+        error_ul_services_publish_dwelling_dropdown
+    @endslot
+@endcomponent
 </div>
 </div>

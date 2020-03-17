@@ -172,8 +172,45 @@ return [
         'news_means.rrss' => [
             'required' => 'You have to choose at least one social media'
         ],
-    ],
+        'continent_select_sm' => [
+            'required' => 'You must choose a continent',
+        ],
+        'country_select_sm' => [
+            'required' => 'You must choose a country',
 
+        ],
+        'state_select_sm' => [
+            'required' => 'You must choose a state',
+
+        ],
+        'city_select_sm' => [
+            'required' => 'You must choose a city',
+        ],
+        'checkbox_dropdown_comfort_sm' => [
+            'required' => 'You must choose a comfort',
+        ],
+        'services_publish_dwelling_dropdown_sm' => [
+            'required' => 'You must choose at least one service',
+        ],
+        'other_services_choice_sm' => [
+            'required' => 'You must specify other choice',
+        ],
+        'input_price' => [
+            'required' => 'It must have a price',
+        ],
+        'other_currency_input' => [
+            'required' => 'You must specify your custom currency',
+        ],
+        'phone_checkbox' => [
+            'required' => 'You must pick at least one option',
+        ],
+        'contact_days_checkbox' => [
+            'required' => 'You must pick at least one option',
+        ],
+        'contact_hour_array' => [
+            'required' => 'You must choose a complete contact hour',
+        ],
+    ],
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Attributes
@@ -202,6 +239,9 @@ return [
         'news_means.mail' => 'e-mail address',
         'news_means.other' => 'other',
         'news_means.facebook_acc' => 'facebook e-mail address',
+        'name_contact' => 'name',
+        'lastname_contact' => 'last name',
+        'email_contact' => 'e-mail address',
     ],
 
 ];

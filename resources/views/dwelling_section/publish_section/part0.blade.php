@@ -1,42 +1,85 @@
 {{-- Primera parte: Dropdowns --}}
 <div class="row p-2">
     <div class="col-md-2">
-        <span class="badge badge-info">Continente</span>
-        <select id="country" class="form-control sm-text" onchange="" id="crt-userType" >
-            <option value="Asia">Asia</option>
-            <option value="Europa">Europa</option>
-        </select>
+        <div class="row"> 
+            <span class="badge badge-info">Continente</span>
+            <select id="continent-select" class="form-control sm-text">
+                <option class="disabled" value='' label="Continente" disabled selected value></option>
+                @foreach($continents as $continent)
+                <option value={{$continent->id}}>{{$continent->name}}</option>
+                @endforeach
+            </select>
+        </div>
+        @component('components.field_error')
+            @slot('grid_size')
+                12
+            @endslot
+            @slot('error_row_id')
+                error_row_continent_select
+            @endslot
+            @slot('error_ul_id')
+                error_ul_continent_select
+            @endslot
+        @endcomponent
     </div>
     <div class="col-md-2">
-        <span class="badge badge-info">Pais</span>
-        <select id="country" class="form-control  sm-text" onchange="" id="crt-userType" >
-            <option value="Venezuela">Venezuela</option>
-            <option value="Colombia">Colombia</option>
-        </select>
+        <div class="row">
+            <span class="badge badge-info">Pais</span>
+            <select id="country-select" class="form-control  sm-text">
+                <option class="disabled" value='' label="País" disabled selected value></option>
+            </select>
+        </div>
+        @component('components.field_error')
+            @slot('grid_size')
+                12
+            @endslot
+            @slot('error_row_id')
+                error_row_country_select
+            @endslot
+            @slot('error_ul_id')
+                error_ul_country_select
+            @endslot
+        @endcomponent
     </div>
 
     <div class="col-md-2">
-        <span class="badge badge-info">Estado</span>
-        <select id="country" class="form-control sm-text" onchange="" id="crt-userType" >
-            <option value="Monagas">Monagas</option>
-            <option value="Amazonas">Amazonas</option>
-        </select>
+        <div class='row'>
+            <span class="badge badge-info">Estado</span>
+            <select id="state-select" class="form-control sm-text">
+                <option class="disabled" value='' label="Estado" disabled selected value></option>
+            </select>
+        </div>
+        @component('components.field_error')
+            @slot('grid_size')
+                12
+            @endslot
+            @slot('error_row_id')
+                error_row_state_select
+            @endslot
+            @slot('error_ul_id')
+                error_ul_state_select
+            @endslot
+        @endcomponent
     </div>
 
     <div class="col-md-2">
-        <span class="badge badge-info">Ciudad</span>
-        <select id="country" class="form-control sm-text " onchange="" id="crt-userType" >
-            <option value="Caracas">Caracas</option>
-            <option value="Caracasx2">Caracasx2</option>
-        </select>
-    </div>
-
-    <div class="col-md-2">
-        <span class="badge badge-info">Zona</span>
-        <select id="country" class="form-control sm-text " onchange="" id="crt-userType" >
-            <option value="Caracas">Caracas</option>
-            <option value="Caracasx2">Caracasx2</option>
-        </select>
+        <div class="row">
+            <span class="badge badge-info">Ciudad</span>
+            <select id="city-select" class="form-control sm-text">
+                <option class="disabled" value='' label="Ciudad" disabled selected value></option>
+            </select>
+        </div>
+        @component('components.field_error')
+            @slot('grid_size')
+                12
+            @endslot
+            @slot('error_row_id')
+                error_row_city_select
+            @endslot
+            @slot('error_ul_id')
+                error_ul_city_select
+            @endslot
+        @endcomponent
     </div>
 
     <div class="col-md-2">
@@ -47,16 +90,16 @@
         </div>
         <div class="row">
             <div class="col-md-12 ml-3">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="alquiler" checked>
-                <label class="form-check-label sm-text" for="exampleRadios1">
+                <input class="form-check-input" type="radio" value="0" name="vivienda-en-radio-btn" checked>
+                <label class="form-check-label sm-text" >
                     Alquiler
                 </label>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 ml-3">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="venta">
-                <label class="form-check-label sm-text" for="exampleRadios2">
+                <input class="form-check-input" type="radio" value="1" name="vivienda-en-radio-btn">
+                <label class="form-check-label sm-text">
                     Venta
                 </label>
             </div>
@@ -64,8 +107,8 @@
 
         <div class="row">
             <div class="col-md-12 ml-3">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="Alquiler y venta">
-                <label class="form-check-label sm-text" for="exampleRadios3">
+                <input class="form-check-input" type="radio" value="2" name="vivienda-en-radio-btn">
+                <label class="form-check-label sm-text">
                     Alquiler y venta
                 </label>
             </div>
@@ -73,4 +116,8 @@
     </div>
 </div>
 
-<div class="row p-2">
+<script>
+    var countries = @json($countries);
+    var states = @json($states);
+    var cities = @json($cities);
+</script>

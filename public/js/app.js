@@ -1,3 +1,5 @@
+var telephoneErrorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
+
 $(".checkbox-menu").on("change", "input[type='checkbox']", function() {
     $(this).closest("li").toggleClass("active", this.checked);
  });

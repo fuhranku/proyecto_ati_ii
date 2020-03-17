@@ -27,6 +27,8 @@
 <body>
     {{-- Header --}}
     @include('templates.header')
+    {{-- Preloader --}}
+    <img class='loading-image position-absolute preloader1 d-none' src="{{url('/images/preloader1.svg')}}" id='preloader-storing'>
 
 <!-- Begin page content -->
 <main role="main" class="container" id="page-container">
@@ -47,6 +49,8 @@
 <script src="{{ asset('external/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script> 
 <script src="{{ asset('js/dwelling.js') }}"></script>
+<script src="{{ asset('js/dwelling_search.js') }}"></script>
+<script src="{{ asset('js/dwelling_disable.js') }}"></script>
 <script src="{{ asset('js/sign_up.js') }}"></script> 
 <script src="{{ asset('js/sign_in.js') }}"></script>
 <script src="{{ asset('intl-tel-input/build/js/intlTelInput.js')}}"></script>
