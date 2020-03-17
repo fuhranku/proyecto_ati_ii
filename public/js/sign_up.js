@@ -8,7 +8,6 @@ var panelText = [
     'Datos de Facturación',
 ]
 var mobile_pn, landline_pn, mobile_pj, landline_pj;
-var telephoneErrorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
 var validation;
 
 $(".checkbox-menu").on("change", "input[type='checkbox']", function() {

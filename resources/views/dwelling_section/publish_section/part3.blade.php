@@ -17,7 +17,7 @@
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
-        <textarea class="form-control border border-primary rounded" id="exampleFormControlTextarea1" rows="4"></textarea>
+        <textarea class="form-control border border-primary rounded resize-none" rows="4" id="dwelling_other_details"></textarea>
     </div>
     <div class="col-md-2"></div>
 </div>
@@ -31,7 +31,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <textarea class="form-control border border-primary rounded" id="exampleFormControlTextarea1" rows="4"></textarea>
+                <textarea class="form-control border border-primary rounded resize-none" rows="4" id="whats_next_to_dwelling"></textarea>
             </div>
         </div>
     </div>
@@ -45,7 +45,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <textarea class="form-control border border-primary rounded" id="exampleFormControlTextarea1" rows="4"></textarea>
+                <textarea class="form-control border border-primary rounded resize-none" rows="4" id="precise_dwelling_location"></textarea>
             </div>
         </div>
     </div>

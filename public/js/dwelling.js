@@ -1,3 +1,6 @@
+var mobile_input;
+var landline_input;
+
 // for index page
 $('#btn-b-rapida').click(function(){
     if($('#busqueda-rapida').hasClass("d-none")){
@@ -297,8 +300,8 @@ $(document).ready(function(){
     });
 
     // Initialize sign_up screen phones input tag
-    var mobile_input = document.querySelector("#mobile-publish-dwelling");
-    var landline_input = document.querySelector("#landline-publish-dwelling");
+    mobile_input = document.querySelector("#mobile-publish-dwelling");
+    landline_input = document.querySelector("#landline-publish-dwelling");
     // Initialize natural mobile number input
     mobile_input = window.intlTelInput(mobile_input,{
         utilsScript: utilsScript,
@@ -589,6 +592,23 @@ $("input[name='weekend']").click(function(){
     }
 });
 
+$('input[name=from_hour]').change(function(){
+    $('input[name=from_hour]').not(this).prop('checked',false);
+});
+
+$('input[name=from_time]').change(function(){
+    $('input[name=from_time]').not(this).prop('checked',false);
+});
+
+$('input[name=to_hour]').change(function(){
+    $('input[name=to_hour]').not(this).prop('checked',false);
+});
+
+$('input[name=to_time]').change(function(){
+    $('input[name=to_time]').not(this).prop('checked',false);
+});
+
+
 $('#continent-select').change(function(){
     // Select default disable choice
     $('#country-select option:eq(0)').prop('selected',true);
@@ -637,7 +657,13 @@ $('#state-select').change(function(){
     });
 });
 
+$('input[name="phone-checkbox-publish-dwelling"]').change(function(){
+    $('#error_row_phone_checkbox').addClass('d-none');
+    $('#error_ul_phone_checkbox').empty();
+});
+
 $('#publish_btn_dwelling').click(function(){
+    var validation = true;
     // Clear error containers
     $('.form-error').empty();
     $('.error-row').addClass('d-none');
@@ -666,18 +692,55 @@ $('#publish_btn_dwelling').click(function(){
         services_choices.push($(this).val());
     });
     var other_services_choice = 1;
+    var other_currency_input = 1;
+    // Validate if other input text has something written
     if($("input[value='other']").prop('checked')){
         other_services_choice = $('#dwelling-other-input').val();
     }
-    console.log('other: '+other_services_choice);
+    // Validate if other currency input has something written 
+    if($("option[value='other']").prop('selected')){
+        other_currency_input = $('#dwelling-other-currency-input').val();
+    }
+    // Check contact time
+    var hour_array = [];
+    hour_array.push($('input[name=from_hour]:checked').val());
+    hour_array.push($('input[name=from_time]:checked').val());
+    hour_array.push($('input[name=to_hour]:checked').val());
+    hour_array.push($('input[name=to_time]:checked').val());
+    // array of contact days
+    var contact_days_array = [];
+    $.each($(".day-checkbox:checked"),function(){
+        contact_days_array.push($(this).val());
+    })
     var data = {
-        continent_select: $("#continent-select").children('option:selected').val(),
-        country_select: $("#country-select").children('option:selected').val(),
-        state_select: $("#state-select").children('option:selected').val(),
-        city_select: $("#city-select").children('option:selected').val(),
-        checkbox_dropdown_comfort: comfort_choices,
-        services_publish_dwelling_dropdown: services_choices,
-        other_services_choice: other_services_choice,
+        continent_select_sm: $("#continent-select").children('option:selected').val(),
+        country_select_sm: $("#country-select").children('option:selected').val(),
+        state_select_sm: $("#state-select").children('option:selected').val(),
+        city_select_sm: $("#city-select").children('option:selected').val(),
+        selling_option: $('input[name="vivienda-en-radio-btn"]:checked').val(),
+        tipo_inmueble: $('input[name="dwelling_type"]:checked').val(),
+        counter_room: $('#counterRoom').val(),
+        counter_bath: $('#counterBath').val(),
+        counter_park: $('#counterPark').val(),
+        dwelling_other_details: $('#dwelling_other_details').val(),
+        whats_next_to_dwelling: $('#whats_next_to_dwelling').val(),
+        precise_dwelling_location: $('#precise_dwelling_location').val(),
+        checkbox_dropdown_comfort_sm: comfort_choices,
+        services_publish_dwelling_dropdown_sm: services_choices,
+        other_services_choice_sm: other_services_choice,
+        video_amount: $('#select-video-amnt').children('option:selected').val(),
+        input_price: $('#publish-dwelling-input-price').val(),
+        currency_select: $('#publish-dwelling-currency-dropdown').children('option:selected').val(),
+        other_currency_input: other_currency_input,
+        name_contact: $('#name-contact-publish-dwelling-input').val(),
+        lastname_contact: $('#lastname-contact-publish-dwelling-input').val(),
+        email_contact: $('#email-contact-publish-dwelling-input').val(),
+        phone_checkbox: $('input[name="phone-checkbox-publish-dwelling"]:checked').val(),
+        mobile_phone: mobile_input.getNumber(),
+        landline_phone: landline_input.getNumber(),
+        ext_landline_phone: $("input[name='landline_ext_dwelling']").val(),
+        contact_days_checkbox: contact_days_array,
+        contact_hour_array: hour_array,
     };
     console.log(data);
     // Ajax POST request
@@ -686,30 +749,58 @@ $('#publish_btn_dwelling').click(function(){
         method: 'post',
         data: data,
         success: function(data){
+            validation = validatePhones();
             // If there's an error don't let go to next step
             if( !$.isEmptyObject(data.errors) ){
-                $('.modal-bg').remove();
-                $('body').removeClass('overflow-hidden');
-                console.log(data.errors);
+                validation = false;
+                var scroll_pos = 0;
                 $.each(data.errors, function(key, value){
-                    $('#error_row_'+key).removeClass('d-none');
-                    if(key === "other_services_choice"){
+                    key.includes('_sm') == true ? $('#error_row_'+key.replace("_sm","")).removeClass('d-none') : $('#error_row_'+key).removeClass('d-none');
+                    if(key === "other_services_choice_sm"){
+                        scroll_pos = scroll_pos == 0 ? $('#error_row_services_publish_dwelling_dropdown').offset().top : scroll_pos;
                         $('#error_row_services_publish_dwelling_dropdown').removeClass('d-none');
-                        $('#error_ul_services_publish_dwelling_dropdown').append('<li>'+value+'</li>');
+                        $('#error_ul_services_publish_dwelling_dropdown').append('<li class="sm-text">'+value+'</li>');
+                    }else{
+                        if(key.includes('_sm'))
+                            scroll_pos = scroll_pos == 0 ? $('#error_row_'+key.replace("_sm","")).offset().top : scroll_pos;
+                        else
+                        scroll_pos = scroll_pos == 0 ? $('#error_row_'+key).offset().top : scroll_pos;
                     }
                     $.each(value, function(key2,value2){
-                        $('#error_ul_'+key).append('<li>'+value2+'</li>');
+                        key.includes('_sm') == true ? $('#error_ul_'+key.replace("_sm","")).append('<li class="sm-text">'+value2+'</li>') : $('#error_ul_'+key).append('<li>'+value2+'</li>');
                     })
+                    
                 });
-            }else{
-                console.log(data.success);
             }
-
-            // $('#dwell-published-modal').appendTo('.modal-bg');
-            // $('#dwell-published-modal').removeClass('d-none');
-        
-            // $('body').addClass('overflow-hidden');
+            if (!validation){
+                $('html, body').animate({scrollTop:(scroll_pos - 150)}, 1000);
+                $('.modal-bg').remove();
+                $('body').removeClass('overflow-hidden');
+            }else{
+                $('.modal-bg').empty();
+                $('#dwell-published-modal').appendTo('.modal-bg');
+                $('#dwell-published-modal').removeClass('d-none');
+                $('body').addClass('overflow-hidden');
+            }
         }
-    })
-
+    });
 });
+
+function validatePhones(){
+    validation = true;
+    // Validate mobile number
+    if( $('#mobile-checkbox-publish-dwelling').is(':checked') && !mobile_input.isValidNumber()){
+        validation = false;
+        var errorCode = mobile_input.getValidationError();
+        $('#error_row_mobile_dwelling').removeClass('d-none');
+        $('#error_ul_mobile_dwelling').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
+    }
+    // Validate landline number
+    if ($('#landline-checkbox-publish-dwelling').is(':checked') && !landline_input.isValidNumber()){
+        validation = false;
+        var errorCode = landline_input.getValidationError();
+        $('#error_row_landline_dwelling').removeClass('d-none');
+        $('#error_ul_landline_dwelling').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
+    }
+    return validation;
+}

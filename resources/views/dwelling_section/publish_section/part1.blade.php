@@ -9,7 +9,7 @@
 
     <div class="row">
         <div class="col-md-12 ml-3">
-            <input class="form-check-input" type="radio" value="0" checked>
+            <input class="form-check-input" type="radio" value="0" name="dwelling_type" checked>
             <label class="form-check-label sm-text">
                 Apartamento
             </label>
@@ -18,7 +18,7 @@
 
     <div class="row">
         <div class="col-md-12 ml-3">
-            <input class="form-check-input" type="radio" value="1">
+            <input class="form-check-input" type="radio" value="1" name="dwelling_type">
             <label class="form-check-label sm-text">
                 Casa o quinta
             </label>
@@ -139,7 +139,9 @@
                     <p data-toggle="dropdown" class="dropdown-toggle border-gray pl-2 sm-text">Servicios</p>
                     <ul class="dropdown-menu" id="services-publish-dwelling-dropdown">
                         @foreach ($services as $service)
-                            <li><label class="checkbox sm-text"><input type="checkbox" value={{$service->id}} name="services">{{$service->name}}</label></li>
+                            @if ($service->id != 5)
+                                <li><label class="checkbox sm-text"><input type="checkbox" value={{$service->id}} name="services">{{$service->name}}</label></li>
+                            @endif
                         @endforeach
                             <li><label class="checkbox sm-text"><input type="checkbox" value="other" name="services" id="service-dwelling-other-input-text">Otro</label></li>
                             <li class='d-none' id="other-li">
