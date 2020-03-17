@@ -194,15 +194,7 @@
                             </select>
                         </div>
 
-                        <div class="col-md-2">
-                            <span class="badge badge-info">Zona</span>
-                            <select id="country" class="form-control sm-text " onchange=""   >
-                                <option value="0">Caracas</option>
-                                <option value="1">Caracasx2</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-1"></div>
+                        <div class="col-md-3"></div>
                     </div>
             
                     <div class="row p-2">

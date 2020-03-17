@@ -4,7 +4,7 @@
     <p class="font-weight-bold m-0 d-inline">Búsqueda Rápida</p>
 </div>
 
-<div class="border border-info p-1" id="busqueda-rapida2">
+<div class="border border-info p-1 d-none" id="busqueda-rapida2">
 
     <div class="row p-2">
         <div class="col-md-6">

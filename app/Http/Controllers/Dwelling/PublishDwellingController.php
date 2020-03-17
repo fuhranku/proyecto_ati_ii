@@ -16,7 +16,6 @@ use App\Models\Location\Continent;
 use App\Models\Location\Country;
 use App\Models\Location\State;
 use App\Models\Location\City;
-use App\Models\Location\Zone;
 use App\Models\Dwelling\Comfort;
 use App\Models\Dwelling\Service;
 use App\Models\Dwelling\Currency;

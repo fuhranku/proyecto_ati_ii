@@ -14,7 +14,6 @@ use App\Models\Location\Continent;
 use App\Models\Location\Country;
 use App\Models\Location\State;
 use App\Models\Location\City;
-use App\Models\Location\Zone;
 use App\Models\Dwelling\Comfort;
 use App\Models\Dwelling\Service;
 use App\Models\Dwelling\Currency;
@@ -28,12 +27,11 @@ class SearchDwellingController extends Controller
         $countries = Country::all()->sortBy('name');
         $states = State::all()->sortBy('name');
         $cities = City::all()->sortBy('name');
-        $zones = Zone::all()->sortBy('name');
         $comforts = Comfort::all()->sortBy('name');
         $services = Service::all()->sortBy('name');
         $currency = Currency::all()->sortBy('name');
 
-        return view('dwelling_section.search_section.search',compact('continents','countries','states','cities','zones','comforts','services','currency'));
+        return view('dwelling_section.search_section.search',compact('continents','countries','states','cities','comforts','services','currency'));
     }
 
     public function quick_search(Request $request){
@@ -57,11 +55,9 @@ class SearchDwellingController extends Controller
             $dwelling = DB::table('dwellings')
                             ->join('countries','dwellings.country_id','=','countries.id')
                             ->join('states','dwellings.state_id','=','states.id')
-                            ->join('zones','dwellings.zone_id','=','zones.id')
                             ->select('dwellings.*',
                                     'countries.name as country_name',
-                                    'states.name as state_name',
-                                    'zones.name as zone_name')
+                                    'states.name as state_name')
                             ->where($match)
                             ->get();
 
@@ -77,11 +73,9 @@ class SearchDwellingController extends Controller
             $dwelling = DB::table('dwellings')
                             ->join('countries','dwellings.country_id','=','countries.id')
                             ->join('states','dwellings.state_id','=','states.id')
-                            ->join('zones','dwellings.zone_id','=','zones.id')
                             ->select('dwellings.*',
                                     'countries.name as country_name',
-                                    'states.name as state_name',
-                                    'zones.name as zone_name')
+                                    'states.name as state_name')
                             ->where($match)
                             ->get();
 
@@ -114,11 +108,9 @@ class SearchDwellingController extends Controller
                             ->join('continents','dwellings.continent_id','=','continents.id')
                             ->join('countries','dwellings.country_id','=','countries.id')
                             ->join('states','dwellings.state_id','=','states.id')
-                            ->join('zones','dwellings.zone_id','=','zones.id')
                             ->select('dwellings.*',
                                     'countries.name as country_name',
-                                    'states.name as state_name',
-                                    'zones.name as zone_name')
+                                    'states.name as state_name')
                             ->where('dwellings.continent_id', '=',$continent)
                             ->where('dwellings.country_id', '=', $country) 
                             ->where('dwellings.state_id','=', $state)
@@ -139,11 +131,9 @@ class SearchDwellingController extends Controller
                             ->join('continents','dwellings.continent_id','=','continents.id')
                             ->join('countries','dwellings.country_id','=','countries.id')
                             ->join('states','dwellings.state_id','=','states.id')
-                            ->join('zones','dwellings.zone_id','=','zones.id')
                             ->select('dwellings.*',
                                     'countries.name as country_name',
-                                    'states.name as state_name',
-                                    'zones.name as zone_name')
+                                    'states.name as state_name')
                             ->where('dwellings.continent_id', '=',$continent)
                             ->where('dwellings.country_id', '=', $country) 
                             ->where('dwellings.state_id','=', $state)

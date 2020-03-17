@@ -48,10 +48,12 @@
 <script src="{{ asset('js/app.js') }}"></script> 
 <script src="{{ asset('js/dwelling.js') }}"></script>
 <script src="{{ asset('js/dwelling_search.js') }}"></script>
+<script src="{{ asset('js/dwelling_disable.js') }}"></script>
 <script src="{{ asset('js/sign_up.js') }}"></script> 
 <script src="{{ asset('js/sign_in.js') }}"></script>
 <script src="{{ asset('intl-tel-input/build/js/intlTelInput.js')}}"></script>
 <script>
      var utilsScript = "{{asset('intl-tel-input/build/js/utils.js')}}";
+     var preloader_route = "{{url('/images/preloader1.svg')}}";
  </script>
 </html>

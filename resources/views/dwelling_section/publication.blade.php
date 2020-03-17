@@ -446,7 +446,6 @@
                             <div class="col-md-6">
                                 <p href="#" class="m-0"><u><strong>País: </strong></u>Venezuela</p>
                                 <p href="#" class="m-0"><u><strong>Estado: </strong></u>Distrito Capital</p>
-                                <p href="#" class="m-0"><u><strong>Zona: </strong></u>Campo Alegre</p>
                             </div>
                         </div>
 
@@ -494,7 +493,6 @@
                             <div class="col-md-6">
                                 <p href="#" class="m-0"><u><strong>País: </strong></u>Venezuela</p>
                                 <p href="#" class="m-0"><u><strong>Estado: </strong></u>Distrito Capital</p>
-                                <p href="#" class="m-0"><u><strong>Zona: </strong></u>Campo Alegre</p>
                             </div>
                         </div>
 

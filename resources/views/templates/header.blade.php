@@ -127,5 +127,4 @@
             </ul>
         </div>
     </nav>
-    <p style="text-align:right">Síguenos o compártelo por:</p>
 </header>

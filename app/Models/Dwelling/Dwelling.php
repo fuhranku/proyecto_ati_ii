@@ -11,11 +11,13 @@ class Dwelling extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        
         'continent_id',
         'country_id',
         'state_id',
         'city_id',
-        'zone_id',
+        'user_id',
+        'enable',
         'status',
         'property_type',
         'rooms',
