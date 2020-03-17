@@ -58,8 +58,8 @@ function quickSearch(){
     <div class="modal-bg">\
     </div>\
     ');
-    
-    $('.modal-bg').append("<img class='loading-image position-absolute preloader1' src="+preloader_route+" id='preloader-storing'>");
+    $('#preloader-storing').removeClass('d-none');
+    $('#preloader-storing').appendTo('.modal-bg');
     $('body').addClass('overflow-hidden');
 
     $.ajax({

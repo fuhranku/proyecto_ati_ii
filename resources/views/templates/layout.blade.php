@@ -27,6 +27,8 @@
 <body>
     {{-- Header --}}
     @include('templates.header')
+    {{-- Preloader --}}
+    <img class='loading-image position-absolute preloader1 d-none' src="{{url('/images/preloader1.svg')}}" id='preloader-storing'>
 
 <!-- Begin page content -->
 <main role="main" class="container" id="page-container">
@@ -54,6 +56,5 @@
 <script src="{{ asset('intl-tel-input/build/js/intlTelInput.js')}}"></script>
 <script>
      var utilsScript = "{{asset('intl-tel-input/build/js/utils.js')}}";
-     var preloader_route = "{{url('/images/preloader1.svg')}}";
  </script>
 </html>

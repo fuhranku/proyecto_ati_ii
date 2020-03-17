@@ -4,8 +4,7 @@
 
 @section('content')
 <section>
-    <div class="container">
-    
+    <div class="container">    
         <div class="row">
             
             @include('dwelling_section.search_section.search_bar')

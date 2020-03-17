@@ -672,7 +672,8 @@ $('#publish_btn_dwelling').click(function(){
     </div>\
     ');
     
-    $('.modal-bg').append("<img class='loading-image position-absolute preloader1' src="+preloader_route+" id='preloader-storing'>");
+    $('#preloader-storing').appendTo('.modal-bg');
+    $('#preloader-storing').removeClass('d-none');
     $('body').addClass('overflow-hidden');
 
     // AJAX VALIDATION
@@ -773,10 +774,13 @@ $('#publish_btn_dwelling').click(function(){
             }
             if (!validation){
                 $('html, body').animate({scrollTop:(scroll_pos - 150)}, 1000);
+                $('#preloader-storing').appendTo('body');
+                $('#preloader-storing').addClass('d-none');
                 $('.modal-bg').remove();
                 $('body').removeClass('overflow-hidden');
             }else{
-                $('.modal-bg').empty();
+                $('#preloader-storing').appendTo('body');
+                $('#preloader-storing').addClass('d-none');
                 $('#dwell-published-modal').appendTo('.modal-bg');
                 $('#dwell-published-modal').removeClass('d-none');
                 $('body').addClass('overflow-hidden');
