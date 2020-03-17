@@ -93,11 +93,15 @@
                     <a class="nav-link dropdown-toggle button-menu" href="#" id="navbarServices" role="button" data-toggle="dropdown">Servicios</a>
 
                     <div class="dropdown-menu" aria-labelledby="navbarServices">
+                        @if (Session::has('info'))
                         <a class="dropdown-item" href="{{ url('services/create') }}">Crear</a>
+                        @endif
                         <a class="dropdown-item" href="{{ url('services/search') }}">Buscar</a>
+                        @if (Session::has('info'))
                         <a class="dropdown-item" href="{{ url('services/consult') }}">Consultar</a>
                         <a class="dropdown-item" href="{{ url('services/modify') }}">Modificar</a>
                         <a class="dropdown-item" href="{{ url('services/delete') }}">Eliminar</a>
+                        @endif
                     </div>
                 </li>
                 <li class="nav-item mr-7">
