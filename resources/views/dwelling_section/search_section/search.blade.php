@@ -16,6 +16,9 @@
         <script>
             var quickSearch_post_url = "{{ url('/dwelling/quick_search')}}";
             var detailedSearch_post_url = "{{ url('/dwelling/detailed_search')}}";
+            var disable_post_url = "{{ url('/dwelling/disable_dwelling')}}";
+            var enable_post_url = "{{ url('/dwelling/enable_dwelling')}}";
+            var delete_post_url = "{{ url('/dwelling/delete_dwelling')}}";
         </script>
 
 

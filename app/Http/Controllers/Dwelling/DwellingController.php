@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Dwelling;
 
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use Response;
 use Illuminate\Http\Request;
 use Requesting;
 use App\Http\Controllers\Controller;
+
 
 class DwellingController extends Controller
 {
@@ -48,6 +51,45 @@ class DwellingController extends Controller
     {
         //$currentPage = 'create';
         return view('dwelling_section.disable');
+    }
+
+    public function enable_dwelling(Request $request)
+    {
+        $selected_dwelling = $request->get('selected_dwellings');
+        
+        foreach ($selected_dwelling as &$dwelling_id) {
+            DB::table('dwellings')
+                ->where('id', $dwelling_id)
+                ->update(['enable' => 1]);
+        }
+
+        return Response::json("Viviendas activadas");
+    }
+
+    public function disable_dwelling(Request $request)
+    {
+        $selected_dwelling = $request->get('selected_dwellings');
+        
+        foreach ($selected_dwelling as &$dwelling_id) {
+            DB::table('dwellings')
+                ->where('id', $dwelling_id)
+                ->update(['enable' => 0]);
+        }
+
+        return Response::json("Viviendas desactivadas");
+    }
+
+    public function delete_dwelling(Request $request){
+        
+        $selected_dwelling = $request->get('selected_dwellings');
+        
+        foreach ($selected_dwelling as &$dwelling_id) {
+            DB::table('dwellings')
+                ->where('id', $dwelling_id)
+                ->delete();
+        }
+
+        return Response::json("Viviendas desactivadas");
     }
 
     public function dwelling_get()

@@ -4,14 +4,15 @@ namespace App\Models\Dwelling;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Dwelling extends Model
 {
     public function images(){
-        return $this->hasMany('App\Dwelling\Image');
+        return $this->hasMany('App\Models\Dwelling\Image');
     }
 
     public function videos(){
-        return $this->hasMany('App\Dwelling\Video');
+        return $this->hasMany('App\Models\Dwelling\Video');
     }
 
     protected $casts = [
@@ -29,8 +30,9 @@ class Dwelling extends Model
         'country_id',
         'state_id',
         'city_id',
-        'zone_id',
         // Value cols
+        'user_id',
+        'enable',
         'status',
         'property_type',
         'rooms',

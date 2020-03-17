@@ -53,6 +53,11 @@ Route::get('dwelling/publication', 'Dwelling\DwellingController@publication')->n
 Route::get('dwelling/search', 'Dwelling\SearchDwellingController@search_get')->name('dwelling.search');
 Route::post('dwelling/quick_search', 'Dwelling\SearchDwellingController@quick_search')->name('dwelling.quick_search');
 Route::post('dwelling/detailed_search', 'Dwelling\SearchDwellingController@detailed_search')->name('dwelling.detailed_search');
+// Disable Enable
+Route::post('dwelling/disable_dwelling', 'Dwelling\DwellingController@disable_dwelling')->name('dwelling.disable_dwelling');
+Route::post('dwelling/enable_dwelling', 'Dwelling\DwellingController@enable_dwelling')->name('dwelling.enable_dwelling');
+// Remove Dwelling
+Route::post('dwelling/delete_dwelling', 'Dwelling\DwellingController@delete_dwelling')->name('dwelling.delete_dwelling');
 
 Route::get('dwelling/modify', 'Dwelling\DwellingController@modify')->name('dwelling.modify');
 Route::get('dwelling/delete', 'Dwelling\DwellingController@delete')->name('dwelling.delete');

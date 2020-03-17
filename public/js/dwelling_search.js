@@ -4,6 +4,27 @@ var propMap = ['apartamento', 'casa', 'apartamento y casa'];
 var statusMap = ['alquiler', 'venta', 'alquiler y venta'];
 var dwelling = [];
 
+
+function onSelectDwelling(){
+
+    //name="select-dwelling" id="dwelling-select-cb3"
+
+    var dwellings = $("input[name='select-dwelling']:checked"); //get checked number
+    var pre = "#btn-dwelling-";
+
+    if(dwellings.length < 1){
+        $(pre+"detail,"+pre+"modify,"+pre+"disable,"+pre+"enable,"+pre+"remove").addClass("d-none");
+    }
+    if(dwellings.length == 1){
+        $(pre+"detail,"+pre+"modify,"+pre+"disable,"+pre+"enable,"+pre+"remove").removeClass("d-none");
+    }
+    else if(dwellings.length > 1){
+        $(pre+"detail,"+pre+"modify").addClass("d-none");
+        $(pre+"disable,"+pre+"enable,"+pre+"remove").removeClass("d-none");
+    }
+    
+}
+
 function quickSearch(){
 
     console.log("realizando quick search");
@@ -32,11 +53,19 @@ function quickSearch(){
     console.log("status: ",status);
     console.log("property_type: ",property_type);
 
+    // Prepare preloader
+    $('body').prepend('\
+    <div class="modal-bg">\
+    </div>\
+    ');
+    
+    $('.modal-bg').append("<img class='loading-image position-absolute preloader1' src="+preloader_route+" id='preloader-storing'>");
+    $('body').addClass('overflow-hidden');
+
     $.ajax({
         url: quickSearch_post_url,
         method: 'post',
         data: data,
-        async: false,
         success: function(data){
 
             dwelling = JSON.parse(data);
@@ -45,6 +74,13 @@ function quickSearch(){
 
             setNumberOfPages();
             loadPageDwelling(1); //load first page
+
+            $('.modal-bg').remove();
+                $('body').removeClass('overflow-hidden');
+
+            $("#dwelling-search-result").removeClass("d-none");
+
+            
         }
     });    
 }
@@ -119,7 +155,6 @@ function detailedSearch(){
         url: detailedSearch_post_url,
         method: 'post',
         data: data,
-        async: false,
         success: function(data){
 
             dwelling = JSON.parse(data);
@@ -130,6 +165,8 @@ function detailedSearch(){
 
             setNumberOfPages();
             loadPageDwelling(1); //load first page
+
+            $("#dwelling-search-result").removeClass("d-none");
         }
     });    
 
@@ -187,7 +224,11 @@ function loadPageDwelling(page){
 
     for(var i = 0; i < dwellingsPerPage; i++){
 
-        var pageOffset = (page - 1)*4; 
+        var pageOffset = (page - 1)*4;
+
+        //update selector dwelling id
+        $("#dwelling-select-cb"+(i+1).toString()).val(dwelling[i + pageOffset].id);
+
         var roomBath = dwelling[i + pageOffset].rooms.toString() + " habitaciones, " 
                     + dwelling[i + pageOffset].bathrooms.toString() + " baños";
 
@@ -195,7 +236,6 @@ function loadPageDwelling(page){
         $('#prop_type_fs'+(i+1).toString()).text(propMap[dwelling[i + pageOffset].property_type]);
         $('#country_fs'+(i+1).toString()).text(dwelling[i + pageOffset].country_name);
         $('#state_fs'+(i+1).toString()).text(dwelling[i + pageOffset].state_name);
-        $('#zone_fs'+(i+1).toString()).text(dwelling[i + pageOffset].zone_name);
         $('#details_fs'+(i+1).toString()).text(dwelling[i + pageOffset].details);
         $('#status_fs'+(i+1).toString()).text(statusMap[dwelling[i + pageOffset].status]);
         $('#room_bath_fs'+(i+1).toString()).text(roomBath);
@@ -204,6 +244,7 @@ function loadPageDwelling(page){
     displayNonePagesLeft(dwellingsPerPage);
 
     currentPageDwelling = page;
+
 }
 
 function setNumberOfPages(){
@@ -215,7 +256,7 @@ function setNumberOfPages(){
 
     $('#pagination_fs').append('<li class="page-item cursor-pointer"><a class="page-link" onclick="previousPageDwelling()" >Previous</a></li>');
     for(var i = 1; i <= totalPages; i++){
-        $('#pagination_fs').append('<li class="page-item cursor-pointer"><a class="page-link" onclick="loadPageDwelling('+i.toString()+')" >'+i.toString()+'</a></li>');
+        $('#pagination_fs').append('<li class="page-item cursor-pointer"><a class="page-link" id="dwelling-page'+i+'" onclick="loadPageDwelling('+i.toString()+')" >'+i.toString()+'</a></li>');
     }
     $('#pagination_fs').append('<li class="page-item cursor-pointer"><a class="page-link" onclick="nextPageDwelling()">Next</a></li>');
 }

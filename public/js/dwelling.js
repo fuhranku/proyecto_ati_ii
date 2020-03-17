@@ -407,7 +407,6 @@ $('input[name="radio-btn-video"]').on('change',function(){
         drop_video_container.addClass('d-none');
         $('#video-drop-container').off();
     }else{
-        console.log("maicol");
         var counter = 0;
         drop_video_container.removeClass('d-none');
         $('#video-drop-container').bind({

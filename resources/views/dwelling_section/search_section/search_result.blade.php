@@ -1,13 +1,13 @@
 <!-- Search Result -->
-<div class="col-md-8" style="margin-left:15px;">
+<div class="col-md-8 d-none" style="margin-left:15px;" id="dwelling-search-result">
 
     <p>Haz clic en la vivienda de tu preferencia, para ver más información, o selecciona  la vivienda de tu preferencia, para habilitar o deshabilitar los botones expresados a continuación: </p>
 
-    <button type="button" class="btn btn-info">Ver Detalle</button>
-    <button type="button" class="btn btn-primary">Modificar</button>
-    <button type="button" class="btn btn-warning text-white">Deshabilitar</button>
-    <button type="button" class="btn btn-success">Habilitar</button>
-    <button type="button" class="btn btn-danger">Eliminar</button>
+    <button type="button" id="btn-dwelling-detail" onclick="detailDwelling()" class="btn btn-info d-none">Ver Detalle</button>
+    <button type="button" id="btn-dwelling-modify" onclick="modifyDwelling()" class="btn btn-primary d-none">Modificar</button>
+    <button type="button" id="btn-dwelling-disable" onclick="disableDwelling()" class="btn btn-warning text-white d-none">Deshabilitar</button>
+    <button type="button" id="btn-dwelling-enable" onclick="enableDwelling()" class="btn btn-success d-none">Habilitar</button>
+    <button type="button" id="btn-dwelling-remove" onclick="removeDwelling()" class="btn btn-danger d-none">Eliminar</button>
 
     <p class="h5 pt-4">Haz clic en la vivienda de tu preferencia, para ver más información</p>
 
@@ -81,7 +81,7 @@
     <div class="row border border-warning">
         <div class="col-md-12">
             <nav aria-label="Page navigation example" class="mt-3 ml-5">
-                <ul class="pagination " id="pagination_fs">
+                <ul class="pagination" id="pagination_fs">
                     
                 </ul>
             </nav>
@@ -98,6 +98,18 @@
                 </div>
 
                 <div class="col-md-6 mt-3">
+                    <div class="row">
+                        <div class="col-md-9 pl-5">
+                            <label class="form-check-label font-weight-bold" for="dwelling-select-cb1">
+                                Seleccionar
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" onchange="onSelectDwelling()" value="dwelling1" name="select-dwelling" type="checkbox" id="dwelling-select-cb1">
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-12">
                             <a class="h4 " href="#"><u id="prop_type_fs1">Apartamento</u></a>
@@ -141,21 +153,36 @@
                             <u class="d-inline"><strong>Estado: </strong></u><p id="state_fs1" class="m-0 d-inline">Distrito Capital</p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <u class="d-inline"><strong>Zona: </strong></u><p id="zone_fs1" class="m-0 d-inline">Campo Alegre</p>
-                        </div>
-                    </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-6 mt-3">
-                    <a class=" font-weight-bold " href="#"><u>Ver Comodidades</u></a>
-                    <a class=" font-weight-bold " href="#"><u>Ver Servicios</u></a>
-                    <a class=" font-weight-bold" href="#"><u>Ver Ubicación exacta</u></a>
-                    <a class=" font-weight-bold" href="#"><u>Ver Fotos</u></a>
-                    <a class=" font-weight-bold" href="#"><u>Ver Videos</u></a>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" font-weight-bold " href="#"><u>Ver Comodidades</u></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" font-weight-bold " href="#"><u>Ver Servicios</u></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" font-weight-bold " href="#"><u>Ver Ubicación exacta</u></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" font-weight-bold " href="#"><u>Ver Fotos</u></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" font-weight-bold " href="#"><u>Ver Videos</u></a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-md-6 mt-3">
@@ -178,6 +205,18 @@
                 </div>
 
                 <div class="col-md-6 mt-3">
+                    <div class="row">
+                        <div class="col-md-9 pl-5">
+                            <label class="form-check-label font-weight-bold" for="dwelling-select-cb2">
+                                Seleccionar
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" onchange="onSelectDwelling()" value="dwelling2" name="select-dwelling" type="checkbox" id="dwelling-select-cb2">
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-12">
                             <a class="h4 " href="#"><u id="prop_type_fs2">Apartamento</u></a>
@@ -221,21 +260,36 @@
                             <u class="d-inline"><strong>Estado: </strong></u><p id="state_fs2" class="m-0 d-inline">Distrito Capital</p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <u class="d-inline"><strong>Zona: </strong></u><p id="zone_fs2" class="m-0 d-inline">Campo Alegre</p>
-                        </div>
-                    </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-6 mt-3">
-                    <a class=" font-weight-bold " href="#"><u>Ver Comodidades</u></a>
-                    <a class=" font-weight-bold " href="#"><u>Ver Servicios</u></a>
-                    <a class=" font-weight-bold" href="#"><u>Ver Ubicación exacta</u></a>
-                    <a class=" font-weight-bold" href="#"><u>Ver Fotos</u></a>
-                    <a class=" font-weight-bold" href="#"><u>Ver Videos</u></a>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" font-weight-bold " href="#"><u>Ver Comodidades</u></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" font-weight-bold " href="#"><u>Ver Servicios</u></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" font-weight-bold " href="#"><u>Ver Ubicación exacta</u></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" font-weight-bold " href="#"><u>Ver Fotos</u></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" font-weight-bold " href="#"><u>Ver Videos</u></a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-md-6 mt-3">
@@ -258,6 +312,18 @@
                 </div>
 
                 <div class="col-md-6 mt-3">
+                    <div class="row">
+                        <div class="col-md-9 pl-5">
+                            <label class="form-check-label font-weight-bold" for="dwelling-select-cb3">
+                                Seleccionar
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" onchange="onSelectDwelling()" value="dwelling3" name="select-dwelling" type="checkbox" id="dwelling-select-cb3">
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-12">
                             <a class="h4 " href="#"><u id="prop_type_fs3">Apartamento</u></a>
@@ -301,21 +367,36 @@
                             <u class="d-inline"><strong>Estado: </strong></u><p id="state_fs3" class="m-0 d-inline">Distrito Capital</p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <u class="d-inline"><strong>Zona: </strong></u><p id="zone_fs3" class="m-0 d-inline">Campo Alegre</p>
-                        </div>
-                    </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-6 mt-3">
-                    <a class=" font-weight-bold " href="#"><u>Ver Comodidades</u></a>
-                    <a class=" font-weight-bold " href="#"><u>Ver Servicios</u></a>
-                    <a class=" font-weight-bold" href="#"><u>Ver Ubicación exacta</u></a>
-                    <a class=" font-weight-bold" href="#"><u>Ver Fotos</u></a>
-                    <a class=" font-weight-bold" href="#"><u>Ver Videos</u></a>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" font-weight-bold " href="#"><u>Ver Comodidades</u></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" font-weight-bold " href="#"><u>Ver Servicios</u></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" font-weight-bold " href="#"><u>Ver Ubicación exacta</u></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" font-weight-bold " href="#"><u>Ver Fotos</u></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" font-weight-bold " href="#"><u>Ver Videos</u></a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-md-6 mt-3">
@@ -338,6 +419,18 @@
                 </div>
 
                 <div class="col-md-6 mt-3">
+                    <div class="row">
+                        <div class="col-md-9 pl-5">
+                            <label class="form-check-label font-weight-bold" for="dwelling-select-cb4">
+                                Seleccionar
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" onchange="onSelectDwelling()" value="dwelling4" name="select-dwelling" type="checkbox" id="dwelling-select-cb4">
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-12">
                             <a class="h4 " href="#"><u id="prop_type_fs4">Apartamento</u></a>
@@ -381,21 +474,36 @@
                             <u class="d-inline"><strong>Estado: </strong></u><p id="state_fs4" class="m-0 d-inline">Distrito Capital</p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <u class="d-inline"><strong>Zona: </strong></u><p id="zone_fs4" class="m-0 d-inline">Campo Alegre</p>
-                        </div>
-                    </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-6 mt-3">
-                    <a class=" font-weight-bold " href="#"><u>Ver Comodidades</u></a>
-                    <a class=" font-weight-bold " href="#"><u>Ver Servicios</u></a>
-                    <a class=" font-weight-bold" href="#"><u>Ver Ubicación exacta</u></a>
-                    <a class=" font-weight-bold" href="#"><u>Ver Fotos</u></a>
-                    <a class=" font-weight-bold" href="#"><u>Ver Videos</u></a>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" font-weight-bold " href="#"><u>Ver Comodidades</u></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" font-weight-bold " href="#"><u>Ver Servicios</u></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" font-weight-bold " href="#"><u>Ver Ubicación exacta</u></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" font-weight-bold " href="#"><u>Ver Fotos</u></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" font-weight-bold " href="#"><u>Ver Videos</u></a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-md-6 mt-3">

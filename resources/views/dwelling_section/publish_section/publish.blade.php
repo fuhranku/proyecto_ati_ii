@@ -64,7 +64,6 @@
 
     <script>
         var post_dwelling = "{{ url('/dwelling/store_dwelling')}}";
-        var preloader_route = "{{url('/images/preloader1.svg')}}";
     </script>
 
 @endsection

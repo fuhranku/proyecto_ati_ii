@@ -16,7 +16,6 @@ use App\Models\Location\Continent;
 use App\Models\Location\Country;
 use App\Models\Location\State;
 use App\Models\Location\City;
-use App\Models\Location\Zone;
 use App\Models\Dwelling\Comfort;
 use App\Models\Dwelling\Service;
 use App\Models\Dwelling\Currency;
@@ -169,7 +168,9 @@ class PublishDwellingController extends Controller
         $dwelling->country_id = $data['country_select_sm'];
         $dwelling->state_id = $data['state_select_sm'];
         $dwelling->city_id = $data['city_select_sm'];
-        $dwelling->zone_id = 0;
+        $dwelling->zone_id = 1;
+        $dwelling->user_id = 13;
+        $dwelling->enable = 1;
         $dwelling->status = $data['selling_option'];
         $dwelling->property_type = $data['tipo_inmueble'];
         $dwelling->rooms = $data['counter_room'];
@@ -209,7 +210,7 @@ class PublishDwellingController extends Controller
             $new_image->format = $image['format'];
             $dwelling->images()->save($new_image);
         }
-
+        $videos = Session::get('videos');
         // Insert videos
         foreach($videos as $key => $video){
             $new_video = new Video;
