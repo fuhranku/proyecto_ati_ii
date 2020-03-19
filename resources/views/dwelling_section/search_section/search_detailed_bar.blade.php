@@ -9,7 +9,8 @@
     <div class="row p-2">
         <div class="col-md-6">
             <span class="badge badge-info">Continente</span>
-            <select id="continent_ds" class="form-control sm-text" onchange=""   >
+            <select id="continent_ds" class="form-control sm-text" onchange="">
+                <option class="disabled" value='' label="Continente" disabled selected value></option>
                 @foreach ($continents as $continent)
                     <option value={{$continent->id}}>{{$continent->name}}</option>
                 @endforeach
@@ -19,7 +20,7 @@
             <span class="badge badge-info">Pais</span>
             <select id="country_ds" class="form-control  sm-text" onchange=""   >
                 @foreach ($countries as $country)
-                    <option value={{$country->id}}>{{$country->name}}</option>
+                    <option class="disabled" value='' label="País" disabled selected value></option>
                 @endforeach
             </select>
         </div>
@@ -31,7 +32,7 @@
             <span class="badge badge-info">Estado</span>
             <select id="state_ds" class="form-control sm-text" onchange=""   >
                 @foreach ($states as $state)
-                    <option value={{$state->id}}>{{$state->name}}</option>
+                    <option class="disabled" value='' label="Estado" disabled selected value></option>
                 @endforeach
             </select>
         </div>
@@ -39,7 +40,7 @@
             <span class="badge badge-info">Ciudad</span>
             <select id="city_ds" class="form-control sm-text " onchange=""   >
                 @foreach ($cities as $city)
-                    <option value={{$city->id}}>{{$city->name}}</option>
+                    <option class="disabled" value='' label="Ciudad" disabled selected value></option>
                 @endforeach
             </select>
         </div>
