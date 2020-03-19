@@ -9,11 +9,11 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-sm-12 mt-2">
                 ¿Qué desea hacer a continuación?
             </div>
-        </div>
+        </div> --}}
         <div class="row mt-5">
             
             <div class="col mt-2">

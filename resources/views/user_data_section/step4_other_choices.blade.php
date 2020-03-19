@@ -11,7 +11,7 @@
                         <span class="fas fa-minus"></span>
                     </button>
                 </span>
-                <input type="text" name="quant[4]" id="custom_month_freq" class="form-control input-number p-2" value="0" min="0" max="12">
+                <input type="text" name="quant[4]" id="custom_month_freq" class="form-control input-number p-2" value="{{!empty($info->days_freq) ? $info->days_freq / 30 : 0}}" min="0" max="12">
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[4]">
                         <span class="fas fa-plus"></span>
@@ -29,7 +29,7 @@
                         <span class="fas fa-minus"></span>
                     </button>
                 </span>
-                <input type="text" name="quant[5]" id="custom_days_freq" class="form-control input-number p-2" value="0" min="0" max="31">
+                <input type="text" name="quant[5]" id="custom_days_freq" class="form-control input-number p-2" value="{{!empty($info->days_freq) ? $info->days_freq : 0}}" min="0" max="31">
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[5]">
                         <span class="fas fa-plus"></span>
@@ -107,7 +107,7 @@
             <label class="form-check-label" for="portal-web">Correo electrónico según sus preferencias</label>
         </div>
         <div class="col-md-3">
-            <input type="text" class="form-control input-section2" id="email-other-step4" placeholder="Ingrese correo" name='mail_input'>
+            <input type="text" class="form-control input-section2" id="email-other-step4" placeholder="Ingrese correo" name='mail_input' value="{{ !empty($info->email) ? $info->email : ''}}">
         </div>
     </div>
     @component('components.field_error')

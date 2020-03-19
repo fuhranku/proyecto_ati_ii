@@ -1,4 +1,4 @@
-<div class="container pl-5 pr-5 d-none" id="container-p-juridica">
+<div class="container pl-5 pr-5 {{$info->person_type == 'jur' ? '' : 'd-none'}}" id="container-p-juridica">
     <div class="row mt-4 pl-5 pr-5">
         <div class="col-sm-6">
             <div class="text-center">
@@ -12,7 +12,7 @@
                     <label class="font-weight-bold"> <span class="ast-required"> *</span>Nombre de la empresa</label>
                 </div>
                 <div class="col-md-6">
-                    <input type="text" class="form-control" name="nombre_empresa_pj">
+                    <input type="text" class="form-control" name="nombre_empresa_pj"  value="{{ !empty($info_specific->name_comp) ? $info_specific->name_comp : ''}}">
                 </div>
             </div>
             @component('components.field_error')
@@ -31,7 +31,7 @@
                     <label class="font-weight-bold"> <span class="ast-required"> *</span>Razón social/RIF</label>
                 </div>
                 <div class="col-md-6">
-                    <input type="text" class="form-control" name='rif_empresa_pj'>
+                    <input type="text" class="form-control" name='rif_empresa_pj'  value="{{ !empty($info_specific->rif) ? $info_specific->rif : ''}}">
                 </div>
             </div>
             @component('components.field_error')
@@ -95,7 +95,7 @@
                     <label class="font-weight-bold"> <span class="ast-required"> *</span>Dirección</label>
                 </div>
                 <div class="col-md-6">
-                    <textarea class="form-control overflow-auto" style="resize:none;" name="address_empresa_pj"></textarea>
+                    <textarea class="form-control overflow-auto" style="resize:none;" name="address_empresa_pj"  value="{{ !empty($info_specific->address_comp) ? $info_specific->address_comp : ''}}"></textarea>
                 </div>
             </div>
             @component('components.field_error')
@@ -121,7 +121,7 @@
                         <label class="font-weight-bold"> <span class="ast-required">*</span>Nombre</label>
                     </div>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" name="nombre_rep_pj">
+                        <input type="text" class="form-control" name="nombre_rep_pj" value="{{ !empty($info_specific->name_rep) ? $info_specific->name_rep : ''}}">
                     </div>
                 </div>
                 @component('components.field_error')
@@ -140,7 +140,7 @@
                         <label class="font-weight-bold"> <span class="ast-required">*</span>Apellido</label>
                     </div>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" name="apellido_rep_pj">
+                        <input type="text" class="form-control" name="apellido_rep_pj" value="{{ !empty($info_specific->last_name_rep) ? $info_specific->last_name_rep : ''}}">
                     </div>
                 </div>
                 @component('components.field_error')
@@ -159,7 +159,7 @@
                         <label class="font-weight-bold"> <span class="ast-required"> *</span>Correo electrónico</label>
                     </div>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" name='email_rep_pj'>
+                        <input type="text" class="form-control" name='email_rep_pj' value="{{ !empty($info_specific->email_rep) ? $info_specific->email_rep : ''}}">
                     </div>
                 </div>
                 @component('components.field_error')
@@ -204,7 +204,7 @@
                 @endcomponent
                 <div class="row mb-3 d-none" id="input-mobile-juridica">
                     <div class="col-sm-6"> 
-                    <input class="phone form-control" name="mobile_pj" type="tel" id='mobile-pj'>
+                    <input class="phone form-control" name="mobile_pj" type="tel" id='mobile-pj' value="{{ !empty($info_specific->mobile_number) ? $info_specific->mobile_number : ''}}">
                     </div>
                 </div>
                 @component('components.field_error')
@@ -220,13 +220,13 @@
                 @endcomponent
                 <div class="row d-none" id="input-landline-juridica">
                     <div class="col-md-6"> 
-                    <input class="phone form-control" name="landline_pj" type="tel" id='landline-pj'>
+                    <input class="phone form-control" name="landline_pj" type="tel" id='landline-pj' value="{{ !empty($info_specific->landline_number) ? $info_specific->landline_number : ''}}">
                     </div>
                     <div class="col-sm-2 font-weight-bold my-auto">
                             Ext
                     </div>
                     <div class="col-md-4"> 
-                        <input type="text" class="form-control"  style="margin-left:-30px;" placeholder="Opcional" name='landline_ext_pj'>
+                        <input type="text" class="form-control"  style="margin-left:-30px;" placeholder="Opcional" name='landline_ext_pj' value="{{ !empty($info_specific->landline_number_ext) ? $info_specific->landline_number_ext : ''}}">
                     </div>
                 </div>
                 @component('components.field_error')

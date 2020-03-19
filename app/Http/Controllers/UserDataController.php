@@ -241,7 +241,7 @@ class UserDataController extends Controller
             case 1:
                 return [
                     'person_type' => null,
-                    'nombre_pn' => 'hfghfghfhg',
+                    'nombre_pn' => null,
                     'apellido_pn' => null,
                     'user_id_pn' => null,
                     'email_pn' => null,
@@ -330,7 +330,7 @@ class UserDataController extends Controller
             // Create model based in person type
             switch($data['person_type']){
                 case 'nat':
-                    $user_type = new NaturalPerson;
+                    $user_type = App\Models\Sign_up\NaturalPerson::find(Session::get('info_specific')->id);
                     $user_type->country_id = $data['country_pn'];
                     $user_type->name = $data['nombre_pn'];
                     $user_type->last_name = $data['apellido_pn'];
@@ -341,7 +341,7 @@ class UserDataController extends Controller
                     $user_type->landline_number_ext = $data['landline_ext_pn'];
                 break;
                 case 'jur':
-                    $user_type = new LegalPerson;
+                    $user_type = App\Models\Sign_up\LegalPerson::find(Session::get('info_specific')->id);
                     $user_type->country_id = $data['country_empresa_pj'];
                     $user_type->city_id = $data['city_empresa_pj'];
                     $user_type->name_comp = $data['nombre_empresa_pj'];
@@ -370,12 +370,12 @@ class UserDataController extends Controller
             $user->banco_destino = $data['banco_destino'];
             $user->country_facturacion = $data['country_facturacion'];
         // Insertar usuario antes de las tablas con sus relaciones
-            // $user->save();
+            $user->save();
         // Insertar modelo user_type (el Foreign key se asigna automáticamente con la llamada a save())
-            if($data['person_type'] == 'nat'){
-                // $user->naturalPerson()->save($user_type);
+            if(Session::get('info')->person_type == 'nat'){
+                $user->naturalPerson()->save($user_type);
             }else{
-                // $user->legalPerson()->save($user_type);
+                $user->legalPerson()->save($user_type);
             }
     }
 }

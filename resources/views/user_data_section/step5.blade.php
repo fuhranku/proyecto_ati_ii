@@ -35,7 +35,7 @@
                         </label>
                     </div>
                     <div class="col-sm-7 ml-n-3 my-auto">
-                        <input type="text" class="form-control" placeholder="Banco desde el que realiza la operación" name='banco_origen'>
+                    <input type="text" class="form-control" placeholder="Banco desde el que realiza la operación" name='banco_origen' value="{{!empty($info->banco_origen) ? $info->banco_origen : ''}}">
                     </div>
                 </div>
                 @component('components.field_error')
@@ -105,7 +105,7 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-sm-12 my-auto">
-                        <input type="text" class="form-control" placeholder="Banesco Panamá - Cuenta nro: 201800948693" name="banco_destino">
+                        <input type="text" class="form-control" placeholder="Banesco Panamá - Cuenta nro: 201800948693" name="banco_destino"  value="{{!empty($info->banco_destino) ? $info->banco_destino : ''}}">
                     </div>
                 </div>
                 @component('components.field_error')

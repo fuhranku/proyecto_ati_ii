@@ -8,7 +8,7 @@
                         <label class="font-weight-bold"> <span class="ast-required"> *</span>Correo para acceder al portal</label>
                     </div>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" name='email_login'>
+                        <input type="text" class="form-control" name='email_login' value="{{ !empty($info->email) ? $info->email : ''}}">
                     </div>
                 </div>
                 @component('components.field_error')
