@@ -8,6 +8,43 @@ var d_dwelling = [];
 var service = [];
 var comfort = [];
 var images_url = [];
+var scrollPos = 0;
+
+function getScrollPos(){
+    scrollPos = $(window).scrollTop();
+}
+
+function onDisplayModalLocation(){
+    $('body').prepend('\
+    <div class="modal-bg">\
+    </div>\
+    ');
+    $("#dwell-location-modal").removeClass("d-none");
+    $("#dwell-location-modal").appendTo(".modal-bg");
+    getScrollPos();
+}
+
+function onDisplayModalService(){
+    $('body').prepend('\
+    <div class="modal-bg">\
+    </div>\
+    ');
+    $("#dwell-service-modal").removeClass("d-none");
+    $("#dwell-service-modal").appendTo(".modal-bg");
+    getScrollPos();
+}
+
+
+function onDisplayModalComfort(){
+    $('body').prepend('\
+    <div class="modal-bg">\
+    </div>\
+    ');
+    $("#dwell-comfort-modal").removeClass("d-none");
+    $("#dwell-comfort-modal").appendTo(".modal-bg");
+    getScrollPos();
+}
+
 
 function onChangeSearchDisplay(){
 
@@ -22,6 +59,18 @@ function onChangeSearchDisplay(){
         $("#dwelling-photo-mode").addClass("d-none");
     }
 }
+
+$('.accept-btn').click(function(){
+    $("#dwell-location-modal").appendTo("body");
+    $("#dwell-service-modal").appendTo("body");
+    $("#dwell-comfort-modal").appendTo("body");
+    $("#dwell-location-modal").addClass("d-none");
+    $("#dwell-service-modal").addClass("d-none");
+    $("#dwell-comfort-modal").addClass("d-none");
+    $('.modal-bg').remove();
+    console.log(scrollPos);
+    $('html, body').animate({scrollTop:scrollPos}, 50);
+});
 
 function onPressDisplaySell(){
 

@@ -71,17 +71,29 @@
             <div class="col-md-6 mt-3">
                 <div class="row">
                     <div class="col-md-12">
+<<<<<<< HEAD
                         <a class=" font-weight-bold " href="#"><u>Ver Comodidades</u></a>
+=======
+                        <div class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalComfort()"><u>Ver Comodidades</u></div>
+>>>>>>> Fixed bug
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
+<<<<<<< HEAD
                         <a class=" font-weight-bold " href="#"><u>Ver Servicios</u></a>
+=======
+                        <div class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalService()"><u>Ver Servicios</u></div>
+>>>>>>> Fixed bug
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
+<<<<<<< HEAD
                         <a class=" font-weight-bold " href="#"><u>Ver Ubicación exacta</u></a>
+=======
+                        <div class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation()"><u>Ver Ubicación exacta</u></div>
+>>>>>>> Fixed bug
                     </div>
                 </div>
                 <div class="row">
