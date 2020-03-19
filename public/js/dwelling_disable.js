@@ -18,16 +18,13 @@ function disableDwelling(){
         method: 'post',
         data: data,
         success: function(data){
-            // for (i=1;i<5;i++){
-            //     if($('#dwelling_photo_fs'+i).find("input[name='select-dwelling']:checked")){
-            //         $('#dwelling_photo_fs'+i).children('.list-photo-overlay').removeClass('d-none');
-            //         $('#dwelling_photo_fs'+i).children('.list-photo-overlay').css('opacity','1');
-            //     }
-            // }
             $.each($("input[name='select-dwelling']:checked"), function(){
                 $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').removeClass('d-none');
                 $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').css('opacity','1');
+                $(this).parent().parent().parent().parent().parent().children('.list-photo-overlay').removeClass('d-none');
+                $(this).parent().parent().parent().parent().parent().children('.list-photo-overlay').css('opacity','1');
             });
+
             console.log(data);
         }
     });    
@@ -57,6 +54,8 @@ function enableDwelling(){
             $.each($("input[name='select-dwelling']:checked"), function(){
                 $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').addClass('d-none');
                 $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').css('opacity','0');
+                $(this).parent().parent().parent().parent().parent().children('.list-photo-overlay').addClass('d-none');
+                $(this).parent().parent().parent().parent().parent().children('.list-photo-overlay').css('opacity','0');
             });
             console.log(data);
         }
