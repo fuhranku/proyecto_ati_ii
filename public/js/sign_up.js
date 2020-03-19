@@ -855,3 +855,57 @@ $('#sign-up-btn').on('click', function(e){
         $('body').addClass('overflow-hidden');
     }
 });
+
+$('#update-btn').on('click', function(e){
+    validation = true;
+    // AJAX VALIDATION
+    e.preventDefault();
+    $.ajaxSetup({
+        headers:{
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+    data = {
+        step: step
+    };
+
+    data['user_unique_id'] = $('#user_unique_id').text();
+    data['banco_origen'] = $('input[name="banco_origen"]').val();
+    data['banco_destino'] = $('input[name="banco_destino"]').val();
+    data['country_facturacion'] = $('#country_facturacion').children('option:selected').val();
+    $('.form-error').empty();
+    // Ajax POST request
+    $.ajax({
+        url: form_post_url,
+        method: 'post',
+        data: data,
+        async: false,
+        success: function(data){
+            // AJAX VALIDATION
+            // If there's an error don't let go to next step
+            if( !$.isEmptyObject(data.errors) ){
+                validation = false;                        
+                $.each(data.errors, function(key, value){
+                    $('#error_row_'+key).removeClass('d-none');
+                    $.each(value, function(key2,value2){
+                        $('#error_ul_'+key).append('<li>'+value2+'</li>');
+                    })
+                });
+            }else{
+                console.log(data.success);
+            }
+        }
+    })
+    if (validation){
+        $('.error-row').addClass('d-none');
+        $('.form-error').addClass('d-none');
+        $('body').prepend('\
+        <div class="modal-bg">\
+        </div>\
+        ');
+        $('#sign-up-modal').appendTo('.modal-bg');
+        $('#sign-up-modal').removeClass('d-none');
+
+        $('body').addClass('overflow-hidden');
+    }
+});

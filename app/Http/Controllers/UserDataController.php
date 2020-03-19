@@ -42,13 +42,13 @@ class UserDataController extends Controller
         return view('main_sections.user_data',compact('socialMedias','countries','info', 'info_specific'));
     }
 
-    public function getCities(Request $request){
-        $cities = Country::find($request->get('country'))->cities()->pluck('id','name');
-        return response()->json([
-            'success'=>'post succesfully done',
-            'cities'=>$cities
-        ]);
-    }
+    // public function getCities(Request $request){
+    //     $cities = Country::find($request->get('country'))->cities()->pluck('id','name');
+    //     return response()->json([
+    //         'success'=>'post succesfully done',
+    //         'cities'=>$cities
+    //     ]);
+    // }
 
     public function user_data_get_person_type($type = 1){
         $step = 2;
@@ -61,8 +61,9 @@ class UserDataController extends Controller
         return view('main_sections.index');
     }
 
-    public function store(Request $request){
+    public function store_user_data(Request $request){
         // $step = $request->get('step');
+        Log::info('estoy en user controller');
         switch($request->get('step')){
             case 0:
                 $step0 = $this->initialize(0);
@@ -376,13 +377,13 @@ class UserDataController extends Controller
             $user->banco_origen = $data['banco_origen'];
             $user->banco_destino = $data['banco_destino'];
             $user->country_facturacion = $data['country_facturacion'];
-        // Insertar usuario antes de las tablas con sus relaciones
-            // $user->save();
-        // Insertar modelo user_type (el Foreign key se asigna automáticamente con la llamada a save())
+        // Actualizar usuario antes de las tablas con sus relaciones
+            $user->save();
+        // Actualizar modelo user_type (el Foreign key se asigna automáticamente con la llamada a save())
             if(Session::get('info')->person_type == 'nat'){
-                // $user->naturalPerson()->save($user_type);
+                $user->naturalPerson()->save($user_type);
             }else{
-                // $user->legalPerson()->save($user_type);
+                $user->legalPerson()->save($user_type);
             }
     }
 }

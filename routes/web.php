@@ -39,7 +39,7 @@ Route::post('getCities','SignUpController@getCities');
 Route::get('user_data', 'UserDataController@user_data_get');
 
 // Post guardar
-Route::post('user_data','UserDataController@store')->name('user_data.store');
+Route::post('user_data','UserDataController@store_user_data')->name('user_data.store');
 
 Route::get('user_data/2/{type}', 'UserDataController@user_data_get_person_type');
 

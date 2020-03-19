@@ -36,6 +36,8 @@ class SignUpController extends Controller
 
     public function getCities(Request $request){
         $cities = Country::find($request->get('country'))->cities()->pluck('id','name');
+        Log::info('cities');
+        Log::info($cities);
         return response()->json([
             'success'=>'post succesfully done',
             'cities'=>$cities
@@ -55,6 +57,8 @@ class SignUpController extends Controller
 
     public function store(Request $request){
         // $step = $request->get('step');
+        Log::info('estoy en sign up controller');
+
         switch($request->get('step')){
             case 0:
                 $step0 = $this->initialize(0);

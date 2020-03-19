@@ -50,7 +50,9 @@
     @include('user_data_section.user_data_modal')
 
 <script type="text/javascript">
-    var form_post_url = "{{ url('/sign_up')}}";
+    // var form_post_url = "{{ url('/sign_up')}}";
+    var form_post_url = "{{ url('/user_data')}}";
+
     var retrieve_cities_url = "{{ url('/getCities')}}";
 </script>
 
