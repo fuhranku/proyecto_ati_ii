@@ -12,7 +12,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12 mt-3 mb-0 pb-0">
-                    <p class="border border-primary p-4 font-weight-bold text-center sm-text m-0">Foto principal</p>
+                    <img id="image-dwelling-list1" class="border border-primary font-weight-bold text-center dwelling-image" src="" alt="">
                 </div>
                 <div class="col-md-12">
                     <u><a href="#" class="font-weight-bold sm-text">Más detalles</a></u>
@@ -114,7 +114,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12 mt-3 mb-0 pb-0">
-                    <p class="border border-primary p-4 font-weight-bold text-center sm-text m-0">Foto principal</p>
+                    <img id="image-dwelling-list2" class="border border-primary font-weight-bold text-center dwelling-image" src="" alt="">
                 </div>
                 <div class="col-md-12">
                     <u><a href="#" class="font-weight-bold sm-text">Más detalles</a></u>
@@ -216,7 +216,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12 mt-3 mb-0 pb-0">
-                    <p class="border border-primary p-4 font-weight-bold text-center sm-text m-0">Foto principal</p>
+                    <img id="image-dwelling-list3" class="border border-primary font-weight-bold text-center dwelling-image" src="" alt="">
                 </div>
                 <div class="col-md-12">
                     <u><a href="#" class="font-weight-bold sm-text">Más detalles</a></u>
@@ -318,7 +318,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12 mt-3 mb-0 pb-0">
-                    <p class="border border-primary p-4 font-weight-bold text-center sm-text m-0">Foto principal</p>
+                    <img id="image-dwelling-list4" class="border border-primary font-weight-bold text-center dwelling-image" src="" alt="">
                 </div>
                 <div class="col-md-12">
                     <u><a href="#" class="font-weight-bold sm-text">Más detalles</a></u>

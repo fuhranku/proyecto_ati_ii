@@ -376,20 +376,6 @@ function loadPageDwelling(page){
         $('#status_photo_fs'+(i+1).toString()).text(statusMap[d_dwelling[i + pageOffset].status]);
         $('#room_bath_photo_fs'+(i+1).toString()).text(roomBath);
 
-        
-        var img_url;
-        var img = images_url.find( (x) =>{
-            return x.dwelling_id == d_dwelling[i + pageOffset].id
-        });
-
-        if(img == undefined){
-            img_url = "http://localhost:8000/uploads/images/empty.jpg";
-        }else{
-            img_url = img.url;
-        }
-
-        //load photos
-        $('#image-dwelling-photo'+(i+1).toString()).attr("src",img_url);
 
         //CASE LIST
         //update selector dwelling id
@@ -446,7 +432,22 @@ function loadPageDwelling(page){
         
         
         $('#comforts_list_fs'+(i+1).toString()).text(finalTextComforts);
-        $('#services_list_fs'+(i+1).toString()).text(finalTextServices); 
+        $('#services_list_fs'+(i+1).toString()).text(finalTextServices);
+
+        //LOAD PHOTOS
+        var img_url;
+        var img = images_url.find( (x) =>{
+            return x.dwelling_id == d_dwelling[i + pageOffset].id
+        });
+
+        if(img == undefined){
+            img_url = "http://localhost:8000/uploads/images/empty.jpg";
+        }else{
+            img_url = img.url;
+        }
+        
+        $('#image-dwelling-photo'+(i+1).toString()).attr("src",img_url);
+        $("#image-dwelling-list"+(i+1).toString()).attr("src",img_url);
     }
 
     displayNonePagesLeft(dwellingsPerPage);

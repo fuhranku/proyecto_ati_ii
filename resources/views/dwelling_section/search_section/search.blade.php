@@ -9,6 +9,7 @@
             
             @include('dwelling_section.search_section.search_bar')
             @include('dwelling_section.search_section.search_result')
+            @include('dwelling_section.search_section.search_full_details')
         </div>
 
         <script>

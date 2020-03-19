@@ -101,8 +101,8 @@
         </div>
 
         <div class="row">
-            <div class="col-md-12">
-                <p href="#" class="m-0 text-danger h5 font-weight-bold text-center m-3"><u>Ver información Completa</u></p>
+            <div class="col-md-12 text-center">
+                <a href="#" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
             </div>
         </div>
     </div>
@@ -208,8 +208,8 @@
         </div>
 
         <div class="row">
-            <div class="col-md-12">
-                <p href="#" class="m-0 text-danger h5 font-weight-bold text-center m-3"><u>Ver información Completa</u></p>
+            <div class="col-md-12 text-center">
+                <a href="#" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
             </div>
         </div>
     </div>
@@ -315,8 +315,8 @@
         </div>
 
         <div class="row">
-            <div class="col-md-12">
-                <p href="#" class="m-0 text-danger h5 font-weight-bold text-center m-3"><u>Ver información Completa</u></p>
+            <div class="col-md-12 text-center">
+                <a href="#" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
             </div>
         </div>
     </div>
@@ -422,8 +422,8 @@
         </div>
 
         <div class="row">
-            <div class="col-md-12">
-                <p href="#" class="m-0 text-danger h5 font-weight-bold text-center m-3"><u>Ver información Completa</u></p>
+            <div class="col-md-12 text-center">
+                <a href="#" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
             </div>
         </div>
     </div>
