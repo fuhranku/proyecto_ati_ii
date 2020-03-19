@@ -1,5 +1,5 @@
 {{-- Modal --}}
-<div class="row h-100 modal-bg d-none" id="dwell-comfort-modal">
+<div class="row h-100 d-none" id="dwell-comfort-modal">
     <div class="col-sm-12 my-auto">
         <div class="w-30 mx-auto text-center bg-white pb-3">
             <div class="row">
@@ -17,7 +17,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 mt-2 pl-2 pr-2">
-                    <a class="btn btn-yellow text-center" onclick="$('#dwell-comfort-modal').addClass('d-none');" href="#">Aceptar</a>
+                    <a class="btn btn-yellow text-center accept-btn" onclick="$('#dwell-comfort-modal').addClass('d-none');" href="#">Aceptar</a>
                 </div>
             </div>
             </div>
