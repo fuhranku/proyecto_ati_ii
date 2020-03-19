@@ -23,8 +23,8 @@
                                     @if (Session::get('info')->person_type == 'nat')
                                         {{ Session::get('info_specific')->name }} {{ Session::get('info_specific')->last_name }}
                                     @else
-                                        {{ Session::get('info_specific')->name_rep }} {{ Session::get('info_specific')->last_name_rep }} <br>
-                                        {{ Session::get('info_specific')->name_comp }}
+                                        {{ Session::get('info_specific')->name_rep }} {{ Session::get('info_specific')->last_name_rep }} 
+                                        {{-- {{ Session::get('info_specific')->name_comp }} --}}
                                     @endif
                                 </span>
                             </div>

@@ -302,6 +302,8 @@ class SignUpController extends Controller
     private function saveUserIntoDatabase(){
         $session_data = Session::all();
         $data = [];
+        Log::info('save into db');
+        Log::info($session_data);
         if (!in_array("step4",$session_data)){
             $session_data['step4']['days_frequency'] = null;
             $session_data['step4']['interest_services'] = null;

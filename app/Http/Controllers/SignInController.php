@@ -43,22 +43,13 @@ class SignInController extends Controller
                 } else {
                     $queryUserSpe = DB::table('legalPeople')->select('*')->where('user_id', '=', $queryUser->id)->first();
                 }
-                // echo $queryUser->email;
-                // dd($queryUser);
-                // print_r($queryUser);
-                // die();
-                // $request->session()->put('info', $queryUser);
-                // session(['info' => $queryUser]);
+                
                 Session::put('info', $queryUser);
                 Session::put('info_specific', $queryUserSpe);
                 $sessionInfo = Session::get('info');
-                // echo $sessionInfo->email;
-                // dd($sessionInfo);
-                // $reqInfo = $request->session()->get('info');
-                // $result = json_decode($reqInfo, true);
-                // dd( $reqInfo->email);
-    
-                return redirect()->back();
+                
+                // return redirect()->back();
+                return view('main_sections.index');
                 
             }else {
                 return redirect()->back()
