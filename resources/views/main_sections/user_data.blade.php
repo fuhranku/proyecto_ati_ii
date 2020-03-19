@@ -33,7 +33,7 @@
                 <div class="col-sm-4"></div>
                 <div class="col-sm-2">
                     <div class="text-center">
-                        <button type="submit" class="btn btn-yellow" id="sign-up-btn" style="font-weight:bold;color:#ffffff; padding:5px 30px" form='form-step-5'>
+                        <button type="submit" class="btn btn-yellow" id="update-btn" style="font-weight:bold;color:#ffffff; padding:5px 30px" form='form-step-5'>
                             Actualizar
                         </button>
                     </div>

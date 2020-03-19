@@ -32,6 +32,7 @@ class UserDataController extends Controller
         $users = User::all();
         // $users_count = count($users) + 1;
         $info = Session::get('info');
+        // $info->found_us =json_decode($info->found_us);
         $info_specific = Session::get('info_specific');
         return view('main_sections.user_data',compact('socialMedias','countries','info', 'info_specific'));
     }

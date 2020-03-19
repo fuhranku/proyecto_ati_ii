@@ -59,7 +59,7 @@
                         <select class="form-control" id="country_facturacion">
                             <option value='' label="Seleccione su país" disabled selected value></option>
                             @foreach($countries as $country)
-                            <option value={{$country->id}}>{{$country->name}}</option>
+                            <option value={{$country->id}} {{ !empty($info_specific->country_id) && $info_specific->country_id == $country->id ? 'selected' : '' }} >{{$country->name}}</option>
                             @endforeach
                         </select>
                     </div>
