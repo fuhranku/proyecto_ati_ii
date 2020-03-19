@@ -9,6 +9,20 @@ var service = [];
 var comfort = [];
 var images_url = [];
 
+function onDisplayModalLocation(){
+    $("#dwell-location-modal").removeClass("d-none");
+}
+
+function onDisplayModalService(){
+    $("#dwell-service-modal").removeClass("d-none");
+}
+
+
+function onDisplayModalComfort(){
+    $("#dwell-comfort-modal").removeClass("d-none");
+}
+
+
 function onChangeSearchDisplay(){
 
     activeMode = $("input[name='d-dwelling-mode']:checked").val();
@@ -459,17 +473,19 @@ function loadPageDwelling(page){
 
         //VERIFY DWELLINGS THAT ARE DISABLED
         //PUT OVERLAY
-        console.log("ARRE LOCO BOLUDO: ", d_dwelling[i + pageOffset].enable);
         if(d_dwelling[i + pageOffset].enable){
             $('#dwelling_photo_fs'+(i+1).toString()).children('.list-photo-overlay').addClass('d-none');
             $('#dwelling_photo_fs'+(i+1).toString()).children('.list-photo-overlay').css('opacity','0');
+            $('#dwelling_list_fs'+(i+1).toString()).children('.list-photo-overlay').addClass('d-none');
+            $('#dwelling_list_fs'+(i+1).toString()).children('.list-photo-overlay').css('opacity','0');
         }
         else{
-            console.log("VIVIENDA DESCACTIVADA");
             $('#dwelling_photo_fs'+(i+1).toString()).children('.list-photo-overlay').removeClass('d-none');
             $('#dwelling_photo_fs'+(i+1).toString()).children('.list-photo-overlay').css('opacity','1');
+            $('#dwelling_list_fs'+(i+1).toString()).children('.list-photo-overlay').removeClass('d-none');
+            $('#dwelling_list_fs'+(i+1).toString()).children('.list-photo-overlay').css('opacity','1');
         }
-
+        
     }
 
     displayNonePagesLeft(dwellingsPerPage);
