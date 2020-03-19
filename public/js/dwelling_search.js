@@ -456,6 +456,20 @@ function loadPageDwelling(page){
         
         $('#image-dwelling-photo'+(i+1).toString()).attr("src",img_url);
         $("#image-dwelling-list"+(i+1).toString()).attr("src",img_url);
+
+        //VERIFY DWELLINGS THAT ARE DISABLED
+        //PUT OVERLAY
+        console.log("ARRE LOCO BOLUDO: ", d_dwelling[i + pageOffset].enable);
+        if(d_dwelling[i + pageOffset].enable){
+            $('#dwelling_photo_fs'+(i+1).toString()).children('.list-photo-overlay').addClass('d-none');
+            $('#dwelling_photo_fs'+(i+1).toString()).children('.list-photo-overlay').css('opacity','0');
+        }
+        else{
+            console.log("VIVIENDA DESCACTIVADA");
+            $('#dwelling_photo_fs'+(i+1).toString()).children('.list-photo-overlay').removeClass('d-none');
+            $('#dwelling_photo_fs'+(i+1).toString()).children('.list-photo-overlay').css('opacity','1');
+        }
+
     }
 
     displayNonePagesLeft(dwellingsPerPage);

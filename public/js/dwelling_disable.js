@@ -24,6 +24,8 @@ function disableDwelling(){
             //         $('#dwelling_photo_fs'+i).children('.list-photo-overlay').css('opacity','1');
             //     }
             // }
+
+            //PUT OVERLAY
             $.each($("input[name='select-dwelling']:checked"), function(){
                 $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').removeClass('d-none');
                 $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').css('opacity','1');
@@ -64,7 +66,6 @@ function enableDwelling(){
 
 }
 
-
 function deleteDwelling(){
 
     console.log("Borrando viviendas");
@@ -86,9 +87,23 @@ function deleteDwelling(){
         data: data,
         success: function(data){
             console.log(data);
-        }
-    }); 
 
+            $.each($("input[name='select-dwelling']:checked"), function(){
+            
+                d_dwelling = d_dwelling.filter( (x) =>{
+                    return !(x.id == $(this).val())
+                })
+
+                dwelling = dwelling.filter( (x) =>{
+                    return !(x.id == $(this).val())
+                })
+
+                currentPageDwelling = 1;
+                setNumberOfPages();
+                loadPageDwelling(currentPageDwelling);
+            });
+        }
+    });
 }
 
 function modifyDwelling(){
