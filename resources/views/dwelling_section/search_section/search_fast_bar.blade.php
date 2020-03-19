@@ -9,7 +9,8 @@
     <div class="row p-2">
         <div class="col-md-6">
             <span class="badge badge-info">Pais</span>
-            <select id="country_fs" class="form-control sm-text" onchange="">
+            <select id="country_fs" class="form-control sm-text" >
+                <option class="disabled" value='' label="Pais" disabled selected value></option>
                 @foreach ($countries as $country)
                     <option value={{$country->id}}>{{$country->name}}</option>
                 @endforeach
@@ -17,10 +18,8 @@
         </div>
         <div class="col-md-6">
             <span class="badge badge-info">Estado</span>
-            <select id="state_fs" class="form-control sm-text " onchange=""   >
-                @foreach ($states as $state)
-                    <option value={{$state->id}}>{{$state->name}}</option>
-                @endforeach
+            <select id="state_fs" class="form-control sm-text "  >
+                <option class="disabled" value='' label="Estado" disabled selected value></option>
             </select>
         </div>
     </div>
