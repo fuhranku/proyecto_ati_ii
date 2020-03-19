@@ -96,3 +96,61 @@ Route::get('about_us', 'MainController@about_us')->name('main.about_us');
 
 // Idioma
 Route::get('languages', 'MainController@languages')->name('main.languages');
+
+//restricciones si no inicia sesión
+Route::post('dwelling/publish', function () {
+    // Validate the request...
+    if (!Session::has('info')) {
+        return back();
+    }else{
+        return view('dwelling_section.publish_section.publish');
+    
+    }
+});
+
+Route::post('dwelling/publication', function () {
+    // Validate the request...
+    if (!Session::has('info')) {
+        return back();
+    }else{
+    return view('dwelling_section.publication');
+
+    }
+});
+
+Route::post('dwelling/modify', function () {
+    // Validate the request...
+    if (!Session::has('info')) {
+        return back();
+    }else{
+    return view('dwelling_section.modify');
+
+    }
+});
+Route::post('dwelling/delete', function () {
+    // Validate the request...
+    if (!Session::has('info')) {
+        return back();
+    }else{
+    return view('dwelling_section.delete');
+
+    }
+});
+Route::post('dwelling/enable', function () {
+    // Validate the request...
+    if (!Session::has('info')) {
+        return back();
+    }else{
+    return view('dwelling_section.enable');
+
+    }
+});
+Route::post('dwelling/disable', function () {
+    // Validate the request...
+    if (!Session::has('info')) {
+        return back();
+    }else{
+    return view('dwelling_section.disable');
+
+    }
+});
