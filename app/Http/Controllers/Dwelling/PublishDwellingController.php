@@ -150,7 +150,7 @@ class PublishDwellingController extends Controller
         $services_dropdown = $data['services_publish_dwelling_dropdown_sm'];
         foreach($services_dropdown as $key => $value){
             if($value === 'other'){
-                $services_dropdown[$key] = '3';
+                $services_dropdown[$key] = '5';
                 break;
             }
         }
