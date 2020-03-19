@@ -152,6 +152,10 @@ function quickSearch(){
             loadPageDwelling(1); //load first page
 
             //REMOVE PRELOADER
+            // Send preloader back to body tag
+            $('#preloader-storing').addClass('d-none');
+            $('#preloader-storing').appendTo('body');
+            // Remove modal-bg
             $('.modal-bg').remove();
             $('body').removeClass('overflow-hidden');
 
@@ -274,6 +278,10 @@ function detailedSearch(){
             loadPageDwelling(1); //load first page
 
             //REMOVE PRELOADER
+            // Send preloader back to body tag
+            $('#preloader-storing').addClass('d-none');
+            $('#preloader-storing').appendTo('body');
+            // Remove modal-bg
             $('.modal-bg').remove();
             $('body').removeClass('overflow-hidden');
 
