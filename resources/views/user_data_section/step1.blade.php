@@ -32,9 +32,9 @@ $personType = 0;
                 </div>
         </div>
         {{-- Persona Natural --}}
-        @include('sign_up_section/step2_person_type/p_natural')
+        @include('user_data_section/step2_person_type/p_natural')
 
         {{-- Persona Jurídica --}}
-        @include('sign_up_section/step2_person_type/p_juridica')
+        @include('user_data_section/step2_person_type/p_juridica')
     </form>
 </section>

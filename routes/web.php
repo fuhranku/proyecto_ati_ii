@@ -35,6 +35,14 @@ Route::get('sign_up/2/{type}', 'SignUpController@sign_up_get_person_type');
 
 Route::post('getCities','SignUpController@getCities');
 
+//user daata route's
+Route::get('user_data', 'UserDataController@user_data_get');
+
+// Post guardar
+Route::post('user_data','UserDataController@store')->name('user_data.store');
+
+Route::get('user_data/2/{type}', 'UserDataController@user_data_get_person_type');
+
 // Iniciar sesión
 Route::post('sign_in', 'SignInController@login')->name('main.sign_in');
 Route::get('sign_in', 'SignInController@getSessionInfo')->name('sign_in.get');

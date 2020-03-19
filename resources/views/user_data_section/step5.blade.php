@@ -6,7 +6,7 @@
                 Su código de cliente es:
             </div>
             <div class="col-md-3 ml-n5 my-auto">
-               <h1 id='user_unique_id'>{{$users_count}}</h1> 
+               <h1 id='user_unique_id'>{{$info->id}}</h1> 
             </div>
             <div class="col-md-5 border border-blue">
                 Es importante que usted <span class="text-danger font-weight-bold">FORMALICE  su pago para poder

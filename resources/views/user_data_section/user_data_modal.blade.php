@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="bg-blue text-white p-2 font-weight-bold">
-                    Registro Exitoso
+                    Actualización Exitosa
                 </div>
             </div>
         </div>
@@ -15,10 +15,8 @@
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-sm-6 mt-2">
-                <a class="btn btn-yellow text-center" id="sign_in_button">Iniciar sesión</a>
-            </div>
-            <div class="col-sm-6 mt-2">
+            
+            <div class="col mt-2">
                 <a class="btn btn-yellow text-center" href="{{ url('index') }}">Volver al inicio</a>
             </div>
         </div>

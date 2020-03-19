@@ -2,10 +2,11 @@
     <span class="font-weight-bold">Ingrese los datos solicitados a continuación:</span>
     <div class="row mt-3">
         <div class="col-md-3 my-auto">
-            <label class="font-weight-bold"> <span class="ast-required"> *</span>Nombre</label>
+            <label class="font-weight-bold"> <span class="ast-required"> *</span>Nombreeee</label>
         </div>
         <div class="col-md-3">
-            <input type="text" class="form-control" name='nombre_pn'>
+            sadasd
+            <input type="text" class="form-control" name='nombre_pn' value="asdasd">
         </div>
     </div>
     @component('components.field_error')

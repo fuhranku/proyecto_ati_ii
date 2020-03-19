@@ -38,6 +38,6 @@
         </div>
     </div>
     {{-- Opciones para 'Otra' --}}
-    @include('sign_up_section/step4_other_choices')
+    @include('user_data_section/step4_other_choices')
     </form>
 </section>
