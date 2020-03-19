@@ -32,7 +32,12 @@ class UserDataController extends Controller
         $users = User::all();
         // $users_count = count($users) + 1;
         $info = Session::get('info');
-        // $info->found_us =json_decode($info->found_us);
+        if (is_string($info->found_us)) {
+            $info->found_us =json_decode($info->found_us);
+        }
+        Log::info('Variable found_us aaaaaaaaaaaaaa');
+        // Log::info($info->found_us);
+        Log::info(($info->found_us)->option);
         $info_specific = Session::get('info_specific');
         return view('main_sections.user_data',compact('socialMedias','countries','info', 'info_specific'));
     }
@@ -316,6 +321,7 @@ class UserDataController extends Controller
 
         // $user = new User;
         $user = App\Models\Sign_up\User::find(Session::get('info')->id);
+        Log::info('Data to put into find:');
         Log::info($user);
         // Set date
         // $user->date_reg = date('Y-m-d');
@@ -371,12 +377,12 @@ class UserDataController extends Controller
             $user->banco_destino = $data['banco_destino'];
             $user->country_facturacion = $data['country_facturacion'];
         // Insertar usuario antes de las tablas con sus relaciones
-            $user->save();
+            // $user->save();
         // Insertar modelo user_type (el Foreign key se asigna automáticamente con la llamada a save())
             if(Session::get('info')->person_type == 'nat'){
-                $user->naturalPerson()->save($user_type);
+                // $user->naturalPerson()->save($user_type);
             }else{
-                $user->legalPerson()->save($user_type);
+                // $user->legalPerson()->save($user_type);
             }
     }
 }

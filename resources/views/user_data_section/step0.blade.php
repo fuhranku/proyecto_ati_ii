@@ -14,14 +14,14 @@
                 {{-- Portal Web --}}
                 <div class="col-md-3 form-check">
                     <input value="portal-web" type="checkbox" class="form-check-input checkbox-list-1" id="portal-web" name="found_us"
-                    {{ $info->found_us->option == 'portal-web' ? 'checked' : '' }}>
+                    {{ !empty($info->found_us->option) && $info->found_us->option == 'portal-web' ? 'checked' : '' }}>
                     <label class="form-check-label" for="portal-web">Portal Web de la empresa</label>
                 </div>
 
                 {{-- RRSS --}}
                 <div class="col-md-3 form-check">
                     <input value="rrss" type="checkbox" class="form-check-input checkbox-list-1" id="rrss-checkbox" name="found_us"
-                    {{ $info->found_us->option == 'rrss' ? 'checked' : '' }}>
+                    {{ !empty($info->found_us->option) && $info->found_us->option == 'rrss' ? 'checked' : '' }}>
                     <label class="form-check-label" for="rrss">Redes Sociales</label>
                     <ul class="checkbox-dropdown d-none" id="rrss-dropdown">
                         <li class="dropdown mt-2">
@@ -42,14 +42,14 @@
                 {{-- Amigos --}}
                 <div class="col-md-3 form-check">
                     <input value="amigos" type="checkbox" class="form-check-input checkbox-list-1" id="amigos" name="found_us"
-                    {{ $info->found_us->option == 'amigos' ? 'checked' : '' }}>
+                    {{ !empty($info->found_us->option) && $info->found_us->option == 'amigos' ? 'checked' : '' }}>
                     <label class="form-check-label" for="amigos">Amigos</label>
                 </div>
                 
                 {{-- Otro --}}
                 <div class="col-md-3 form-check">
                     <input value="otro" type="checkbox" class="form-check-input checkbox-list-1" id="otro-checkbox" name="found_us"
-                    {{ $info->found_us->option == 'otro' ? 'checked' : '' }}>
+                    {{ !empty($info->found_us->option) && $info->found_us->option == 'otro' ? 'checked' : '' }}>
                     <label class="form-check-label" for="otro">Otro</label>
                     <div class="mt-2 ml-n5 d-none" id="other-modal">
                         <label class="form-check-label font-weight-bold">Especifique cuál fue el medio por el que supo de nosotros</label> 
