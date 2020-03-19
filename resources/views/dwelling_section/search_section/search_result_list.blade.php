@@ -1,7 +1,8 @@
 <!-- particular search -->
 <div class="row d-none"  id="dwelling-list-mode">
-    <!-- one seach item -->
+    <!-- one seach item -->        
     <div class="row" id="dwelling_list_fs1">
+        
         <div class="col-md-2 border border-warning" >
             <div class="row">
                 <div class="col-md-12">

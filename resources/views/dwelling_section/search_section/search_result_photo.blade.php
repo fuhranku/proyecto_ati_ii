@@ -1,25 +1,26 @@
 <!-- particular search -->
 <div class="row" id="dwelling-photo-mode">
-    <!-- one seach item -->
-    <div class="col-md-6 border border-warning" id="dwelling_photo_fs1">
+    <!-- first search item -->
+    <div class="col-md-6 border border-warning position-relative" id="dwelling_photo_fs1">
+        <div class="list-photo-overlay d-none"></div>
         <div class="row">
             <div class="col-md-6 mt-3">
                 <img id="image-dwelling-photo1" class="border border-primary font-weight-bold text-center dwelling-image" src="" alt="">
             </div>
 
             <div class="col-md-6 mt-3">
-                <div class="row">
-                    <div class="col-md-9 pl-5">
-                        <label class="form-check-label font-weight-bold" for="dwelling-select-cb1">
-                            Seleccionar
-                        </label>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-check">
-                            <input class="form-check-input" onchange="onSelectDwelling()" value="dwelling1" name="select-dwelling" type="checkbox" id="dwelling-select-photo-cb1">
+                    <div class="row position-relative select-dwelling">
+                        <div class="col-md-9 pl-5">
+                            <label class="form-check-label font-weight-bold" for="dwelling-select-cb1">
+                                Seleccionar
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" onchange="onSelectDwelling()" value="dwelling1" name="select-dwelling" type="checkbox" id="dwelling-select-photo-cb1">
+                            </div>
                         </div>
                     </div>
-                </div>
                 <div class="row">
                     <div class="col-md-12">
                         <a class="h4 " href="#"><u id="prop_type_photo_fs1">Apartamento</u></a>
@@ -107,15 +108,16 @@
         </div>
     </div>
     
-    <!-- one seach item -->
-    <div class="col-md-6 border border-warning"  id="dwelling_photo_fs2">
+    <!-- second search item -->
+    <div class="col-md-6 border border-warning position-relative"  id="dwelling_photo_fs2">
+        <div class="list-photo-overlay d-none"></div>
         <div class="row">
             <div class="col-md-6 mt-3">
                 <img id="image-dwelling-photo2" class="border border-primary font-weight-bold text-center dwelling-image" src="" alt="">
             </div>
 
             <div class="col-md-6 mt-3">
-                <div class="row">
+                <div class="row  position-relative select-dwelling">
                     <div class="col-md-9 pl-5">
                         <label class="form-check-label font-weight-bold" for="dwelling-select-cb2">
                             Seleccionar
@@ -214,15 +216,16 @@
         </div>
     </div>
 
-    <!-- one seach item -->
-    <div class="col-md-6 border border-warning" id="dwelling_photo_fs3">
+    <!-- third search item -->
+    <div class="col-md-6 border border-warning position-relative" id="dwelling_photo_fs3">
+        <div class="list-photo-overlay d-none"></div>
         <div class="row">
             <div class="col-md-6 mt-3">
                 <img id="image-dwelling-photo3" class="border border-primary font-weight-bold text-center dwelling-image" src="" alt="">
             </div>
 
             <div class="col-md-6 mt-3">
-                <div class="row">
+                <div class="row  position-relative select-dwelling">
                     <div class="col-md-9 pl-5">
                         <label class="form-check-label font-weight-bold" for="dwelling-select-cb3">
                             Seleccionar
@@ -321,15 +324,16 @@
         </div>
     </div>
 
-    <!-- one seach item -->
-    <div class="col-md-6 border border-warning" id="dwelling_photo_fs4">
-        <div class="row">
+    <!-- fourth search item -->
+    <div class="col-md-6 border border-warning position-relative" id="dwelling_photo_fs4">
+        <div class="list-photo-overlay d-none"></div>
+        <div class="row ">
             <div class="col-md-6 mt-3">
                 <img id="image-dwelling-photo4" class="border border-primary font-weight-bold text-center dwelling-image" src="" alt="">
             </div>
 
             <div class="col-md-6 mt-3">
-                <div class="row">
+                <div class="row position-relative select-dwelling">
                     <div class="col-md-9 pl-5">
                         <label class="form-check-label font-weight-bold" for="dwelling-select-cb4">
                             Seleccionar

@@ -180,3 +180,21 @@
 .resize-none{
     resize:none;
 }
+
+.list-photo-overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    z-index: 1;
+    transition: .5s ease-out;
+    background-color: rgba(184, 184, 179, 0.5);
+}
+
+.select-dwelling{
+    z-index:2;
+}
