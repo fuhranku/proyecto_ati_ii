@@ -732,7 +732,7 @@ $('#country_empresa_pj').change(function(e){
     });
     // Ajax POST request
     $.ajax({
-        url: image_post_url,
+        url: retrieve_cities_url,
         method: 'post',
         data: {
             country: $(this).children('option:not([disabled]):selected').val()
