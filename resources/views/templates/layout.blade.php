@@ -51,7 +51,11 @@
 <script src="{{ asset('js/dwelling.js') }}"></script>
 <script src="{{ asset('js/dwelling_search.js') }}"></script>
 <script src="{{ asset('js/dwelling_disable.js') }}"></script>
+<<<<<<< HEAD
 <script src="{{ asset('js/dwelling_details.js') }}"></script>
+=======
+<script src="{{ asset('js/dwelling_modify.js') }}"></script>
+>>>>>>> FP-dev
 <script src="{{ asset('js/sign_up.js') }}"></script> 
 <script src="{{ asset('js/sign_in.js') }}"></script>
 <script src="{{ asset('intl-tel-input/build/js/intlTelInput.js')}}"></script>

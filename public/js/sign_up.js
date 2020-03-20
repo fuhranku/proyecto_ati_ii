@@ -424,6 +424,8 @@ $('#continuar-btn').on('click', function(e){
                     }
                 });
                 data['news_means'] = news_means;
+                data['news_means']['sms'] = phone_step4.getNumber();
+                console.log(data['news_means']);
             }
             $.ajax({
                 url: form_post_url,
@@ -433,11 +435,12 @@ $('#continuar-btn').on('click', function(e){
                 success: function(data){
                     // Validate mobile number
                     if( $('#sms-checkbox-step4').is(':checked') && !phone_step4.isValidNumber()){
+                        console.log('maicol');
                         validation = false;
-                        var errorCode = mobile_pj.getValidationError();
-                        $('#error_row_phone_step4git').removeClass('d-none');
-                        $('#error_ul_phone_step4git').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
-                    }
+                        var errorCode = phone_step4.getValidationError();
+                        $('#error_row_phone_step4').removeClass('d-none');
+                        $('#error_ul_phone_step4').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
+                    }else{}
                     // If there's an error don't let go to next step
                     if( !$.isEmptyObject(data.errors) ){
                         validation = false;

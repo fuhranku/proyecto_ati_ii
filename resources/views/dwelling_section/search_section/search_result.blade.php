@@ -1,4 +1,6 @@
 <!-- Search Result -->
+@include('dwelling_section.search_section.search_media_carousel')
+
 <div class="col-md-8 d-none" style="margin-left:15px;" id="dwelling-search-result">
 
     <p>Haz clic en la vivienda de tu preferencia, para ver más información, o selecciona  la vivienda de tu preferencia, para habilitar o deshabilitar los botones expresados a continuación: </p>

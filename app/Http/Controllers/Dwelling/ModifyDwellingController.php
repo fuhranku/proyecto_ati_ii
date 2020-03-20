@@ -24,14 +24,12 @@ use App\Models\Dwelling\Image;
 use App\Models\Dwelling\Video;
 
 
-class PublishDwellingController extends Controller
+class ModifyDwellingController extends Controller
 {
-    public function publish_get()
-    {
+    public function modify_get(){
         Session::forget('images');
         Session::forget('videos');
 
-        Log::info(Session::get('images'));
         $continents = Continent::all()->sortBy('name');
         $countries = Country::all()->sortBy('name');
         $states = State::all()->sortBy('name');
@@ -39,81 +37,17 @@ class PublishDwellingController extends Controller
         $comforts = Comfort::all()->sortBy('name');
         $services = Service::all()->sortBy('name');
         $currency = Currency::all()->sortBy('name');
+        $dwelling = Dwelling::find(20);
+        $images = Dwelling::find(20)->images;
+        $videos = Dwelling::find(20)->videos;
+        $dwelling['images'] = $images;
+        $dwelling['videos'] = $videos;
 
-        return view('dwelling_section.publish_section.publish',compact('continents','countries','states','cities','comforts','services','currency'));
+
+        return view('dwelling_section.modify_section.modify',compact('continents','countries','states','cities','comforts','services','currency','dwelling'));
     }
 
-    public function post_image(Request $request){
-        if(empty(Session::get('images'))){
-            Session::put('images', []);
-        }
-
-        $image_raw = $request->file('dropImage');
-        $image_basename = $image_raw->getClientOriginalName();
-
-        $image_name = basename($image_basename, '.'.$image_raw->getClientOriginalExtension()).'_'.date_timestamp_get(date_create());
-        $image_format =  $image_raw->getClientOriginalExtension();
-        $image_url = Storage::disk('publicImage')->url($image_name.'.'.$image_format);
-        $image = [
-            'name' => $image_name,
-            'url' => $image_url,
-            'format' => $image_format
-        ];
-        // Save image into session images array
-        Session::push('images',$image);
-        // Save into disk
-        Storage::disk('publicImage')->put($image['name'].'.'.$image['format'], File::get($image_raw));
-        return response()->json(['url' => $image_url]);
-    }
-
-    public function remove_image(Request $request){
-        $image_src = $request->get('src');
-        $image_src = basename($image_src);
-        $images = Session::get('images');
-        // Save new array without removed element
-        Session::put('images',$this->deleteElement($images,$image_src));
-        // Delete from disk
-        Storage::disk('publicImage')->delete($image_src);
-        return response()->json(['success' => 'success!']);
-    }
-
-    public function post_video(Request $request){
-        if(empty(Session::get('videos'))){
-            Session::put('videos', []);
-        }
-        $video_raw = $request->file('dropVideo');
-        $video_basename = $video_raw->getClientOriginalName();
-
-        $video_name = basename($video_basename, '.'.$video_raw->getClientOriginalExtension()).'_'.date_timestamp_get(date_create());
-        $video_format =  $video_raw->getClientOriginalExtension();
-        $video_url = Storage::disk('publicVideo')->url($video_name.'.'.$video_format);
-        $video = [
-            'name' => $video_name,
-            'url' => $video_url,
-            'format' => $video_format
-        ];
-
-        // Save video into session videos array
-        Session::push('videos',$video);
-        Log::info($video);
-        // Save into disk
-        Storage::disk('publicVideo')->put($video['name'].'.'.$video['format'], File::get($video_raw));
-        return response()->json(['url' => $video_url]);
-    }
-
-    public function remove_video(Request $request){
-        $video_src = $request->get('src');
-        $video_src = basename($video_src);
-        $videos = Session::get('videos');
-        // Save new array without removed element
-        Session::put('videos',$this->deleteElement($videos,$video_src));
-        // Delete from disk
-        Log::info(Session::get('videos'));
-        Storage::disk('publicVideo')->delete($video_src);
-        return response()->json(['success' => 'success!']);
-    }
-
-    public function store_dwelling(Request $request){
+    public function modify_dwelling(Request $request){
         $validations = [
             'continent_select_sm' =>  'required',
             'country_select_sm' =>    'required',
@@ -141,12 +75,12 @@ class PublishDwellingController extends Controller
         if ($validator->fails()){                
             return response()->json(['errors'=>$validator->getMessageBag()]);
         }else{
-            $this->insertDwellingIntoDatabase($request);
+            $this->updateDwelling($request);
             return response()->json(['success' => 'success!']);
         }
     }
 
-    private function insertDwellingIntoDatabase($data){
+    private function updateDwelling($data){
         $services_dropdown = $data['services_publish_dwelling_dropdown_sm'];
         foreach($services_dropdown as $key => $value){
             if($value === 'other'){
@@ -163,7 +97,7 @@ class PublishDwellingController extends Controller
             'array' => $data['checkbox_dropdown_comfort_sm']
         ];
 
-        $dwelling = new Dwelling;
+        $dwelling = Dwelling::find($data['id']);
         $dwelling->continent_id = $data['continent_select_sm'];
         $dwelling->country_id = $data['country_select_sm'];
         $dwelling->state_id = $data['state_select_sm'];
@@ -224,15 +158,4 @@ class PublishDwellingController extends Controller
             }
         }
     }
-
-    private function deleteElement($elements,$element_src){
-        foreach($elements as $key=>$element){
-            if($element['name'].'.'.$element['format'] === $element_src ){
-                unset($elements[$key]);
-                break;
-            }
-        }
-        return array_values($elements);
-    }
 }
-    
