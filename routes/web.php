@@ -67,7 +67,7 @@ Route::get('dwelling/enable', 'Dwelling\DwellingController@enable')->name('dwell
 Route::get('dwelling/disable', 'Dwelling\DwellingController@disable')->name('dwelling.disable');
 
 // Modify routes
-Route::get('dwelling/modify', 'Dwelling\ModifyDwellingController@modify_get')->name('dwelling.modify');
+Route::get('dwelling/modify/{id}', 'Dwelling\ModifyDwellingController@modify_get')->name('dwelling.modify');
 Route::post('dwelling/modify_dwelling', 'Dwelling\ModifyDwellingController@modify_dwelling')->name('dwelling.modify_dwelling');
 
 // Servicios

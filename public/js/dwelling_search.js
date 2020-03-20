@@ -2,7 +2,7 @@ var currentPageDwelling = 0
 var totalPages = -1;
 var propMap = ['apartamento', 'casa', 'apartamento y casa'];
 var statusMap = ['alquiler', 'venta', 'alquiler y venta'];
-var activeMode; // 1 -> tipo foto 2-> tipo lista
+var activeMode = 1; // 1 -> tipo foto 2-> tipo lista
 var dwelling = [];
 var d_dwelling = [];
 var service = [];

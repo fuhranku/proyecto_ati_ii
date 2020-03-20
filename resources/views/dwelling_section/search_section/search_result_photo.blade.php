@@ -103,11 +103,7 @@
 
         <div class="row">
             <div class="col-md-12 text-center">
-<<<<<<< HEAD
                 <a href="#" onclick="return showDetails(1)" id="dwelling-show-details1" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
-=======
-            <a href="" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
->>>>>>> FP-dev
             </div>
         </div>
     </div>
