@@ -63,7 +63,7 @@
                 </div>
                 <div class="col-md-12">
                     <p class="sm-text d-inline text-danger font-weight-bold">Haz click aqui para ver una ubicación exacta</p>
-                    <u><a href="#" class="sm-text d-inline font-weight-bold">ver ubicación exacta</a></u>
+                    <a class=" sm-text font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation(1)"><u>Ver Ubicación exacta</u></a>
                 </div>
             </div>
     
@@ -171,7 +171,7 @@
                 </div>
                 <div class="col-md-12">
                     <p class="sm-text d-inline text-danger font-weight-bold">Haz click aqui para ver una ubicación exacta</p>
-                    <u><a href="#" class="sm-text d-inline font-weight-bold">ver ubicación exacta</a></u>
+                    <a class=" sm-text font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation(2)"><u>Ver Ubicación exacta</u></a>
                 </div>
             </div>
     
@@ -279,7 +279,7 @@
                 </div>
                 <div class="col-md-12">
                     <p class="sm-text d-inline text-danger font-weight-bold">Haz click aqui para ver una ubicación exacta</p>
-                    <u><a href="#" class="sm-text d-inline font-weight-bold">ver ubicación exacta</a></u>
+                    <a class=" sm-text font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation(3)"><u>Ver Ubicación exacta</u></a>
                 </div>
             </div>
     
@@ -387,7 +387,7 @@
                 </div>
                 <div class="col-md-12">
                     <p class="sm-text d-inline text-danger font-weight-bold">Haz click aqui para ver una ubicación exacta</p>
-                    <u><a href="#" class="sm-text d-inline font-weight-bold">ver ubicación exacta</a></u>
+                    <a class=" sm-text font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation(4)"><u>Ver Ubicación exacta</u></a>
                 </div>
             </div>
     

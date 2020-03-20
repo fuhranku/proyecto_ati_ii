@@ -71,17 +71,17 @@
             <div class="col-md-6 mt-3">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalComfort()"><u>Ver Comodidades</u></div>
+                        <div class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalComfort(1)"><u>Ver Comodidades</u></div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalService()"><u>Ver Servicios</u></div>
+                        <div class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalService(1)"><u>Ver Servicios</u></div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation()"><u>Ver Ubicación exacta</u></div>
+                        <div class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation(1)"><u>Ver Ubicación exacta</u></div>
                     </div>
                 </div>
                 <div class="row">
@@ -179,17 +179,17 @@
             <div class="col-md-6 mt-3">
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalComfort()"><u>Ver Comodidades</u></a>
+                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalComfort(2)"><u>Ver Comodidades</u></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalService()"><u>Ver Servicios</u></a>
+                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalService(2)"><u>Ver Servicios</u></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation()"><u>Ver Ubicación exacta</u></a>
+                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation(2)"><u>Ver Ubicación exacta</u></a>
                     </div>
                 </div>
                 <div class="row">
@@ -287,17 +287,17 @@
             <div class="col-md-6 mt-3">
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalComfort()"><u>Ver Comodidades</u></a>
+                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalComfort(3)"><u>Ver Comodidades</u></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalService()"><u>Ver Servicios</u></a>
+                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalService(3)"><u>Ver Servicios</u></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation()"><u>Ver Ubicación exacta</u></a>
+                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation(3)"><u>Ver Ubicación exacta</u></a>
                     </div>
                 </div>
                 <div class="row">
@@ -395,17 +395,17 @@
             <div class="col-md-6 mt-3">
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalComfort()"><u>Ver Comodidades</u></a>
+                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalComfort(4)"><u>Ver Comodidades</u></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalService()"><u>Ver Servicios</u></a>
+                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalService(4)"><u>Ver Servicios</u></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation()"><u>Ver Ubicación exacta</u></a>
+                        <a class=" font-weight-bold cursor-pointer text-blue"  onclick="return onDisplayModalLocation(4)"><u>Ver Ubicación exacta</u></a>
                     </div>
                 </div>
                 <div class="row">
