@@ -8,6 +8,93 @@ var d_dwelling = [];
 var service = [];
 var comfort = [];
 var images_url = [];
+var scrollPos = 0;
+
+function getScrollPos(){
+    scrollPos = $(window).scrollTop();
+}
+
+function onDisplayModalLocation(dwelling_number){
+    $('body').prepend('\
+    <div class="modal-bg">\
+    </div>\
+    ');
+    $("#dwell-location-modal").removeClass("d-none");
+    $("#dwell-location-modal").appendTo(".modal-bg");
+    getScrollPos();
+
+    //SET INFORMATION
+    var pageOffset = (currentPageDwelling - 1)*4;
+
+    var location_text = d_dwelling[dwelling_number-1+pageOffset].location_details;
+
+    $("#modal-info-location").text(location_text);
+}
+
+function onDisplayModalService(dwelling_number){
+    $('body').prepend('\
+    <div class="modal-bg">\
+    </div>\
+    ');
+    $("#dwell-service-modal").removeClass("d-none");
+    $("#dwell-service-modal").appendTo(".modal-bg");
+    getScrollPos();
+
+    //SET INFORMATION
+    var pageOffset = (currentPageDwelling - 1)*4;
+
+    var services_id = JSON.parse(d_dwelling[dwelling_number-1+pageOffset].services);
+    var services_name = [];
+
+    for(var j = 0; j < services_id.array.length; j++){
+        var obj = service.find( (x) =>{
+            return x.id == parseInt(services_id.array[j]); 
+        } )
+        services_name.push(obj.name);
+    }
+
+    var finalTextService = "";
+    for(var j = 0; j < services_name.length-1; j++){
+        finalTextService+= services_name[j] + ", ";
+    }
+    finalTextService += services_name[services_name.length-1];
+
+    $("#modal-info-service").text(finalTextService);
+    
+}
+
+
+function onDisplayModalComfort(dwelling_number){
+    $('body').prepend('\
+    <div class="modal-bg">\
+    </div>\
+    ');
+    $("#dwell-comfort-modal").removeClass("d-none");
+    $("#dwell-comfort-modal").appendTo(".modal-bg");
+    getScrollPos();
+
+    //SET INFORMATION
+    var pageOffset = (currentPageDwelling - 1)*4;
+
+    var comforts_id = JSON.parse(d_dwelling[dwelling_number-1+pageOffset].comforts);
+    var comforts_name = [];
+
+    for(var j = 0; j < comforts_id.array.length; j++){
+        var obj = comfort.find( (x) =>{
+            return x.id == parseInt(comforts_id.array[j]); 
+        } )
+        comforts_name.push(obj.name);
+    }
+
+    var finalTextComforts = "";
+    for(var j = 0; j < comforts_name.length-1; j++){
+        finalTextComforts+= comforts_name[j] + ", ";
+    }
+    finalTextComforts += comforts_name[comforts_name.length-1];
+
+    $("#modal-info-comfort").text(finalTextComforts);
+}
+
 
 function onChangeSearchDisplay(){
 
@@ -22,6 +109,18 @@ function onChangeSearchDisplay(){
         $("#dwelling-photo-mode").addClass("d-none");
     }
 }
+
+$('.accept-btn').click(function(){
+    $("#dwell-location-modal").appendTo("body");
+    $("#dwell-service-modal").appendTo("body");
+    $("#dwell-comfort-modal").appendTo("body");
+    $("#dwell-location-modal").addClass("d-none");
+    $("#dwell-service-modal").addClass("d-none");
+    $("#dwell-comfort-modal").addClass("d-none");
+    $('.modal-bg').remove();
+    console.log(scrollPos);
+    $('html, body').animate({scrollTop:scrollPos}, 50);
+});
 
 function onPressDisplaySell(){
 
@@ -456,6 +555,22 @@ function loadPageDwelling(page){
         
         $('#image-dwelling-photo'+(i+1).toString()).attr("src",img_url);
         $("#image-dwelling-list"+(i+1).toString()).attr("src",img_url);
+
+        //VERIFY DWELLINGS THAT ARE DISABLED
+        //PUT OVERLAY
+        if(d_dwelling[i + pageOffset].enable){
+            $('#dwelling_photo_fs'+(i+1).toString()).children('.list-photo-overlay').addClass('d-none');
+            $('#dwelling_photo_fs'+(i+1).toString()).children('.list-photo-overlay').css('opacity','0');
+            $('#dwelling_list_fs'+(i+1).toString()).children('.list-photo-overlay').addClass('d-none');
+            $('#dwelling_list_fs'+(i+1).toString()).children('.list-photo-overlay').css('opacity','0');
+        }
+        else{
+            $('#dwelling_photo_fs'+(i+1).toString()).children('.list-photo-overlay').removeClass('d-none');
+            $('#dwelling_photo_fs'+(i+1).toString()).children('.list-photo-overlay').css('opacity','1');
+            $('#dwelling_list_fs'+(i+1).toString()).children('.list-photo-overlay').removeClass('d-none');
+            $('#dwelling_list_fs'+(i+1).toString()).children('.list-photo-overlay').css('opacity','1');
+        }
+        
     }
 
     displayNonePagesLeft(dwellingsPerPage);

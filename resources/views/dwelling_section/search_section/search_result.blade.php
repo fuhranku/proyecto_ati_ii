@@ -7,7 +7,7 @@
     <button type="button" id="btn-dwelling-modify" onclick="modifyDwelling()" class="btn btn-primary d-none">Modificar</button>
     <button type="button" id="btn-dwelling-disable" onclick="disableDwelling()" class="btn btn-warning text-white d-none">Deshabilitar</button>
     <button type="button" id="btn-dwelling-enable" onclick="enableDwelling()" class="btn btn-success d-none">Habilitar</button>
-    <button type="button" id="btn-dwelling-remove" onclick="removeDwelling()" class="btn btn-danger d-none">Eliminar</button>
+    <button type="button" id="btn-dwelling-remove" onclick="deleteDwelling()" class="btn btn-danger d-none">Eliminar</button>
 
     <p class="h5 pt-4">Haz clic en la vivienda de tu preferencia, para ver más información</p>
 

@@ -1,12 +1,17 @@
 <!-- particular search -->
 <div class="row d-none"  id="dwelling-list-mode">
-    <!-- one seach item -->        
-    <div class="row" id="dwelling_list_fs1">
-        
+    <!-- first search item -->        
+    <div class="row position-relative" id="dwelling_list_fs1">
+        <div class="list-photo-overlay d-none"></div>
         <div class="col-md-2 border border-warning" >
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-check p-3">
+            <div class="row position-relative select-dwelling">
+                <div class="col-md-9">
+                    <label class="form-check-label font-weight-bold sm-text">
+                        Seleccionar
+                    </label>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-check">
                         <input class="form-check-input " onchange="onSelectDwelling()" value="dwelling1" name="select-dwelling" type="checkbox" id="dwelling-select-list-cb1">
                     </div>
                 </div>
@@ -58,7 +63,7 @@
                 </div>
                 <div class="col-md-12">
                     <p class="sm-text d-inline text-danger font-weight-bold">Haz click aqui para ver una ubicación exacta</p>
-                    <u><a href="#" class="sm-text d-inline font-weight-bold">ver ubicación exacta</a></u>
+                    <a class=" sm-text font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation(1)"><u>Ver Ubicación exacta</u></a>
                 </div>
             </div>
     
@@ -103,12 +108,18 @@
         </div>
     </div>
 
-    <!-- one seach item -->
-    <div class="row" id="dwelling_list_fs2">
+    <!-- second search item -->
+    <div class="row position-relative" id="dwelling_list_fs2">
+        <div class="list-photo-overlay d-none"></div>
         <div class="col-md-2 border border-warning" >
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-check p-3">
+            <div class="row position-relative select-dwelling">
+                <div class="col-md-9">
+                    <label class="form-check-label font-weight-bold sm-text">
+                        Seleccionar
+                    </label>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-check">
                         <input class="form-check-input " onchange="onSelectDwelling()" value="dwelling2" name="select-dwelling" type="checkbox" id="dwelling-select-list-cb2">
                     </div>
                 </div>
@@ -160,7 +171,7 @@
                 </div>
                 <div class="col-md-12">
                     <p class="sm-text d-inline text-danger font-weight-bold">Haz click aqui para ver una ubicación exacta</p>
-                    <u><a href="#" class="sm-text d-inline font-weight-bold">ver ubicación exacta</a></u>
+                    <a class=" sm-text font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation(2)"><u>Ver Ubicación exacta</u></a>
                 </div>
             </div>
     
@@ -205,12 +216,18 @@
         </div>
     </div>
 
-    <!-- one seach item -->
-    <div class="row" id="dwelling_list_fs3">
+    <!-- third search item -->
+    <div class="row position-relative" id="dwelling_list_fs3">
+        <div class="list-photo-overlay d-none"></div>
         <div class="col-md-2 border border-warning">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-check p-3">
+            <div class="row position-relative select-dwelling">
+                <div class="col-md-9">
+                    <label class="form-check-label font-weight-bold sm-text">
+                        Seleccionar
+                    </label>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-check">
                         <input class="form-check-input " onchange="onSelectDwelling()" value="dwelling3" name="select-dwelling" type="checkbox" id="dwelling-select-list-cb3">
                     </div>
                 </div>
@@ -262,7 +279,7 @@
                 </div>
                 <div class="col-md-12">
                     <p class="sm-text d-inline text-danger font-weight-bold">Haz click aqui para ver una ubicación exacta</p>
-                    <u><a href="#" class="sm-text d-inline font-weight-bold">ver ubicación exacta</a></u>
+                    <a class=" sm-text font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation(3)"><u>Ver Ubicación exacta</u></a>
                 </div>
             </div>
     
@@ -307,12 +324,18 @@
         </div>
     </div>
 
-    <!-- one seach item -->
-    <div class="row" id="dwelling_list_fs4">
+    <!-- fourth seach item -->
+    <div class="row position-relative" id="dwelling_list_fs4">
+        <div class="list-photo-overlay d-none"></div>
         <div class="col-md-2 border border-warning" >
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-check p-3">
+            <div class="row position-relative select-dwelling">
+                <div class="col-md-9">
+                    <label class="form-check-label font-weight-bold sm-text">
+                        Seleccionar
+                    </label>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-check">
                         <input class="form-check-input " onchange="onSelectDwelling()" value="dwelling4" name="select-dwelling" type="checkbox" id="dwelling-select-list-cb4">
                     </div>
                 </div>
@@ -364,7 +387,7 @@
                 </div>
                 <div class="col-md-12">
                     <p class="sm-text d-inline text-danger font-weight-bold">Haz click aqui para ver una ubicación exacta</p>
-                    <u><a href="#" class="sm-text d-inline font-weight-bold">ver ubicación exacta</a></u>
+                    <a class=" sm-text font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation(4)"><u>Ver Ubicación exacta</u></a>
                 </div>
             </div>
     
