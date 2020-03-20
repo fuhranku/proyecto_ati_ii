@@ -55,10 +55,32 @@
 
     var retrieve_cities_url = "{{ url('/getCities')}}";
     $(document).ready(function() {
-        console.log('holaaaa');
+        console.log('holaaaadasa');
         
-    })
+        console.log('hola fasdas');
+        var mobile_pj_up, landline_pj_up;
     
+        var phone_step4_input = document.querySelector("#phone-step4");
+        
+            
+        var mobile_pj_input_up = document.querySelector("#mobile-pj-up");
+        var landline_pj_input_up = document.querySelector("#landline-pj-up");
+        
+        // Initialize legal mobile number input
+        mobile_pj_up = window.intlTelInput(mobile_pj_input_up,{
+            utilsScript: utilsScript,
+            onlyCountries: ['es','ve'],
+            separateDialCode:true,
+            initialCountry:""
+        });
+        // Initialize legal number input
+        landline_pj_up = window.intlTelInput(landline_pj_input_up,{
+            utilsScript: utilsScript,
+            onlyCountries: ['es','ve'],
+            separateDialCode:true,
+            initialCountry:""
+        });// Initialize natural mobile number input
+    })
 </script>
 
 @endsection

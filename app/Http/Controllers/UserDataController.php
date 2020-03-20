@@ -32,14 +32,15 @@ class UserDataController extends Controller
         $socialMedias = SocialMedia::all()->sortBy('name');
         $countries = Country::all()->sortBy('name');
         $users = User::all();
+        $this->updateSession();
         // $users_count = count($users) + 1;
         $info = Session::get('info');
-        // Log::info($info);
-
+        
         if (is_string($info->found_us)) {
             $info->found_us =json_decode($info->found_us);
         }
-        Log::info('Variable addres_comp aaaaaaaaaaaaaa');
+        Log::info($info->found_us['option']);
+        // Log::info('Variable addres_comp aaaaaaaaaaaaaa');
         // Log::info($info->found_us);
         $info_specific = Session::get('info_specific');
         
@@ -50,11 +51,28 @@ class UserDataController extends Controller
         //     # code...
         //     $city = City::find($info_specific->city_id); 
         // }
-        Log::info($cities);
+        // Log::info($cities);
         
         return view('main_sections.user_data',compact('socialMedias','countries','info', 'info_specific', 'cities'));
     }
+    public function updateSession(){
+        $userActual =User::find(Session::get('info')->id);
+        Log::info('user actual');
+        Log::info($userActual);
+        Session::put('info', $userActual);
 
+        Log::info('user actual person type');
+        if ($userActual->person_type == 'nat') {
+            Log::info('nat');
+            $userActualSpe = NaturalPerson::where('user_id', '=', $userActual->id)->first();
+        } else {
+            Log::info('jur');
+
+            $userActualSpe = LegalPerson::where('user_id', '=', $userActual->id)->first();
+        }
+        Log::info($userActualSpe->name_comp);
+        Session::put('info_specific', $userActualSpe);
+    }
     // public function getCities(Request $request){
     //     $cities = Country::find($request->get('country'))->cities()->pluck('id','name');
     //     return response()->json([
@@ -194,10 +212,16 @@ class UserDataController extends Controller
                 $step3['email_login'] = $request->get('email_login');
                 $step3['pw_login'] = Hash::make($request->get('pw_login'));
                 Session::put('step3',$step3);
+                $step4['days_frequency'] = $request->get('custom_frequency');
+                $step4['interest_services'] = $request->get('interest_services');
+                $step4['news_means'] = $request->get('news_means');
+                Session::put('step4',$step4);
+
             break;
             case 4:
                 $step4 = $this->initialize(4);
                 $validations['frequency_checkbox'] = 'required';
+                
                 $step4['frequency_checkbox'] = $request->get('frequency_checkbox');
                 if ($request->get('frequency_checkbox') == 'other'){
                     $validations['custom_frequency'] = 'required|gt:0';
@@ -223,6 +247,10 @@ class UserDataController extends Controller
                     $validations['news_means.rrss'] = 'nullable';
                     $validations['news_means.other'] = 'nullable';
                     $validations['news_means.facebook_acc'] = 'nullable';
+                    Log::info('days_frequency');
+                    Log::info($request->get('custom_frequency'));
+                    $step4['days_frequency'] = $request->get('custom_frequency');
+
                 }
                 // Validate what needs to be validated
                 $validator = Validator::make($request->all(), $validations);
@@ -320,11 +348,13 @@ class UserDataController extends Controller
     private function saveUserIntoDatabase(){
         $session_data = Session::all();
         $data = [];
-        if (!in_array("step4",$session_data)){
-            $session_data['step4']['days_frequency'] = null;
-            $session_data['step4']['interest_services'] = null;
-            $session_data['step4']['news_means'] = null;
-        }
+        // Log::info($session_data);
+        // if (!in_array("step4",$session_data)){
+        //     Log::info('Condicion');
+        //     $session_data['step4']['days_frequency'] = null;
+        //     $session_data['step4']['interest_services'] = null;
+        //     $session_data['step4']['news_means'] = null;
+        // }
         for($i = 0; $i<6;$i++){
             foreach ($session_data['step'.$i] as $key => $value){
                 $data[$key] = $value;
@@ -391,6 +421,8 @@ class UserDataController extends Controller
             $user->banco_destino = $data['banco_destino'];
             $user->country_facturacion = $data['country_facturacion'];
         // Actualizar usuario antes de las tablas con sus relaciones
+        Log::info('Data to save int DB:');
+        Log::info($user);
             $user->save();
         // Actualizar modelo user_type (el Foreign key se asigna automáticamente con la llamada a save())
             if(Session::get('info')->person_type == 'nat'){

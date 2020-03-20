@@ -81,52 +81,45 @@ $(document).ready(function(){
     var mobile_pj_input = document.querySelector("#mobile-pj");
     var landline_pj_input = document.querySelector("#landline-pj");
     var phone_step4_input = document.querySelector("#phone-step4");
+    // var phone_step4_input = document.querySelector("#phone-step4");
     
-        
-    var mobile_pj_input = document.querySelector("#mobile-pj-up");
-    var landline_pj_input = document.querySelector("#landline-pj-up");
-    
-    // Initialize legal mobile number input
-    mobile_pj_up = window.intlTelInput(mobile_pj_input,{
-        utilsScript: utilsScript,
-        onlyCountries: ['es','ve'],
-        separateDialCode:true,
-        initialCountry:""
-    });
-    // Initialize legal number input
-    landline_pj_up = window.intlTelInput(landline_pj_input,{
-        utilsScript: utilsScript,
-        onlyCountries: ['es','ve'],
-        separateDialCode:true,
-        initialCountry:""
-    });// Initialize natural mobile number input
-    mobile_pn = window.intlTelInput(mobile_pn_input,{
-        utilsScript: utilsScript,
-        onlyCountries: ['es','ve'],
-        separateDialCode:true,
-        initialCountry:""
-    });
-    // Initialize natural legal number input
-    landline_pn = window.intlTelInput(landline_pn_input,{
-        utilsScript: utilsScript,
-        onlyCountries: ['es','ve'],
-        separateDialCode:true,
-        initialCountry:""
-    });
-    // Initialize legal mobile number input
-    mobile_pj = window.intlTelInput(mobile_pj_input,{
-        utilsScript: utilsScript,
-        onlyCountries: ['es','ve'],
-        separateDialCode:true,
-        initialCountry:""
-    });
-    // Initialize legal number input
-    landline_pj = window.intlTelInput(landline_pj_input,{
-        utilsScript: utilsScript,
-        onlyCountries: ['es','ve'],
-        separateDialCode:true,
-        initialCountry:""
-    });
+    if (mobile_pn_input !== null) {
+        mobile_pn = window.intlTelInput(mobile_pn_input,{
+            utilsScript: utilsScript,
+            onlyCountries: ['es','ve'],
+            separateDialCode:true,
+            initialCountry:""
+        });
+    }
+    if (landline_pn_input !== null) {
+        // Initialize natural legal number input
+        landline_pn = window.intlTelInput(landline_pn_input,{
+            utilsScript: utilsScript,
+            onlyCountries: ['es','ve'],
+            separateDialCode:true,
+            initialCountry:""
+        });
+
+    }
+    if (mobile_pj_input !== null) {
+        // Initialize legal mobile number input
+        mobile_pj = window.intlTelInput(mobile_pj_input,{
+            utilsScript: utilsScript,
+            onlyCountries: ['es','ve'],
+            separateDialCode:true,
+            initialCountry:""
+        });
+    }
+    if (landline_pj_input !== null) {
+        // Initialize legal number input
+        landline_pj = window.intlTelInput(landline_pj_input,{
+            utilsScript: utilsScript,
+            onlyCountries: ['es','ve'],
+            separateDialCode:true,
+            initialCountry:""
+        });
+
+    }
     // Initialize phone of step4 number input
     phone_step4 = window.intlTelInput(phone_step4_input,{
         utilsScript: utilsScript,
@@ -134,6 +127,24 @@ $(document).ready(function(){
         separateDialCode:true,
         initialCountry:""
     });
+
+    var mobile_pj_input_up = document.querySelector("#mobile-pj-up");
+    var landline_pj_input_up = document.querySelector("#landline-pj-up");
+    
+    // Initialize legal mobile number input
+    mobile_pj_up = window.intlTelInput(mobile_pj_input_up,{
+        utilsScript: utilsScript,
+        onlyCountries: ['es','ve'],
+        separateDialCode:true,
+        initialCountry:""
+    });
+    // Initialize legal number input
+    landline_pj_up = window.intlTelInput(landline_pj_input_up,{
+        utilsScript: utilsScript,
+        onlyCountries: ['es','ve'],
+        separateDialCode:true,
+        initialCountry:""
+    });// Initialize natural mobile number input
 });
 
 $('#btn-b-rapida').click(function(){

@@ -29,7 +29,8 @@
                         <span class="fas fa-minus"></span>
                     </button>
                 </span>
-                <input type="text" name="quant[5]" id="custom_days_freq" class="form-control input-number p-2" value="{{!empty($info->days_freq) ? $info->days_freq : 0}}" min="0" max="31">
+                <input type="text" name="quant[5]" id="custom_days_freq" class="form-control input-number p-2" 
+                value="{{!empty($info->days_freq) ? ($info->days_freq - (30 * ($info->days_freq / 30))): 0}}" min="0" max="31">
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[5]">
                         <span class="fas fa-plus"></span>
@@ -65,8 +66,14 @@
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle"><b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><label class="checkbox"><input type="checkbox" name="interest_service" value='apts'>Apartamentos de mi interés</label></li>
-                        <li><label class="checkbox"><input type="checkbox" name="interest_service" value='asesoria'>Asesoría profesional</label></li>
+                        <li><label class="checkbox">
+                            <input type="checkbox" name="interest_service" value='apts' 
+                            {{!empty($info->interest_services) && in_array('apts', $info->interest_services) ? 'checked' : ''}}>Apartamentos de mi interés</label>
+                        </li>
+                        <li><label class="checkbox">
+                            <input type="checkbox" name="interest_service" value='asesoria'
+                            {{!empty($info->interest_services) && in_array('asesotia', $info->interest_services) ? 'checked' : ''}}>Asesoría profesional</label>
+                        </li>
                     </ul>
                 </li>
             </ul>
