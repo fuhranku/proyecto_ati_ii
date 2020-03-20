@@ -86,12 +86,12 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold " href="#"><u>Ver Fotos</u></a>
+                        <div class=" font-weight-bold text-underline cursor-pointer text-blue photo-carousel-thrigger" data-id=1> Ver Fotos </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold " href="#"><u>Ver Videos</u></a>
+                        <div class=" font-weight-bold text-underline cursor-pointer text-blue video-carousel-thrigger" data-id=1> Ver Videos </div>
                     </div>
                 </div>
             </div>
@@ -103,7 +103,7 @@
 
         <div class="row">
             <div class="col-md-12 text-center">
-                <a href="#" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
+            <a href="" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
             </div>
         </div>
     </div>
@@ -194,12 +194,12 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold " href="#"><u>Ver Fotos</u></a>
+                        <div class=" font-weight-bold text-underline cursor-pointer text-blue photo-carousel-thrigger" data-id=2> Ver Fotos </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold " href="#"><u>Ver Videos</u></a>
+                        <div class=" font-weight-bold text-underline cursor-pointer text-blue video-carousel-thrigger" data-id=2> Ver Videos </div>
                     </div>
                 </div>
             </div>
@@ -302,12 +302,12 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold " href="#"><u>Ver Fotos</u></a>
+                        <div class=" font-weight-bold text-underline cursor-pointer text-blue photo-carousel-thrigger" data-id=3> Ver Fotos </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold " href="#"><u>Ver Videos</u></a>
+                        <div class=" font-weight-bold text-underline cursor-pointer text-blue video-carousel-thrigger" data-id=3> Ver Videos </div>
                     </div>
                 </div>
             </div>
@@ -410,12 +410,12 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold " href="#"><u>Ver Fotos</u></a>
+                        <div class=" font-weight-bold text-underline cursor-pointer text-blue photo-carousel-thrigger" data-id=4> Ver Fotos </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold " href="#"><u>Ver Videos</u></a>
+                        <div class=" font-weight-bold text-underline cursor-pointer text-blue video-carousel-thrigger" data-id=4> Ver Videos </div>
                     </div>
                 </div>
             </div>
@@ -432,4 +432,3 @@
         </div>
     </div>
 </div>
-

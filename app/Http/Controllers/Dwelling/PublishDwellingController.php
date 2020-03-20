@@ -202,24 +202,27 @@ class PublishDwellingController extends Controller
         // Insert new dwelling
         $dwelling->save();
         // Insert images
-        $images = Session::get('images');
-        foreach($images as $key => $image){
-            $new_image = new Image;
-            $new_image->name = $image['name'];
-            $new_image->url = $image['url'];
-            $new_image->format = $image['format'];
-            $dwelling->images()->save($new_image);
+        if(Session::has('images')){
+            $images = Session::get('images');
+            foreach($images as $key => $image){
+                $new_image = new Image;
+                $new_image->name = $image['name'];
+                $new_image->url = $image['url'];
+                $new_image->format = $image['format'];
+                $dwelling->images()->save($new_image);
+            }
         }
-        $videos = Session::get('videos');
-        // Insert videos
-        foreach($videos as $key => $video){
-            $new_video = new Video;
-            $new_video->name = $video['name'];
-            $new_video->url = $video['url'];
-            $new_video->format = $video['format'];
-            $dwelling->videos()->save($new_video);
+        if(Session::has('videos')){
+            $videos = Session::get('videos');
+            // Insert videos
+            foreach($videos as $key => $video){
+                $new_video = new Video;
+                $new_video->name = $video['name'];
+                $new_video->url = $video['url'];
+                $new_video->format = $video['format'];
+                $dwelling->videos()->save($new_video);
+            }
         }
-        
     }
 
     private function deleteElement($elements,$element_src){

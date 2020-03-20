@@ -72,6 +72,7 @@ Route::get('services/create', 'ServiceController@create')->name('services.create
 Route::get('services/modify', 'ServiceController@modify')->name('services.modify');
 Route::get('services/consult', 'ServiceController@consult')->name('services.consult');
 
+Route::get('dwelling/verDetalles/{dwelling_id}', 'ServiceController@search')->name('services.search');
 
 
 // Empleo
