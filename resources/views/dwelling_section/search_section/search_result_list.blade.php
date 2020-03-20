@@ -92,7 +92,7 @@
                     <a class="text-danger font-weight-bold" href="#"><u id="status_list_fs1">Venta</u></a>
                 </div>
                 <div class="col-md-12">
-                    <a class=" font-weight-bold sm-text " href="#"><u>Ver Fotos</u></a>
+                    <div class=" font-weight-bold text-underline cursor-pointer text-blue photo-carousel-thrigger sm-text" data-id=1> Ver Fotos </div>
                 </div>
                 <div class="col-md-12">
                     <a class=" font-weight-bold sm-text" href="#"><u>Ver Videos</u></a>
@@ -196,7 +196,7 @@
                     <a class="text-danger font-weight-bold" href="#"><u id="status_list_fs2">Venta</u></a>
                 </div>
                 <div class="col-md-12">
-                    <a class=" font-weight-bold sm-text " href="#"><u>Ver Fotos</u></a>
+                    <div class=" font-weight-bold text-underline cursor-pointer text-blue photo-carousel-thrigger sm-text" data-id=2> Ver Fotos </div>
                 </div>
                 <div class="col-md-12">
                     <a class=" font-weight-bold sm-text" href="#"><u>Ver Videos</u></a>
@@ -300,7 +300,7 @@
                     <a class="text-danger font-weight-bold" href="#"><u id="status_list_fs3">Venta</u></a>
                 </div>
                 <div class="col-md-12">
-                    <a class=" font-weight-bold sm-text " href="#"><u>Ver Fotos</u></a>
+                    <div class=" font-weight-bold text-underline cursor-pointer text-blue photo-carousel-thrigger sm-text" data-id=3> Ver Fotos </div>
                 </div>
                 <div class="col-md-12">
                     <a class=" font-weight-bold sm-text" href="#"><u>Ver Videos</u></a>
@@ -404,7 +404,7 @@
                     <a class="text-danger font-weight-bold" href="#"><u id="status_list_fs4">Venta</u></a>
                 </div>
                 <div class="col-md-12">
-                    <a class=" font-weight-bold sm-text " href="#"><u>Ver Fotos</u></a>
+                    <div class=" font-weight-bold text-underline cursor-pointer text-blue photo-carousel-thrigger sm-text" data-id=4> Ver Fotos </div>
                 </div>
                 <div class="col-md-12">
                     <a class=" font-weight-bold sm-text" href="#"><u>Ver Videos</u></a>

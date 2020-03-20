@@ -136,12 +136,17 @@ function onChangeSearchDisplay(){
 }
 
 $('.accept-btn').click(function(){
+    $('#no-image-modal-title').text('No se han encontrado imágenes');    
+    $('#no-image-modal-body').children('p').text('Lo sentimos, esta vivienda no posee ninguna imagen.');
+    $('#dwell-no-photos-modal').appendTo('#search-section');
+    $('#dwell-no-photos-modal').addClass('d-none');
     $("#dwell-location-modal").appendTo("body");
     $("#dwell-service-modal").appendTo("body");
     $("#dwell-comfort-modal").appendTo("body");
     $("#dwell-location-modal").addClass("d-none");
     $("#dwell-service-modal").addClass("d-none");
     $("#dwell-comfort-modal").addClass("d-none");
+    $('body').removeClass('overflow-hidden');
     $('.modal-bg').remove();
     console.log(scrollPos);
     $('html, body').animate({scrollTop:scrollPos}, 50);
@@ -697,4 +702,105 @@ $('#state_ds').change(function(){
             $('#city_ds').append("<option value="+city['id']+">"+city['name']+"</option>");
         }
     });
+});
+
+$('.photo-carousel-thrigger').click(function(){
+    $('body').prepend('\
+    <div class="modal-bg">\
+    </div>\
+    ');
+    $('body').addClass('overflow-hidden');
+    // Find dwelling element clicked
+    var page = $(this).data('id');
+    var pageOffset = (currentPageDwelling - 1)*4;
+    // Dwelling photos array
+    var images = d_dwelling[page-1 + pageOffset]['images'];
+    // Check if dwelling has any image
+    console.log(images);
+    if (images.length == 0){
+        $('#dwell-no-photos-modal').appendTo('.modal-bg');
+        $('#dwell-no-photos-modal').removeClass('d-none');
+    }else{
+        $('.modal-bg').append('<div class="icon-container-modal" id="close-btn-modal-carousel"><i class="fas fa-times close-btn"></i></div>');
+        // Dinamically put photos into carousel
+        var carousel_indicator = $(".carousel-indicators");
+        var carousel_container = $(".carousel-inner");
+        var index = 0;
+        $("#carousel-container").appendTo('.modal-bg');
+        $("#carousel-container").removeClass('d-none');
+        $.each(images, function(key,value){
+            var image_list = index == 0 ?
+                    '<li data-target="#carousel-pictures" data-slide-to="'+index+'" class="active"></li>' :
+                    '<li data-target="#carousel-pictures" data-slide-to="'+index+'"></li>' ;
+            var image_element = index == 0 ?    '<div class="carousel-item active">\
+                                                    <img class="d-block" src="'+images[key]['url']+'">\
+                                                </div>' :
+                                                '<div class="carousel-item">\
+                                                    <img class="d-block" src="'+images[key]['url']+'">\
+                                                </div>';
+            carousel_indicator.append(image_list);
+            carousel_container.append(image_element);
+            index++;
+        });
+    }   
+    // Dwelling videos array
+    var videos = d_dwelling[page-1 + pageOffset]['videos'];
+
+});
+
+$('.video-carousel-thrigger').click(function(){
+    $('body').prepend('\
+    <div class="modal-bg">\
+    </div>\
+    ');
+    $('body').addClass('overflow-hidden');
+    $('#carousel-pictures').carousel('pause');
+    // Find dwelling element clicked
+    var page = $(this).data('id');
+    var pageOffset = (currentPageDwelling - 1)*4;
+    // Dwelling videos array
+    var videos = d_dwelling[page-1 + pageOffset]['videos'];
+    console.log(videos);
+    // Check if dwelling has any video
+    if (videos.length == 0){
+        $('#dwell-no-photos-modal').appendTo('.modal-bg');
+        $('#dwell-no-photos-modal').removeClass('d-none');
+        $('#no-image-modal-title').text('No se han encontrado videos');    
+        $('#no-image-modal-body').children('p').text('Lo sentimos, esta vivienda no posee ningún video.');
+    }else{
+        $('.modal-bg').append('<div class="icon-container-modal" id="close-btn-modal-carousel"><i class="fas fa-times close-btn"></i></div>');
+        // Dinamically put photos into carousel
+        var carousel_indicator = $(".carousel-indicators");
+        var carousel_container = $(".carousel-inner");
+        $('.carousel-control-prev').addClass('video-control-prev');
+        $('.carousel-control-next').addClass('video-control-next');    
+        var index = 0;
+        $("#carousel-container").appendTo('.modal-bg');
+        $("#carousel-container").removeClass('d-none');
+        $.each(videos, function(key,value){
+            var video_element = index == 0 ?    '<div class="carousel-item active">\
+                                                    <video class="d-block w-100 border-none" src="'+videos[key]["url"]+'" controls autoplay></iframe>\
+                                                </div>' :
+                                                '<div class="carousel-item">\
+                                                    <video class="d-block w-100 border-none" src="'+videos[key]["url"]+'" controls autoplay></iframe>\
+                                                </div>';
+            carousel_container.append(video_element);
+            index++;
+        });
+    }   
+
+});
+
+
+
+$('body').on('click','.icon-container-modal',function(){
+    $('.carousel-control-prev').removeClass('.video-control-prev');
+    $('.carousel-control-next').removeClass('.video-control-next');  
+    $(".carousel-indicators").empty();
+    $(".carousel-inner").empty();
+    $("#carousel-container").appendTo('#search-section');
+    $("#carousel-container").addClass('d-none');
+    $('.modal-bg').remove();
+    $('.modal-bg').addClass('d-none');
+    $('body').removeClass('overflow-hidden');
 });
