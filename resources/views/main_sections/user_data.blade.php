@@ -52,12 +52,11 @@
 <script type="text/javascript">
     // var form_post_url = "{{ url('/sign_up')}}";
     var form_post_url = "{{ url('/user_data')}}";
+    var form_post_change = "{{ url('/changePassword')}}";
 
     var retrieve_cities_url = "{{ url('/getCities')}}";
     $(document).ready(function() {
-        console.log('holaaaadasa');
         
-        console.log('hola fasdas');
         var mobile_pj_up, landline_pj_up;
     
         var phone_step4_input = document.querySelector("#phone-step4");

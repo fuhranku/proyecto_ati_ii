@@ -35,6 +35,7 @@ Route::get('sign_up/2/{type}', 'SignUpController@sign_up_get_person_type');
 
 Route::post('getCities','SignUpController@getCities');
 
+Route::post('changePassword', 'UserDataController@changePasswordState');
 //user daata route's
 Route::get('user_data', 'UserDataController@user_data_get');
 

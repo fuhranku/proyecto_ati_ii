@@ -175,12 +175,12 @@
         <div class="col-md-2"></div>
         <div class="col-md-5 form-check">
             <input type="checkbox" class="form-check-input" id="sms-checkbox-step4" name="news_mean" value="sms"
-            {{ !empty($info->news_means['phone']) ? 'checked' : ''}}>
+            {{ !empty($info->news_means['sms']) ? 'checked' : ''}}>
             <label class="form-check-label" for="portal-web">Mensaje de texto</label>
         </div>
         <div class="col-md-5 sms-other-step4">
             <input class="phone-step0 form-control" name="phone_step4" type="tel" id='phone-step4' 
-            value="{{ !empty($info->news_means['phone']) ? $info->news_means['phone'] : ''}}">
+            value="{{ !empty($info->news_means['sms']) ? $info->news_means['sms'] : ''}}">
         </div>
     </div>
     @component('components.field_error')
