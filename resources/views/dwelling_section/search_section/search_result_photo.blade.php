@@ -103,7 +103,7 @@
 
         <div class="row">
             <div class="col-md-12 text-center">
-                <a href="#" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
+                <a href="#" onclick="return showDetails(1)" id="dwelling-show-details1" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
             </div>
         </div>
     </div>
@@ -211,7 +211,7 @@
 
         <div class="row">
             <div class="col-md-12 text-center">
-                <a href="#" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
+                <a href="#" onclick="return showDetails(2)" id="dwelling-show-details2" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
             </div>
         </div>
     </div>
@@ -319,7 +319,7 @@
 
         <div class="row">
             <div class="col-md-12 text-center">
-                <a href="#" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
+                <a href="#" onclick="return showDetails(3)" id="dwelling-show-details3" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
             </div>
         </div>
     </div>
@@ -427,7 +427,7 @@
 
         <div class="row">
             <div class="col-md-12 text-center">
-                <a href="#" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
+                <a href="#" onclick="return showDetails(4)" id="dwelling-show-details4" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
             </div>
         </div>
     </div>
