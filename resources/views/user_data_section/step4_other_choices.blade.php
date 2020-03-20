@@ -1,4 +1,4 @@
-<div class="container d-none" id='step2_other_menu'>
+<div class="container {{!empty($info->days_freq) && !empty($info->interest_services) ? '' : 'd-none'}}" id='step2_other_menu'>
     <div class="row mt-3">
         <div class="col-md-2"></div>
         <div class="col-md-2 font-weight-bold">
@@ -11,7 +11,7 @@
                         <span class="fas fa-minus"></span>
                     </button>
                 </span>
-                <input type="text" name="quant[4]" id="custom_month_freq" class="form-control input-number p-2" value="{{!empty($info->days_freq) ? $info->days_freq / 30 : 0}}" min="0" max="12">
+                <input type="text" name="quant[4]" id="custom_month_freq" class="form-control input-number p-2" value="{{!empty($info->days_freq) ? intval($info->days_freq / 30) : 0}}" min="0" max="12">
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[4]">
                         <span class="fas fa-plus"></span>
@@ -30,7 +30,7 @@
                     </button>
                 </span>
                 <input type="text" name="quant[5]" id="custom_days_freq" class="form-control input-number p-2" 
-                value="{{!empty($info->days_freq) ? ($info->days_freq - (30 * ($info->days_freq / 30))): 0}}" min="0" max="31">
+                value="{{!empty($info->days_freq) ? ($info->days_freq - (30 * intval($info->days_freq / 30))): 0}}" min="0" max="31">
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[5]">
                         <span class="fas fa-plus"></span>
@@ -110,11 +110,13 @@
     <div class="row mt-3">
         <div class="col-md-2"></div>
         <div class="col-md-5 form-check">
-            <input type="checkbox" class="form-check-input" id="checkbox-email-other-step4" name="news_mean" value="mail">
+            <input type="checkbox" class="form-check-input" id="checkbox-email-other-step4" name="news_mean" value="mail" 
+            {{ !empty($info->news_means['mail']) ? 'checked' : ''}}>
             <label class="form-check-label" for="portal-web">Correo electrónico según sus preferencias</label>
         </div>
         <div class="col-md-3">
-            <input type="text" class="form-control input-section2" id="email-other-step4" placeholder="Ingrese correo" name='mail_input' value="{{ !empty($info->email) ? $info->email : ''}}">
+            <input type="text" class="form-control input-section2" id="email-other-step4" placeholder="Ingrese correo" name='mail_input' 
+            value="{{ !empty($info->news_means['mail']) ? $info->news_means['mail'] : ''}}">
         </div>
     </div>
     @component('components.field_error')
@@ -131,17 +133,20 @@
     <div class="row mt-4">
         <div class="col-md-2"></div>
         <div class="col-md-5 form-check">
-            <input type="checkbox" class="form-check-input" id="rrss-empresa-checkbox" name="news_mean" value="rrss">
+            <input type="checkbox" class="form-check-input" id="rrss-empresa-checkbox" name="news_mean" value="rrss" 
+            {{ !empty($info->news_means['rrss']) ? 'checked' : ''}}>
             <label class="form-check-label" for="portal-web">Redes sociales de la empresa</label>
         </div>
-        <div class="col-md-3 invisible" id="checkbox-dropdown-rrss">
+        <div class="col-md-3 {{ !empty($info->news_means['rrss']) ? '' : 'invisible'}}" id="checkbox-dropdown-rrss">
             <div class="col-md-3">
                 <ul class="checkbox-dropdown">
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle"><b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             @foreach($socialMedias as $socialMedia)
-                            <li><label class="checkbox"><input type="checkbox" value="{{$socialMedia->id}}" name="rrss_input">{{$socialMedia->name}}</label></li>
+                            <li><label class="checkbox"><input type="checkbox" value="{{$socialMedia->id}}" name="rrss_input"
+                                {{ !empty($info->news_mean->rrss) && in_array($socialMedia->id, $info->news_mean->rrss) ? 'selected' : '' }}>
+                                {{$socialMedia->name}}</label></li>
                             @endforeach
                         </ul>
                     </li>
@@ -169,11 +174,13 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-5 form-check">
-            <input type="checkbox" class="form-check-input" id="sms-checkbox-step4" name="news_mean" value="sms">
+            <input type="checkbox" class="form-check-input" id="sms-checkbox-step4" name="news_mean" value="sms"
+            {{ !empty($info->news_means['phone']) ? 'checked' : ''}}>
             <label class="form-check-label" for="portal-web">Mensaje de texto</label>
         </div>
         <div class="col-md-5 sms-other-step4">
-            <input class="phone-step0 form-control" name="phone_step4" type="tel" id='phone-step4'>
+            <input class="phone-step0 form-control" name="phone_step4" type="tel" id='phone-step4' 
+            value="{{ !empty($info->news_means['phone']) ? $info->news_means['phone'] : ''}}">
         </div>
     </div>
     @component('components.field_error')
@@ -196,11 +203,13 @@
     <div class="row mt-3">
         <div class="col-md-2"></div>
         <div class="col-md-5 form-check">
-            <input type="checkbox" class="form-check-input" id="checkbox-medios-other-step4" name="news_mean" value="other">
+            <input type="checkbox" class="form-check-input" id="checkbox-medios-other-step4" name="news_mean" value="other" 
+            {{ !empty($info->news_means['other']) ? 'checked' : ''}}>
             <label class="form-check-label" for="portal-web">Otro(s)</label>
         </div>
         <div class="col-md-5 medios-other-step4">
-            <input type="text" class="form-control input-section2" placeholder="Indique preferencia" name='other_input'>
+            <input type="text" class="form-control input-section2" placeholder="Indique preferencia" name='other_input' 
+            value="{{ !empty($info->news_means['other']) ? $info->news_means['other'] : ''}}">
         </div>
     </div>
     @component('components.field_error')
@@ -223,11 +232,13 @@
     <div class="row mt-3">
         <div class="col-md-2"></div>
         <div class="col-md-5 form-check">
-            <input type="checkbox" class="form-check-input" id="checkbox-fb-account-other-step4" name="news_mean" value="facebook_acc">
+            <input type="checkbox" class="form-check-input" id="checkbox-fb-account-other-step4" name="news_mean" value="facebook_acc"
+            {{ !empty($info->news_means['facebook_acc']) ? 'checked' : ''}}>
             <label class="form-check-label" for="portal-web">Mensaje privado en mi cuenta de Facebook</label>
         </div>
         <div class="col-md-5">
-            <input type="text" class="form-control input-section2 fb-account-other-step4" name='facebook_acc_input' placeholder="Correo de Facebook">
+            <input type="text" class="form-control input-section2 fb-account-other-step4" name='facebook_acc_input' placeholder="Correo de Facebook"
+            value="{{ !empty($info->news_means['facebook_acc']) ? $info->news_means['facebook_acc'] : ''}}">
         </div>
     </div>
     @component('components.field_error')

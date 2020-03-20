@@ -39,7 +39,8 @@ class UserDataController extends Controller
         if (is_string($info->found_us)) {
             $info->found_us =json_decode($info->found_us);
         }
-        Log::info($info->found_us['option']);
+        
+        Log::info($info->news_means['mail']);
         // Log::info('Variable addres_comp aaaaaaaaaaaaaa');
         // Log::info($info->found_us);
         $info_specific = Session::get('info_specific');
