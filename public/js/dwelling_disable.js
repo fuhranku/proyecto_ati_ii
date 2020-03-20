@@ -34,6 +34,18 @@ function disableDwelling(){
             });
 
             console.log(data);
+
+            for(var i = 0; i < selected_dwellings.length; i++){
+
+                dwelling.find( (x) =>{
+                    return x.id == selected_dwellings[i];
+                }).enable = 0;
+
+                d_dwelling.find( (x) =>{
+                    return x.id == selected_dwellings[i];
+                }).enable = 0;
+            }
+            
         }
     });    
 
@@ -66,6 +78,17 @@ function enableDwelling(){
                 $(this).parent().parent().parent().parent().parent().children('.list-photo-overlay').css('opacity','0');
             });
             console.log(data);
+
+            for(var i = 0; i < selected_dwellings.length; i++){
+
+                dwelling.find( (x) =>{
+                    return x.id == selected_dwellings[i];
+                }).enable = 1;
+
+                d_dwelling.find( (x) =>{
+                    return x.id == selected_dwellings[i];
+                }).enable = 1;
+            }
         }
     });   
 
@@ -111,12 +134,14 @@ function deleteDwelling(){
     });
 }
 
-function modifyDwelling(){
-    console.log("modificando vivienda");
-
-}
 
 function detailDwelling(){
-    console.log("mostrando detalles de vivienda");
 
+    var selected_dwellings = [];
+
+    $.each($("input[name='select-dwelling']:checked"), function(){
+        selected_dwellings.push($(this).val());
+    });
+
+    location.href = "/dwelling/show_details/"+selected_dwellings[0].toString();
 }
