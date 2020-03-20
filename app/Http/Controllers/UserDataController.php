@@ -11,6 +11,7 @@ use Cookie;
 use App;
 use Session;
 use Log;
+use DB;
 
 // Database Models
 use App\Models\Location\Country;
@@ -27,19 +28,31 @@ class UserDataController extends Controller
         // Cookie::queue('probando2', 'valorprobando2', 60);
         // Cookie::queue('probando3', 'valorprobando3', 60);
         // $type = 'none';
+        Log::info('userrrr');
         $socialMedias = SocialMedia::all()->sortBy('name');
         $countries = Country::all()->sortBy('name');
         $users = User::all();
         // $users_count = count($users) + 1;
         $info = Session::get('info');
+        // Log::info($info);
+
         if (is_string($info->found_us)) {
             $info->found_us =json_decode($info->found_us);
         }
-        Log::info('Variable found_us aaaaaaaaaaaaaa');
+        Log::info('Variable addres_comp aaaaaaaaaaaaaa');
         // Log::info($info->found_us);
-        Log::info(($info->found_us)->option);
         $info_specific = Session::get('info_specific');
-        return view('main_sections.user_data',compact('socialMedias','countries','info', 'info_specific'));
+        
+        // $cities = Country::find($info_specific->country_id)->cities()->pluck('id','name');
+        $cities = DB::table('cities')->where('country_id', $info_specific->country_id)->get();
+        // // $city='';
+        // if (isset($info_specific->city_id)) {
+        //     # code...
+        //     $city = City::find($info_specific->city_id); 
+        // }
+        Log::info($cities);
+        
+        return view('main_sections.user_data',compact('socialMedias','countries','info', 'info_specific', 'cities'));
     }
 
     // public function getCities(Request $request){

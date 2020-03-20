@@ -18,7 +18,7 @@ $personType = 0;
         @endcomponent
         {{-- Selector de tipo de usuario --}}
         <div class="container justify-content-center ">
-            <div class='row mt-3 d-none'>
+            <div class='row mt-3 '>
                 <div class='col-sm-3 font-weight-bold'>
                     Seleccione el tipo de usuario:
                 </div>
@@ -27,7 +27,7 @@ $personType = 0;
                     <label class="form-check-label" for="natural" >Persona natural</label>
                 </div>
                 <div class='col-sm-2'>
-                    <input type="checkbox" class="form-check-input" id="checkbox-juridica" name='person_type' value="jur" {{$info->person_type != 'nat' ? 'checked' : ''}} >
+                    <input type="checkbox" class="form-check-input" id="checkbox-juridica" name='person_type' value="jur" {{$info->person_type == 'jur' ? 'checked' : ''}} >
                     <label class="form-check-label" for="juridica">Persona juridíca</label>
                 </div>
         </div>

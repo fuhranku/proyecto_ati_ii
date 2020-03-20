@@ -8,6 +8,7 @@ var panelText = [
     'Datos de Facturación',
 ]
 var mobile_pn, landline_pn, mobile_pj, landline_pj;
+var mobile_pj_up, landline_pj_up;
 var validation;
 
 $(".checkbox-menu").on("change", "input[type='checkbox']", function() {
@@ -72,13 +73,33 @@ $(document).ready(function(){
     // $(".phone-step0").intlTelInput({
     //     utilsScript: utilsScript
     // });
+    console.log('holi');
+    
     // Initialize sign_up screen phones input tag
     var mobile_pn_input = document.querySelector("#mobile-pn");
     var landline_pn_input = document.querySelector("#landline-pn");
     var mobile_pj_input = document.querySelector("#mobile-pj");
     var landline_pj_input = document.querySelector("#landline-pj");
     var phone_step4_input = document.querySelector("#phone-step4");
-    // Initialize natural mobile number input
+    
+        
+    var mobile_pj_input = document.querySelector("#mobile-pj-up");
+    var landline_pj_input = document.querySelector("#landline-pj-up");
+    
+    // Initialize legal mobile number input
+    mobile_pj_up = window.intlTelInput(mobile_pj_input,{
+        utilsScript: utilsScript,
+        onlyCountries: ['es','ve'],
+        separateDialCode:true,
+        initialCountry:""
+    });
+    // Initialize legal number input
+    landline_pj_up = window.intlTelInput(landline_pj_input,{
+        utilsScript: utilsScript,
+        onlyCountries: ['es','ve'],
+        separateDialCode:true,
+        initialCountry:""
+    });// Initialize natural mobile number input
     mobile_pn = window.intlTelInput(mobile_pn_input,{
         utilsScript: utilsScript,
         onlyCountries: ['es','ve'],
@@ -277,8 +298,15 @@ $('#continuar-btn').on('click', function(e){
                 data['apellido_rep_pj'] = $('input[name="apellido_rep_pj"]').val();
                 data['email_rep_pj'] = $('input[name="email_rep_pj"]').val();
                 data['phone_checkbox_pj'] = $('input[name="phone_checkbox_pj"]:checked').val();
-                data['mobile_pj'] = mobile_pj.getNumber();
-                data['landline_pj'] = landline_pj.getNumber();
+                if (typeof mobile_pj !== 'undefined') {
+                    //if pantalla sign up
+                    data['mobile_pj'] = mobile_pj.getNumber();
+                    data['landline_pj'] = landline_pj.getNumber();
+                } else {
+                    //if pantalla user data
+                    data['mobile_pj'] = mobile_pj_up.getNumber();
+                    data['landline_pj'] = landline_pj_up.getNumber();
+                }
                 data['landline_ext_pj'] = $('input[name="landline_ext_pj"]').val();
                 // Ajax POST request
                 $.ajax({
@@ -287,20 +315,37 @@ $('#continuar-btn').on('click', function(e){
                     data: data,
                     async: false,
                     success: function(data){
+                        if (typeof mobile_pj !== 'undefined') {
+                            if( $('#mobile-checkbox-juridica').is(':checked') && !mobile_pj.isValidNumber()){
+                                validation = false;
+                                var errorCode = mobile_pj.getValidationError();
+                                $('#error_row_mobile_pj').removeClass('d-none');
+                                $('#error_ul_mobile_pj').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
+                            }
+                            // Validate landline number
+                            if ($('#landline-checkbox-juridica').is(':checked') && !landline_pj.isValidNumber()){
+                                validation = false;
+                                var errorCode = landline_pj.getValidationError();
+                                $('#error_row_landline_pj').removeClass('d-none');
+                                $('#error_ul_landline_pj').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
+                            }
+
+                        }else{
+                            if( $('#mobile-checkbox-juridica').is(':checked') && !mobile_pj_up.isValidNumber()){
+                                validation = false;
+                                var errorCode = mobile_pj_up.getValidationError();
+                                $('#error_row_mobile_pj').removeClass('d-none');
+                                $('#error_ul_mobile_pj').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
+                            }
+                            // Validate landline number
+                            if ($('#landline-checkbox-juridica').is(':checked') && !landline_pj_up.isValidNumber()){
+                                validation = false;
+                                var errorCode = landline_pj_up.getValidationError();
+                                $('#error_row_landline_pj').removeClass('d-none');
+                                $('#error_ul_landline_pj').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
+                            }
+                        }
                         // Validate mobile number
-                        if( $('#mobile-checkbox-juridica').is(':checked') && !mobile_pj.isValidNumber()){
-                            validation = false;
-                            var errorCode = mobile_pj.getValidationError();
-                            $('#error_row_mobile_pj').removeClass('d-none');
-                            $('#error_ul_mobile_pj').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
-                        }
-                        // Validate landline number
-                        if ($('#landline-checkbox-juridica').is(':checked') && !landline_pj.isValidNumber()){
-                            validation = false;
-                            var errorCode = landline_pj.getValidationError();
-                            $('#error_row_landline_pj').removeClass('d-none');
-                            $('#error_ul_landline_pj').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
-                        }
                         // AJAX VALIDATION
                         // If there's an error don't let go to next step
                         if( !$.isEmptyObject(data.errors) ){

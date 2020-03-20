@@ -21,19 +21,23 @@
     <div class="row">
         <div class="col-md-2 mr-5"></div>
         <div class="col-md-2 form-check mr-3">
-            <input class="form-check-input step4_checkbox" type="radio" id="step4_checkbox1" name="frequency_checkbox" value=7>
+            <input class="form-check-input step4_checkbox" type="radio" id="step4_checkbox1" name="frequency_checkbox" value=7
+            {{!empty($info_specific->days_freq) && $info_specific->days_freq == '7' ? 'checked' : ''}}>
             <label class="form-check-label">1 vez a la semana</label>
         </div>
         <div class="col-md-2 form-check mr-3">
-            <input class="form-check-input step4_checkbox" type="radio" id="step4_checkbox2" name="frequency_checkbox" value=14>
+            <input class="form-check-input step4_checkbox" type="radio" id="step4_checkbox2" name="frequency_checkbox" value=14
+            {{!empty($info_specific->days_freq) && $info_specific->days_freq == '14' ? 'checked' : ''}}>
             <label class="form-check-label">Cada 2 semanas</label>
         </div>
         <div class="col-md-2 form-check mr-3">
-            <input class="form-check-input step4_checkbox" type="radio" id="step4_checkbox3" name="frequency_checkbox" value=30>
+            <input class="form-check-input step4_checkbox" type="radio" id="step4_checkbox3" name="frequency_checkbox" value=30
+            {{!empty($info_specific->days_freq) && $info_specific->days_freq == '30' ? 'checked' : ''}}>
             <label class="form-check-label">1 vez al mes</label>
         </div>
         <div class="col-md-2 form-check ">
-            <input class="form-check-input step4_checkbox" type="radio" id="step4_checkbox4" name="frequency_checkbox" value="other"> 
+            <input class="form-check-input step4_checkbox" type="radio" id="step4_checkbox4" name="frequency_checkbox" value="other"
+            {{!empty($info_specific->days_freq) && $info_specific->days_freq == 'other' ? 'checked' : ''}}> 
             <label class="form-check-label">Otra</label>
         </div>
     </div>

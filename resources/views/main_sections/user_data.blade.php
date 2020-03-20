@@ -54,6 +54,11 @@
     var form_post_url = "{{ url('/user_data')}}";
 
     var retrieve_cities_url = "{{ url('/getCities')}}";
+    $(document).ready(function() {
+        console.log('holaaaa');
+        
+    })
+    
 </script>
 
 @endsection

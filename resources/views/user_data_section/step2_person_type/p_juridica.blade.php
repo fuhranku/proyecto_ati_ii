@@ -76,6 +76,9 @@
                 <div class="col-md-6">
                     <select class="form-control" id="cities_empresa_pj">
                     <option label="Seleccione su ciudad" disabled selected value></option>
+                    @foreach($cities as $city)
+                        <option value={{$city->id}} {{ !empty($info_specific->city_id) && $info_specific->city_id == $city->id ? 'selected' : '' }} > {{$city->name}} </option>
+                    @endforeach
                     </select>
                 </div>
             </div>
@@ -95,7 +98,7 @@
                     <label class="font-weight-bold"> <span class="ast-required"> *</span>Dirección</label>
                 </div>
                 <div class="col-md-6">
-                    <textarea class="form-control overflow-auto" style="resize:none;" name="address_empresa_pj"  value="{{ !empty($info_specific->address_comp) ? $info_specific->address_comp : ''}}"></textarea>
+                    <textarea class="form-control overflow-auto" style="resize:none;" name="address_empresa_pj">{{ !empty($info_specific->address_comp) ? $info_specific->address_comp : ''}}</textarea>
                 </div>
             </div>
             @component('components.field_error')
@@ -183,11 +186,13 @@
                 </div>
                 <div class="row pl-5 mt-3 mb-3">
                         <div class="col-md-6 form-check">
-                            <input type="checkbox" class="form-check-input" id="mobile-checkbox-juridica" name='phone_checkbox_pj' value='mobile'>
+                            <input type="checkbox" class="form-check-input" id="mobile-checkbox-juridica" name='phone_checkbox_pj' value='mobile'
+                            {{!empty($info_specific->mobile_number) ? 'checked' : ''}}>
                             <label class="form-check-label bg-yellow text-white tlf-checkbox pt-1 pb-1 pl-5 pr-5" for="portal-web">Móvil</label>
                         </div>
                         <div class="col-md-6 form-check">
-                            <input type="checkbox" class="form-check-input" id="landline-checkbox-juridica" name='phone_checkbox_pj' value='landline'>
+                            <input type="checkbox" class="form-check-input" id="landline-checkbox-juridica" name='phone_checkbox_pj' value='landline'
+                            {{!empty($info_specific->landline_number) ? 'checked' : ''}}>
                             <label class="form-check-label bg-yellow text-white tlf-checkbox pt-1 pb-1 pl-5 pr-5" for="portal-web">Fijo</label>
                         </div>
                 </div>
@@ -202,9 +207,10 @@
                         error_ul_phone_checkbox_pj
                     @endslot
                 @endcomponent
-                <div class="row mb-3 d-none" id="input-mobile-juridica">
+                <div class="row mb-3 {{!empty($info_specific->mobile_number) ? '' : 'd-none'}}" id="input-mobile-juridica">
                     <div class="col-sm-6"> 
-                    <input class="phone form-control" name="mobile_pj" type="tel" id='mobile-pj' value="{{ !empty($info_specific->mobile_number) ? $info_specific->mobile_number : ''}}">
+                    <input class="phone form-control" name="mobile_pj_up" type="tel" id='mobile-pj-up' 
+                    value="{{ !empty($info_specific->mobile_number) ? $info_specific->mobile_number : ''}}">
                     </div>
                 </div>
                 @component('components.field_error')
@@ -218,9 +224,10 @@
                         error_ul_mobile_pj
                     @endslot
                 @endcomponent
-                <div class="row d-none" id="input-landline-juridica">
+                <div class="row {{!empty($info_specific->landline_number) ? '' : 'd-none'}}" id="input-landline-juridica">
                     <div class="col-md-6"> 
-                    <input class="phone form-control" name="landline_pj" type="tel" id='landline-pj' value="{{ !empty($info_specific->landline_number) ? $info_specific->landline_number : ''}}">
+                    <input class="phone form-control" name="landline_pj_up" type="tel" id='landline-pj-up' 
+                    value="{{ !empty($info_specific->landline_number) ? $info_specific->landline_number : ''}}">
                     </div>
                     <div class="col-sm-2 font-weight-bold my-auto">
                             Ext
