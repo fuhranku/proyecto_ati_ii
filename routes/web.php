@@ -65,7 +65,6 @@ Route::get('dwelling/delete', 'Dwelling\ModifyDwellingController@delete')->name(
 Route::get('dwelling/enable', 'Dwelling\ModifyDwellingController@enable')->name('dwelling.disable');
 Route::get('dwelling/disable', 'Dwelling\ModifyDwellingController@disable')->name('dwelling.disable');
 
-
 // Servicios
 Route::get('services/search', 'ServiceController@search')->name('services.search');
 Route::get('services/delete', 'ServiceController@delete')->name('services.delete');
