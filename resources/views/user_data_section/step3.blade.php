@@ -26,8 +26,13 @@
                     <div class="col-md-5 my-auto">
                         <label class="font-weight-bold"> <span class="ast-required"> *</span>Contraseña</label>
                     </div>
-                    <div class="col-md-6">
-                        <input type="password" class="form-control" name='pw_login'>
+                    <div class="col-md-5">
+                        <input type="password" class="form-control" name='pw_login' id="change-password">
+                    </div>
+                    <div class="col-md-1">
+                        <input type="checkbox" name="changePassword" id="checkbox-changePassword">
+                            
+                        ¿Cambiar contraseña?
                     </div>
                 </div>
                 @component('components.field_error')

@@ -28,50 +28,49 @@ class UserDataController extends Controller
         // Cookie::queue('probando2', 'valorprobando2', 60);
         // Cookie::queue('probando3', 'valorprobando3', 60);
         // $type = 'none';
-        Log::info('userrrr');
+
+        //Cargar de BD
         $socialMedias = SocialMedia::all()->sortBy('name');
         $countries = Country::all()->sortBy('name');
         $users = User::all();
         $this->updateSession();
-        // $users_count = count($users) + 1;
+        Session::put('changePassword', false);
         $info = Session::get('info');
         
         if (is_string($info->found_us)) {
             $info->found_us =json_decode($info->found_us);
         }
         
-        Log::info($info->news_means['mail']);
-        // Log::info('Variable addres_comp aaaaaaaaaaaaaa');
-        // Log::info($info->found_us);
         $info_specific = Session::get('info_specific');
         
         // $cities = Country::find($info_specific->country_id)->cities()->pluck('id','name');
         $cities = DB::table('cities')->where('country_id', $info_specific->country_id)->get();
-        // // $city='';
-        // if (isset($info_specific->city_id)) {
-        //     # code...
-        //     $city = City::find($info_specific->city_id); 
-        // }
-        // Log::info($cities);
         
         return view('main_sections.user_data',compact('socialMedias','countries','info', 'info_specific', 'cities'));
     }
+    public function changePasswordState(){
+
+        $change = !Session::get('changePassword');
+        Log::info($change);
+        Session::put('changePassword', $change);
+
+    }
     public function updateSession(){
         $userActual =User::find(Session::get('info')->id);
-        Log::info('user actual');
-        Log::info($userActual);
+        // Log::info('user actual');
+        // Log::info($userActual);
         Session::put('info', $userActual);
 
-        Log::info('user actual person type');
+        // Log::info('user actual person type');
         if ($userActual->person_type == 'nat') {
-            Log::info('nat');
+            // Log::info('nat');
             $userActualSpe = NaturalPerson::where('user_id', '=', $userActual->id)->first();
         } else {
-            Log::info('jur');
+            // Log::info('jur');
 
             $userActualSpe = LegalPerson::where('user_id', '=', $userActual->id)->first();
         }
-        Log::info($userActualSpe->name_comp);
+        // Log::info($userActualSpe->name_comp);
         Session::put('info_specific', $userActualSpe);
     }
     // public function getCities(Request $request){
@@ -203,7 +202,10 @@ class UserDataController extends Controller
             case 3:
                 $step3 = $this->initialize(3);;
                 $validations['email_login'] = 'required|email';
-                $validations['pw_login'] = 'required';
+                if (Session::get('changePassword')) {
+                    # code...
+                    $validations['pw_login'] = 'required';
+                }
                 // Validate what needs to be validated
                 $validator = Validator::make($request->all(), $validations);
                 if ($validator->fails()){                
@@ -412,7 +414,10 @@ class UserDataController extends Controller
             $user->lang = $data['lang'];
         // Step 3 (Login info)
             $user->email = $data['email_login'];
-            $user->password = $data['pw_login'];
+            if (Session::get('changePassword')) {
+                Log::info('Cambio password');
+                $user->password = $data['pw_login'];
+            }
         // Step 4 (Frequency info)
             $user->days_freq = $data['days_frequency'];
             $user->interest_services = $data['interest_services'];
@@ -432,6 +437,7 @@ class UserDataController extends Controller
             }else{
                 $user->legalPerson()->save($user_type);
             }
+            $this->updateSession();
     }
 }
 

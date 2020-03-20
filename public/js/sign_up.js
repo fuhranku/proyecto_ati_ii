@@ -28,17 +28,33 @@ $('#checkbox-juridica').on('change', function() {
    $('#checkbox-natural').prop('checked', false);  
 });   
 
+$('#checkbox-changePassword').on('change', function(e) {
+    // AJAX VALIDATION
+    e.preventDefault();
+    $.ajaxSetup({
+        headers:{
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: form_post_change,
+        method: 'post',
+        async: false,
+        
+    })
+});
+
 $(document).ready(function(){
-   $('#panel-heading').text(panelText[step]);
-   $('.step4_checkbox').click(function(event) {
-       if( $(this).is("#step4_checkbox4")){
-            $('#step2_other_menu').removeClass('d-none');
-       }else{
-            $('#step2_other_menu').addClass('d-none');
-       }
-  });
-  $('#b-step-0').addClass('text-underline');
-  $('.b-step').click(function(event) {
+    $('#panel-heading').text(panelText[step]);
+    $('.step4_checkbox').click(function(event) {
+        if( $(this).is("#step4_checkbox4")){
+                $('#step2_other_menu').removeClass('d-none');
+        }else{
+                $('#step2_other_menu').addClass('d-none');
+        }
+    });
+    $('#b-step-0').addClass('text-underline');
+    $('.b-step').click(function(event) {
     $('.b-step').not(this).removeClass('text-underline');
     $(this).addClass('text-underline');  
     // Remove old content
@@ -73,7 +89,6 @@ $(document).ready(function(){
     // $(".phone-step0").intlTelInput({
     //     utilsScript: utilsScript
     // });
-    console.log('holi');
     
     // Initialize sign_up screen phones input tag
     var mobile_pn_input = document.querySelector("#mobile-pn");
@@ -712,6 +727,14 @@ $('#checkbox-email-other-step4').click(function(){
         $('#email-other-step4').css('visibility','visible');
     }else{
         $('#email-other-step4').css('visibility','hidden');
+    }  
+});
+
+$('#checkbox-changePassword').click(function(){
+    if($(this).prop("checked") == true){
+        $('#change-password').css('visibility','visible');
+    }else{
+        $('#change-password').css('visibility','hidden');
     }  
 });
 
