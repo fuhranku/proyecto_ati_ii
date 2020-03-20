@@ -58,6 +58,8 @@ Route::post('dwelling/disable_dwelling', 'Dwelling\DwellingController@disable_dw
 Route::post('dwelling/enable_dwelling', 'Dwelling\DwellingController@enable_dwelling')->name('dwelling.enable_dwelling');
 // Remove Dwelling
 Route::post('dwelling/delete_dwelling', 'Dwelling\DwellingController@delete_dwelling')->name('dwelling.delete_dwelling');
+// Show Details for dwelling ID
+Route::get('dwelling/show_details/{id}', 'Dwelling\DwellingController@show_details')->name('dwelling.show_details');
 
 Route::get('dwelling/modify', 'Dwelling\DwellingController@modify')->name('dwelling.modify');
 Route::get('dwelling/delete', 'Dwelling\DwellingController@delete')->name('dwelling.delete');

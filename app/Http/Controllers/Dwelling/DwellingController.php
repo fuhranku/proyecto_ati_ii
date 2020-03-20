@@ -104,4 +104,30 @@ class DwellingController extends Controller
             $info_specific = '';
         }
     }
+
+    public function show_details(Request $request,$id){
+
+        $dwelling = new \stdClass();
+
+        $dwelling->dwellings = DB::table('dwellings')
+            ->where('dwellings.id', $id)
+            ->join('continents','dwellings.continent_id','=','continents.id')
+            ->join('countries','dwellings.country_id','=','countries.id')
+            ->join('states','dwellings.state_id','=','states.id')
+            ->join('cities','dwellings.city_id','=','cities.id')
+            ->select('dwellings.*',
+                    'continents.name as continent_name',
+                    'countries.name as country_name',
+                    'states.name as state_name',
+                    'cities.name as city_name')
+            ->get();
+
+        $dwelling->services = DB::table('services')
+            ->get();
+
+        $dwelling->comforts = DB::table('comforts')
+            ->get();
+        
+        return view('dwelling_section.show_details',compact("dwelling"));
+    }
 }
