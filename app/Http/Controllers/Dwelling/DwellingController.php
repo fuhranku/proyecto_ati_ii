@@ -89,7 +89,7 @@ class DwellingController extends Controller
                 ->delete();
         }
 
-        return Response::json("Viviendas desactivadas");
+        return Response::json("Viviendas borradas");
     }
 
     public function dwelling_get()

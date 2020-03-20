@@ -6,10 +6,12 @@
 <section>
     <div class="container">    
         <div class="row">
-            
+            @include('dwelling_section.search_section.search_modal_location')
+            @include('dwelling_section.search_section.search_modal_service')
+            @include('dwelling_section.search_section.search_modal_comfort')
             @include('dwelling_section.search_section.search_bar')
             @include('dwelling_section.search_section.search_result')
-            @include('dwelling_section.search_section.search_full_details')
+           
         </div>
 
         <script>

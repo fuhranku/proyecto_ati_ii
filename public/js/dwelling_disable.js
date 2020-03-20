@@ -63,7 +63,6 @@ function enableDwelling(){
 
 }
 
-
 function deleteDwelling(){
 
     console.log("Borrando viviendas");
@@ -85,9 +84,23 @@ function deleteDwelling(){
         data: data,
         success: function(data){
             console.log(data);
-        }
-    }); 
 
+            $.each($("input[name='select-dwelling']:checked"), function(){
+            
+                d_dwelling = d_dwelling.filter( (x) =>{
+                    return !(x.id == $(this).val())
+                })
+
+                dwelling = dwelling.filter( (x) =>{
+                    return !(x.id == $(this).val())
+                })
+
+                currentPageDwelling = 1;
+                setNumberOfPages();
+                loadPageDwelling(currentPageDwelling);
+            });
+        }
+    });
 }
 
 function modifyDwelling(){
