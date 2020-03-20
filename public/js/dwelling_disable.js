@@ -18,8 +18,6 @@ function disableDwelling(){
         method: 'post',
         data: data,
         success: function(data){
-<<<<<<< HEAD
-=======
             // for (i=1;i<5;i++){
             //     if($('#dwelling_photo_fs'+i).find("input[name='select-dwelling']:checked")){
             //         $('#dwelling_photo_fs'+i).children('.list-photo-overlay').removeClass('d-none');
@@ -28,7 +26,6 @@ function disableDwelling(){
             // }
 
             //PUT OVERLAY
->>>>>>> removing and enabling
             $.each($("input[name='select-dwelling']:checked"), function(){
                 $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').removeClass('d-none');
                 $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').css('opacity','1');
