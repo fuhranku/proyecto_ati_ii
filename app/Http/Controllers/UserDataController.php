@@ -212,9 +212,10 @@ class UserDataController extends Controller
                 $step3['email_login'] = $request->get('email_login');
                 $step3['pw_login'] = Hash::make($request->get('pw_login'));
                 Session::put('step3',$step3);
-                $step4['days_frequency'] = $request->get('custom_frequency');
-                $step4['interest_services'] = $request->get('interest_services');
-                $step4['news_means'] = $request->get('news_means');
+                // Prepare data to step4 
+                $step4['days_frequency'] = null;
+                $step4['interest_services'] = null;
+                $step4['news_means'] = null;
                 Session::put('step4',$step4);
 
             break;

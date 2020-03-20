@@ -176,6 +176,12 @@ class SignUpController extends Controller
                 $step3['email_login'] = $request->get('email_login');
                 $step3['pw_login'] = Hash::make($request->get('pw_login'));
                 Session::put('step3',$step3);
+
+                // Prepare data to step4 
+                $step4['days_frequency'] = null;
+                $step4['interest_services'] = null;
+                $step4['news_means'] = null;
+                Session::put('step4',$step4);
             break;
             case 4:
                 $step4 = $this->initialize(4);
@@ -302,13 +308,14 @@ class SignUpController extends Controller
     private function saveUserIntoDatabase(){
         $session_data = Session::all();
         $data = [];
-        Log::info('save into db');
-        Log::info($session_data);
-        if (!in_array("step4",$session_data)){
-            $session_data['step4']['days_frequency'] = null;
-            $session_data['step4']['interest_services'] = null;
-            $session_data['step4']['news_means'] = null;
-        }
+        // Log::info('save into db');
+        // Log::info($session_data);
+        // if (!in_array("step4",$session_data)){
+        //     Log::info('Cumple condicion');
+        //     $session_data['step4']['days_frequency'] = null;
+        //     $session_data['step4']['interest_services'] = null;
+        //     $session_data['step4']['news_means'] = null;
+        // }
         for($i = 0; $i<6;$i++){
             foreach ($session_data['step'.$i] as $key => $value){
                 $data[$key] = $value;
@@ -368,12 +375,14 @@ class SignUpController extends Controller
             $user->banco_destino = $data['banco_destino'];
             $user->country_facturacion = $data['country_facturacion'];
         // Insertar usuario antes de las tablas con sus relaciones
-            $user->save();
+        Log::info($user);
+        Log::info($user_type);
+            // $user->save();
         // Insertar modelo user_type (el Foreign key se asigna automáticamente con la llamada a save())
             if($data['person_type'] == 'nat'){
-                $user->naturalPerson()->save($user_type);
+                // $user->naturalPerson()->save($user_type);
             }else{
-                $user->legalPerson()->save($user_type);
+                // $user->legalPerson()->save($user_type);
             }
     }
 }
