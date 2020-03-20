@@ -31,7 +31,7 @@
 
                     <div class="row">
                         <div class="col-sm-4 modal-label">
-                            <label for="password">Password</label>
+                            <label for="password">Contraseña</label>
                         </div>
                         <div class="col-sm-8">
                             <input type="password" class="form-control" name="password"/>
@@ -56,6 +56,7 @@
                 </div>
             </form>
             @endslot
+            
         @endcomponent
         <!-- sign in end -->
 

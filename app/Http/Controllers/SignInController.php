@@ -23,15 +23,20 @@ class SignInController extends Controller
             'email' => 'email|required|string',
             'password' => 'required|string'
         ]);
-        // echo Hash::make('testmegatest123');
+        $validations['email'] = 'email|required|string';
+        $validations['password'] = 'required|string';
+        
+        //Validations
+        $validator = Validator::make($request->all(), $validations);
+        Session::put('error-login', false);
+        if ($validator->fails()){          
+            Session::put('error-login', true);
+            return response()->json(['errors'=>$validator->getMessageBag()]);
+        }
 
         $emailQ = $request->get('email');
         $passQ = $request->get('password');
-        // $emailQ = 'testmegatest@gmail.com';
-        // $passQ = '$2y$10$CRWVCdC09mlI7dGK9kq8a.zrGDxU03eWKnYQZQ6KO8dO6Dup2ZWEC';
         
-        // $emailQ = 'asd@sd.vs';
-        // $passQ = '$2y$10$0BL4UZmQ0X9tXu2PgV.UtebS0Bp7/3QKPYwHD2Yk8BRtGeDKPVdL.';
         $queryUser = DB::table('users')->select('*')->where('email', '=', $emailQ)->first();
         
         if ($queryUser) 

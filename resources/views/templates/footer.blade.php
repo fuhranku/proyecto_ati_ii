@@ -17,7 +17,7 @@
                         <div class="col-md-4">
                             <img src="{{asset('images/avatar_default.png')}}" alt="avatar image" class="avatar-image">
                         </div>
-                        <div class='col-md-8 font-weight-bold ml-0 pl-0'>
+                        <div class='col-md-8 font-weight-bold ml-0'>
                             <div class="row">
                                 <span class="log-in-text" id='header_user_name'>
                                     @if (Session::get('info')->person_type == 'nat')
