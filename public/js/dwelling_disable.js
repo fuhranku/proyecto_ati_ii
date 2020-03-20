@@ -134,6 +134,16 @@ function deleteDwelling(){
     });
 }
 
+function modifyDwelling(){
+    var selected_dwellings = [];
+
+    $.each($("input[name='select-dwelling']:checked"), function(){
+        selected_dwellings.push($(this).val());
+    });
+
+    location.href = "/dwelling/modify/"+selected_dwellings[0].toString();
+}
+
 
 function detailDwelling(){
 
