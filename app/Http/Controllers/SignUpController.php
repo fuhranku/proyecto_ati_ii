@@ -377,12 +377,12 @@ class SignUpController extends Controller
         // Insertar usuario antes de las tablas con sus relaciones
         Log::info($user);
         Log::info($user_type);
-            // $user->save();
+            $user->save();
         // Insertar modelo user_type (el Foreign key se asigna automáticamente con la llamada a save())
             if($data['person_type'] == 'nat'){
-                // $user->naturalPerson()->save($user_type);
+                $user->naturalPerson()->save($user_type);
             }else{
-                // $user->legalPerson()->save($user_type);
+                $user->legalPerson()->save($user_type);
             }
     }
 }
