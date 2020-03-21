@@ -1,6 +1,6 @@
 var mobile_input;
 var landline_input;
-
+var dwelling_id;
 // for index page
 $('#btn-b-rapida').click(function(){
     if($('#busqueda-rapida').hasClass("d-none")){
@@ -779,6 +779,7 @@ $('#publish_btn_dwelling').click(function(){
                 $('.modal-bg').remove();
                 $('body').removeClass('overflow-hidden');
             }else{
+                dwelling_id = data.id;
                 $('#preloader-storing').appendTo('body');
                 $('#preloader-storing').addClass('d-none');
                 $('#dwell-published-modal').appendTo('.modal-bg');
