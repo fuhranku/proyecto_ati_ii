@@ -57,11 +57,15 @@ Route::post('dwelling/remove_image', 'Dwelling\PublishDwellingController@remove_
 Route::post('dwelling/post_video', 'Dwelling\PublishDwellingController@post_video')->name('dwelling.post_video');
 Route::post('dwelling/remove_video', 'Dwelling\PublishDwellingController@remove_video')->name('dwelling.remove_video');
 Route::post('dwelling/store_dwelling', 'Dwelling\PublishDwellingController@store_dwelling')->name('dwelling.store_dwelling');
-Route::get('dwelling/publication', 'Dwelling\DwellingController@publication')->name('dwelling.publication');
 // Search routes
 Route::get('dwelling/search', 'Dwelling\SearchDwellingController@search_get')->name('dwelling.search');
 Route::post('dwelling/quick_search', 'Dwelling\SearchDwellingController@quick_search')->name('dwelling.quick_search');
 Route::post('dwelling/detailed_search', 'Dwelling\SearchDwellingController@detailed_search')->name('dwelling.detailed_search');
+// Publication routes
+Route::get('dwelling/publication', 'Dwelling\PublicationDwellingController@search_get')->name('dwelling.publication_search');
+Route::post('dwelling/publication/quick_search', 'Dwelling\PublicationDwellingController@quick_search')->name('dwelling.publication_quick_search');
+Route::post('dwelling/publication/detailed_search', 'Dwelling\PublicationDwellingController@detailed_search')->name('dwelling.publication_detailed_search');
+
 // Disable Enable
 Route::post('dwelling/disable_dwelling', 'Dwelling\DwellingController@disable_dwelling')->name('dwelling.disable_dwelling');
 Route::post('dwelling/enable_dwelling', 'Dwelling\DwellingController@enable_dwelling')->name('dwelling.enable_dwelling');

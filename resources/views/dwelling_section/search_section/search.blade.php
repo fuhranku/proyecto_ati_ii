@@ -533,7 +533,7 @@
             @include('dwelling_section.search_section.search_bar')
             @include('dwelling_section.search_section.search_result')
         </div>
-
+        
         <script>
             var quickSearch_post_url = "{{ url('/dwelling/quick_search')}}";
             var detailedSearch_post_url = "{{ url('/dwelling/detailed_search')}}";
@@ -544,6 +544,8 @@
             var countries = @json($countries);
             var states = @json($states);
             var cities = @json($cities);
+            
+            var userID = {{ Session::has('info') ? Session::get('info')->id : -1}};
         </script>
 
 

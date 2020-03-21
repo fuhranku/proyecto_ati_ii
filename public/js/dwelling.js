@@ -780,10 +780,6 @@ $('#publish_btn_dwelling').click(function(){
                 $('body').removeClass('overflow-hidden');
             }else{
                 dwelling_id = data.id;
-<<<<<<< HEAD
-                console.log(dwelling_id);
-=======
->>>>>>> 3f3965f... UPDATE::Modify last update
                 $('#preloader-storing').appendTo('body');
                 $('#preloader-storing').addClass('d-none');
                 $('#dwell-published-modal').appendTo('.modal-bg');
@@ -815,10 +811,10 @@ function validatePhones(){
 
 
 $('#accept-publish-modal').click(function(){3
-    
+
     var action = $("input[name='success-modal']:checked").val();
     switch(action){
-        // Ver mi publicación   
+        // Ver mi publicación
         case "1":
             location.href = "/dwelling/show_details/"+dwelling_id.toString();
             break;
