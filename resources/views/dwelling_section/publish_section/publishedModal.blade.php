@@ -34,15 +34,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 mt-2 pl-2 pr-2">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                <a class="btn btn-yellow text-center cursor-pointer" id="accept-publish-modal" onclick="return getOption()"href="#">Aceptar</a>
-=======
                 <a class="btn btn-yellow text-center cursor-pointer" id="accept-publish-modal" href="#">Aceptar</a>
->>>>>>> test2
-=======
-                <a class="btn btn-yellow text-center cursor-pointer" id="accept-publish-modal" href="#">Aceptar</a>
->>>>>>> 0a72e22cf0f6a0d32dba9b5e5d53e065b5320b80
                 </div>
             </div>
             </div>
