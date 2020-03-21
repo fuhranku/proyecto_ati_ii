@@ -77,8 +77,8 @@ class ModifyDwellingController extends Controller
         if ($validator->fails()){                
             return response()->json(['errors'=>$validator->getMessageBag()]);
         }else{
-            $this->updateDwelling($request);
-            return response()->json(['success' => 'success!']);
+            $dwelling_id = $this->updateDwelling($request);
+            return response()->json(['id' => $dwelling_id]);
         }
     }
 
@@ -158,5 +158,6 @@ class ModifyDwellingController extends Controller
                 $dwelling->videos()->save($new_video);
             }
         }
+        return $dwelling->id;
     }
 }
