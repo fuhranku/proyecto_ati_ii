@@ -74,7 +74,7 @@
 
                     <div class="dropdown-menu" aria-labelledby="navbarDwelling">
                     
-                        @if (Session::has('info') && Session::get('info')->role == 'ceo')
+                        @if (Session::has('info'))
                         <a class="dropdown-item" href="{{ url('dwelling/publish') }}">Publicar</a>
                         <a class="dropdown-item" href="{{ url('dwelling/publication') }}">Ver Publicaciones</a>
                         @endif

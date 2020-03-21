@@ -78,6 +78,6 @@ class SignInController extends Controller
         Session::forget('info_specific');
         // Session::flush();
         // echo 'hi';
-        return redirect()->route('dwelling.publication');
+        return redirect("/index");
     }
 }
