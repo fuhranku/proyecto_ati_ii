@@ -544,6 +544,8 @@
             var countries = @json($countries);
             var states = @json($states);
             var cities = @json($cities);
+
+            var userID = {{Session::get('info')->id}};
         </script>
 
 
