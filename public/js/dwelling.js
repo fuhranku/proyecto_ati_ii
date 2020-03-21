@@ -780,6 +780,7 @@ $('#publish_btn_dwelling').click(function(){
                 $('body').removeClass('overflow-hidden');
             }else{
                 dwelling_id = data.id;
+                console.log(dwelling_id);
                 $('#preloader-storing').appendTo('body');
                 $('#preloader-storing').addClass('d-none');
                 $('#dwell-published-modal').appendTo('.modal-bg');
