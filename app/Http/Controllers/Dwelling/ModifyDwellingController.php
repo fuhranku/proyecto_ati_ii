@@ -26,7 +26,9 @@ use App\Models\Dwelling\Video;
 
 class ModifyDwellingController extends Controller
 {
-    public function modify_get(){
+    public function modify_get($id){
+
+
         Session::forget('images');
         Session::forget('videos');
 
@@ -37,9 +39,9 @@ class ModifyDwellingController extends Controller
         $comforts = Comfort::all()->sortBy('name');
         $services = Service::all()->sortBy('name');
         $currency = Currency::all()->sortBy('name');
-        $dwelling = Dwelling::find(20);
-        $images = Dwelling::find(20)->images;
-        $videos = Dwelling::find(20)->videos;
+        $dwelling = Dwelling::find($id);
+        $images = Dwelling::find($id)->images;
+        $videos = Dwelling::find($id)->videos;
         $dwelling['images'] = $images;
         $dwelling['videos'] = $videos;
 
@@ -104,7 +106,6 @@ class ModifyDwellingController extends Controller
         $dwelling->city_id = $data['city_select_sm'];
         $dwelling->zone_id = 1;
         $dwelling->user_id = 13;
-        $dwelling->enable = 1;
         $dwelling->status = $data['selling_option'];
         $dwelling->property_type = $data['tipo_inmueble'];
         $dwelling->rooms = $data['counter_room'];

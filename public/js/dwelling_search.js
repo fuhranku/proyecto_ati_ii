@@ -2,13 +2,38 @@ var currentPageDwelling = 0
 var totalPages = -1;
 var propMap = ['apartamento', 'casa', 'apartamento y casa'];
 var statusMap = ['alquiler', 'venta', 'alquiler y venta'];
-var activeMode;
+var activeMode = 1; // 1 -> tipo foto 2-> tipo lista
 var dwelling = [];
 var d_dwelling = [];
 var service = [];
 var comfort = [];
 var images_url = [];
 var scrollPos = 0;
+
+function showDetails(dwelling_number){
+
+    if(activeMode == 1){
+        //SET INFORMATION
+        var pageOffset = (currentPageDwelling - 1)*4;
+    
+        var dwelling_id = JSON.parse(d_dwelling[dwelling_number-1+pageOffset].id);
+    
+        $("#dwelling-show-details"+dwelling_number.toString()).attr("href", "/dwelling/show_details/"+dwelling_id.toString());
+    }
+    else if(activeMode == 2){
+
+        //SET INFORMATION
+        var pageOffset = (currentPageDwelling - 1)*4;
+
+        var dwelling_id = JSON.parse(d_dwelling[dwelling_number-1+pageOffset].id);
+
+        $("#dwelling-show-details_list"+dwelling_number.toString()).attr("href", "/dwelling/show_details/"+dwelling_id.toString());
+        
+    } 
+
+
+    return true;
+}
 
 function getScrollPos(){
     scrollPos = $(window).scrollTop();
