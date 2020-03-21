@@ -7,7 +7,6 @@
             <div class="col-md-6 mt-3">
                 <img id="image-dwelling-photo1" class="border border-primary font-weight-bold text-center dwelling-image" src="" alt="">
             </div>
-
             <div class="col-md-6 mt-3">
                     <div class="row position-relative select-dwelling">
                         <div class="col-md-9 pl-5">
