@@ -28,10 +28,6 @@ class PublishDwellingController extends Controller
 {
     public function publish_get()
     {
-        if (!Session::has('info')) {
-            return view('main_sections.index');
-        }
-        
         Session::forget('images');
         Session::forget('videos');
 

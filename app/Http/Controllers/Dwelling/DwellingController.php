@@ -8,7 +8,6 @@ use Response;
 use Illuminate\Http\Request;
 use Requesting;
 use App\Http\Controllers\Controller;
-use Session;
 
 
 class DwellingController extends Controller
@@ -19,20 +18,12 @@ class DwellingController extends Controller
     public function publish()
     {
         //$currentPage = 'create';
-        if (!Session::has('info')) {
-            return view('main_sections.index');
-        }
-        
         return view('dwelling_section.publish');
     }
     
     public function publication()
     {
         //$currentPage = 'create';
-        if (!Session::has('info')) {
-            return view('main_sections.index');
-        }
-        
         return view('dwelling_section.publication');
     }
 
@@ -41,40 +32,24 @@ class DwellingController extends Controller
     public function modify()
     {
         //$currentPage = 'create';
-        if (!Session::has('info')) {
-            return view('main_sections.index');
-        }
-        
         return view('dwelling_section.modify');
     }
 
     public function delete()
     {
         //$currentPage = 'create';
-        if (!Session::has('info')) {
-            return view('main_sections.index');
-        }
-        
         return view('dwelling_section.delete');
     }
 
     public function enable()
     {
         //$currentPage = 'create';
-        if (!Session::has('info')) {
-            return view('main_sections.index');
-        }
-        
         return view('dwelling_section.enable');
     }
 
     public function disable()
     {
         //$currentPage = 'create';
-        if (!Session::has('info')) {
-            return view('main_sections.index');
-        }
-        
         return view('dwelling_section.disable');
     }
 
