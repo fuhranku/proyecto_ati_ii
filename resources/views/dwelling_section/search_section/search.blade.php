@@ -3,7 +3,7 @@
 @section('title','Index')
 
 @section('content')
-<section>
+<section id="search-section">
     <div class="container">    
         <div class="row">
             
@@ -529,9 +529,9 @@
             @include('dwelling_section.search_section.search_modal_location')
             @include('dwelling_section.search_section.search_modal_service')
             @include('dwelling_section.search_section.search_modal_comfort')
+            @include('dwelling_section.search_section.search_modal_no_images')
             @include('dwelling_section.search_section.search_bar')
             @include('dwelling_section.search_section.search_result')
-           
         </div>
 
         <script>

@@ -198,3 +198,28 @@
 .select-dwelling{
     z-index:2;
 }
+
+#carousel-container{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.border-none{
+    border: 0px;
+}
+
+iframe > * {
+    background-color: rgba(0,0,0,0);
+}
+
+.video-control-prev{
+    margin-left : -165px;
+}
+.video-control-next{
+    margin-right : -165px;
+}
+
+.w-540{
+    height:360px;
+}

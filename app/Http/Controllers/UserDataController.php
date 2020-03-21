@@ -51,7 +51,10 @@ class UserDataController extends Controller
     public function changePasswordState(){
 
         $change = !Session::get('changePassword');
-        Log::info($change);
+        if ($change) {
+            # code...
+            Log::info($change);
+        }
         Session::put('changePassword', $change);
 
     }

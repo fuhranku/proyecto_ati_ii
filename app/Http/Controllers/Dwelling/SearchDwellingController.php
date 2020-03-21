@@ -18,6 +18,7 @@ use App\Models\Dwelling\Comfort;
 use App\Models\Dwelling\Service;
 use App\Models\Dwelling\Currency;
 use App\Models\Dwelling\Dwelling;
+use Log;
 
 class SearchDwellingController extends Controller
 {
@@ -127,7 +128,17 @@ class SearchDwellingController extends Controller
             }
         }
         
-        
+        // Add images
+        $json_dwelling = json_decode(json_encode($dwelling->dwellings), true);
+        //$json_dwelling = json_decode($json_dwelling);
+            foreach ($json_dwelling as $key => $value){
+                $json_dwelling[$key]['images'] = Dwelling::find($json_dwelling[$key]['id'])->images;
+        }
+        // Add videos
+            foreach ($json_dwelling as $key => $value){
+                $json_dwelling[$key]['videos'] = Dwelling::find($json_dwelling[$key]['id'])->videos;
+        }
+        $dwelling->dwellings = $json_dwelling;
         return Response::json(json_encode($dwelling));
     }
 
@@ -356,7 +367,17 @@ class SearchDwellingController extends Controller
             }
         }
         
-
+        // Add images
+        $json_dwelling = json_decode(json_encode($dwelling->dwellings), true);
+        //$json_dwelling = json_decode($json_dwelling);
+            foreach ($json_dwelling as $key => $value){
+                $json_dwelling[$key]['images'] = Dwelling::find($json_dwelling[$key]['id'])->images;
+        }
+        // Add videos
+            foreach ($json_dwelling as $key => $value){
+                $json_dwelling[$key]['videos'] = Dwelling::find($json_dwelling[$key]['id'])->videos;
+        }
+        $dwelling->dwellings = $json_dwelling;
         return Response::json(json_encode($dwelling));
     }
 }
