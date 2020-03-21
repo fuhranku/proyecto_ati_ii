@@ -50,7 +50,7 @@
 <script src="{{ asset('js/app.js') }}"></script> 
 
 <script src="{{ asset('js/dwelling.js') }}"></script>
-<script src="{{ asset('js/dwelling_search.js') }}"></script>
+<script src="{{ asset('js/dwelling_search   .js') }}"></script>
 <script src="{{ asset('js/dwelling_disable.js') }}"></script>
 <script src="{{ asset('js/dwelling_details.js') }}"></script>
 <script src="{{ asset('js/dwelling_modify.js') }}"></script>

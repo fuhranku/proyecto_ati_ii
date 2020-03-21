@@ -11,6 +11,7 @@ use Cookie;
 use App;
 use Session;
 use Log;
+use DB;
 
 // Database Models
 use App\Models\Location\Country;
@@ -20,33 +21,69 @@ use App\Models\Sign_up\SocialMedia;
 use App\Models\Sign_up\NaturalPerson;
 use App\Models\Sign_up\LegalPerson;
 
-class SignUpController extends Controller
+class UserDataController extends Controller
 {
-    public function sign_up_get(){
+    public function user_data_get(){
         // Cookie::queue('probando1', 'valorprobando1', 60);
         // Cookie::queue('probando2', 'valorprobando2', 60);
         // Cookie::queue('probando3', 'valorprobando3', 60);
         // $type = 'none';
+
+        //Cargar de BD
         $socialMedias = SocialMedia::all()->sortBy('name');
         $countries = Country::all()->sortBy('name');
         $users = User::all();
-        $users_count = count($users) + 1;
-        return view('main_sections.sign_up',compact('socialMedias','countries','users_count'));
+        $this->updateSession();
+        Session::put('changePassword', false);
+        $info = Session::get('info');
+        
+        if (is_string($info->found_us)) {
+            $info->found_us =json_decode($info->found_us);
+        }
+        
+        $info_specific = Session::get('info_specific');
+        
+        // $cities = Country::find($info_specific->country_id)->cities()->pluck('id','name');
+        $cities = DB::table('cities')->where('country_id', $info_specific->country_id)->get();
+        
+        return view('main_sections.user_data',compact('socialMedias','countries','info', 'info_specific', 'cities'));
     }
+    public function changePasswordState(){
 
-    public function getCities(Request $request){
-        $cities = Country::find($request->get('country'))->cities()->pluck('id','name');
-        Log::info('cities');
-        Log::info($cities);
-        return response()->json([
-            'success'=>'post succesfully done',
-            'cities'=>$cities
-        ]);
+        $change = !Session::get('changePassword');
+        Log::info($change);
+        Session::put('changePassword', $change);
+
     }
+    public function updateSession(){
+        $userActual =User::find(Session::get('info')->id);
+        // Log::info('user actual');
+        // Log::info($userActual);
+        Session::put('info', $userActual);
 
-    public function sign_up_get_person_type($type = 1){
+        // Log::info('user actual person type');
+        if ($userActual->person_type == 'nat') {
+            // Log::info('nat');
+            $userActualSpe = NaturalPerson::where('user_id', '=', $userActual->id)->first();
+        } else {
+            // Log::info('jur');
+
+            $userActualSpe = LegalPerson::where('user_id', '=', $userActual->id)->first();
+        }
+        // Log::info($userActualSpe->name_comp);
+        Session::put('info_specific', $userActualSpe);
+    }
+    // public function getCities(Request $request){
+    //     $cities = Country::find($request->get('country'))->cities()->pluck('id','name');
+    //     return response()->json([
+    //         'success'=>'post succesfully done',
+    //         'cities'=>$cities
+    //     ]);
+    // }
+
+    public function user_data_get_person_type($type = 1){
         $step = 2;
-        return view('main_sections.sign_up',compact("step","type"));
+        return view('main_sections.user_data',compact("step","type"));
     }
 
     public function sign_up_post(Request $request, $step = 1){
@@ -55,10 +92,9 @@ class SignUpController extends Controller
         return view('main_sections.index');
     }
 
-    public function store(Request $request){
+    public function store_user_data(Request $request){
         // $step = $request->get('step');
-        Log::info('estoy en sign up controller');
-
+        Log::info('estoy en user controller');
         switch($request->get('step')){
             case 0:
                 $step0 = $this->initialize(0);
@@ -166,7 +202,10 @@ class SignUpController extends Controller
             case 3:
                 $step3 = $this->initialize(3);;
                 $validations['email_login'] = 'required|email';
-                $validations['pw_login'] = 'required';
+                if (Session::get('changePassword')) {
+                    # code...
+                    $validations['pw_login'] = 'required';
+                }
                 // Validate what needs to be validated
                 $validator = Validator::make($request->all(), $validations);
                 if ($validator->fails()){                
@@ -176,16 +215,17 @@ class SignUpController extends Controller
                 $step3['email_login'] = $request->get('email_login');
                 $step3['pw_login'] = Hash::make($request->get('pw_login'));
                 Session::put('step3',$step3);
-
                 // Prepare data to step4 
                 $step4['days_frequency'] = null;
                 $step4['interest_services'] = null;
                 $step4['news_means'] = null;
                 Session::put('step4',$step4);
+
             break;
             case 4:
                 $step4 = $this->initialize(4);
                 $validations['frequency_checkbox'] = 'required';
+                
                 $step4['frequency_checkbox'] = $request->get('frequency_checkbox');
                 if ($request->get('frequency_checkbox') == 'other'){
                     $validations['custom_frequency'] = 'required|gt:0';
@@ -211,6 +251,10 @@ class SignUpController extends Controller
                     $validations['news_means.rrss'] = 'nullable';
                     $validations['news_means.other'] = 'nullable';
                     $validations['news_means.facebook_acc'] = 'nullable';
+                    Log::info('days_frequency');
+                    Log::info($request->get('custom_frequency'));
+                    $step4['days_frequency'] = $request->get('custom_frequency');
+
                 }
                 // Validate what needs to be validated
                 $validator = Validator::make($request->all(), $validations);
@@ -308,10 +352,9 @@ class SignUpController extends Controller
     private function saveUserIntoDatabase(){
         $session_data = Session::all();
         $data = [];
-        // Log::info('save into db');
         // Log::info($session_data);
         // if (!in_array("step4",$session_data)){
-        //     Log::info('Cumple condicion');
+        //     Log::info('Condicion');
         //     $session_data['step4']['days_frequency'] = null;
         //     $session_data['step4']['interest_services'] = null;
         //     $session_data['step4']['news_means'] = null;
@@ -323,11 +366,18 @@ class SignUpController extends Controller
         }
         Log::info('Data to put into DB:');
         Log::info($data);
-        $user = new User;
+
+        // $user = new User;
+        $user = App\Models\Sign_up\User::find(Session::get('info')->id);
+        Log::info('Data to put into find:');
+        Log::info($user);
         // Set date
-        $user->date_reg = date('Y-m-d');
+        // $user->date_reg = date('Y-m-d');
         // Set User role (Default as regular)
-        $user->role = 'regular';
+        // $user->role = 'regular';
+
+        //Aquí se actualizarían todos los datos
+
         // Step 0  (Cómo supo de nosotros)
             $user->found_us = $data['found_us'];
         // Step 1  (Registrar usuario [Natural|Jurídico])
@@ -335,7 +385,7 @@ class SignUpController extends Controller
             // Create model based in person type
             switch($data['person_type']){
                 case 'nat':
-                    $user_type = new NaturalPerson;
+                    $user_type = App\Models\Sign_up\NaturalPerson::find(Session::get('info_specific')->id);
                     $user_type->country_id = $data['country_pn'];
                     $user_type->name = $data['nombre_pn'];
                     $user_type->last_name = $data['apellido_pn'];
@@ -346,7 +396,7 @@ class SignUpController extends Controller
                     $user_type->landline_number_ext = $data['landline_ext_pn'];
                 break;
                 case 'jur':
-                    $user_type = new LegalPerson;
+                    $user_type = App\Models\Sign_up\LegalPerson::find(Session::get('info_specific')->id);
                     $user_type->country_id = $data['country_empresa_pj'];
                     $user_type->city_id = $data['city_empresa_pj'];
                     $user_type->name_comp = $data['nombre_empresa_pj'];
@@ -364,7 +414,10 @@ class SignUpController extends Controller
             $user->lang = $data['lang'];
         // Step 3 (Login info)
             $user->email = $data['email_login'];
-            $user->password = $data['pw_login'];
+            if (Session::get('changePassword')) {
+                Log::info('Cambio password');
+                $user->password = $data['pw_login'];
+            }
         // Step 4 (Frequency info)
             $user->days_freq = $data['days_frequency'];
             $user->interest_services = $data['interest_services'];
@@ -374,16 +427,17 @@ class SignUpController extends Controller
             $user->banco_origen = $data['banco_origen'];
             $user->banco_destino = $data['banco_destino'];
             $user->country_facturacion = $data['country_facturacion'];
-        // Insertar usuario antes de las tablas con sus relaciones
+        // Actualizar usuario antes de las tablas con sus relaciones
+        Log::info('Data to save int DB:');
         Log::info($user);
-        Log::info($user_type);
             $user->save();
-        // Insertar modelo user_type (el Foreign key se asigna automáticamente con la llamada a save())
-            if($data['person_type'] == 'nat'){
+        // Actualizar modelo user_type (el Foreign key se asigna automáticamente con la llamada a save())
+            if(Session::get('info')->person_type == 'nat'){
                 $user->naturalPerson()->save($user_type);
             }else{
                 $user->legalPerson()->save($user_type);
             }
+            $this->updateSession();
     }
 }
 

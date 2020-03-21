@@ -8,6 +8,7 @@ var panelText = [
     'Datos de Facturación',
 ]
 var mobile_pn, landline_pn, mobile_pj, landline_pj;
+var mobile_pj_up, landline_pj_up;
 var validation;
 
 $(".checkbox-menu").on("change", "input[type='checkbox']", function() {
@@ -27,17 +28,33 @@ $('#checkbox-juridica').on('change', function() {
    $('#checkbox-natural').prop('checked', false);  
 });   
 
+$('#checkbox-changePassword').on('change', function(e) {
+    // AJAX VALIDATION
+    e.preventDefault();
+    $.ajaxSetup({
+        headers:{
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: form_post_change,
+        method: 'post',
+        async: false,
+        
+    })
+});
+
 $(document).ready(function(){
-   $('#panel-heading').text(panelText[step]);
-   $('.step4_checkbox').click(function(event) {
-       if( $(this).is("#step4_checkbox4")){
-            $('#step2_other_menu').removeClass('d-none');
-       }else{
-            $('#step2_other_menu').addClass('d-none');
-       }
-  });
-  $('#b-step-0').addClass('text-underline');
-  $('.b-step').click(function(event) {
+    $('#panel-heading').text(panelText[step]);
+    $('.step4_checkbox').click(function(event) {
+        if( $(this).is("#step4_checkbox4")){
+                $('#step2_other_menu').removeClass('d-none');
+        }else{
+                $('#step2_other_menu').addClass('d-none');
+        }
+    });
+    $('#b-step-0').addClass('text-underline');
+    $('.b-step').click(function(event) {
     $('.b-step').not(this).removeClass('text-underline');
     $(this).addClass('text-underline');  
     // Remove old content
@@ -72,40 +89,52 @@ $(document).ready(function(){
     // $(".phone-step0").intlTelInput({
     //     utilsScript: utilsScript
     // });
+    
     // Initialize sign_up screen phones input tag
     var mobile_pn_input = document.querySelector("#mobile-pn");
     var landline_pn_input = document.querySelector("#landline-pn");
     var mobile_pj_input = document.querySelector("#mobile-pj");
     var landline_pj_input = document.querySelector("#landline-pj");
     var phone_step4_input = document.querySelector("#phone-step4");
-    // Initialize natural mobile number input
-    mobile_pn = window.intlTelInput(mobile_pn_input,{
-        utilsScript: utilsScript,
-        onlyCountries: ['es','ve'],
-        separateDialCode:true,
-        initialCountry:""
-    });
-    // Initialize natural legal number input
-    landline_pn = window.intlTelInput(landline_pn_input,{
-        utilsScript: utilsScript,
-        onlyCountries: ['es','ve'],
-        separateDialCode:true,
-        initialCountry:""
-    });
-    // Initialize legal mobile number input
-    mobile_pj = window.intlTelInput(mobile_pj_input,{
-        utilsScript: utilsScript,
-        onlyCountries: ['es','ve'],
-        separateDialCode:true,
-        initialCountry:""
-    });
-    // Initialize legal number input
-    landline_pj = window.intlTelInput(landline_pj_input,{
-        utilsScript: utilsScript,
-        onlyCountries: ['es','ve'],
-        separateDialCode:true,
-        initialCountry:""
-    });
+    // var phone_step4_input = document.querySelector("#phone-step4");
+    
+    if (mobile_pn_input !== null) {
+        mobile_pn = window.intlTelInput(mobile_pn_input,{
+            utilsScript: utilsScript,
+            onlyCountries: ['es','ve'],
+            separateDialCode:true,
+            initialCountry:""
+        });
+    }
+    if (landline_pn_input !== null) {
+        // Initialize natural legal number input
+        landline_pn = window.intlTelInput(landline_pn_input,{
+            utilsScript: utilsScript,
+            onlyCountries: ['es','ve'],
+            separateDialCode:true,
+            initialCountry:""
+        });
+
+    }
+    if (mobile_pj_input !== null) {
+        // Initialize legal mobile number input
+        mobile_pj = window.intlTelInput(mobile_pj_input,{
+            utilsScript: utilsScript,
+            onlyCountries: ['es','ve'],
+            separateDialCode:true,
+            initialCountry:""
+        });
+    }
+    if (landline_pj_input !== null) {
+        // Initialize legal number input
+        landline_pj = window.intlTelInput(landline_pj_input,{
+            utilsScript: utilsScript,
+            onlyCountries: ['es','ve'],
+            separateDialCode:true,
+            initialCountry:""
+        });
+
+    }
     // Initialize phone of step4 number input
     phone_step4 = window.intlTelInput(phone_step4_input,{
         utilsScript: utilsScript,
@@ -113,6 +142,24 @@ $(document).ready(function(){
         separateDialCode:true,
         initialCountry:""
     });
+
+    var mobile_pj_input_up = document.querySelector("#mobile-pj-up");
+    var landline_pj_input_up = document.querySelector("#landline-pj-up");
+    
+    // Initialize legal mobile number input
+    mobile_pj_up = window.intlTelInput(mobile_pj_input_up,{
+        utilsScript: utilsScript,
+        onlyCountries: ['es','ve'],
+        separateDialCode:true,
+        initialCountry:""
+    });
+    // Initialize legal number input
+    landline_pj_up = window.intlTelInput(landline_pj_input_up,{
+        utilsScript: utilsScript,
+        onlyCountries: ['es','ve'],
+        separateDialCode:true,
+        initialCountry:""
+    });// Initialize natural mobile number input
 });
 
 $('#btn-b-rapida').click(function(){
@@ -277,8 +324,15 @@ $('#continuar-btn').on('click', function(e){
                 data['apellido_rep_pj'] = $('input[name="apellido_rep_pj"]').val();
                 data['email_rep_pj'] = $('input[name="email_rep_pj"]').val();
                 data['phone_checkbox_pj'] = $('input[name="phone_checkbox_pj"]:checked').val();
-                data['mobile_pj'] = mobile_pj.getNumber();
-                data['landline_pj'] = landline_pj.getNumber();
+                if (typeof mobile_pj !== 'undefined') {
+                    //if pantalla sign up
+                    data['mobile_pj'] = mobile_pj.getNumber();
+                    data['landline_pj'] = landline_pj.getNumber();
+                } else {
+                    //if pantalla user data
+                    data['mobile_pj'] = mobile_pj_up.getNumber();
+                    data['landline_pj'] = landline_pj_up.getNumber();
+                }
                 data['landline_ext_pj'] = $('input[name="landline_ext_pj"]').val();
                 // Ajax POST request
                 $.ajax({
@@ -287,20 +341,37 @@ $('#continuar-btn').on('click', function(e){
                     data: data,
                     async: false,
                     success: function(data){
+                        if (typeof mobile_pj !== 'undefined') {
+                            if( $('#mobile-checkbox-juridica').is(':checked') && !mobile_pj.isValidNumber()){
+                                validation = false;
+                                var errorCode = mobile_pj.getValidationError();
+                                $('#error_row_mobile_pj').removeClass('d-none');
+                                $('#error_ul_mobile_pj').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
+                            }
+                            // Validate landline number
+                            if ($('#landline-checkbox-juridica').is(':checked') && !landline_pj.isValidNumber()){
+                                validation = false;
+                                var errorCode = landline_pj.getValidationError();
+                                $('#error_row_landline_pj').removeClass('d-none');
+                                $('#error_ul_landline_pj').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
+                            }
+
+                        }else{
+                            if( $('#mobile-checkbox-juridica').is(':checked') && !mobile_pj_up.isValidNumber()){
+                                validation = false;
+                                var errorCode = mobile_pj_up.getValidationError();
+                                $('#error_row_mobile_pj').removeClass('d-none');
+                                $('#error_ul_mobile_pj').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
+                            }
+                            // Validate landline number
+                            if ($('#landline-checkbox-juridica').is(':checked') && !landline_pj_up.isValidNumber()){
+                                validation = false;
+                                var errorCode = landline_pj_up.getValidationError();
+                                $('#error_row_landline_pj').removeClass('d-none');
+                                $('#error_ul_landline_pj').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
+                            }
+                        }
                         // Validate mobile number
-                        if( $('#mobile-checkbox-juridica').is(':checked') && !mobile_pj.isValidNumber()){
-                            validation = false;
-                            var errorCode = mobile_pj.getValidationError();
-                            $('#error_row_mobile_pj').removeClass('d-none');
-                            $('#error_ul_mobile_pj').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
-                        }
-                        // Validate landline number
-                        if ($('#landline-checkbox-juridica').is(':checked') && !landline_pj.isValidNumber()){
-                            validation = false;
-                            var errorCode = landline_pj.getValidationError();
-                            $('#error_row_landline_pj').removeClass('d-none');
-                            $('#error_ul_landline_pj').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
-                        }
                         // AJAX VALIDATION
                         // If there's an error don't let go to next step
                         if( !$.isEmptyObject(data.errors) ){
@@ -659,6 +730,14 @@ $('#checkbox-email-other-step4').click(function(){
     }  
 });
 
+$('#checkbox-changePassword').click(function(){
+    if($(this).prop("checked") == true){
+        $('#change-password').css('visibility','visible');
+    }else{
+        $('#change-password').css('visibility','hidden');
+    }  
+});
+
 $('#checkbox-fb-account-other-step4').click(function(){
     if($(this).prop("checked") == true){
         $('.fb-account-other-step4').css('visibility','visible');
@@ -806,6 +885,60 @@ $('#custom_month_freq').change(function() {
 });
 
 $('#sign-up-btn').on('click', function(e){
+    validation = true;
+    // AJAX VALIDATION
+    e.preventDefault();
+    $.ajaxSetup({
+        headers:{
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+    data = {
+        step: step
+    };
+
+    data['user_unique_id'] = $('#user_unique_id').text();
+    data['banco_origen'] = $('input[name="banco_origen"]').val();
+    data['banco_destino'] = $('input[name="banco_destino"]').val();
+    data['country_facturacion'] = $('#country_facturacion').children('option:selected').val();
+    $('.form-error').empty();
+    // Ajax POST request
+    $.ajax({
+        url: form_post_url,
+        method: 'post',
+        data: data,
+        async: false,
+        success: function(data){
+            // AJAX VALIDATION
+            // If there's an error don't let go to next step
+            if( !$.isEmptyObject(data.errors) ){
+                validation = false;                        
+                $.each(data.errors, function(key, value){
+                    $('#error_row_'+key).removeClass('d-none');
+                    $.each(value, function(key2,value2){
+                        $('#error_ul_'+key).append('<li>'+value2+'</li>');
+                    })
+                });
+            }else{
+                console.log(data.success);
+            }
+        }
+    })
+    if (validation){
+        $('.error-row').addClass('d-none');
+        $('.form-error').addClass('d-none');
+        $('body').prepend('\
+        <div class="modal-bg">\
+        </div>\
+        ');
+        $('#sign-up-modal').appendTo('.modal-bg');
+        $('#sign-up-modal').removeClass('d-none');
+
+        $('body').addClass('overflow-hidden');
+    }
+});
+
+$('#update-btn').on('click', function(e){
     validation = true;
     // AJAX VALIDATION
     e.preventDefault();

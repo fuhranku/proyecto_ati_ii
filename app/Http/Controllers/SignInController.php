@@ -23,15 +23,20 @@ class SignInController extends Controller
             'email' => 'email|required|string',
             'password' => 'required|string'
         ]);
-        // echo Hash::make('testmegatest123');
+        $validations['email'] = 'email|required|string';
+        $validations['password'] = 'required|string';
+        
+        //Validations
+        $validator = Validator::make($request->all(), $validations);
+        Session::put('error-login', false);
+        if ($validator->fails()){          
+            Session::put('error-login', true);
+            return response()->json(['errors'=>$validator->getMessageBag()]);
+        }
 
         $emailQ = $request->get('email');
         $passQ = $request->get('password');
-        // $emailQ = 'testmegatest@gmail.com';
-        // $passQ = '$2y$10$CRWVCdC09mlI7dGK9kq8a.zrGDxU03eWKnYQZQ6KO8dO6Dup2ZWEC';
         
-        // $emailQ = 'asd@sd.vs';
-        // $passQ = '$2y$10$0BL4UZmQ0X9tXu2PgV.UtebS0Bp7/3QKPYwHD2Yk8BRtGeDKPVdL.';
         $queryUser = DB::table('users')->select('*')->where('email', '=', $emailQ)->first();
         
         if ($queryUser) 
@@ -43,22 +48,13 @@ class SignInController extends Controller
                 } else {
                     $queryUserSpe = DB::table('legalPeople')->select('*')->where('user_id', '=', $queryUser->id)->first();
                 }
-                // echo $queryUser->email;
-                // dd($queryUser);
-                // print_r($queryUser);
-                // die();
-                // $request->session()->put('info', $queryUser);
-                // session(['info' => $queryUser]);
+                
                 Session::put('info', $queryUser);
                 Session::put('info_specific', $queryUserSpe);
                 $sessionInfo = Session::get('info');
-                // echo $sessionInfo->email;
-                // dd($sessionInfo);
-                // $reqInfo = $request->session()->get('info');
-                // $result = json_decode($reqInfo, true);
-                // dd( $reqInfo->email);
-    
-                return redirect()->back();
+                
+                // return redirect()->back();
+                return view('main_sections.index');
                 
             }else {
                 return redirect()->back()

@@ -393,6 +393,16 @@ color: white;
     width: 11vw;
 }
 
+.siguenos-text{
+    text-align: right;
+    /* margin-top: 1em !important; */
+    margin-right: 2%;
+    font-weight: bold;
+}
+
+.text{
+    text-align: left;
+}
 .inner-border {
 
     /* box-shadow: inset 0px 0px 0px 10px #727271;
@@ -430,6 +440,8 @@ color: white;
 .dwelling-image{
     width: 100%;
     height: 100%;
+}
+
 .siguenos-text{
     text-align: right;
     /* margin-top: 1em !important; */
@@ -440,4 +452,8 @@ color: white;
 .text{
     text-align: left;
 
+}
+
+#change-password{
+    visibility: hidden;
 }
