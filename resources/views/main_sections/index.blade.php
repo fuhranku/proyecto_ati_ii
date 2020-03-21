@@ -453,7 +453,7 @@
         </div>
 
         <!-- Opción Vender o alquilar vivienda -->
-        <div class="row" id="sellrent-dwelling">
+        <div class="row d-none" id="sellrent-dwelling">
             <div class="col-md-12">
 
                 <div class="row mt-5">
@@ -463,7 +463,7 @@
                     </div>
                     <div class="col-md-6">
                         <p class="d-inline">Haga click aqui:</p>
-                        <a href="/faq" class="text-blue d-inline"><u>Ver preguntas frecuentes</u></a>
+                        <a href="{{ url('help') }}" class="text-blue d-inline" target="_blank"><u>Ver preguntas frecuentes</u></a>
                         
                     </div>
                 </div>
@@ -480,7 +480,7 @@
                         <p>1- Debes registrarte haciendo click aquí: </p>
                     </div>
                     <div class="col-md-3 pl-0">
-                        <button class="btn btn-warning text-white">Registrarme</button>
+                        <button class="btn btn-warning text-white" onclick="window.open('{{ url('sign_up') }}', '_blank')" >Registrarme</button>
                     </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -491,7 +491,7 @@
                         <p>2- Luego debes iniciar sesión, haciendo clic en: </p>
                     </div>
                     <div class="col-md-3 pl-0">
-                        <button class="btn btn-warning text-white">Iniciar Sesión</button>
+                        <button class="btn btn-warning text-white sign_in_button">Iniciar Sesión</button>
                     </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -500,7 +500,7 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-8 pr-0">
                         <p class="d-inline">3- Luego de iniciar sesión seleccionas la opción </p>
-                        <a href="/dwelling/publish" class="text-blue d-inline"><u>Viviendas->Publicar</u></a>
+                        <a href="{{ url('dwelling/publish') }}" class="text-blue d-inline" target="_blank"><u>Viviendas->Publicar</u></a>
                     </div>
                 </div>
 

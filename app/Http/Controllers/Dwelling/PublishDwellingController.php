@@ -28,6 +28,10 @@ class PublishDwellingController extends Controller
 {
     public function publish_get()
     {
+        if (!Session::has('info')) {
+            return view('main_sections.index');
+        }
+        
         Session::forget('images');
         Session::forget('videos');
 
@@ -141,8 +145,8 @@ class PublishDwellingController extends Controller
         if ($validator->fails()){                
             return response()->json(['errors'=>$validator->getMessageBag()]);
         }else{
-            $this->insertDwellingIntoDatabase($request);
-            return response()->json(['success' => 'success!']);
+            $dwelling_id = $this->insertDwellingIntoDatabase($request);
+            return response()->json(['id' => $dwelling_id]);
         }
     }
 
@@ -223,6 +227,8 @@ class PublishDwellingController extends Controller
                 $dwelling->videos()->save($new_video);
             }
         }
+
+        return $dwelling->id;
     }
 
     private function deleteElement($elements,$element_src){

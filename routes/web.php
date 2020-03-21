@@ -35,6 +35,15 @@ Route::get('sign_up/2/{type}', 'SignUpController@sign_up_get_person_type');
 
 Route::post('getCities','SignUpController@getCities');
 
+Route::post('changePassword', 'UserDataController@changePasswordState');
+//user daata route's
+Route::get('user_data', 'UserDataController@user_data_get');
+
+// Post guardar
+Route::post('user_data','UserDataController@store_user_data')->name('user_data.store');
+
+Route::get('user_data/2/{type}', 'UserDataController@user_data_get_person_type');
+
 // Iniciar sesión
 Route::post('sign_in', 'SignInController@login')->name('main.sign_in');
 Route::get('sign_in', 'SignInController@getSessionInfo')->name('sign_in.get');
@@ -58,10 +67,14 @@ Route::post('dwelling/disable_dwelling', 'Dwelling\DwellingController@disable_dw
 Route::post('dwelling/enable_dwelling', 'Dwelling\DwellingController@enable_dwelling')->name('dwelling.enable_dwelling');
 // Remove Dwelling
 Route::post('dwelling/delete_dwelling', 'Dwelling\DwellingController@delete_dwelling')->name('dwelling.delete_dwelling');
+// Modify routes
+Route::get('dwelling/modify', 'Dwelling\ModifyDwellingController@modify_get')->name('dwelling.modify');
+Route::post('dwelling/modify_dwelling', 'Dwelling\ModifyDwellingController@modify_dwelling')->name('dwelling.modify_dwelling');
 
 // Show Details for dwelling ID
 Route::get('dwelling/show_details/{id}', 'Dwelling\DwellingController@show_details')->name('dwelling.show_details');
 
+// Route::get('dwelling/modify', 'Dwelling\DwellingController@modify')->name('dwelling.modify');
 Route::get('dwelling/delete', 'Dwelling\DwellingController@delete')->name('dwelling.delete');
 Route::get('dwelling/enable', 'Dwelling\DwellingController@enable')->name('dwelling.disable');
 Route::get('dwelling/disable', 'Dwelling\DwellingController@disable')->name('dwelling.disable');

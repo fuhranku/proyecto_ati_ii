@@ -34,10 +34,14 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 mt-2 pl-2 pr-2">
-                    <a class="btn btn-yellow text-center" id="sign_in_button" href="#">Aceptar</a>
+                <a class="btn btn-yellow text-center cursor-pointer" id="accept-publish-modal" onclick="return getOption()"href="#">Aceptar</a>
                 </div>
             </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    var index = "{{url('index')}}"
+</script>
