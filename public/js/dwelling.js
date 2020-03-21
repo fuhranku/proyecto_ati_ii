@@ -807,3 +807,29 @@ function validatePhones(){
     }
     return validation;
 }
+
+
+$('#accept-publish-modal').click(function(){3
+
+    var action = $("input[name='success-modal']:checked").val();
+    switch(action){
+        // Ver mi publicación
+        case "1":
+            location.href = "/dwelling/show_details/"+dwelling_id.toString();
+            break;
+        // Seguir navegando en el portal
+        case "2":
+            $('#preloader-storing').appendTo('body');
+            $('#preloader-storing').addClass('d-none');
+            $('#dwell-published-modal').appendTo('body');
+            $('#dwell-published-modal').addClass('d-none');
+            $('.modal-bg').remove();
+            $('body').removeClass('overflow-hidden');
+            break;
+        // Salir
+        case "3":
+            location.href = index;
+            break;
+    }
+    $('html, body').animate({scrollTop:$(window).scrollTop()}, 50);
+});

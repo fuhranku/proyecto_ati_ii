@@ -80,16 +80,14 @@
                         <a class="dropdown-item" href="{{ url('dwelling/enable') }}">Habilitar</a>
                         <a class="dropdown-item" href="{{ url('dwelling/enable') }}">Deshabilitar</a> --}}
                         
-                        @if (Session::has('info') && Session::get('info')->role == 'ceo')
+                        @if (Session::has('info'))
                         <a class="dropdown-item" href="{{ url('dwelling/publish') }}">Publicar</a>
                         <a class="dropdown-item" href="{{ url('dwelling/publication') }}">Ver Publicaciones</a>
                         @endif
                         <a class="dropdown-item" href="{{ url('dwelling/search') }}">Buscar</a>
                     
-                        @if (Session::has('info') && Session::get('info')->role == 'ceo')
+                        @if (Session::has('info'))
                         <a class="dropdown-item" href="{{ url('dwelling/modify') }}">Modificar</a>
-                        @endif 
-                        @if (Session::has('info') && (Session::get('info')->role == 'ceo' || Session::get('info')->role == 'adm'))
                         <a class="dropdown-item" href="{{ url('dwelling/delete') }}">Eliminar</a>
                         <a class="dropdown-item" href="{{ url('dwelling/enable') }}">Habilitar</a>
                         <a class="dropdown-item" href="{{ url('dwelling/disable') }}">Deshabilitar</a>
