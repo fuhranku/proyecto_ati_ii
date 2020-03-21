@@ -169,7 +169,7 @@ class PublishDwellingController extends Controller
         $dwelling->state_id = $data['state_select_sm'];
         $dwelling->city_id = $data['city_select_sm'];
         $dwelling->zone_id = 1;
-        $dwelling->user_id = 13;
+        $dwelling->user_id = Session::get('info')->id;
         $dwelling->enable = 1;
         $dwelling->status = $data['selling_option'];
         $dwelling->property_type = $data['tipo_inmueble'];
