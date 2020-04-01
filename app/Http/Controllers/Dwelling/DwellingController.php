@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Requesting;
 use App\Http\Controllers\Controller;
 
+use App\Models\Dwelling\Dwelling;
+
 
 class DwellingController extends Controller
 {
@@ -84,9 +86,9 @@ class DwellingController extends Controller
         $selected_dwelling = $request->get('selected_dwellings');
         
         foreach ($selected_dwelling as &$dwelling_id) {
-            DB::table('dwellings')
-                ->where('id', $dwelling_id)
-                ->delete();
+            Dwelling::find($dwelling_id)->images()->delete();
+            Dwelling::find($dwelling_id)->videos()->delete();
+            Dwelling::find($dwelling_id)->delete();
         }
 
         return Response::json("Viviendas borradas");

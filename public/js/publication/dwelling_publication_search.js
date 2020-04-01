@@ -218,7 +218,7 @@ function onSelectDwelling(){
     
 }
 
-function quickSearch(){
+function quickSearchPublication(){
 
     console.log("realizando quick search");
 
@@ -256,7 +256,7 @@ function quickSearch(){
     $('body').addClass('overflow-hidden');
 
     $.ajax({
-        url: quickSearch_post_url,
+        url: quickSearch_post_url_publication,
         method: 'post',
         data: data,
         success: function(data){
@@ -272,11 +272,9 @@ function quickSearch(){
 
             console.log(dwelling);
 
-            console.log("USER ID ASDLASLKF: ",userID);
-            if (userID != -1){
-                //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
-                dwelling = dwelling.filter(x => !(x.user_id != userID && x.enable == 0) );
-            }
+            console.log("USER ID: ",userID);
+
+            
 
             //copy dwelling to displayed dwelling
             d_dwelling = [...dwelling];
@@ -314,7 +312,7 @@ function quickSearch(){
     });    
 }
 
-function detailedSearch(){
+function detailedSearchPublication(){
 
     console.log("realizando detailed search");
 
@@ -390,7 +388,7 @@ function detailedSearch(){
     data["maximum_price"] = maximum_price;
 
     $.ajax({
-        url: detailedSearch_post_url,
+        url: detailedSearch_post_url_publication,
         method: 'post',
         data: data,
         success: function(data){
@@ -405,10 +403,7 @@ function detailedSearch(){
             console.log(dwelling);
 
             console.log("NUMERO DE VIVIENDAS: ",dwelling.length);
-            // if (userID != -1){
-            //     //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
-            //     dwelling = dwelling.filter(x => !(x.user_id != userID && x.enable == 0) );
-            // }
+
             //copy dwelling to displayed dwelling
             d_dwelling = [...dwelling];
 

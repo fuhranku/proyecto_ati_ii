@@ -77,8 +77,8 @@ class ModifyDwellingController extends Controller
         if ($validator->fails()){                
             return response()->json(['errors'=>$validator->getMessageBag()]);
         }else{
-            $this->updateDwelling($request);
-            return response()->json(['success' => 'success!']);
+            $dwelling_id = $this->updateDwelling($request);
+            return response()->json(['id' => $dwelling_id]);
         }
     }
 
@@ -105,7 +105,7 @@ class ModifyDwellingController extends Controller
         $dwelling->state_id = $data['state_select_sm'];
         $dwelling->city_id = $data['city_select_sm'];
         $dwelling->zone_id = 1;
-        $dwelling->user_id = 13;
+        $dwelling->user_id = Session::get('info')->id;
         $dwelling->status = $data['selling_option'];
         $dwelling->property_type = $data['tipo_inmueble'];
         $dwelling->rooms = $data['counter_room'];
@@ -158,5 +158,6 @@ class ModifyDwellingController extends Controller
                 $dwelling->videos()->save($new_video);
             }
         }
+        return $dwelling->id;
     }
 }

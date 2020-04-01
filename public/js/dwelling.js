@@ -1,6 +1,6 @@
 var mobile_input;
 var landline_input;
-
+var dwelling_id;
 // for index page
 $('#btn-b-rapida').click(function(){
     if($('#busqueda-rapida').hasClass("d-none")){
@@ -779,6 +779,8 @@ $('#publish_btn_dwelling').click(function(){
                 $('.modal-bg').remove();
                 $('body').removeClass('overflow-hidden');
             }else{
+                dwelling_id = data.id;
+                console.log(dwelling_id);
                 $('#preloader-storing').appendTo('body');
                 $('#preloader-storing').addClass('d-none');
                 $('#dwell-published-modal').appendTo('.modal-bg');
@@ -807,3 +809,29 @@ function validatePhones(){
     }
     return validation;
 }
+
+
+$('#accept-publish-modal').click(function(){3
+
+    var action = $("input[name='success-modal']:checked").val();
+    switch(action){
+        // Ver mi publicación
+        case "1":
+            location.href = "/dwelling/show_details/"+dwelling_id.toString();
+            break;
+        // Seguir navegando en el portal
+        case "2":
+            $('#preloader-storing').appendTo('body');
+            $('#preloader-storing').addClass('d-none');
+            $('#dwell-published-modal').appendTo('body');
+            $('#dwell-published-modal').addClass('d-none');
+            $('.modal-bg').remove();
+            $('body').removeClass('overflow-hidden');
+            break;
+        // Salir
+        case "3":
+            location.href = index;
+            break;
+    }
+    $('html, body').animate({scrollTop:$(window).scrollTop()}, 50);
+});

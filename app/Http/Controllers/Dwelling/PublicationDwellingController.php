@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Requesting;
 use Response;
+use Session;
 
 // Database Models
 use App\Models\Location\Continent;
@@ -20,7 +21,7 @@ use App\Models\Dwelling\Currency;
 use App\Models\Dwelling\Dwelling;
 use Log;
 
-class SearchDwellingController extends Controller
+class PublicationDwellingController extends Controller
 {
     public function search_get(){
         
@@ -31,8 +32,7 @@ class SearchDwellingController extends Controller
         $comforts = Comfort::all()->sortBy('name');
         $services = Service::all()->sortBy('name');
         $currency = Currency::all()->sortBy('name');
-
-        return view('dwelling_section.search_section.search',compact('continents','countries','states','cities','comforts','services','currency'));
+        return view('dwelling_section.publication_section.search',compact('continents','countries','states','cities','comforts','services','currency'));
     }
 
     public function quick_search(Request $request){
@@ -41,6 +41,10 @@ class SearchDwellingController extends Controller
         $state = $request->get('state');
         $status = $request->get('status');
         $property_type = $request->get('property_type');
+
+
+        $user_id = Session::get('info')->id;
+
 
         $dwelling = new \stdClass();
 
@@ -59,7 +63,8 @@ class SearchDwellingController extends Controller
             if($property_type == 2){ //PROPERTY TYPE BOTH
 
                 $match = ['dwellings.country_id' => $country, 
-                'dwellings.state_id' => $state, 
+                'dwellings.state_id' => $state,
+                'dwellings.user_id' => $user_id
                 ];
     
                 $dwelling->dwellings = DB::table('dwellings')
@@ -76,7 +81,8 @@ class SearchDwellingController extends Controller
     
                 $match = ['dwellings.country_id' => $country, 
                 'dwellings.state_id' => $state, 
-                'dwellings.property_type' => $property_type
+                'dwellings.property_type' => $property_type,
+                'dwellings.user_id' => $user_id
                 ];
     
                 $dwelling->dwellings = DB::table('dwellings')
@@ -96,6 +102,7 @@ class SearchDwellingController extends Controller
                 $match = ['dwellings.country_id' => $country, 
                 'dwellings.state_id' => $state, 
                 'dwellings.status' => $status,
+                'dwellings.user_id' => $user_id
                 ];
     
                 $dwelling->dwellings = DB::table('dwellings')
@@ -113,7 +120,8 @@ class SearchDwellingController extends Controller
                 $match = ['dwellings.country_id' => $country, 
                 'dwellings.state_id' => $state, 
                 'dwellings.status' => $status,
-                'dwellings.property_type' => $property_type
+                'dwellings.property_type' => $property_type,
+                'dwellings.user_id' => $user_id
                 ];
     
                 $dwelling->dwellings = DB::table('dwellings')
@@ -157,6 +165,7 @@ class SearchDwellingController extends Controller
         $active_price = $request->get("active_price");
         $minimum_price = $request->get("minimum_price");
         $maximum_price = $request->get("maximum_price");
+        $user_id = Session::get('info')->id;
 
         $dwelling = new \stdClass();
 
@@ -184,13 +193,16 @@ class SearchDwellingController extends Controller
                                     ->where('dwellings.continent_id', '=',$continent)
                                     ->where('dwellings.country_id', '=', $country) 
                                     ->where('dwellings.state_id','=', $state)
+                                    ->where('dwellings.property_type','=',0)
+                                    ->where('dwellings.property_type','=',1)
                                     ->where('dwellings.rooms','=', $room)
                                     ->where('dwellings.bathrooms','=', $bathroom)
                                     ->where('dwellings.parking','=',$park)
                                     ->where('dwellings.price','<=',$maximum_price)
                                     ->where('dwellings.price','>=',$minimum_price)
+                                    ->where('dwellings.user_id','=',$user_id)
                                     ->whereJsonContains('dwellings.comforts->array', $comfort)
-                                    ->whereJsonContains('dwellings.services->array', strval($service))
+                                    ->whereJsonContains('dwellings.services->array', $service)
                                     ->get();
         
                 }
@@ -205,11 +217,14 @@ class SearchDwellingController extends Controller
                                     ->where('dwellings.continent_id', '=',$continent)
                                     ->where('dwellings.country_id', '=', $country) 
                                     ->where('dwellings.state_id','=', $state)
+                                    ->where('dwellings.property_type','=',0)
+                                    ->where('dwellings.property_type','=',1)
                                     ->where('dwellings.rooms','=', $room)
                                     ->where('dwellings.bathrooms','=', $bathroom)
                                     ->where('dwellings.parking','=',$park)
+                                    ->where('dwellings.user_id','=',$user_id)
                                     ->whereJsonContains('dwellings.comforts->array', $comfort)
-                                    ->whereJsonContains('dwellings.services->array', strval($service))
+                                    ->whereJsonContains('dwellings.services->array', $service)
                                     ->get();
         
                 }
@@ -234,8 +249,9 @@ class SearchDwellingController extends Controller
                                     ->where('dwellings.parking','=',$park)
                                     ->where('dwellings.price','<=',$maximum_price)
                                     ->where('dwellings.price','>=',$minimum_price)
+                                    ->where('dwellings.user_id','=',$user_id)
                                     ->whereJsonContains('dwellings.comforts->array', $comfort)
-                                    ->whereJsonContains('dwellings.services->array', strval($service))
+                                    ->whereJsonContains('dwellings.services->array', $service)
                                     ->get();
         
                 }
@@ -254,8 +270,9 @@ class SearchDwellingController extends Controller
                                     ->where('dwellings.rooms','=', $room)
                                     ->where('dwellings.bathrooms','=', $bathroom)
                                     ->where('dwellings.parking','=',$park)
+                                    ->where('dwellings.user_id','=',$user_id)
                                     ->whereJsonContains('dwellings.comforts->array', $comfort)
-                                    ->whereJsonContains('dwellings.services->array', strval($service))
+                                    ->whereJsonContains('dwellings.services->array', $service)
                                     ->get();
         
                 }
@@ -278,13 +295,16 @@ class SearchDwellingController extends Controller
                                     ->where('dwellings.country_id', '=', $country) 
                                     ->where('dwellings.state_id','=', $state)
                                     ->where('dwellings.status','=',$status)
+                                    ->where('dwellings.property_type','=',0)
+                                    ->where('dwellings.property_type','=',1)
                                     ->where('dwellings.rooms','=', $room)
                                     ->where('dwellings.bathrooms','=', $bathroom)
                                     ->where('dwellings.parking','=',$park)
                                     ->where('dwellings.price','<=',$maximum_price)
                                     ->where('dwellings.price','>=',$minimum_price)
+                                    ->where('dwellings.user_id','=',$user_id)
                                     ->whereJsonContains('dwellings.comforts->array', $comfort)
-                                    ->whereJsonContains('dwellings.services->array', strval($service))
+                                    ->whereJsonContains('dwellings.services->array', $service)
                                     ->get();
         
                 }
@@ -300,11 +320,14 @@ class SearchDwellingController extends Controller
                                     ->where('dwellings.country_id', '=', $country) 
                                     ->where('dwellings.state_id','=', $state)
                                     ->where('dwellings.status','=',$status)
+                                    ->where('dwellings.property_type','=',0)
+                                    ->where('dwellings.property_type','=',1)
                                     ->where('dwellings.rooms','=', $room)
                                     ->where('dwellings.bathrooms','=', $bathroom)
                                     ->where('dwellings.parking','=',$park)
+                                    ->where('dwellings.user_id','=',$user_id)
                                     ->whereJsonContains('dwellings.comforts->array', $comfort)
-                                    ->whereJsonContains('dwellings.services->array', strval($service))
+                                    ->whereJsonContains('dwellings.services->array', $service)
                                     ->get();
         
                 }
@@ -330,15 +353,13 @@ class SearchDwellingController extends Controller
                                     ->where('dwellings.parking','=',$park)
                                     ->where('dwellings.price','<=',$maximum_price)
                                     ->where('dwellings.price','>=',$minimum_price)
+                                    ->where('dwellings.user_id','=',$user_id)
                                     ->whereJsonContains('dwellings.comforts->array', $comfort)
-                                    ->whereJsonContains('dwellings.services->array', strval($service))
+                                    ->whereJsonContains('dwellings.services->array', $service)
                                     ->get();
         
                 }
                 else if($active_price == 2){ //case searching any price
-
-                    Log::info("asdasd");
-
                     $dwelling->dwellings = DB::table('dwellings')
                                     ->join('continents','dwellings.continent_id','=','continents.id')
                                     ->join('countries','dwellings.country_id','=','countries.id')
@@ -354,11 +375,10 @@ class SearchDwellingController extends Controller
                                     ->where('dwellings.rooms','=', $room)
                                     ->where('dwellings.bathrooms','=', $bathroom)
                                     ->where('dwellings.parking','=',$park)
+                                    ->where('dwellings.user_id','=',$user_id)
                                     ->whereJsonContains('dwellings.comforts->array', $comfort)
-                                    ->whereJsonContains('dwellings.services->array', strval($service))
+                                    ->whereJsonContains('dwellings.services->array', $service)
                                     ->get();
-
-                    Log::info($dwelling->dwellings);
         
                 }
             }

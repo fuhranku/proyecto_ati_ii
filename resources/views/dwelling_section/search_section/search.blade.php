@@ -1,10 +1,10 @@
-@extends('templates.layout')    
+@extends('templates.layout')
 
 @section('title','Index')
 
 @section('content')
 <section id="search-section">
-    <div class="container">    
+    <div class="container">
         <div class="row">
             @include('dwelling_section.search_section.search_modal_location')
             @include('dwelling_section.search_section.search_modal_service')
@@ -24,6 +24,8 @@
             var countries = @json($countries);
             var states = @json($states);
             var cities = @json($cities);
+
+            var userID = {{ Session::has('info') ? Session::get('info')->id : -1}};
         </script>
 
 

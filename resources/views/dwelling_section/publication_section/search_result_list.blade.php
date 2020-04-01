@@ -4,7 +4,7 @@
     <div class="row position-relative" id="dwelling_list_fs1">
         <div class="list-photo-overlay d-none"></div>
         <div class="col-md-2 border border-warning" >
-            {{-- <div class="row position-relative select-dwelling">
+            <div class="row position-relative select-dwelling">
                 <div class="col-md-9">
                     <label class="form-check-label font-weight-bold sm-text">
                         Seleccionar
@@ -15,7 +15,7 @@
                         <input class="form-check-input " onchange="onSelectDwelling()" value="dwelling1" name="select-dwelling" type="checkbox" id="dwelling-select-list-cb1">
                     </div>
                 </div>
-            </div> --}}
+            </div>
             <div class="row">
                 <div class="col-md-12 mt-3 mb-0 pb-0">
                     <img id="image-dwelling-list1" class="border border-primary font-weight-bold text-center dwelling-image" src="" alt="">
@@ -95,7 +95,7 @@
                     <div class=" font-weight-bold text-underline cursor-pointer text-blue photo-carousel-thrigger sm-text" data-id=1> Ver Fotos </div>
                 </div>
                 <div class="col-md-12">
-                    <div class=" font-weight-bold text-underline cursor-pointer text-blue video-carousel-thrigger" data-id=1> Ver Videos </div>
+                    <a class=" font-weight-bold sm-text" href="#"><u>Ver Videos</u></a>
                 </div>
                 <div class="col-md-12">
                     <a class=" font-weight-bold sm-text" onclick="return showDetails(1)" id="dwelling-show-details_list1" href="#"><u>Ver información Completa</u></a>
@@ -108,7 +108,7 @@
     <div class="row position-relative" id="dwelling_list_fs2">
         <div class="list-photo-overlay d-none"></div>
         <div class="col-md-2 border border-warning" >
-            {{-- <div class="row position-relative select-dwelling">
+            <div class="row position-relative select-dwelling">
                 <div class="col-md-9">
                     <label class="form-check-label font-weight-bold sm-text">
                         Seleccionar
@@ -119,7 +119,7 @@
                         <input class="form-check-input " onchange="onSelectDwelling()" value="dwelling2" name="select-dwelling" type="checkbox" id="dwelling-select-list-cb2">
                     </div>
                 </div>
-            </div> --}}
+            </div>
             <div class="row">
                 <div class="col-md-12 mt-3 mb-0 pb-0">
                     <img id="image-dwelling-list2" class="border border-primary font-weight-bold text-center dwelling-image" src="" alt="">
@@ -199,7 +199,7 @@
                     <div class=" font-weight-bold text-underline cursor-pointer text-blue photo-carousel-thrigger sm-text" data-id=2> Ver Fotos </div>
                 </div>
                 <div class="col-md-12">
-                    <div class=" font-weight-bold text-underline cursor-pointer text-blue video-carousel-thrigger" data-id=2> Ver Videos </div>
+                    <a class=" font-weight-bold sm-text" href="#"><u>Ver Videos</u></a>
                 </div>
                 <div class="col-md-12">
                     <a class=" font-weight-bold sm-text" onclick="return showDetails(2)" id="dwelling-show-details_list2" href="#"><u>Ver información Completa</u></a>
@@ -212,7 +212,7 @@
     <div class="row position-relative" id="dwelling_list_fs3">
         <div class="list-photo-overlay d-none"></div>
         <div class="col-md-2 border border-warning">
-            {{-- <div class="row position-relative select-dwelling">
+            <div class="row position-relative select-dwelling">
                 <div class="col-md-9">
                     <label class="form-check-label font-weight-bold sm-text">
                         Seleccionar
@@ -223,7 +223,7 @@
                         <input class="form-check-input " onchange="onSelectDwelling()" value="dwelling3" name="select-dwelling" type="checkbox" id="dwelling-select-list-cb3">
                     </div>
                 </div>
-            </div> --}}
+            </div>
             <div class="row">
                 <div class="col-md-12 mt-3 mb-0 pb-0">
                     <img id="image-dwelling-list3" class="border border-primary font-weight-bold text-center dwelling-image" src="" alt="">
@@ -303,7 +303,7 @@
                     <div class=" font-weight-bold text-underline cursor-pointer text-blue photo-carousel-thrigger sm-text" data-id=3> Ver Fotos </div>
                 </div>
                 <div class="col-md-12">
-                    <div class=" font-weight-bold text-underline cursor-pointer text-blue video-carousel-thrigger" data-id=3> Ver Videos </div>
+                    <a class=" font-weight-bold sm-text" href="#"><u>Ver Videos</u></a>
                 </div>
                 <div class="col-md-12">
                     <a class=" font-weight-bold sm-text" onclick="return showDetails(3)" id="dwelling-show-details_list3" href="#"><u>Ver información Completa</u></a>
@@ -316,7 +316,7 @@
     <div class="row position-relative" id="dwelling_list_fs4">
         <div class="list-photo-overlay d-none"></div>
         <div class="col-md-2 border border-warning" >
-            {{-- <div class="row position-relative select-dwelling">
+            <div class="row position-relative select-dwelling">
                 <div class="col-md-9">
                     <label class="form-check-label font-weight-bold sm-text">
                         Seleccionar
@@ -327,7 +327,7 @@
                         <input class="form-check-input " onchange="onSelectDwelling()" value="dwelling4" name="select-dwelling" type="checkbox" id="dwelling-select-list-cb4">
                     </div>
                 </div>
-            </div> --}}
+            </div>
             <div class="row">
                 <div class="col-md-12 mt-3 mb-0 pb-0">
                     <img id="image-dwelling-list4" class="border border-primary font-weight-bold text-center dwelling-image" src="" alt="">
@@ -407,7 +407,7 @@
                     <div class=" font-weight-bold text-underline cursor-pointer text-blue photo-carousel-thrigger sm-text" data-id=4> Ver Fotos </div>
                 </div>
                 <div class="col-md-12">
-                    <div class=" font-weight-bold text-underline cursor-pointer text-blue video-carousel-thrigger" data-id=4> Ver Videos </div>
+                    <a class=" font-weight-bold sm-text" href="#"><u>Ver Videos</u></a>
                 </div>
                 <div class="col-md-12">
                     <a class=" font-weight-bold sm-text" onclick="return showDetails(4)" id="dwelling-show-details_list4" href="#"><u>Ver información Completa</u></a>

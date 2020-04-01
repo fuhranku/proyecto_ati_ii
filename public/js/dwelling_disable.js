@@ -18,14 +18,6 @@ function disableDwelling(){
         method: 'post',
         data: data,
         success: function(data){
-            // for (i=1;i<5;i++){
-            //     if($('#dwelling_photo_fs'+i).find("input[name='select-dwelling']:checked")){
-            //         $('#dwelling_photo_fs'+i).children('.list-photo-overlay').removeClass('d-none');
-            //         $('#dwelling_photo_fs'+i).children('.list-photo-overlay').css('opacity','1');
-            //     }
-            // }
-
-            //PUT OVERLAY
             $.each($("input[name='select-dwelling']:checked"), function(){
                 $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').removeClass('d-none');
                 $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').css('opacity','1');
