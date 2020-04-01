@@ -180,40 +180,19 @@
                 <div class="row">
                     <div class="col-md-12">
 
-
-                        <a class=" font-weight-bold " href="#"><u>Ver Comodidades</u></a>
-
                         <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalComfort(2)"><u>Ver Comodidades</u></a>
-
-
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalComfort(2)"><u>Ver Comodidades</u></a>
-
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
 
-
-                        <a class=" font-weight-bold " href="#"><u>Ver Servicios</u></a>
-
                         <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalService(2)"><u>Ver Servicios</u></a>
-
-
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalService(2)"><u>Ver Servicios</u></a>
-
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
 
-
-                        <a class=" font-weight-bold " href="#"><u>Ver Ubicación exacta</u></a>
-
                         <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation(2)"><u>Ver Ubicación exacta</u></a>
-
-
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation(2)"><u>Ver Ubicación exacta</u></a>
-
                     </div>
                 </div>
                 <div class="row">
@@ -312,40 +291,19 @@
                 <div class="row">
                     <div class="col-md-12">
 
-
-                        <a class=" font-weight-bold " href="#"><u>Ver Comodidades</u></a>
-
                         <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalComfort(3)"><u>Ver Comodidades</u></a>
-
-
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalComfort(3)"><u>Ver Comodidades</u></a>
-
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
 
-
-                        <a class=" font-weight-bold " href="#"><u>Ver Servicios</u></a>
-
                         <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalService(3)"><u>Ver Servicios</u></a>
-
-
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalService(3)"><u>Ver Servicios</u></a>
-
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
 
-
-                        <a class=" font-weight-bold " href="#"><u>Ver Ubicación exacta</u></a>
-
                         <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation(3)"><u>Ver Ubicación exacta</u></a>
-
-
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation(3)"><u>Ver Ubicación exacta</u></a>
-
                     </div>
                 </div>
                 <div class="row">
@@ -444,40 +402,19 @@
                 <div class="row">
                     <div class="col-md-12">
 
-
-                        <a class=" font-weight-bold " href="#"><u>Ver Comodidades</u></a>
-
                         <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalComfort(4)"><u>Ver Comodidades</u></a>
-
-
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalComfort(4)"><u>Ver Comodidades</u></a>
-
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
 
-
-                        <a class=" font-weight-bold " href="#"><u>Ver Servicios</u></a>
-
                         <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalService(4)"><u>Ver Servicios</u></a>
-
-
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalService(4)"><u>Ver Servicios</u></a>
-
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
 
-
-                        <a class=" font-weight-bold " href="#"><u>Ver Ubicación exacta</u></a>
-
                         <a class=" font-weight-bold cursor-pointer text-blue"  onclick="return onDisplayModalLocation(4)"><u>Ver Ubicación exacta</u></a>
-
-
-                        <a class=" font-weight-bold cursor-pointer text-blue"  onclick="return onDisplayModalLocation(4)"><u>Ver Ubicación exacta</u></a>
-
                     </div>
                 </div>
                 <div class="row">
