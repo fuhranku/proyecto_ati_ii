@@ -52,15 +52,15 @@
 <script src="{{ asset('js/dwelling.js') }}"></script>
 <script src="{{ asset('js/dwelling_search.js') }}"></script>
 <script src="{{ asset('js/dwelling_disable.js') }}"></script>
+<script src="{{ asset('js/dwelling_details.js') }}"></script>
 <script src="{{ asset('js/dwelling_modify.js') }}"></script>
 
 <script src="{{ asset('js/publication/dwelling_publication_search.js') }}"></script>
 
-<script src="{{ asset('js/dwelling_details.js') }}"></script>
 <script src="{{ asset('js/sign_up.js') }}"></script> 
 <script src="{{ asset('js/sign_in.js') }}"></script>
 <script src="{{ asset('intl-tel-input/build/js/intlTelInput.js')}}"></script>
 <script>
-    var utilsScript = "{{asset('intl-tel-input/build/js/utils.js')}}";
-</script>
-</html>
+     var utilsScript = "{{asset('intl-tel-input/build/js/utils.js')}}";
+ </script>
+ </html>
