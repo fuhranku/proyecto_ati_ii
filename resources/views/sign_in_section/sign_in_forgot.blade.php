@@ -66,7 +66,7 @@
         </div>
         <br>
         @endif
-        <form >
+        <form>
             <div class="form-group">
                 <div class="row">
                     <div class="col">
@@ -128,7 +128,6 @@
 
             </div>
         </form>
-        </form>
         
     </div>
     <!-- end recuperar con cédula -->
@@ -148,7 +147,7 @@
             <div class="form-group">
             <div class="row">
                 <div class="col">
-                    <label for="phone">Ingres tu número de teléfono móvil</label>
+                    <label for="phone">Ingresa tu número de teléfono móvil</label>
                 </div>
             </div>
             <div class="row">
@@ -167,7 +166,7 @@
             
             <div class="button-group">
                 <br>
-                <button type="submit"  class="btn modal-button">Aceptar</button>
+                <button type="button" id="button-phone" class="btn modal-button">Aceptar</button>
                 <button type="button"  data-dismiss="modal" class="btn modal-button">Cancelar</button>
                 <br>
 

@@ -77,27 +77,25 @@ class SignInController extends Controller
         Session::forget('info_specific');
         // Session::flush();
         // echo 'hi';
-        Log::info('ruta');
-        Log::info();
         return redirect("/index");
     }
 
     public function forgotForm(Request $request)
     {
-        
-        $validations['email'] = 'email|required|string';
-        $validator = Validator::make($request->all(), $validations);
-        if ($validator->fails()){          
-            Session::put('error-login', true);
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-        $user = User::where('email', '=', $request->get('email'))->first();
-        Session::put('forgot-error', false);
-        if ($user == null) {
-            Session::put('forgot-error', true);
-            return redirect()->back()->withInput();
+        Log::info($request);
+        // $validations['email'] = 'email|required|string';
+        // $validator = Validator::make($request->all(), $validations);
+        // if ($validator->fails()){          
+        //     Session::put('error-login', true);
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
+        // $user = User::where('email', '=', $request->get('email'))->first();
+        // Session::put('forgot-error', false);
+        // if ($user == null) {
+        //     Session::put('forgot-error', true);
+        //     return redirect()->back()->withInput();
             
-        }
+        // }
     }
 
     public function forgotFormTel(Request $request)

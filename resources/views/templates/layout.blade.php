@@ -33,16 +33,20 @@
 <!-- Begin page content -->
 <main role="main" class="container" id="page-container">
     <div id="content-wrap">
-        <script src="{{ asset('external/all.min.js') }}"></script>
-        <script src="{{ asset('external/jquery-3.3.1.min.js') }}"></script>
-        <script src="{{ asset('external/popper.min.js') }}"></script>
         @yield('content')
         @include('sign_in_section.sign_in')
     </div>
 </main>
-    <!-- Footer -->
-    @include('templates.footer')
+<!-- Footer -->
+@include('templates.footer')
 </body>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ asset('external/all.min.js') }}"></script>
+<script src="{{ asset('external/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ asset('external/popper.min.js') }}"></script>
 @if (Session::get('error-login') == true)
     <script>
         $( document ).ready(function() {
@@ -54,10 +58,6 @@
     Session::put('error-login', false);
     ?>
 @endif
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
 <script src="{{ asset('external/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script> 
 

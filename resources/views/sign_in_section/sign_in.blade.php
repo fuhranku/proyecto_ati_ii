@@ -12,7 +12,7 @@
         Iniciar sesión
         @endslot
         @slot('content')
-        <form method="post" action="{{ action('SignInController@forgotForm') }}">
+        <form method="post" action="{{ route('main.sign_in') }}">
             {{-- @component('components.general_error')
                 @slot('error_id')
                     error-sign-in
@@ -72,6 +72,4 @@
 </div>
 <script type="text/javascript">
     var forgot_post_url = "{{ url('/forgot')}}";
-    console.log("hiiiiiiiiiii");
-    
 </script>

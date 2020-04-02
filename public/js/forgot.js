@@ -16,9 +16,11 @@ $(document).ready(function(){
 $('#button-phone').click(function(event) {
     var data={};
     data = mobile_forgot.getNumber();
+    console.log(data);
+    
     // Ajax POST request
     $.ajax({
-        url: form_post_url,
+        url: forgot_post_url,
         method: 'post',
         data: data,
         async: false,
@@ -26,6 +28,8 @@ $('#button-phone').click(function(event) {
             // If there's an error don't let go to next step
             if( !mobile_forgot.isValidNumber() ){
                 validation = false;
+                console.log('error');
+                
                 $('#errors-row-phone').removeClass('d-none');
                 $.each(data.errors, function(key, value){
                     console.log(value);
