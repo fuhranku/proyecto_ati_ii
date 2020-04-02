@@ -33,6 +33,9 @@
 <!-- Begin page content -->
 <main role="main" class="container" id="page-container">
     <div id="content-wrap">
+        <script src="{{ asset('external/all.min.js') }}"></script>
+        <script src="{{ asset('external/jquery-3.3.1.min.js') }}"></script>
+        <script src="{{ asset('external/popper.min.js') }}"></script>
         @yield('content')
         @include('sign_in_section.sign_in')
     </div>
@@ -40,12 +43,21 @@
     <!-- Footer -->
     @include('templates.footer')
 </body>
+@if (Session::get('error-login') == true)
+    <script>
+        $( document ).ready(function() {
+            console.log( "ready!" );
+            $('#sign_in').modal('show');
+        });     
+    </script>
+    <?php 
+    Session::put('error-login', false);
+    ?>
+@endif
+
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="{{ asset('external/all.min.js') }}"></script>
-<script src="{{ asset('external/jquery-3.3.1.min.js') }}"></script>
-<script src="{{ asset('external/popper.min.js') }}"></script>
 <script src="{{ asset('external/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script> 
 
@@ -62,5 +74,5 @@
 <script src="{{ asset('intl-tel-input/build/js/intlTelInput.js')}}"></script>
 <script>
      var utilsScript = "{{asset('intl-tel-input/build/js/utils.js')}}";
- </script>
+</script>
 </html>

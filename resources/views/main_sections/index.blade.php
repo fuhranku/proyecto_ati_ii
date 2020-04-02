@@ -522,7 +522,7 @@
         </div>
 
     </div>
-
+    
     <script>
         displaySD = () =>{
             if($('#search-dwelling').hasClass("d-none")){
@@ -569,5 +569,6 @@
             }
             
         }
+        
     </script>
 @endsection

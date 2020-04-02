@@ -46,9 +46,11 @@ Route::get('user_data/2/{type}', 'UserDataController@user_data_get_person_type')
 
 // Iniciar sesión
 Route::post('sign_in', 'SignInController@login')->name('main.sign_in');
+Route::post('forgot', 'SignInController@forgotForm');
 Route::get('sign_in', 'SignInController@getSessionInfo')->name('sign_in.get');
 Route::get('sign_in', 'SignInController@logout')->name('sign_in.logout');
-
+Route::get('sign_in/{userId}/{token}', 'SignInController@forgot')->name('sign_in.forgot');
+Route::get('send-mail', 'SignInController@sendMail');
 // Vivienda
 // Publish routes
 Route::get('dwelling/publish', 'Dwelling\PublishDwellingController@publish_get')->name('dwelling.publish');
