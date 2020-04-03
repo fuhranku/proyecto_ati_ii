@@ -66,10 +66,11 @@
         <!-- sign in end -->
 
         @include('sign_in_section.sign_in_forgot')
-        @include('sign_in_section.sign_in_forgot_conf')
+        {{-- @include('sign_in_section.sign_in_forgot_conf') --}}
 
         
 </div>
 <script type="text/javascript">
     var forgot_post_url = "{{ url('/forgot')}}";
+    
 </script>
