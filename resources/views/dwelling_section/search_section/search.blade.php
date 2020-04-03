@@ -28,6 +28,11 @@
             var cities = @json($cities);
 
             var userID = {{ Session::has('info') ? Session::get('info')->id : -1}};
+
+            var quick_search_query = {{ Session::has('quick_query') ? Session::get('quick_query') : -1}};
+
+            console.log("GOOOOOOOOOOOOOL");
+            console.log(quick_search_query);
         </script>
 
 

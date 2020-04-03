@@ -17,9 +17,9 @@ Route::get('/', function () {
 
 
 // Inicio
-Route::get('/index', function () {
-    return view('main_sections.index');
-});
+Route::get('index', 'IndexController@index_get')->name('index.get');
+Route::post('index/quick_search', 'IndexController@quick_search')->name('index.quick_search');
+Route::post('index/detailed_search', 'IndexController@detailed_search')->name('index.detailed_search');
 
 // Registro
 // Route::get('sign_up/{step?}', 'SignUpController@sign_up_get');
