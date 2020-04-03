@@ -72,6 +72,4 @@
 </div>
 <script type="text/javascript">
     var forgot_post_url = "{{ url('/forgot')}}";
-    console.log("hiiiiiiiiiii");
-    
 </script>
