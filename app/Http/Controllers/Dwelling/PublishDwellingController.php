@@ -227,7 +227,6 @@ class PublishDwellingController extends Controller
                 $dwelling->videos()->save($new_video);
             }
         }
-
         return $dwelling->id;
     }
 

@@ -89,7 +89,7 @@
         </div>
     </div>
 
-    @include('dwelling_section.search_section.search_result_photo')
-    @include('dwelling_section.search_section.search_result_list')
+    @include('dwelling_section.publication_section.search_result_photo')
+    @include('dwelling_section.publication_section.search_result_list')
 
 </div>

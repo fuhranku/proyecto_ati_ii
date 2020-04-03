@@ -66,7 +66,7 @@
         </div>
         <br>
         @endif
-        <form>
+        <form >
             <div class="form-group">
                 <div class="row">
                     <div class="col">
@@ -76,15 +76,15 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <input type="email" class="form-control" name="Email"/>
-                        {!! $errors->first('Email', '<span class="help-block">:message</span>') !!}
+                        <input type="email" class="form-control" name="email"/>
+                        {!! $errors->first('email', '<span class="help-block">:message</span>') !!}
                     </div>
                 </div>
             </div>
             <div class="button-group">
                 <br>
-                <button type="submit"   class="btn modal-button">Aceptar</button>
-                <button type="button"  data-dismiss="modal" class="btn modal-button">Cancelar</button>
+                <button type="submit" class="btn modal-button">Aceptar</button>
+                <button type="button" data-dismiss="modal" class="btn modal-button">Cancelar</button>
                 <br>
 
             </div>
@@ -114,8 +114,8 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control" name="Id"/>
-                    {!! $errors->first('Id', '<span class="help-block">:message</span>') !!}
+                    <input type="text" class="form-control" name="id"/>
+                    {!! $errors->first('id', '<span class="help-block">:message</span>') !!}
                 </div>
             </div>
             </div>
@@ -148,13 +148,19 @@
             <div class="form-group">
             <div class="row">
                 <div class="col">
-                    <label for="Phone">Ingresa tu número de teléfono móvil</label>
+                    <label for="phone">Ingres tu número de teléfono móvil</label>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control" name="Phone"/>
-                    {!! $errors->first('Phone', '<span class="help-block">:message</span>') !!}
+                    {{-- <input type="text" class="form-control" name="phone"/> --}}
+                    
+                    <div class="row mt-3" id='input-mobile-forgot'>
+                        <div class="col-sm-3">
+                            <input name="mobile_forgot" type="tel" id='mobile-forgot'>
+                        </div>
+                    </div>
+                    {!! $errors->first('phone', '<span class="help-block">:message</span>') !!}
                 </div>
             </div>
             </div>
@@ -171,5 +177,7 @@
         
     </div>
     <!-- end recuperar con cédula -->
+    <script src="{{ asset('js/forgot.js') }}"></script> 
 @endslot
+
 @endcomponent

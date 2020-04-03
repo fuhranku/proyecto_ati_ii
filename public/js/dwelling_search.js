@@ -273,9 +273,10 @@ function quickSearch(){
             console.log(dwelling);
 
             console.log("USER ID ASDLASLKF: ",userID);
-
-            //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
-            dwelling = dwelling.filter(x => !(x.user_id != userID && x.enable == 0) );
+            if (userID != -1){
+                //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
+                dwelling = dwelling.filter(x => !(x.user_id != userID && x.enable == 0) );
+            }
 
             //copy dwelling to displayed dwelling
             d_dwelling = [...dwelling];
@@ -404,7 +405,10 @@ function detailedSearch(){
             console.log(dwelling);
 
             console.log("NUMERO DE VIVIENDAS: ",dwelling.length);
-
+            // if (userID != -1){
+            //     //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
+            //     dwelling = dwelling.filter(x => !(x.user_id != userID && x.enable == 0) );
+            // }
             //copy dwelling to displayed dwelling
             d_dwelling = [...dwelling];
 

@@ -445,3 +445,15 @@ color: white;
 #change-password{
     visibility: hidden;
 }
+
+.siguenos-text{
+    text-align: right;
+    /* margin-top: 1em !important; */
+    margin-right: 2%;
+    font-weight: bold;
+}
+
+.text{
+    text-align: left;
+
+}

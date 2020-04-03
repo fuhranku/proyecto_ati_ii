@@ -5,14 +5,19 @@
     <div style="margin-top:70px">
         <!-- sign in -->
         @component('components.modal')
-            @slot('modal_id')
-                sign_in
-            @endslot
-            @slot('title')
-                Iniciar sesión
-            @endslot
-            @slot('content')
-            <form method="post" action="{{ route('main.sign_in') }}">
+        @slot('modal_id')
+        sign_in
+        @endslot
+        @slot('title')
+        Iniciar sesión
+        @endslot
+        @slot('content')
+        <form method="post" action="{{ action('SignInController@forgotForm') }}">
+            {{-- @component('components.general_error')
+                @slot('error_id')
+                    error-sign-in
+                @endslot
+            @endcomponent --}}
                 {{-- Email --}}
             <div class="form-group " {{ $errors->has('email') ? 'style="color:red;"' : '' }}>
                 <div class="row">
@@ -61,6 +66,10 @@
         <!-- sign in end -->
 
         @include('sign_in_section.sign_in_forgot')
+        @include('sign_in_section.sign_in_forgot_conf')
 
         
-    </div>
+</div>
+<script type="text/javascript">
+    var forgot_post_url = "{{ url('/forgot')}}";
+</script>

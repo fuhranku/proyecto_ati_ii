@@ -67,9 +67,19 @@ $("#contact_landline_show_details").text(dwelling_details["contact_landlinenumbe
 $("#contact_ext_show_details").text( dwelling_details["contact_landlinenumberEXT"] == "" ? "No hay" : dwelling_details["contact_landlinenumberEXT"] );
 
 
-var contact_days_details = dwelling_details["contact_days"];
+var contact_days_details = JSON.parse(dwelling_details["contact_days"]);
 
-$("#contact_days_show_details").text(contact_days_details == "" ? "No hay" : contact_days_details);
+console.log("ARRE LOCO!!");
+console.log(contact_days_details);
+var final_contact_days = "";
+
+for(var i = 0; i < contact_days_details.length - 1; i++){
+    final_contact_days += contact_days_details[i] + ", ";
+}
+
+final_contact_days += contact_days_details[contact_days_details.length-1];
+
+$("#contact_days_show_details").text(contact_days_details == "" ? "No hay" : final_contact_days);
 
 var text_hours_details = "";
 if(dwelling_details["contact_hourfrom"] && dwelling_details["contact_hourto"]){

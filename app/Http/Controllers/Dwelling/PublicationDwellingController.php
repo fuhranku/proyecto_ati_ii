@@ -32,7 +32,6 @@ class PublicationDwellingController extends Controller
         $comforts = Comfort::all()->sortBy('name');
         $services = Service::all()->sortBy('name');
         $currency = Currency::all()->sortBy('name');
-
         return view('dwelling_section.publication_section.search',compact('continents','countries','states','cities','comforts','services','currency'));
     }
 

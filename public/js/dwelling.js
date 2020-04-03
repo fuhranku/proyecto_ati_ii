@@ -1,7 +1,6 @@
 var mobile_input;
 var landline_input;
 var dwelling_id;
-
 // for index page
 $('#btn-b-rapida').click(function(){
     if($('#busqueda-rapida').hasClass("d-none")){
@@ -813,10 +812,10 @@ function validatePhones(){
 
 
 $('#accept-publish-modal').click(function(){3
-    
+
     var action = $("input[name='success-modal']:checked").val();
     switch(action){
-        // Ver mi publicación   
+        // Ver mi publicación
         case "1":
             location.href = "/dwelling/show_details/"+dwelling_id.toString();
             break;

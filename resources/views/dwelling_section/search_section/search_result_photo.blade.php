@@ -9,7 +9,7 @@
             </div>
 
             <div class="col-md-6 mt-3">
-                    <div class="row position-relative select-dwelling">
+                    {{-- <div class="row position-relative select-dwelling">
                         <div class="col-md-9 pl-5">
                             <label class="form-check-label font-weight-bold" for="dwelling-select-cb1">
                                 Seleccionar
@@ -20,7 +20,7 @@
                                 <input class="form-check-input" onchange="onSelectDwelling()" value="dwelling1" name="select-dwelling" type="checkbox" id="dwelling-select-photo-cb1">
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 <div class="row">
                     <div class="col-md-12">
                         <a class="h4 " href="#"><u id="prop_type_photo_fs1">Apartamento</u></a>
@@ -117,7 +117,7 @@
             </div>
 
             <div class="col-md-6 mt-3">
-                <div class="row  position-relative select-dwelling">
+                {{-- <div class="row  position-relative select-dwelling">
                     <div class="col-md-9 pl-5">
                         <label class="form-check-label font-weight-bold" for="dwelling-select-cb2">
                             Seleccionar
@@ -128,7 +128,7 @@
                             <input class="form-check-input" onchange="onSelectDwelling()" value="dwelling2" name="select-dwelling" type="checkbox" id="dwelling-select-photo-cb2">
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     <div class="col-md-12">
                         <a class="h4 " href="#"><u id="prop_type_photo_fs2">Apartamento</u></a>
@@ -225,7 +225,7 @@
             </div>
 
             <div class="col-md-6 mt-3">
-                <div class="row  position-relative select-dwelling">
+                {{-- <div class="row  position-relative select-dwelling">
                     <div class="col-md-9 pl-5">
                         <label class="form-check-label font-weight-bold" for="dwelling-select-cb3">
                             Seleccionar
@@ -236,7 +236,7 @@
                             <input class="form-check-input" onchange="onSelectDwelling()" value="dwelling3" name="select-dwelling" type="checkbox" id="dwelling-select-photo-cb3">
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     <div class="col-md-12">
                         <a class="h4 " href="#"><u id="prop_type_photo_fs3">Apartamento</u></a>
@@ -333,7 +333,7 @@
             </div>
 
             <div class="col-md-6 mt-3">
-                <div class="row position-relative select-dwelling">
+                {{-- <div class="row position-relative select-dwelling">
                     <div class="col-md-9 pl-5">
                         <label class="form-check-label font-weight-bold" for="dwelling-select-cb4">
                             Seleccionar
@@ -344,7 +344,7 @@
                             <input class="form-check-input" onchange="onSelectDwelling()" value="dwelling4" name="select-dwelling" type="checkbox" id="dwelling-select-photo-cb4">
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     <div class="col-md-12">
                         <a class="h4 " href="#"><u id="prop_type_photo_fs4">Apartamento</u></a>
