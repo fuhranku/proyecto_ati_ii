@@ -8,6 +8,7 @@
         <div class="row">
             @include('dwelling_section.search_section.search_modal_location')
             @include('dwelling_section.search_section.search_modal_service')
+            @include('dwelling_section.search_section.search_details')
             @include('dwelling_section.search_section.search_modal_comfort')
             @include('dwelling_section.search_section.search_modal_no_images')
             @include('dwelling_section.search_section.search_bar')
@@ -16,6 +17,7 @@
 
         <script>
             var quickSearch_post_url = "{{ url('/dwelling/quick_search')}}";
+            var baseURL = "{{ url('')}}";
             var detailedSearch_post_url = "{{ url('/dwelling/detailed_search')}}";
             var disable_post_url = "{{ url('/dwelling/disable_dwelling')}}";
             var enable_post_url = "{{ url('/dwelling/enable_dwelling')}}";

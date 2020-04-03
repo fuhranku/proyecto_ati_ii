@@ -464,12 +464,14 @@ $('.image-box').hover(function(){
 $('body').on('click','.image-box.hover-state',function(e){
     var src = $(this).find('img').attr('src');
     $('body').prepend('\
-    <div class="modal-bg">\
+    <div class="modal-bg d-flex justify-content-center">\
     </div>\
     ');
     $('.modal-bg').append('<div class="icon-container-modal" id="close-btn-modal-img"><i class="fas fa-times close-btn"></i></div>')
     $('.modal-bg').append("\
-    \<img class='expanded-image' src="+src+">\
+    \<div class='image-container'>\
+        <img class='mw-100 mh-100 align-self-center' src="+src+">\
+    </div>\
     ");
     $('body').addClass('overflow-hidden');
 });
@@ -485,13 +487,14 @@ $('body').on('click','.play-btn',function(e){
     videoTag.prop('controls',true);
     videoTag.prop('autoplay',true);
     videoTag.removeClass('video-tag');
-    videoTag.addClass('expanded-video');
+    videoTag.addClass('mw-100 mh-100');
     $('body').prepend('\
-    <div class="modal-bg">\
+    <div class="modal-bg d-flex justify-content-center">\
     </div>\
     ');
     $('.modal-bg').append('<div class="icon-container-modal" id="close-btn-modal-video"><i class="fas fa-times close-btn"></i></div>');
-    $('.modal-bg').append(videoTag);
+    $('.modal-bg').append('<div class="image-container"></div>');
+    $('.image-container').append(videoTag);
     $('body').addClass('overflow-hidden');
 });
 

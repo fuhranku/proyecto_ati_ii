@@ -131,12 +131,12 @@ class SignInController extends Controller
         $details = [
             'title' => 'Usuario y link para restablecer contraseña de <nombre empresa>',
             'user' => 'usuario@gmail.com',
-            'email' => 'yuliferna123@gmail.com',
+            'email' => 'frankponte95@gmail.com',
             'body' => '',
             'url' =>/* 'http://' .*/ strval(request()->getHttpHost()) /*. '.com/' */. '/' . 'idUser' . '/' . 'token' 
         ];
        
-        \Mail::to('yuliferna123@gmail.com')->send(new \App\Mail\PasswordReset($details));
+        \Mail::to('frankponte95@gmail.com')->send(new \App\Mail\PasswordReset($details));
        
         return redirect()->back();
     }

@@ -715,9 +715,10 @@ $('#state_ds').change(function(){
     });
 });
 
-$('.photo-carousel-thrigger').click(function(){
+$('.photo-carousel-thrigger').click(function(e){
+    e.stopPropagation();
     $('body').prepend('\
-    <div class="modal-bg">\
+    <div class="modal-bg d-flex justify-content-center">\
     </div>\
     ');
     $('body').addClass('overflow-hidden');
@@ -744,10 +745,10 @@ $('.photo-carousel-thrigger').click(function(){
                     '<li data-target="#carousel-pictures" data-slide-to="'+index+'" class="active"></li>' :
                     '<li data-target="#carousel-pictures" data-slide-to="'+index+'"></li>' ;
             var image_element = index == 0 ?    '<div class="carousel-item active">\
-                                                    <img class="d-block" src="'+images[key]['url']+'">\
+                                                    <img class="d-block mw-100 mh-100" src="'+images[key]['url']+'">\
                                                 </div>' :
                                                 '<div class="carousel-item">\
-                                                    <img class="d-block" src="'+images[key]['url']+'">\
+                                                    <img class="d-block mw-100 mh-100" src="'+images[key]['url']+'">\
                                                 </div>';
             carousel_indicator.append(image_list);
             carousel_container.append(image_element);
@@ -771,7 +772,6 @@ $('.video-carousel-thrigger').click(function(){
     var pageOffset = (currentPageDwelling - 1)*4;
     // Dwelling videos array
     var videos = d_dwelling[page-1 + pageOffset]['videos'];
-    console.log(videos);
     // Check if dwelling has any video
     if (videos.length == 0){
         $('#dwell-no-photos-modal').appendTo('.modal-bg');
@@ -815,3 +815,69 @@ $('body').on('click','.icon-container-modal',function(){
     $('.modal-bg').addClass('d-none');
     $('body').removeClass('overflow-hidden');
 });
+
+$('.dwelling-detail').mouseenter(function(){
+    var modal = $('#description-modal');
+    modal.addClass('d-fixed');
+    var offset = $(this).offset();
+    modal.css('left', offset.left+170+'px');
+    modal.css('top', offset.top+35+'px');
+    modal.removeClass('d-none');
+    var pageOffset = (currentPageDwelling - 1)*4;
+    var dwelling_number = $(this).data('id');
+
+    // Dwelling
+    if ($(this).hasClass('dwelling-comfort')){
+        modal.find('#comfort-text').removeClass('d-none');
+        var comforts_id = JSON.parse(d_dwelling[dwelling_number-1+pageOffset].comforts);
+        var comforts_name = [];
+    
+        for(var j = 0; j < comforts_id.array.length; j++){
+            var obj = comfort.find( (x) =>{
+                return x.id == parseInt(comforts_id.array[j]); 
+            } )
+            comforts_name.push(obj.name);
+        }
+    
+        var finalTextComforts = "";
+        for(var j = 0; j < comforts_name.length-1; j++){
+            finalTextComforts+= comforts_name[j] + ", ";
+        }
+        finalTextComforts += comforts_name[comforts_name.length-1];
+        modal.find('#comfort-text').children().find('span:nth-child(2)').text(finalTextComforts);
+    // Services
+    }else if($(this).hasClass('dwelling-services')){
+        var services_id = JSON.parse(d_dwelling[dwelling_number-1+pageOffset].services);
+        var services_name = [];
+    
+        for(var j = 0; j < services_id.array.length; j++){
+            var obj = service.find( (x) =>{
+                return x.id == parseInt(services_id.array[j]); 
+            } )
+            services_name.push(obj.name);
+        }
+    
+        var finalTextService = "";
+        for(var j = 0; j < services_name.length-1; j++){
+            finalTextService+= services_name[j] + ", ";
+        }
+        finalTextService += services_name[services_name.length-1];
+
+        modal.find('#services-text').children().find('span:nth-child(2)').text(finalTextService);
+        modal.find('#services-text').removeClass('d-none');
+    // Location
+    }else{
+        modal.find('#location-text').removeClass('d-none');
+        var location_text = d_dwelling[dwelling_number-1+pageOffset].location_details;
+        modal.find('#location-text').children().find('span:nth-child(2)').text(location_text);
+    }
+});
+
+$('.dwelling-detail').mouseleave(function(){
+    $('#description-modal > *').addClass('d-none');
+    $('#description-modal').removeClass('d-fixed');
+    $('#description-modal').addClass('d-none');
+    $('#description-modal').addClass('d-none');
+});
+
+
