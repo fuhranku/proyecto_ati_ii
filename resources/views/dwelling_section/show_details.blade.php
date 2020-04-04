@@ -113,4 +113,6 @@
         var services_details = @json($dwelling->services);
     </script>
 
+    <script src="{{ asset('js/dwelling_details.js') }}"></script>
+
 @endsection

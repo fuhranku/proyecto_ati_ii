@@ -65,6 +65,8 @@
         var post_modify_dwelling = "{{ url('/dwelling/modify_dwelling')}}";
         var dwelling_data = @json($dwelling);
     </script>
+
+    <script src="{{ asset('js/dwelling_modify.js') }}"></script>
     
 
 @endsection
