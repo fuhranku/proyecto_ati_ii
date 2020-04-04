@@ -30,16 +30,16 @@
     {{-- Preloader --}}
     <img class='loading-image position-absolute preloader1 d-none' src="{{url('/images/preloader1.svg')}}" id='preloader-storing'>
 
-<!-- Begin page content -->
-<main role="main" class="container" id="page-container">
-    <div id="content-wrap">
-        <script src="{{ asset('external/all.min.js') }}"></script>
-        <script src="{{ asset('external/jquery-3.3.1.min.js') }}"></script>
-        <script src="{{ asset('external/popper.min.js') }}"></script>
-        @yield('content')
-        @include('sign_in_section.sign_in')
-    </div>
-</main>
+    <!-- Begin page content -->
+    <main role="main" class="container" id="page-container">
+        <div id="content-wrap">
+            <script src="{{ asset('external/all.min.js') }}"></script>
+            <script src="{{ asset('external/jquery-3.3.1.min.js') }}"></script>
+            <script src="{{ asset('external/popper.min.js') }}"></script>
+            @yield('content')
+            @include('sign_in_section.sign_in')
+        </div>
+    </main>
     <!-- Footer -->
     @include('templates.footer')
 </body>

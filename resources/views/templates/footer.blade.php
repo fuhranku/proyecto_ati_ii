@@ -1,5 +1,5 @@
 <footer>
-    <div class="navbar navbar-expand-md">
+    <div class="navbar navbar-expand-md mb-0">
         <!-- One of the primary actions on mobile is to call a business - This displays a phone button on mobile only -->
         <div class="navbar-toggler-right">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">

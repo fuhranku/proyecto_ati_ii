@@ -66,14 +66,15 @@
                 <li class="nav-item mr-7 dropdown">
                     <a class="nav-link dropdown-toggle button-menu" href="#" id="navbarDwelling" role="button" data-toggle="dropdown">Vivienda</a>
 
-                    <div class="dropdown-menu" aria-labelledby="navbarDwelling">
-                    
-                        @if (Session::has('info'))
-                        <a class="dropdown-item" href="{{ url('dwelling/publish') }}">Publicar</a>
-                        <a class="dropdown-item" href="{{ url('dwelling/publication') }}">Ver Publicaciones</a>
-                        @endif
-                        <a class="dropdown-item" href="{{ url('dwelling/search') }}">Buscar</a>
-                    </div>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDwelling">
+                        <ul class="list-inline">
+                            @if (Session::has('info'))
+                            <li class="dropdown-item" href="{{ url('dwelling/publish') }}">Publicar</li>
+                            <li class="dropdown-item" href="{{ url('dwelling/publication') }}">Ver Publicaciones</li>
+                            @endif
+                            <li class="dropdown-item" href="{{ url('dwelling/search') }}">Buscar</li>
+                        </ul>
+                    </ul>
                 </li>
                 <li class="nav-item mr-7 dropdown">
                     <a class="nav-link dropdown-toggle button-menu" href="#" id="navbarServices" role="button" data-toggle="dropdown">Servicios</a>
