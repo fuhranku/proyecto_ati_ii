@@ -10,7 +10,7 @@
 </div>
 
 <!-- BUSQUEDA RAPIDA -->
-<form method="post" action="{{ action( 'IndexController@quick_search') }}">
+<form method="post" action="{{ action( 'IndexController@quick_search' ) }}">
     @csrf
     <div class="m-3 d-none" id="busqueda-rapida" >
         <div class="row p-2">
@@ -36,7 +36,7 @@
         <div class="row p-2">
             <div class="col-md-3"></div>
             <div class="form-group col-3">
-                <span class="badge badge-info">Pais</span>
+                <span class="badge badge-info">Vivienda en</span>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="status_fs" id="exampleRadios1" value="0" checked>
                     <label class="form-check-label sm-text" for="exampleRadios1">
@@ -51,7 +51,7 @@
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="status_fs" id="exampleRadios3" value="2">
-                    <label class="form-check-label sm-text" for="exampleRadios3">
+                    <label class="quick-check-label sm-text" for="exampleRadios3">
                         Alquiler y venta
                     </label>
                 </div>
@@ -59,7 +59,7 @@
 
             <div class="form-group col-3">
                 <span class="badge badge-info">Tipo de inmueble</span>
-                <select id="property_type_fs" class="form-control  sm-text" onchange=""   >
+                <select name="quick_property_type[]" id="property_type_fs" class="form-control  sm-text" onchange=""   >
                     <option value="0">Apartamento</option>
                     <option value="1">Casa</option>
                     <option value="2">Apartamento y Casa</option>
