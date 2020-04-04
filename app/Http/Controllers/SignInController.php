@@ -64,11 +64,14 @@ class SignInController extends Controller
                 return view('main_sections.index');
                 
             }else {
+                Session::put('error-login', true);
+
                 return redirect()->back()
                         ->withErrors(['email' => 'Invalid input']);    
             }
         }
         else {
+            Session::put('error-login', true);
             return redirect()->back()
             ->withErrors(['email' => 'Invalid input']);
 
