@@ -148,3 +148,65 @@ $('#button-id').click(function(e) {
         }
     })
 })
+
+$('#pass-button').click(function(e) {
+    // var data;
+    data ={
+        newPassword: $('input[name="newPassword"]').val(),
+        confPassword: $('input[name="confPassword"]').val(),
+    };
+
+    console.log(data['newPassword']);
+    console.log(data['confPassword']);
+    // AJAX VALIDATION
+    e.preventDefault();
+    $.ajaxSetup({
+        headers:{
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+    // Ajax POST request
+    $.ajax({
+        url: pass_post_url,
+        method: 'post',
+        data: data,
+        async: false,
+        success: function(data){
+            // If there's an error don't let go to next step
+            if( !$.isEmptyObject(data.errors) ){
+                validation = false;                        
+                $.each(data.errors, function(key, value){
+                    console.log(key);
+                    
+                    $('#error_row_'+key).removeClass('d-none');
+                    $.each(value, function(key2,value2){
+                        $('#error_ul_'+key).append('<li>'+value2+'</li>');
+                    })
+                });
+                $('#change_password_message').modal("hide");
+            }else{
+                $('#change_password_message').modal("show");
+            }
+        }
+    })
+})
+
+function optionRadioPass(name){
+    var option =$('input[name="' + name + '"]:checked').val();
+    switch(option){
+        // Ver mi publicación
+        case "1":
+            $('#change_password_message').modal("hide");
+            $('#change_password').modal("hide");
+            $('#sign_in').modal("show");
+            break;
+        // Seguir navegando en el portal
+        case "2":
+            $('#change_password_message').modal("hide");
+            break;
+        // Salir
+        case "3":
+            window.close();
+            break;
+    }
+}

@@ -93,8 +93,12 @@ class SignInController extends Controller
             'user' => '',
             'email' => '',
             'body' => '',
-            'url' => ''
+            'url' => '',
+            'token' => ''
+
         ];
+        $token =  Str::random(60);
+
         switch ($request['type']) {
             case 'email':
                 # code...
@@ -125,11 +129,11 @@ class SignInController extends Controller
                     $name = $user_type->name_comp;
                     $emailUser = $user_type->email_rep;
                 }
-                $token =  Str::random(60);
                 $infoUser['title'] = 'Usuario y link para restablecer contraseña de ' . $name;
                 $infoUser['user'] = $emailUser;
                 $infoUser['email'] = $user->email;
                 $infoUser['url'] = strval(request()->getHttpHost()) . '/sign_in' . '/' . strval($user->id) . '/' . $token;
+                $infoUser['token'] = $token;
                 
                 Session::put('infoUser', $infoUser);
                 Log::info(Session::get('infoUser')['email']);
@@ -160,52 +164,59 @@ class SignInController extends Controller
                 # code...
                 break;
         }
-        // if ($info->person_type == 'nat') {
-        //     $title = 'Usuario y link para restablecer contraseña de '/*. $info->name . ' ' . $info->last_name*/; 
-        // }else {
-        //     $title = 'Usuario y link para restablecer contraseña de '/*. $info->name_comp*/; 
-        // }
-        // $infoUser= [
-        //     'title' => '',
-        //     'user' => '',
-        //     'email' => '',
-        //     'body' => '',
-        //     'url' => ''
-        // ];
-        // $infoUser['title'] = 'Usuario y link para restablecer contraseña de';
-        // $infoUser['user'] = 'usuario@gmail.com';
-        // $infoUser['email'] = 'yuliferna123@gmail.com';
-        // $infoUser['url'] = /* 'http://' .*/ strval(request()->getHttpHost()) /*. '.com/' */. '/' . 'idUser' . '/' . 'token';
-        // Session::put('infoUser', $infoUser);
         
-    }
-
-    public function forgotFormTel(Request $request)
-    {
-        $credentials = $this->validate(request(), [
-            'email' => 'email|required|string'
-        ]);
-        $validations['email'] = 'email|required|string';
-        $validator = Validator::make($request->all(), $validations);
         
-    }
-
-    public function forgotFormDNI(Request $request)
-    {
-        $validations['email'] = 'email|required|string';
-        $validator = Validator::make($request->all(), $validations);
-
     }
 
     public function forgot($userId, $token)
     {
-        # code...
         Log::info($userId);
         Log::info($token);
+        $user = User::find($userId);
+        $pass = DB::table('password_resets')->where('email', $user->email)->where('token', $token)->first();
+
         //Renovar contraseña
+        if ($pass != null) {
+            Log::info($token);
+            Session::put('change-pass', true);
+            Session::put('userId', $userId);
+        }
+        return redirect('index');
+    }
+    public function passwordInput(Request $request)
+    {
+        //change_pass
+        Log::info($request['newPassword']);
+        Log::info($request['confPassword']);
+        Session::forget('change-pass', true);
+        $validations['newPassword'] = 'required|string';
+        $validations['confPassword'] = 'required|string';
+        
+        //Validations
+        $validator = Validator::make($request->all(), $validations);
+
+        if ($validator->fails()){          
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        if ($request['newPassword'] != $request['confPassword']) 
+        {
+            $array =(object)['change_pass' => array('It must be the same')];
+            return response()->json([ 'errors' =>  $array ]);
+        }
+        //Actualizamos en BD el nuevo password
+        $user = User::find(Session::get('userId'));
+        $user->password = Hash::make($request['newPassword']);
+        Log::info($user);
+        $user->save();
+
+        //Borramos la fila con el correo
+        DB::table('password_resets')->where('email', $user->email)->delete();
+
+        Session::forget('userId');
+        return response()->json();
 
     }
-
     public function sendMail() {
         //User info
         $infoUser = Session::get('infoUser');
@@ -217,10 +228,16 @@ class SignInController extends Controller
             'user' => $infoUser['user'],
             'email' => $infoUser['email'],
             'body' => $infoUser['body'],
-            'url' => $infoUser['url']
+            'url' => $infoUser['url'],
+            'token' => $infoUser['token']
         ];
        
         \Mail::to($infoUser['email'])->send(new \App\Mail\PasswordReset($details));
+        $lastupdated = date('Y-m-d H:i:s');
+        DB::table('password_resets')->insert(
+            ['email' => $infoUser['email'], 'token' => $infoUser['token'],
+            'created_at' => $lastupdated]
+        );
         // Session::forget('infoUser');
         return redirect()->back();
     }

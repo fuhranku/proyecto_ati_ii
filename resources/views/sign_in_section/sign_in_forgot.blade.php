@@ -184,6 +184,7 @@
 @endcomponent
 
 
+@if (Session::has('infoUser'))
 @component('components.modal')
     @slot('modal_id')
         forgot_confirm
@@ -194,10 +195,11 @@
     @slot('content')
     <p>Acabamos de enviar tu usuario, y un link para restablecer tu contraseña, al correo:
     </p>    
-        <a href="mailto:{{Session::get('infoUser')['email']}}">{{Session::get('infoUser')['email']}}</a>
-    <p class="text-danger">
+            
+    <a href="mailto:{{Session::get('infoUser')['email']}}">{{Session::get('infoUser')['email']}}</a>
+    {{-- <p class="text-danger">
         y al número de teléfono: 0414-xxx-xx-xx
-    </p>
+    </p> --}}
     <p class="text-primary">
         Si este no es su correo o teléfono, debe modificar su correo electrónico, o teléfono, en la cuenta que posee con la empresa, y solicitar nuevamente el envío de dicha información.
     </p>    
@@ -205,12 +207,13 @@
     <div class="button-group">
         <br>
         {{-- <a href="{{  action('SignInController@sendMail') }}"> --}}
-        <button type="button" id="button-phone" data-toggle="modal" class="btn modal-button" onclick="location.href='{{  action('SignInController@sendMail') }}'">
-            Aceptar
-        </button>
-        {{-- </a> --}}
-        <button type="button"  data-dismiss="modal" class="btn modal-button">Cancelar</button>
-        <br>
-    </div>
+            <button type="button" id="button-phone" data-toggle="modal" class="btn modal-button" onclick="location.href='{{  action('SignInController@sendMail') }}'">
+                Aceptar
+            </button>
+            {{-- </a> --}}
+            <button type="button"  data-dismiss="modal" class="btn modal-button">Cancelar</button>
+            <br>
+        </div>
     @endslot
 @endcomponent
+@endif

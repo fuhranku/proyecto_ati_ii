@@ -38,6 +38,7 @@
         <script src="{{ asset('external/popper.min.js') }}"></script>
         @yield('content')
         @include('sign_in_section.sign_in')
+        @include('sign_in_section.sign_in_change_pass')
     </div>
 </main>
     <!-- Footer -->
@@ -54,7 +55,17 @@
     Session::put('error-login', false);
     ?>
 @endif
-
+@if (Session::has('change-pass') && Session::get('change-pass') == true)
+    <script>
+        $( document ).ready(function() {
+            console.log( "ready!" );
+            $('#change_password').modal('show');
+        });     
+    </script>
+    <?php 
+    Session::put('change-pass', false);
+    ?>
+@endif
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->

@@ -19,15 +19,15 @@
             <div class="row pl-3 mt-3">
                 <div class="col-md-12">
                     <div class="row">
-                        <input type="radio" id="option1" name="success-modal" value=1>
+                        <input type="radio" id="option1" name="success-modal" value="1">
                         <label class="font-weight-bold ml-2">Ver mi publicación</label><br>
                     </div>
                     <div class="row">
-                        <input type="radio" id="option2" name="success-modal" value=2>
+                        <input type="radio" id="option2" name="success-modal" value="2">
                         <label class="font-weight-bold ml-2">Seguir navegando en el portal</label><br>
                     </div>
                     <div class="row">
-                        <input type="radio" id="option3" name="success-modal" value=3>
+                        <input type="radio" id="option3" name="success-modal" value="3">
                         <label class="font-weight-bold ml-2">Salir</label><br>
                     </div>
                 </div>
