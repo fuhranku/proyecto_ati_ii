@@ -203,6 +203,7 @@ function optionRadioPass(name){
         // Seguir navegando en el portal
         case "2":
             $('#change_password_message').modal("hide");
+            $('#change_password').modal("hide");
             break;
         // Salir
         case "3":

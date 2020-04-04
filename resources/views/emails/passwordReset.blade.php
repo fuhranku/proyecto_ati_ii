@@ -9,8 +9,8 @@
     <p>Adicionalmente, acabamos de recibir una solicitud para restablecer la contraseña de </p>
     <a href="mailto:{{ $details['email'] }}">{{ $details['email'] }}</a>
     <p>
-        Haga clic <a href="{{ $details['url'] }}">aquí para restablecer tu contraseña</a>
     </p>
+    <a href={{ $details['url'] }}>Haga clic aquí para restablecer tu contraseña</a>
     <br>
     <a href="">Si el enlace no funciona, copia y pega el siguiente enlace en la barra del navegador</a>
     <br>

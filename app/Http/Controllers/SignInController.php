@@ -24,11 +24,7 @@ class SignInController extends Controller
     
     public function login(Request $request)
     {
-        // Log::info('asdasasdd');
-        // $credentials = $this->validate(request(), [
-        //     'email' => 'email|required|string',
-        //     'password' => 'required|string'
-        // ]);
+        
         $validations['email'] = 'email|required|string';
         $validations['password'] = 'required|string';
         
@@ -113,35 +109,7 @@ class SignInController extends Controller
                 }
                 $user = User::where('email', '=', $request->get('email_forgot'))->first();
                 
-                if ($user == null) {
-                    Log::info('usuario no encontrado');
-                    $array =(object)['email_forgot' => array('User doesn\'t exist')];
-                    
-                    return response()->json([ 'errors' =>  $array ]);
-                }
-                if ($user->person_type == 'nat') {
-                    # code...
-                    $user_type = NaturalPerson::where('user_id', '=', $user->id)->first();
-                    Log::info($user_type);
-                    $name =$user_type->name . ' ' . $user_type->last_name;
-                    $emailUser = $user_type->email;
-                }else if ($user->person_type == 'jur') {
-                    # code...
-                    $user_type = LegalPerson::where('user_id', '=', $user->id)->first();
-                    
-                    $name = $user_type->name_comp;
-                    $emailUser = $user_type->email_rep;
-                }
-                $infoUser['title'] = 'Usuario y link para restablecer contraseña de ' . $name;
-                $infoUser['user'] = $emailUser;
-                $infoUser['email'] = $user->email;
-                $infoUser['url'] = strval(request()->getHttpHost()) . '/sign_in' . '/' . strval($user->id) . '/' . $token;
-                $infoUser['token'] = $token;
                 
-                Session::put('infoUser', $infoUser);
-                Log::info(Session::get('infoUser')['email']);
-
-                return response()->json();
                 break;
             case 'phone':
                 $validations['phone'] = 'required|string';
@@ -167,7 +135,35 @@ class SignInController extends Controller
                 # code...
                 break;
         }
+        if ($user == null) {
+            Log::info('usuario no encontrado');
+            $array =(object)['email_forgot' => array('User doesn\'t exist')];
+            
+            return response()->json([ 'errors' =>  $array ]);
+        }
+        if ($user->person_type == 'nat') {
+            # code...
+            $user_type = NaturalPerson::where('user_id', '=', $user->id)->first();
+            Log::info($user_type);
+            $name =$user_type->name . ' ' . $user_type->last_name;
+            $emailUser = $user_type->email;
+        }else if ($user->person_type == 'jur') {
+            # code...
+            $user_type = LegalPerson::where('user_id', '=', $user->id)->first();
+            
+            $name = $user_type->name_comp;
+            $emailUser = $user_type->email_rep;
+        }
+        $infoUser['title'] = 'Usuario y link para restablecer contraseña de ' . $name;
+        $infoUser['user'] = $emailUser;
+        $infoUser['email'] = $user->email;
+        $infoUser['url'] = 'http://' . strval(request()->getHttpHost()) . '/sign_in' . '/' . strval($user->id) . '/' . $token;
+        $infoUser['token'] = $token;
         
+        Session::put('infoUser', $infoUser);
+        Log::info(Session::get('infoUser')['email']);
+
+        return response()->json();
         
     }
 
