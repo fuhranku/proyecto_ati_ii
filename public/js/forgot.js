@@ -13,18 +13,19 @@ $(document).ready(function(){
     }
 
 });
-$('#mobile-forgot').keyup(function () {
-    if (!mobile_forgot.isValidNumber()) {
-        $('#button-phone').prop('disabled', true);
-    } else {
-        $('#button-phone').prop('disabled', false);
+// $('#mobile-forgot').keyup(function () {
+//     if (!mobile_forgot.isValidNumber()) {
+//         $('#button-phone').prop('disabled', true);
+//     } else {
+//         $('#button-phone').prop('disabled', false);
         
-    }
-})
+//     }
+// })
 $('#button-phone').click(function(e) {
-    // var data;
+    var data = {
+        type: 'phone'
+    };
     data['phone'] = mobile_forgot.getNumber();
-    data['type'] = 'phone';
     console.log(data);
     // AJAX VALIDATION
     e.preventDefault();
@@ -49,9 +50,30 @@ $('#button-phone').click(function(e) {
                 $('#error_ul_phone').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
                 $('#forgot_confirm').modal("hide");
 
+            }else if( !$.isEmptyObject(data.errors) ){
+                validation = false;                        
+                $.each(data.errors, function(key, value){
+                    console.log(key);
+                    
+                    $('#error_row_'+key).removeClass('d-none');
+                    $.each(value, function(key2,value2){
+                        $('#error_ul_'+key).append('<li>'+value2+'</li>');
+                    })
+                });
+                $('#forgot_confirm').modal("hide");
             }else{
-                // console.log(data.success);
-                //$('#forgot_confirm').show();
+                console.log(data.success);
+                $('#email_forgot_link').on('click', function (event) {
+                    event.preventDefault();
+                    // alert("Huh");
+                    var email = data.success.email;
+                    window.location = 'mailto:' + email;
+                });
+                $('#email_forgot_link').html(data.success.email);
+                $('#email_forgot_link').hover(function(event) {
+                    event.preventDefault();
+                    
+                });
                 $('#forgot_confirm').modal("show");
 
             }
@@ -97,7 +119,14 @@ $('#button-email').click(function(e) {
                 });
                 $('#forgot_confirm').modal("hide");
             }else{
-                console.log("asdsadasd");
+                console.log(data.success);
+                $('#email_forgot_link').on('click', function (event) {
+                    event.preventDefault();
+                    // alert("Huh");
+                    var email = data.success.email;
+                    window.location = 'mailto:' + email;
+                });
+                $('#email_forgot_link').html(data.success.email);
                 
                 $('#forgot_confirm').modal("show");
 
@@ -113,9 +142,12 @@ $('#button-email').click(function(e) {
 
 $('#button-id').click(function(e) {
     // var data;
-    data['id'] = $('input[name="input-id"]').val();;
-    data['type'] = 'id';
-    console.log(data['id']);
+    var data = {
+        type: 'id'
+    };
+    data['id_forgot'] = $('input[name="id_forgot"]').val();;
+   
+    console.log(data['id_forgot']);
     // AJAX VALIDATION
     e.preventDefault();
     $.ajaxSetup({
@@ -143,7 +175,16 @@ $('#button-id').click(function(e) {
                 });
                 $('#forgot_confirm').modal("hide");
             }else{
-                console.log(data);
+                console.log(data.success);
+                $('#email_forgot_link').on('click', function (event) {
+                    event.preventDefault();
+                    // alert("Huh");
+                    var email = data.success.email;
+                    window.location = 'mailto:' + email;
+                });
+                $('#email_forgot_link').html(data.success.email);
+                $('#forgot_confirm').modal("show");
+
             }
         }
     })

@@ -56,15 +56,15 @@
     ?>
 @endif
 @if (Session::has('change-pass') && Session::get('change-pass') == true)
+    <?php 
+    Session::put('change-pass', false);
+    ?>
     <script>
         $( document ).ready(function() {
             console.log( "ready!" );
             $('#change_password').modal('show');
         });     
     </script>
-    <?php 
-    Session::put('change-pass', false);
-    ?>
 @endif
 <!-- Bootstrap core JavaScript
 ================================================== -->

@@ -84,7 +84,7 @@
             </div>
             <div class="button-group">
                 <br>
-                <button type="button" id="button-email" data-toggle="modal" class="btn modal-button">Aceptar</button>
+                <button type="button" id="button-email" class="btn modal-button">Aceptar</button>
                 <button type="button" data-dismiss="modal" class="btn modal-button">Cancelar</button>
                 <br>
 
@@ -94,36 +94,38 @@
     <!-- end recuperar email -->
     <!-- recuperar con cédula -->
     <div id="forgot_id" class="d-none">
-        @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        <br>
-        @endif
+        @component('components.field_error')
+        @slot('grid_size')
+            6
+        @endslot
+        @slot('error_row_id')
+            error_row_id_forgot
+        @endslot
+        @slot('error_ul_id')
+            error_ul_id_forgot
+        @endslot
+        @endcomponent
+        
     
         
             <div class="form-group">
             <div class="row">
                 <div class="col">
-                    <label for="Id">Ingresa tu cédula de identidad, DNI, o pasaporte</label>
+                    <label for="id_forgot">Ingresa tu cédula de identidad, DNI, o pasaporte</label>
                 </div>
                 
             </div>
             <div class="row">
                 <div class="col">
-                    <input id="input-id" type="text" class="form-control" name="id"/>
-                    {!! $errors->first('id', '<span class="help-block">:message</span>') !!}
+                    <input id="id_forgot" type="text" class="form-control" name="id_forgot"/>
+                    {{-- {!! $errors->first('id_forgot', '<span class="help-block">:message</span>') !!} --}}
                 </div>
             </div>
             </div>
             
             <div class="button-group">
                 <br>
-                <button type="button" id="button-id" data-toggle="modal" class="btn modal-button">Aceptar</button>
+                <button type="button" id="button-id" class="btn modal-button">Aceptar</button>
                 <button type="button"  data-dismiss="modal" class="btn modal-button">Cancelar</button>
                 <br>
 
@@ -161,7 +163,7 @@
                             <input name="mobile_forgot" type="tel" id='mobile-forgot'>
                         </div>
                     </div>
-                    {!! $errors->first('phone', '<span class="help-block">:message</span>') !!}
+                    
                 </div>
             </div>
             </div>
@@ -169,7 +171,7 @@
             <div class="button-group">
                 <br> 
                 {{-- data-target="#forgot_confirm" --}}
-                <button type="button" id="button-phone" data-toggle="modal" class="btn modal-button">Aceptar</button>
+                <button type="button" id="button-phone" class="btn modal-button">Aceptar</button>
                 <button type="button"  data-dismiss="modal" class="btn modal-button">Cancelar</button>
                 <br>
 
@@ -184,7 +186,6 @@
 @endcomponent
 
 
-@if (Session::has('infoUser'))
 @component('components.modal')
     @slot('modal_id')
         forgot_confirm
@@ -196,7 +197,7 @@
     <p>Acabamos de enviar tu usuario, y un link para restablecer tu contraseña, al correo:
     </p>    
             
-    <a href="mailto:{{Session::get('infoUser')['email']}}">{{Session::get('infoUser')['email']}}</a>
+    <a id="email_forgot_link" href=""></a>
     {{-- <p class="text-danger">
         y al número de teléfono: 0414-xxx-xx-xx
     </p> --}}
@@ -216,4 +217,3 @@
         </div>
     @endslot
 @endcomponent
-@endif

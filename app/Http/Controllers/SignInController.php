@@ -87,6 +87,9 @@ class SignInController extends Controller
     {
         Log::info('$request[type]');
         Log::info($request['type']);
+        if (Session::has('infoUser')) {
+            Session::forget('infoUser');
+        }
         $infoUser= [
             'title' => '',
             'user' => '',
@@ -108,39 +111,79 @@ class SignInController extends Controller
                     return response()->json(['errors'=>$validator->getMessageBag()]);
                 }
                 $user = User::where('email', '=', $request->get('email_forgot'))->first();
-                
+                $input_name = 'email_forgot';
                 
                 break;
             case 'phone':
                 $validations['phone'] = 'required|string';
                 $validator = Validator::make($request->all(), $validations);
+                $input_name = 'phone';
                 if ($validator->fails()){          
                     return redirect()->back()->withErrors($validator)->withInput();
                 }
-                $user = User::where('email', '=', $request->get('email'))->first();
-                // if ($userActual->person_type == 'nat') {
-                //     // Log::info('nat');
-                //     $userActualSpe = NaturalPerson::where('user_id', '=', $userActual->id)->first();
-                // } else {
-                //     // Log::info('jur');
-        
-                //     $userActualSpe = LegalPerson::where('user_id', '=', $userActual->id)->first();
-                // }
+                // $user = User::where('email', '=', $request->get('email'))->first();
+                //Primero buscar telefono o movil
+                
+                $userNatMob = NaturalPerson::where('mobile_number', '=', $request['phone'])->first();
+                $userNatLan = NaturalPerson::where('landline_number', '=', $request['phone'])->first();
+                $userLegMob = LegalPerson::where('mobile_number', '=', $request['phone'])->first();
+                $userLegLan = LegalPerson::where('landline_number', '=', $request['phone'])->first();
+                
+                if (is_null($userNatMob) && is_null($userNatLan) &&
+                is_null($userLegMob) && is_null($userLegLan)) 
+                {
+                    $user = null;
+                }else {
+                    
+                    if (!is_null($userNatMob)){
+                        $idU = $userNatMob->user_id;
+                    } else if (!is_null($userLegLan)){
+                        $idU = $userLegLan->user_id;
+                    } else if (!is_null($userLegMob)){
+                        $idU = $userLegMob->user_id;
+                    } else if (!is_null($userLegLan)){
+                        $idU = $userLegLan->user_id;
+                    }
+
+                    $user = User::find($idU);
+
+                }
+            
                 break;
             case 'id':
-                # code...
+                $validations['id_forgot'] = 'required|string';
+                $validator = Validator::make($request->all(), $validations);
+                if ($validator->fails()){          
+                    return redirect()->back()->withErrors($validator)->withInput();
+                }
+                $input_name = 'id_forgot';
+
+                $userNatID = NaturalPerson::where('person_id', '=', $request['id_forgot'])->first();
+                $userLegID = LegalPerson::where('rif', '=', $request['id_forgot'])->first();
+                
+                if (!is_null($userNatID)) {
+                    $idU = $userNatID->user_id;
+                    $user = User::find($idU);
+                }else if (!is_null($userLegID)) {
+                    $idU = $userLegID->user_id;
+                    $user = User::find($idU);
+                }else {
+                    $user = null;
+                }
                 break;
             
             default:
+            
                 # code...
                 break;
         }
         if ($user == null) {
             Log::info('usuario no encontrado');
-            $array =(object)['email_forgot' => array('User doesn\'t exist')];
-            
+            $array =(object)[ $input_name => array('User doesn\'t exist')];
+            Log::info($input_name);
             return response()->json([ 'errors' =>  $array ]);
         }
+        Log::info($user);
         if ($user->person_type == 'nat') {
             # code...
             $user_type = NaturalPerson::where('user_id', '=', $user->id)->first();
@@ -163,7 +206,8 @@ class SignInController extends Controller
         Session::put('infoUser', $infoUser);
         Log::info(Session::get('infoUser')['email']);
 
-        return response()->json();
+        $array =(object)$infoUser;
+        return response()->json(['success' => $array]);
         
     }
 
@@ -187,7 +231,7 @@ class SignInController extends Controller
         //change_pass
         Log::info($request['newPassword']);
         Log::info($request['confPassword']);
-        Session::forget('change-pass', true);
+        Session::forget('change-pass');
         $validations['newPassword'] = 'required|string';
         $validations['confPassword'] = 'required|string';
         
@@ -213,6 +257,7 @@ class SignInController extends Controller
         DB::table('password_resets')->where('email', $user->email)->delete();
 
         Session::forget('userId');
+
         return response()->json();
 
     }
@@ -237,7 +282,7 @@ class SignInController extends Controller
             ['email' => $infoUser['email'], 'token' => $infoUser['token'],
             'created_at' => $lastupdated]
         );
-        // Session::forget('infoUser');
+        Session::forget('infoUser');
         return redirect()->back();
     }
 }
