@@ -10,6 +10,220 @@ var comfort = [];
 var images_url = [];
 var scrollPos = 0;
 
+//load session query
+$(document).ready(()=>{
+
+    if(session_search_query != -1){
+
+        if(session_search_query.is_quick_search){
+            console.log("making quick search saved on session");
+
+            $.ajaxSetup({
+                headers:{
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            // Ajax POST request
+
+            var country = session_search_query.country[0];
+            var state = session_search_query.state[0];
+            var status = session_search_query.status;
+            var property_type = session_search_query.property_type[0];
+            
+            var data = {};
+            data["country"] = country;
+            data["state"] = state;
+            data["status"] = status;
+            data["property_type"] = property_type;
+
+
+            console.log("country: ",country);
+            console.log("state: ",state);
+            console.log("status: ",status);
+            console.log("property_type: ",property_type);
+
+            // Prepare preloader
+            $('body').prepend('\
+            <div class="modal-bg">\
+            </div>\
+            ');
+            $('#preloader-storing').removeClass('d-none');
+            $('#preloader-storing').appendTo('.modal-bg');
+            $('body').addClass('overflow-hidden');
+
+            $.ajax({
+                url: quickSearch_post_url,
+                method: 'post',
+                data: data,
+                success: function(data){
+
+                    
+                    var parsedData = JSON.parse(data);
+                    dwelling = parsedData["dwellings"];
+                    service = parsedData["services"];
+                    comfort = parsedData["comforts"];
+                    images_url = parsedData["images_url"];
+
+                    console.log(images_url);
+
+                    console.log(dwelling);
+
+                    console.log("USER ID ASDLASLKF: ",userID);
+                    if (userID != -1){
+                        //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
+                        dwelling = dwelling.filter(x => !(x.user_id != userID && x.enable == 0) );
+                    }
+
+                    //copy dwelling to displayed dwelling
+                    d_dwelling = [...dwelling];
+                
+                    console.log("NUMERO DE VIVIENDAS: ",dwelling.length);
+
+                    setNumberOfPages();
+                    loadPageDwelling(1); //load first page
+
+                    //REMOVE PRELOADER
+                    // Send preloader back to body tag
+                    $('#preloader-storing').addClass('d-none');
+                    $('#preloader-storing').appendTo('body');
+                    // Remove modal-bg
+                    $('.modal-bg').remove();
+                    $('body').removeClass('overflow-hidden');
+
+                    $("#dwelling-search-result").removeClass("d-none");
+
+                    if(status == 2){
+                        $("#dwelling_status_filters").removeClass('d-none');
+                    }
+                    else{
+                        $("#dwelling_status_filters").addClass('d-none');
+                    }
+
+                    //DISPLAY BUTTON FILTERS 
+                    if(property_type == 2){
+                        $("#dwelling_prop_filters").removeClass('d-none');
+                    }
+                    else{
+                        $("#dwelling_prop_filters").addClass('d-none');
+                    }
+                }
+            }); 
+        }   
+        else{
+            //making session detailed search
+            console.log("making detailed search saved in session");
+
+            $.ajaxSetup({
+                headers:{
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            // Ajax POST request
+
+            var continent = parseInt(session_search_query.continent[0]);
+            var country = parseInt(session_search_query.country[0]);
+            var state = parseInt(session_search_query.state[0]);
+            var city = parseInt(session_search_query.city[0]);
+            var status = parseInt(session_search_query.status);
+            var property_type = parseInt(session_search_query.property_type);
+            var room = parseInt(session_search_query.rooms);
+            var bathroom = parseInt(session_search_query.bathrooms);
+            var park = parseInt(session_search_query.parking);
+            var comfort_array = parseInt(session_search_query.comfort[0]);
+            var service_array = parseInt(session_search_query.service[0]);
+            var active_price = parseInt(session_search_query.price_type);
+            var minimum_price = parseInt(session_search_query.min_price);
+            var maximum_price = parseInt(session_search_query.max_price);
+
+            if(active_price == 2){//any price
+                minimum_price = -1;
+                maximum_price = -1;
+            }
+
+            // Prepare preloader
+            $('body').prepend('\
+            <div class="modal-bg">\
+            </div>\
+            ');
+            $('#preloader-storing').removeClass('d-none');
+            $('#preloader-storing').appendTo('.modal-bg');
+            $('body').addClass('overflow-hidden');
+
+            var data = {};
+
+            data["continent"] = continent;
+            data["country"] = country;
+            data["state"] = state;
+            data["city"] = city;
+            data["status"] = status;
+            data["property_type"] = property_type;
+            data["room"] = room;
+            data["bathroom"] = bathroom;
+            data["park"] = park;
+            data["comfort"] = comfort_array;
+            data["service"] = service_array;
+            data["active_price"] = active_price;
+            data["minimum_price"] = minimum_price
+            data["maximum_price"] = maximum_price;
+
+            $.ajax({
+                url: detailedSearch_post_url,
+                method: 'post',
+                data: data,
+                success: function(data){
+
+                    var parsedData = JSON.parse(data);
+                    dwelling = parsedData["dwellings"];
+                    service = parsedData["services"];
+                    comfort = parsedData["comforts"];
+                    images_url = parsedData["images_url"];
+
+                    console.log(comfort);
+                    console.log(dwelling);
+
+                    console.log("NUMERO DE VIVIENDAS: ",dwelling.length);
+                    // if (userID != -1){
+                    //     //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
+                    //     dwelling = dwelling.filter(x => !(x.user_id != userID && x.enable == 0) );
+                    // }
+                    //copy dwelling to displayed dwelling
+                    d_dwelling = [...dwelling];
+
+                    setNumberOfPages();
+                    loadPageDwelling(1); //load first page
+
+                    //REMOVE PRELOADER
+                    // Send preloader back to body tag
+                    $('#preloader-storing').addClass('d-none');
+                    $('#preloader-storing').appendTo('body');
+                    // Remove modal-bg
+                    $('.modal-bg').remove();
+                    $('body').removeClass('overflow-hidden');
+
+                    $("#dwelling-search-result").removeClass("d-none");
+
+                    if(status == 2){
+                        $("#dwelling_status_filters").removeClass('d-none');
+                    }
+                    else{
+                        $("#dwelling_status_filters").addClass('d-none');
+                    }
+
+                    //DISPLAY BUTTON FILTERS 
+                    if(property_type == 2){
+                        $("#dwelling_prop_filters").removeClass('d-none');
+                    }
+                    else{
+                        $("#dwelling_prop_filters").addClass('d-none');
+                    }
+                }
+            });    
+        }
+    }
+
+});
+
+
 function showDetails(dwelling_number){
 
     if(activeMode == 1){
@@ -328,6 +542,7 @@ function detailedSearch(){
     var continent = $('#continent_ds').children('option:selected').val();
     var country = $('#country_ds').children('option:selected').val();
     var state = $('#state_ds').children('option:selected').val();
+    var city = $('#city_ds').children('option:selected').val();
     var status = $("input[name='status_ds']:checked").val();
     var property_type = $("input[name='property_type_ds']:checked").val();
     var room = $('#counterRoom').val();
@@ -341,6 +556,7 @@ function detailedSearch(){
 
     console.log("country: ",country);
     console.log("state: ",state);
+    console.log("city: ",city);
     console.log("status: ",status);
     console.log("property_type: ",property_type);
 
@@ -378,6 +594,7 @@ function detailedSearch(){
     data["continent"] = continent;
     data["country"] = country;
     data["state"] = state;
+    data["city"] = city;
     data["status"] = status;
     data["property_type"] = property_type;
     data["room"] = room;
