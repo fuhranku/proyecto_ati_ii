@@ -9,14 +9,18 @@
     <div class="col-md-3"></div>
 </div>
 
-<div class="row mt-3 d-none" id="search-key">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-        <form class="form-inline active-cyan-4">
-            <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Introduzca país, estado o ciudad"
-            aria-label="Search">
-            <i class="fas fa-search" aria-hidden="true"></i>
-        </form>
+<form method="post" action="{{ action( 'IndexController@keyword_search') }}">
+    @csrf
+    <div class="row mt-3 d-none" id="search-key">
+        <div class="col-md-3"></div>
+        <div class="col-md-5 pl-5">
+            <input name="keyword_dwelling" class="form-control form-control-sm " type="text" placeholder="Introduzca país, estado o ciudad" >
+        </div>
+        <div class="col-md-1 p-0">
+            <button type="submit" style="display: contents;">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="col-md-3"></div>
     </div>
-    <div class="col-md-3"></div>
-</div>
+</form>

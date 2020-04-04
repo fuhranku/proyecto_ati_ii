@@ -35,6 +35,48 @@ class SearchDwellingController extends Controller
         return view('dwelling_section.search_section.search',compact('continents','countries','states','cities','comforts','services','currency'));
     }
 
+    public function keyword_search(Request $request){
+
+        $keyword = $request->get('keyword');
+
+        $dwelling = new \stdClass();
+
+        $dwelling->comforts = DB::table('comforts')
+                                ->get();
+
+        $dwelling->services = DB::table('services')
+                                ->get();
+
+        $dwelling->images_url = DB::table('images')
+                                ->get();
+        
+        $dwelling->dwellings = DB::table('dwellings')
+                        ->join('countries','dwellings.country_id','=','countries.id')
+                        ->join('states','dwellings.state_id','=','states.id')
+                        ->join('cities','dwellings.city_id','=','cities.id')
+                        ->select('dwellings.*',
+                                'countries.name as country_name',
+                                'states.name as state_name',
+                                'cities.name as city_name')
+                        ->where('countries.name', '=',$keyword)
+                        ->orWhere('states.name', '=',$keyword)
+                        ->orWhere('cities.name', '=',$keyword)
+                        ->get();
+        
+        // Add images
+        $json_dwelling = json_decode(json_encode($dwelling->dwellings), true);
+        //$json_dwelling = json_decode($json_dwelling);
+            foreach ($json_dwelling as $key => $value){
+                $json_dwelling[$key]['images'] = Dwelling::find($json_dwelling[$key]['id'])->images;
+        }
+        // Add videos
+            foreach ($json_dwelling as $key => $value){
+                $json_dwelling[$key]['videos'] = Dwelling::find($json_dwelling[$key]['id'])->videos;
+        }
+        $dwelling->dwellings = $json_dwelling;
+        return Response::json(json_encode($dwelling));
+    }
+
     public function quick_search(Request $request){
 
         $country = $request->get('country');
@@ -178,8 +220,6 @@ class SearchDwellingController extends Controller
         
                 if($active_price == 1){ //case searching with price max min
 
-                    Log::info("TU ERES LOCO RAMON?");
-    
                     $dwelling->dwellings = DB::table('dwellings')
                                     ->join('continents','dwellings.continent_id','=','continents.id')
                                     ->join('countries','dwellings.country_id','=','countries.id')
@@ -349,8 +389,6 @@ class SearchDwellingController extends Controller
         
                 }
                 else if($active_price == 2){ //case searching any price
-
-                    Log::info("TU ERES LOCO RAMON?");
 
                     $dwelling->dwellings = DB::table('dwellings')
                                     ->join('continents','dwellings.continent_id','=','continents.id')
