@@ -73,6 +73,7 @@
 <script src="{{ asset('js/sign_in.js') }}"></script>
 <script src="{{ asset('intl-tel-input/build/js/intlTelInput.js')}}"></script>
 <script>
+    console.log("{{request()->path()}}");
      var utilsScript = "{{asset('intl-tel-input/build/js/utils.js')}}";
 </script>
 </html>

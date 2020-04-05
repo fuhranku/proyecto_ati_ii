@@ -32,31 +32,41 @@
                         <p class="font-weight-bold">Síguenos en</p>
                     </div>
 
-                    <div class="col-md-3" style="background: rgba(0,176,240,.2); ">
+                    <div class="col-md-4" style="background: rgba(0,176,240,.2); ">
                         
-                        <div >
-                            <a href="#" class="fab fa-facebook"></a>
-                            <p class=" d-inline-block">Facebook</p>
+                        <div class='row'>
+                            <div class="col-md-4 social-btn">
+                                <a href="#" class="fab fa-facebook-f"></a>
+                            </div>
+                            <p class="my-auto">Facebook</p>
                         </div>
 
-                        <div >
-                            <a href="#" class="fab fa-twitter"></a>
-                            <p class=" d-inline-block">Twitter</p>
+                        <div class='row'>
+                            <div class="col-md-4 social-btn">
+                                <a href="#" class="fab fa-twitter"></a>
+                            </div>
+                            <p class="my-auto">Twitter</p>
                         </div>
 
-                        <div >
-                            <a href="#" class="fab fa-youtube"></a>
-                            <p class=" d-inline-block">Youtube</p>
+                        <div class='row'>
+                            <div class="col-md-4 social-btn">
+                                <i href="#" class="fab  fa-circle fa-youtube"></i>
+                            </div>
+                            <p class="my-auto">Youtube</p>
                         </div>
 
-                        <div>
-                            <a href="#" class="fab fa-instagram"></a>
-                            <p class=" d-inline-block">Instagram</p>
+                        <div class='row'>
+                            <div class="col-md-4 social-btn">
+                                <a href="#" class="fab fa-instagram"></a>
+                            </div>
+                            <p class="my-auto">Instagram</p>
                         </div>
-
-                        <div>
-                            <a href="#" class="fab fa-linkedin"></a>
-                            <p class=" d-inline-block">Linkedin</p>
+                        
+                        <div class='row'>
+                            <div class="col-md-4 social-btn">
+                                <a href="#" class="fab fa-linkedin"></a>
+                            </div>
+                            <p class="my-auto">Linkedin</p>
                         </div>
 
                     </div>
