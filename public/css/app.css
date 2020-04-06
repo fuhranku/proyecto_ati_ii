@@ -39,7 +39,7 @@ main{
     font-weight: bold;
 }
 
-.nav-item:not(:last-child){
+.app-navbar > .nav-item:not(:last-child){
     padding-right: 45px;
 }
 
@@ -370,7 +370,7 @@ The navbar toggle appears at this breakpoint */
     text-decoration: underline !important;
 }
 
-.social-btn{
+/* .social-btn{
     background-color: #0084FF;
     padding: 2px 8px;
     font-size: 18px;
@@ -383,4 +383,53 @@ The navbar toggle appears at this breakpoint */
 
 .social-btn:hover{
     background-color: rgb(0, 108, 209);
+} */
+
+
+#insta {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%) !important;      
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: white;
+    padding-right: 1px;
+    padding-left: 1px;
+    border-radius: 3px;
+    transition: .1s;
+}
+
+#insta:hover {
+    background: radial-gradient(circle at 30% 107%, #ccc579 0%, #d3cc7e 5%, #d34a3e 45%, #b31e83 60%, rgb(34, 78, 207) 90%) !important;  
+}
+
+.color-black{
+    color: black;
+    transition: .5s ease-in-out;
+
+}
+
+.color-twitter{
+    color: #00BBF2;
+    transition: .5s ease-in-out;
+
+}
+
+.color-twitter:hover{
+    color: rgb(0, 159, 207);
+    transition: .5s ease-in-out;
+
+}
+
+.color-fb{
+    color: #3B579D;
+    transition: .5s ease-in-out;
+
+}
+
+.header-icon{
+    font-size: 24px;
+}
+
+.header-icon:hover{
+    text-decoration: none;
 }

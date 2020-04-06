@@ -28,7 +28,7 @@
 
 <div class="navbar navbar-expand-md">
     <div class="collapse navbar-collapse" role="navigation">
-        <ul class="nav navbar-nav bg-blue justify-content-center w-100">
+        <ul class="nav navbar-nav bg-blue justify-content-center w-100 app-navbar">
             {{-- Inicio --}}
             <li class="nav-item active">
                 <a class="{{$active_url['index'] == 0 ? 'nav-link button-menu' : 'nav-link button-menu nav-active'}}" href="{{ url('index') }}">Inicio</a>

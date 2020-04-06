@@ -2,13 +2,13 @@
  <div class="navbar navbar-expand-md">
     <!-- One of the primary actions on mobile is to call a business - This displays a phone button on mobile only -->
     <div class="navbar-toggler-right">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" >
                     <span class="navbar-toggler-icon"></span>
                 </button>
     </div>
 
-    <div class="collapse navbar-collapse flex-column" id="navbar">
-        <ul class="navbar-nav bg-white ml-auto h-100 mr-2 mb-n1">
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="nav navbar-nav bg-white ml-auto h-100 mr-2 mb-n1">
             
             @if (Session::has('info') && Session::has('info_specific'))
                 <li class="nav-item mr-4">
@@ -39,7 +39,7 @@
                     
                 </li>
             @endif
-            <div class="user-menu">
+            <div class="user-menu nav navbar-nav">
             @if (!Session::has('info'))
                 <li class="nav-item">
                     <a class="nav-link mx-3 btn-yellow ry-corners mr-2 mt-1 pr-3 pl-3 sign_in_button">Iniciar sesión</a>
