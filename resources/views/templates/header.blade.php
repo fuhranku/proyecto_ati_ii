@@ -7,7 +7,7 @@
     </nav>
 
     @if (Session::has('info'))
-        <div class="row siguenos-text pt-2 justify-content-end">
+        <div class="row siguenos-text pt-2 justify-content-end d-none">
             
             <div class="col-md-3 align-self-center">
                     Síguenos o compártelo por:

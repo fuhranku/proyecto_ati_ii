@@ -339,6 +339,7 @@ function onDisplayModalLocation(dwelling_number){
     ');
     $("#dwell-location-modal").removeClass("d-none");
     $("#dwell-location-modal").appendTo(".modal-bg");
+    $('body').addClass('overflow-hidden');
     getScrollPos();
 
     //SET INFORMATION
@@ -356,6 +357,7 @@ function onDisplayModalService(dwelling_number){
     ');
     $("#dwell-service-modal").removeClass("d-none");
     $("#dwell-service-modal").appendTo(".modal-bg");
+    $('body').addClass('overflow-hidden');
     getScrollPos();
 
     //SET INFORMATION
@@ -389,6 +391,7 @@ function onDisplayModalComfort(dwelling_number){
     ');
     $("#dwell-comfort-modal").removeClass("d-none");
     $("#dwell-comfort-modal").appendTo(".modal-bg");
+    $('body').addClass('overflow-hidden');
     getScrollPos();
 
     //SET INFORMATION
@@ -439,9 +442,8 @@ $('.accept-btn').click(function(){
     $("#dwell-location-modal").addClass("d-none");
     $("#dwell-service-modal").addClass("d-none");
     $("#dwell-comfort-modal").addClass("d-none");
-    $('body').removeClass('overflow-hidden');
     $('.modal-bg').remove();
-    console.log(scrollPos);
+    $('body').removeClass('overflow-hidden');
     $('html, body').animate({scrollTop:scrollPos}, 50);
 });
 
@@ -1014,10 +1016,11 @@ $('#state_ds').change(function(){
 $('.photo-carousel-thrigger').click(function(e){
     e.stopPropagation();
     $('body').prepend('\
-    <div class="modal-bg d-flex justify-content-center">\
+    <div class="modal-bg">\
     </div>\
     ');
     $('body').addClass('overflow-hidden');
+    getScrollPos();
     // Find dwelling element clicked
     var page = $(this).data('id');
     var pageOffset = (currentPageDwelling - 1)*4;

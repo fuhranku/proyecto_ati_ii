@@ -4,7 +4,7 @@
         <div class="w-30 mx-auto bg-white pb-3 modal-border" >
             <div class="row text-center">
                 <div class="col-sm-12">
-                    <div class="bg-blue text-white font-weight-bold">
+                    <div class="bg-blue text-white font-weight-bold" style="border-bottom: 1px solid #000">
                         Comodidades, servicios y ubicación
                     </div>
                 </div>

@@ -59,6 +59,10 @@ $('#counterRoom').focusin(function(){
     e.stopPropagation();
   });
 
+$(document).ready(function(){
+    $('.siguenos-text').removeClass('d-none');
+});
+
 $('#checkbox-natural').on('change', function() {
    $('#checkbox-juridica').prop('checked', false); 
     
