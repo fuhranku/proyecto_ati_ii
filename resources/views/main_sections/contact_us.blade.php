@@ -78,14 +78,14 @@
                     <form>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Para</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <input type="email" class="form-control"  aria-describedby="emailHelp" placeholder="Enter email">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Nombre y Apellido</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nombre y apellido">
+                        <input type="text" class="form-control"  placeholder="Nombre y apellido">
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10" placeholder="Mensaje"></textarea>
+                        <textarea class="form-control rounded-0" rows="10" placeholder="Mensaje"></textarea>
                     </div>
     
                     <div class="text-center">

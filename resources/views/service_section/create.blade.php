@@ -22,12 +22,12 @@
 
         <div class="form-group row p-2 mb-0 border border-primary">
             <label for="exampleInputEmail1" class="col-md-3 text-blue">Servicio a ofrecer</label>
-            <input type="email" class="form-control col-md-9 " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
+            <input type="email" class="form-control col-md-9" aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
         </div>
 
         <div class="form-group row p-2 mb-0 border border-primary">
             <label for="exampleInputEmail1" class="col-md-3 text-blue">Descripción del servicio</label>
-            <textarea class="form-control rounded-0 col-md-9" id="exampleFormControlTextarea1" rows="10" placeholder="Ej: Persona con años de experiencia en determinar, el valor de su inmueble"></textarea>
+            <textarea class="form-control rounded-0 col-md-9" rows="10" placeholder="Ej: Persona con años de experiencia en determinar, el valor de su inmueble"></textarea>
         </div>
     
 
@@ -46,15 +46,15 @@
                 <p>Datos de contacto</p>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nombre</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
+                    <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Apellido</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
+                    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
+                    <input type="email" class="form-control"  aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
                 </div>
     
             </div>
@@ -151,15 +151,15 @@
                 <p>Datos de contacto</p>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nombre</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
+                    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Apellido</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
+                    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
+                    <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Ej: Avalúo de apartamentos">
                 </div>
     
             </div>
