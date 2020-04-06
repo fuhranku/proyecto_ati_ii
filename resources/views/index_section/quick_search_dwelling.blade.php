@@ -38,20 +38,20 @@
             <div class="form-group col-3">
                 <span class="badge badge-info">Vivienda en</span>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="status_fs" id="exampleRadios1" value="0" checked>
-                    <label class="form-check-label sm-text" for="exampleRadios1">
+                    <input class="form-check-input" type="radio" name="status_fs"  value="0" checked>
+                    <label class="form-check-label sm-text" >
                         Alquiler
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="status_fs" id="exampleRadios2" value="1">
-                    <label class="form-check-label sm-text" for="exampleRadios2">
+                    <input class="form-check-input" type="radio" name="status_fs"  value="1">
+                    <label class="form-check-label sm-text" >
                         Venta
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="status_fs" id="exampleRadios3" value="2">
-                    <label class="quick-check-label sm-text" for="exampleRadios3">
+                    <input class="form-check-input" type="radio" name="status_fs" value="2">
+                    <label class="quick-check-label sm-text" >
                         Alquiler y venta
                     </label>
                 </div>

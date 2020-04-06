@@ -37,19 +37,19 @@
                         <div class="form-group col-6">
                             <span class="badge badge-info">Pais</span>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                <input class="form-check-input" type="radio" value="option1" checked>
                                 <label class="form-check-label sm-text" for="exampleRadios1">
                                   Alquiler
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                <input class="form-check-input" type="radio" value="option2">
                                 <label class="form-check-label sm-text" for="exampleRadios2">
                                   Venta
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                                <input class="form-check-input" type="radio" value="option3">
                                 <label class="form-check-label sm-text" for="exampleRadios3">
                                   Alquiler y venta
                                 </label>
@@ -127,7 +127,7 @@
                         </div>
                         <div class="col-4">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                <input class="form-check-input" type="radio" value="option1" checked>
                                 <label class="form-check-label sm-text" for="exampleRadios1">
                                   Alquiler
                                 </label>
@@ -136,7 +136,7 @@
 
                         <div class="col-4">
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                <input class="form-check-input" type="radio" value="option2">
                                 <label class="form-check-label sm-text" for="exampleRadios2">
                                 Venta
                                 </label>
@@ -145,7 +145,7 @@
 
                         <div class="col-4">
                             <div class="form-check">
-                              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                              <input class="form-check-input" type="radio" value="option3">
                               <label class="form-check-label sm-text" for="exampleRadios3">
                                 Alquiler y venta
                               </label>
@@ -161,7 +161,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-check ">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                <input class="form-check-input" type="radio" value="option1" checked>
                                 <label class="form-check-label sm-text" for="exampleRadios1">
                                   Apartamento
                                 </label>
@@ -170,7 +170,7 @@
 
                         <div class="col-md-3 ">
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                <input class="form-check-input" type="radio" value="option2">
                                 <label class="form-check-label sm-text" for="exampleRadios2">
                                   Casa
                                 </label>
@@ -179,7 +179,7 @@
 
                         <div class="col-md-5 ">
                             <div class="form-check">
-                              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                              <input class="form-check-input" type="radio" value="option3">
                               <label class="form-check-label sm-text" for="exampleRadios3">
                                 Apartamento y casa
                               </label>
@@ -285,15 +285,15 @@
                         <div class="col-12">
                             <span class="badge badge-info">Precio</span>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                <input class="form-check-input" type="radio" name="exampleRadios" value="option1" checked>
                                 <label class="form-check-label" for="exampleRadios1">
                                   Por rango
                                 </label>
-                                <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Mínimo">
-                                <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Máximo">
+                                <input type="number" class="form-control" placeholder="Máximo">
+                                <input type="number" class="form-control" placeholder="Mínimo">
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                <input class="form-check-input" type="radio" name="exampleRadios" value="option2">
                                 <label class="form-check-label" for="exampleRadios2">
                                   Cualquier precio
                                 </label>
@@ -342,14 +342,14 @@
                         <p class="h5 text-danger font-weight-bold">Ver listado como</p>
                     </div>
                     <div class="col-md-4">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                        <input class="form-check-input" type="radio" value="option1" checked>
                         <label class="form-check-label" for="exampleRadios1">
                             Tipo foto
                         </label>
                     </div>
 
                     <div class="col-md-4">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                        <input class="form-check-input" type="radio" value="option1" checked>
                         <label class="form-check-label" for="exampleRadios1">
                             Tipo lista
                         </label>
