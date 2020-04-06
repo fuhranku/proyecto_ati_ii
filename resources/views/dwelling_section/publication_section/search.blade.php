@@ -28,6 +28,8 @@
             var userID = {{Session::get('info')->id}};
         </script>
 
+        <script src="{{ asset('js/publication/dwelling_publication_search.js') }}"></script>
+
 
     </div>
 @endsection
