@@ -33,6 +33,7 @@
             console.log(session_search_query);
         </script>
 
+        <script src="{{ asset('js/dwelling_search.js') }}"></script>
 
     </div>
 @endsection

@@ -769,19 +769,19 @@ function cancelQuickSearch(){
 }
 
 function nextPageDwelling(){
-    if(currentPageDwelling + 1 > totalPages) return; //page out of boundary
+    var nextPage = currentPageDwelling + 1;
+    if(nextPage> totalPages) return; //page out of boundary
 
-    currentPageDwelling++;
-    console.log("pagina siguiente: ",currentPageDwelling);
-    loadPageDwelling(currentPageDwelling);
+    console.log("pagina siguiente: ",nextPage);
+    loadPageDwelling(nextPage);
 }
 
 function previousPageDwelling(){
-    if(currentPageDwelling - 1<= 0) return; //page out of boundary
+    var nextPage = currentPageDwelling - 1;
+    if(nextPage<= 0) return; //page out of boundary
 
-    currentPageDwelling--;
-    console.log("pagina anterior: ",currentPageDwelling);
-    loadPageDwelling(currentPageDwelling);
+    console.log("pagina anterior: ",nextPage);
+    loadPageDwelling(nextPage);
 }
 
 //ALWAYS STARTS AT PAGE 1
@@ -912,7 +912,14 @@ function loadPageDwelling(page){
 
     displayNonePagesLeft(dwellingsPerPage);
 
+
+    //remove active page
+    $("#dwelling-page"+currentPageDwelling).removeClass('active');
+
     currentPageDwelling = page;
+
+    //set active page
+    $("#dwelling-page"+currentPageDwelling).addClass('active');
 
 }
 
@@ -924,8 +931,9 @@ function setNumberOfPages(){
     console.log("TOTAL PAGES ARE: ", totalPages);
 
     $('#pagination_fs').append('<li class="page-item cursor-pointer"><a class="page-link" onclick="previousPageDwelling()" >Previous</a></li>');
-    for(var i = 1; i <= totalPages; i++){
-        $('#pagination_fs').append('<li class="page-item cursor-pointer"><a class="page-link" id="dwelling-page'+i+'" onclick="loadPageDwelling('+i.toString()+')" >'+i.toString()+'</a></li>');
+    $('#pagination_fs').append('<li class="page-item active cursor-pointer" id="dwelling-page1" ><a class="page-link" onclick="loadPageDwelling(1)" >1</a></li>');
+    for(var i = 2; i <= totalPages; i++){
+        $('#pagination_fs').append('<li class="page-item cursor-pointer" id="dwelling-page'+i+'"><a class="page-link"  onclick="loadPageDwelling('+i.toString()+')" >'+i.toString()+'</a></li>');
     }
     $('#pagination_fs').append('<li class="page-item cursor-pointer"><a class="page-link" onclick="nextPageDwelling()">Next</a></li>');
 }

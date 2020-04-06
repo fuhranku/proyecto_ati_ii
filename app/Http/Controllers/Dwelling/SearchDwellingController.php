@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Requesting;
 use Response;
+use Session;
 
 // Database Models
 use App\Models\Location\Continent;
@@ -23,6 +24,8 @@ use Log;
 class SearchDwellingController extends Controller
 {
     public function search_get(){
+
+        Session::forget("session_query");
         
         $continents = Continent::all()->sortBy('name');
         $countries = Country::all()->sortBy('name');
