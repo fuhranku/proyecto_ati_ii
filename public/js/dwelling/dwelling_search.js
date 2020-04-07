@@ -1081,6 +1081,7 @@ function deleteDwelling(){
     $.ajax({
         url: delete_post_url,
         method: 'post',
+        async: false,
         data: data,
         success: function(data){
             console.log(data);
@@ -1125,5 +1126,6 @@ $('.dwelling-icon').click(function(){
     else if ($(this).hasClass('delete-icon')){
         $('#dwelling-select-photo-cb'+page).prop('checked',true);
         deleteDwelling();
+        $('#dwelling-select-photo-cb'+page).prop('checked',false);
     }
 });
