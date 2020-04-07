@@ -1,6 +1,6 @@
 @extends('templates.layout')    
 
-@section('title','Index')
+@section('title','Publicar')
 
 @section('content')
 <section>

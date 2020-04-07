@@ -22,6 +22,9 @@
     <link href="{{ asset('css/registro.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dwelling.css') }}" rel="stylesheet">
     <link href="{{ asset('intl-tel-input/build/css/intlTelInput.css')}}" rel="stylesheet">
+    <script src="{{ asset('external/all.min.js') }}"></script>
+    <script src="{{ asset('external/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('external/popper.min.js') }}"></script>
 </head>
 
 <body>
@@ -31,11 +34,8 @@
     <img class='loading-image position-absolute preloader1 d-none' src="{{url('/images/preloader1.svg')}}" id='preloader-storing'>
 
 <!-- Begin page content -->
-<main role="main" class="container" id="page-container">
+<main role="main" class="container pt-5" id="page-container">
     <div id="content-wrap">
-        <script src="{{ asset('external/all.min.js') }}"></script>
-        <script src="{{ asset('external/jquery-3.3.1.min.js') }}"></script>
-        <script src="{{ asset('external/popper.min.js') }}"></script>
         @yield('content')
         @include('sign_in_section.sign_in')
         @include('sign_in_section.sign_in_change_pass')

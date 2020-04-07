@@ -1,6 +1,10 @@
 @extends('templates.layout')
 
-@section('title','Index')
+@if($search_type == 0)
+    @section('title','Ver publicaciones')
+@else
+    @section('title','Buscar vivienda')
+@endif
 
 @section('content')
 <section id="search-section">

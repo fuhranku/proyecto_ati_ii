@@ -15,7 +15,7 @@
             <div class="position-absolute centered-overlay d-none" id="image-drop-text"> Arrastra una imagen aquí </div>
             <div class="row m-3">
                 <div class="col-md-12 text-center font-weight-bold">
-                    <p>Arrastre las fotos que desea cargar en cada uno de los recuadros</p>
+                    <p>Arrastre las fotos que desea cargar</p>
                 </div>
             </div>
 

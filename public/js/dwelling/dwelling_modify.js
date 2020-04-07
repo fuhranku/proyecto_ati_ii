@@ -38,8 +38,8 @@ $.each($('input[name="services"]'),function(){
 
 $(document).ready(function(){
         // Initialize sign_up screen phones input tag
-        mobile_input = document.querySelector("#mobile-publish-dwelling");
-        landline_input = document.querySelector("#landline-publish-dwelling");
+        mobile_input = document.querySelector("#mobile-modify-dwelling");
+        landline_input = document.querySelector("#landline-modify-dwelling");
         // Initialize natural mobile number input
         mobile_input = window.intlTelInput(mobile_input,{
             utilsScript: utilsScript,
@@ -66,26 +66,31 @@ $(document).ready(function(){
             $('#dragspace-image-publish').addClass('d-none');
     });
     // Load videos
-    $.each(dwelling_data['images'], function(key,value){
-        var iconContainer  = "<div class='video-overlay'>\
-        <div class='icon-container play-btn'>\
-                <i class='far fa-play-circle play-icon'></i>\
-        </div>\
-        <div class='icon-container close-btn-video'>\
-                <i class='far fa-times-circle'></i>\
-        </div>\
-        </div>";
-        var videoContainer = "<video class='video-tag' id='frag1' preload='metadata' width='720px' height='540px'>\
-                <source src='"+dwelling_data['videos'][key]['url']+"'\
-                type='video/mp4;codecs='avc1.42E01E, mp4a.40.2'\
-                >\
-            </video>";
-        var videoQuery = $('.video-box:not(:has(*)):first');
-        videoQuery.append(iconContainer);
-        videoQuery.append(videoContainer);
-        $('#preloader-video-publish').addClass('d-none');
-        $('#dragspace-video-publish').addClass('d-none');
-    });
+    if( !dwelling_data['videos'].length){
+        $('input[name="radio-btn-video"][value="0"]').prop('checked',true);
+        $('#video-info-yes').addClass('d-none');
+    }else{
+        $.each(dwelling_data['videos'], function(key,value){
+            var iconContainer  = "<div class='video-overlay'>\
+            <div class='icon-container play-btn'>\
+                    <i class='far fa-play-circle play-icon'></i>\
+            </div>\
+            <div class='icon-container close-btn-video'>\
+                    <i class='far fa-times-circle'></i>\
+            </div>\
+            </div>";
+            var videoContainer = "<video class='video-tag' id='frag1' preload='metadata' width='720px' height='540px'>\
+                    <source src='"+dwelling_data['videos'][key]['url']+"'\
+                    type='video/mp4;codecs='avc1.42E01E, mp4a.40.2'\
+                    >\
+                </video>";
+            var videoQuery = $('.video-box:not(:has(*)):first');
+            videoQuery.append(iconContainer);
+            videoQuery.append(videoContainer);
+            $('#preloader-video-publish').addClass('d-none');
+            $('#dragspace-video-publish').addClass('d-none');
+        });
+    }
     // Load dwelling details
     $('#dwelling_other_details').val(dwelling_data['details']);
     $('#whats_next_to_dwelling').val(dwelling_data['transport_details']);

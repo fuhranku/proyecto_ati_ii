@@ -30,11 +30,13 @@
                     <div class="text-uppercase text-underline text-red font-weight-bold" id={{'status_photo_fs'.$index}}>Venta</div>
                 </div>
             </div>
-            <div class="row float-right">
-                <img id={{'see-dwelling'.$index}} class="dwelling-icon see-more-icon cursor-pointer" data-id={{$index}} src="{{url('/images/eye_icon.png')}}">
-                <img id={{'edit-dwelling'.$index}} class="dwelling-icon modify-icon cursor-pointer" data-id={{$index}} src="{{url('/images/edit_icon.png')}}">
-                <img id={{'delete-dwelling'.$index}} class="dwelling-icon delete-icon cursor-pointer" data-id={{$index}} src="{{url('/images/delete_icon.png')}}">
-            </div>
+            @if ($search_type == '0')
+                <div class="row float-right">
+                    <img id={{'see-dwelling'.$index}} class="dwelling-icon see-more-icon cursor-pointer" data-id={{$index}} src="{{url('/images/eye_icon.png')}}">
+                    <img id={{'edit-dwelling'.$index}} class="dwelling-icon modify-icon cursor-pointer" data-id={{$index}} src="{{url('/images/edit_icon.png')}}">
+                    <img id={{'delete-dwelling'.$index}} class="dwelling-icon delete-icon cursor-pointer" data-id={{$index}} src="{{url('/images/delete_icon.png')}}">
+                </div>
+            @endif
         </div>
     </div>
     

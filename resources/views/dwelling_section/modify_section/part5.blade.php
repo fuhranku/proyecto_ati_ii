@@ -106,7 +106,7 @@
 
                 <div class="row m-3 d-none" id='input-publish-dwelling-mobile'>
                     <div class="col-md-5"> 
-                    <input class="phone-step0 form-control" name="mobile_dwelling" type="tel" id='mobile-publish-dwelling'>
+                    <input class="phone-step0 form-control" name="mobile_dwelling" type="tel" id='mobile-modify-dwelling'>
                     </div>
                 </div>
 
@@ -124,7 +124,7 @@
 
                 <div class="row landline-phone m-3 d-none" id='input-publish-dwelling-landline'>
                     <div class="col-md-5"> 
-                    <input class="phone-step0 form-control" name="landline_dwelling" type="tel" id='landline-publish-dwelling'>
+                    <input class="phone-step0 form-control" name="landline_dwelling" type="tel" id='landline-modify-dwelling'>
                     </div>
                     <div class="col-sm-2 font-weight-bold my-auto">
                             Ext

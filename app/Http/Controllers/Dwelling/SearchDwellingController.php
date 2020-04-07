@@ -26,7 +26,7 @@ class SearchDwellingController extends Controller
     public function search_get(){
 
         Session::forget("session_query");
-        $search_type = 1; // 0: Búsqueda regular
+        $search_type = 1; // 0: Búsqueda publicaciones propias de usuario logueado 1: Búsqueda Regular
         $continents = Continent::all()->sortBy('name');
         $countries = Country::all()->sortBy('name');
         $states = State::all()->sortBy('name');
@@ -69,12 +69,15 @@ class SearchDwellingController extends Controller
         // Add images
         $json_dwelling = json_decode(json_encode($dwelling->dwellings), true);
         //$json_dwelling = json_decode($json_dwelling);
-            foreach ($json_dwelling as $key => $value){
-                $json_dwelling[$key]['images'] = Dwelling::find($json_dwelling[$key]['id'])->images;
+        foreach ($json_dwelling as $key => $value){
+            $currency_id = $json_dwelling[$key]['currency_id'];
+            $currency_id == 3 ? $json_dwelling[$key]['currency_name'] = $json_dwelling[$key]['currency_name'] :
+                                $json_dwelling[$key]['currency_name'] = Currency::find($currency_id)->name;
+            $json_dwelling[$key]['images'] = Dwelling::find($json_dwelling[$key]['id'])->images;
         }
         // Add videos
-            foreach ($json_dwelling as $key => $value){
-                $json_dwelling[$key]['videos'] = Dwelling::find($json_dwelling[$key]['id'])->videos;
+        foreach ($json_dwelling as $key => $value){
+            $json_dwelling[$key]['videos'] = Dwelling::find($json_dwelling[$key]['id'])->videos;
         }
         $dwelling->dwellings = $json_dwelling;
         return Response::json(json_encode($dwelling));
@@ -176,12 +179,15 @@ class SearchDwellingController extends Controller
         // Add images
         $json_dwelling = json_decode(json_encode($dwelling->dwellings), true);
         //$json_dwelling = json_decode($json_dwelling);
-            foreach ($json_dwelling as $key => $value){
-                $json_dwelling[$key]['images'] = Dwelling::find($json_dwelling[$key]['id'])->images;
+        foreach ($json_dwelling as $key => $value){
+            $currency_id = $json_dwelling[$key]['currency_id'];
+            $currency_id == 3 ? $json_dwelling[$key]['currency_name'] = $json_dwelling[$key]['currency_name'] :
+                                $json_dwelling[$key]['currency_name'] = Currency::find($currency_id)->name;
+            $json_dwelling[$key]['images'] = Dwelling::find($json_dwelling[$key]['id'])->images;
         }
         // Add videos
-            foreach ($json_dwelling as $key => $value){
-                $json_dwelling[$key]['videos'] = Dwelling::find($json_dwelling[$key]['id'])->videos;
+        foreach ($json_dwelling as $key => $value){
+            $json_dwelling[$key]['videos'] = Dwelling::find($json_dwelling[$key]['id'])->videos;
         }
         $dwelling->dwellings = $json_dwelling;
         return Response::json(json_encode($dwelling));
@@ -421,6 +427,9 @@ class SearchDwellingController extends Controller
         $json_dwelling = json_decode(json_encode($dwelling->dwellings), true);
         //$json_dwelling = json_decode($json_dwelling);
             foreach ($json_dwelling as $key => $value){
+                $currency_id = $json_dwelling[$key]['currency_id'];
+                $currency_id == 3 ? $json_dwelling[$key]['currency_name'] = $json_dwelling[$key]['currency_name'] :
+                                    $json_dwelling[$key]['currency_name'] = Currency::find($currency_id)->name;
                 $json_dwelling[$key]['images'] = Dwelling::find($json_dwelling[$key]['id'])->images;
         }
         // Add videos

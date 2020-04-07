@@ -582,7 +582,7 @@ function loadPageDwelling(page){
         var roomBath = d_dwelling[i + pageOffset].rooms.toString() + " habitaciones, " 
                     + d_dwelling[i + pageOffset].bathrooms.toString() + " baños";
         // $('#price_photo_fs'+(i+1).toString()).text(d_dwelling[i + pageOffset].price);
-        $('#price_photo_fs'+(i+1).toString()).text(Intl.NumberFormat('de-DE').format(d_dwelling[i + pageOffset].price));
+        $('#price_photo_fs'+(i+1).toString()).text(Intl.NumberFormat('de-DE').format(d_dwelling[i + pageOffset].price)+' '+d_dwelling[i + pageOffset].currency_name);
         $('#prop_type_photo_fs'+(i+1).toString()).text(propMap[d_dwelling[i + pageOffset].property_type]);
         $('#country_photo_fs'+(i+1).toString()).text(d_dwelling[i + pageOffset].country_name);
         $('#state_photo_fs'+(i+1).toString()).text(d_dwelling[i + pageOffset].state_name);
