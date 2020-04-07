@@ -299,6 +299,8 @@ $(document).ready(function(){
         }
     });
 
+    $('input[name="radio-btn-video"][value="1"]').prop('checked',true);
+
     // Initialize sign_up screen phones input tag
     mobile_input = document.querySelector("#mobile-publish-dwelling");
     landline_input = document.querySelector("#landline-publish-dwelling");

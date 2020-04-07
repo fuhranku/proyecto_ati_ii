@@ -102,9 +102,9 @@
                 {{-- End Preloader --}}
             <div class="position-absolute centered-overlay d-none" id="video-drop-text"> Arrastra un video aquí </div>
                 <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-4">
-                        <span class="badge badge-info">Cantidad de videos</span>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <span class="badge badge-label bg-dark-blue text-white">Cantidad de videos</span>
                     </div>
                     
                     <div class="col-md-5">
