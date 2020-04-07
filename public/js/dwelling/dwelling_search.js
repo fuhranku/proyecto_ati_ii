@@ -1072,6 +1072,7 @@ function deleteDwelling(){
         selected_dwellings.push($(this).val());
     });
 
+    console.log("VIVIENDAS A BORRAR:");
     console.log(selected_dwellings);
 
     var data = {};
@@ -1093,11 +1094,11 @@ function deleteDwelling(){
                 dwelling = dwelling.filter( (x) =>{
                     return !(x.id == $(this).val())
                 })
-
-                currentPageDwelling = 1;
-                setNumberOfPages();
-                loadPageDwelling(currentPageDwelling);
             });
+
+            currentPageDwelling = 1;
+            setNumberOfPages();
+            loadPageDwelling(currentPageDwelling);
         }
     });
 }
@@ -1123,7 +1124,6 @@ $('.dwelling-icon').click(function(){
     }
     else if ($(this).hasClass('delete-icon')){
         $('#dwelling-select-photo-cb'+page).prop('checked',true);
-        console.log($('input[name="select-dwelling"]:checked'));
-        //deleteDwelling();
+        deleteDwelling();
     }
 });
