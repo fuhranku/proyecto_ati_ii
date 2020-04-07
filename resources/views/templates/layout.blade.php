@@ -30,16 +30,17 @@
     {{-- Preloader --}}
     <img class='loading-image position-absolute preloader1 d-none' src="{{url('/images/preloader1.svg')}}" id='preloader-storing'>
 
-    <!-- Begin page content -->
-    <main role="main" class="container" id="page-container">
-        <div id="content-wrap">
-            <script src="{{ asset('external/all.min.js') }}"></script>
-            <script src="{{ asset('external/jquery-3.3.1.min.js') }}"></script>
-            <script src="{{ asset('external/popper.min.js') }}"></script>
-            @yield('content')
-            @include('sign_in_section.sign_in')
-        </div>
-    </main>
+<!-- Begin page content -->
+<main role="main" class="container" id="page-container">
+    <div id="content-wrap">
+        <script src="{{ asset('external/all.min.js') }}"></script>
+        <script src="{{ asset('external/jquery-3.3.1.min.js') }}"></script>
+        <script src="{{ asset('external/popper.min.js') }}"></script>
+        @yield('content')
+        @include('sign_in_section.sign_in')
+        @include('sign_in_section.sign_in_change_pass')
+    </div>
+</main>
     <!-- Footer -->
     @include('templates.footer')
 </body>
@@ -54,7 +55,17 @@
     Session::put('error-login', false);
     ?>
 @endif
-
+@if (Session::has('change-pass') && Session::get('change-pass') == true)
+    <?php 
+    Session::put('change-pass', false);
+    ?>
+    <script>
+        $( document ).ready(function() {
+            console.log( "ready!" );
+            $('#change_password').modal('show');
+        });     
+    </script>
+@endif
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
@@ -63,6 +74,7 @@
 
 <script src="{{ asset('js/dwelling/dwelling.js') }}"></script>
 <script src="{{ asset('js/sign_in.js') }}"></script>
+<script src="{{ asset('js/forgot.js') }}"></script> 
 <script src="{{ asset('intl-tel-input/build/js/intlTelInput.js')}}"></script>
 <script>
     base_url = '{{url('')}}'

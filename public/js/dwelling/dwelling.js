@@ -814,7 +814,7 @@ function validatePhones(){
 }
 
 
-$('#accept-publish-modal').click(function(){3
+$('#accept-publish-modal').click(function(){
 
     var action = $("input[name='success-modal']:checked").val();
     switch(action){
