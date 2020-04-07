@@ -78,6 +78,24 @@ h1{
     color: blue !important;
 }
 
+.text-red{
+    color: red !important;
+}
+
+.btn-blue{
+    background-color: #00b0f0;
+}
+.btn-yellow{
+    background-color: #ffc000;
+}
+.btn-red{
+    background-color: #ff0066;
+}
+
+.btn-green{
+    background-color: #92d050;
+}
+
 .step > div.col{
     padding: 10px;
     background-color: #e4e4e4;

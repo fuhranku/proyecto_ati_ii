@@ -261,3 +261,8 @@ iframe > * {
 .md-text{
     font-size: 0.9em;
 }
+
+.dwelling-icon{
+    width: 27%;
+    margin-top: 5px;
+}

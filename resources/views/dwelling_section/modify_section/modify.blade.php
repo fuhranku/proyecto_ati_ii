@@ -66,7 +66,7 @@
         var dwelling_data = @json($dwelling);
     </script>
 
-    <script src="{{ asset('js/dwelling_modify.js') }}"></script>
+    <script src="{{ asset('js/dwelling/dwelling_modify.js') }}"></script>
     
 
 @endsection

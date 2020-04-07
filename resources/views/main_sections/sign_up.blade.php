@@ -53,4 +53,6 @@
     var retrieve_cities_url = "{{ url('/getCities')}}";
 </script>
 
+<script src="{{ asset('js/sign_up.js') }}"></script> 
+
 @endsection

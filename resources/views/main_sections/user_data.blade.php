@@ -81,5 +81,5 @@
         });// Initialize natural mobile number input
     })
 </script>
-
+<script src="{{ asset('js/sign_up.js') }}"></script> 
 @endsection

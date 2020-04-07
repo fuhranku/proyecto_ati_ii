@@ -24,7 +24,7 @@ use Log;
 class PublicationDwellingController extends Controller
 {
     public function search_get(){
-        
+        $search_type = 0; // 0: Ver publicaciones
         $continents = Continent::all()->sortBy('name');
         $countries = Country::all()->sortBy('name');
         $states = State::all()->sortBy('name');
@@ -32,7 +32,7 @@ class PublicationDwellingController extends Controller
         $comforts = Comfort::all()->sortBy('name');
         $services = Service::all()->sortBy('name');
         $currency = Currency::all()->sortBy('name');
-        return view('dwelling_section.publication_section.search',compact('continents','countries','states','cities','comforts','services','currency'));
+        return view('dwelling_section.search_section.search',compact('continents','countries','states','cities','comforts','services','currency', 'search_type'));
     }
 
     public function quick_search(Request $request){

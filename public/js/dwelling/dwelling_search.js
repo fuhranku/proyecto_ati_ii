@@ -512,236 +512,6 @@ function onSelectDwelling(){
     }
     
 }
-
-function quickSearch(){
-
-    console.log("realizando quick search");
-
-    $.ajaxSetup({
-        headers:{
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        }
-    });
-    // Ajax POST request
-
-    var country = $('#country_fs').children('option:selected').val();
-    var state = $('#state_fs').children('option:selected').val();
-    var status = $("input[name='status_fs']:checked").val();
-    var property_type = $('#property_type_fs').children('option:selected').val();
-    
-    var data = {};
-    data["country"] = country;
-    data["state"] = state;
-    data["status"] = status;
-    data["property_type"] = property_type;
-
-
-    console.log("country: ",country);
-    console.log("state: ",state);
-    console.log("status: ",status);
-    console.log("property_type: ",property_type);
-
-    // Prepare preloader
-    $('body').prepend('\
-    <div class="modal-bg">\
-    </div>\
-    ');
-    $('#preloader-storing').removeClass('d-none');
-    $('#preloader-storing').appendTo('.modal-bg');
-    $('body').addClass('overflow-hidden');
-
-    $.ajax({
-        url: quickSearch_post_url,
-        method: 'post',
-        data: data,
-        success: function(data){
-
-            
-            var parsedData = JSON.parse(data);
-            dwelling = parsedData["dwellings"];
-            service = parsedData["services"];
-            comfort = parsedData["comforts"];
-            images_url = parsedData["images_url"];
-
-            console.log(images_url);
-
-            console.log(dwelling);
-
-            console.log("USER ID ASDLASLKF: ",userID);
-            if (userID != -1){
-                //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
-                dwelling = dwelling.filter(x => !(x.user_id != userID && x.enable == 0) );
-            }
-
-            //copy dwelling to displayed dwelling
-            d_dwelling = [...dwelling];
-           
-            console.log("NUMERO DE VIVIENDAS: ",dwelling.length);
-
-            setNumberOfPages();
-            loadPageDwelling(1); //load first page
-
-            //REMOVE PRELOADER
-            // Send preloader back to body tag
-            $('#preloader-storing').addClass('d-none');
-            $('#preloader-storing').appendTo('body');
-            // Remove modal-bg
-            $('.modal-bg').remove();
-            $('body').removeClass('overflow-hidden');
-
-            $("#dwelling-search-result").removeClass("d-none");
-
-            if(status == 2){
-                $("#dwelling_status_filters").removeClass('d-none');
-            }
-            else{
-                $("#dwelling_status_filters").addClass('d-none');
-            }
-
-            //DISPLAY BUTTON FILTERS 
-            if(property_type == 2){
-                $("#dwelling_prop_filters").removeClass('d-none');
-            }
-            else{
-                $("#dwelling_prop_filters").addClass('d-none');
-            }
-        }
-    });    
-}
-
-function detailedSearch(){
-
-    console.log("realizando detailed search");
-
-    $.ajaxSetup({
-        headers:{
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        }
-    });
-    // Ajax POST request
-
-    var continent = $('#continent_ds').children('option:selected').val();
-    var country = $('#country_ds').children('option:selected').val();
-    var state = $('#state_ds').children('option:selected').val();
-    var city = $('#city_ds').children('option:selected').val();
-    var status = $("input[name='status_ds']:checked").val();
-    var property_type = $("input[name='property_type_ds']:checked").val();
-    var room = $('#counterRoom').val();
-    var bathroom = $('#counterBath').val();
-    var park = $('#counterPark').val();
-    var comfort_array = $('#comfort_ds').children('option:selected').val();
-    var service_array = $('#service_ds').children('option:selected').val();
-    var active_price = $("input[name='price_ds']:checked").val();
-    var minimum_price;
-    var maximum_price;
-
-    console.log("country: ",country);
-    console.log("state: ",state);
-    console.log("city: ",city);
-    console.log("status: ",status);
-    console.log("property_type: ",property_type);
-
-    console.log("numero de habitaciones: ",room);
-    console.log("numero de baños: ",bathroom);
-    console.log("numero de estacionamientos: ",park);
-    console.log("el price active es: ",active_price);
-    console.log("el continent es : ",continent);
-    console.log("comfort id: ",comfort_array);
-    console.log("service id: ",service_array);
-
-    if(active_price == 1){ //search by price
-        minimum_price = $("#minimum_ds").val();
-        maximum_price = $("#maximum_ds").val();
-    }
-    else if(active_price == 2){//any price
-        minimum_price = -1;
-        maximum_price = -1;
-    }
-
-    console.log("valor de maximum_price ",maximum_price);
-    console.log("valor de minimum_price ",minimum_price);
-
-    // Prepare preloader
-    $('body').prepend('\
-    <div class="modal-bg">\
-    </div>\
-    ');
-    $('#preloader-storing').removeClass('d-none');
-    $('#preloader-storing').appendTo('.modal-bg');
-    $('body').addClass('overflow-hidden');
-
-    var data = {};
-
-    data["continent"] = continent;
-    data["country"] = country;
-    data["state"] = state;
-    data["city"] = city;
-    data["status"] = status;
-    data["property_type"] = property_type;
-    data["room"] = room;
-    data["bathroom"] = bathroom;
-    data["park"] = park;
-    data["comfort"] = comfort_array;
-    data["service"] = service_array;
-    data["active_price"] = active_price;
-    data["minimum_price"] = minimum_price
-    data["maximum_price"] = maximum_price;
-
-    $.ajax({
-        url: detailedSearch_post_url,
-        method: 'post',
-        data: data,
-        success: function(data){
-
-            var parsedData = JSON.parse(data);
-            dwelling = parsedData["dwellings"];
-            service = parsedData["services"];
-            comfort = parsedData["comforts"];
-            images_url = parsedData["images_url"];
-
-            console.log(comfort);
-            console.log(dwelling);
-
-            console.log("NUMERO DE VIVIENDAS: ",dwelling.length);
-            // if (userID != -1){
-            //     //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
-            //     dwelling = dwelling.filter(x => !(x.user_id != userID && x.enable == 0) );
-            // }
-            //copy dwelling to displayed dwelling
-            d_dwelling = [...dwelling];
-
-            setNumberOfPages();
-            loadPageDwelling(1); //load first page
-
-            //REMOVE PRELOADER
-            // Send preloader back to body tag
-            $('#preloader-storing').addClass('d-none');
-            $('#preloader-storing').appendTo('body');
-            // Remove modal-bg
-            $('.modal-bg').remove();
-            $('body').removeClass('overflow-hidden');
-
-            $("#dwelling-search-result").removeClass("d-none");
-
-            if(status == 2){
-                $("#dwelling_status_filters").removeClass('d-none');
-            }
-            else{
-                $("#dwelling_status_filters").addClass('d-none');
-            }
-
-            //DISPLAY BUTTON FILTERS 
-            if(property_type == 2){
-                $("#dwelling_prop_filters").removeClass('d-none');
-            }
-            else{
-                $("#dwelling_prop_filters").addClass('d-none');
-            }
-        }
-    });    
-
-}
-
     
 function displayNonePagesLeft(indexStart){
     
@@ -811,8 +581,8 @@ function loadPageDwelling(page){
 
         var roomBath = d_dwelling[i + pageOffset].rooms.toString() + " habitaciones, " 
                     + d_dwelling[i + pageOffset].bathrooms.toString() + " baños";
-
-        $('#price_photo_fs'+(i+1).toString()).text(d_dwelling[i + pageOffset].price);
+        // $('#price_photo_fs'+(i+1).toString()).text(d_dwelling[i + pageOffset].price);
+        $('#price_photo_fs'+(i+1).toString()).text(Intl.NumberFormat('de-DE').format(d_dwelling[i + pageOffset].price));
         $('#prop_type_photo_fs'+(i+1).toString()).text(propMap[d_dwelling[i + pageOffset].property_type]);
         $('#country_photo_fs'+(i+1).toString()).text(d_dwelling[i + pageOffset].country_name);
         $('#state_photo_fs'+(i+1).toString()).text(d_dwelling[i + pageOffset].state_name);
@@ -930,12 +700,12 @@ function setNumberOfPages(){
     totalPages = Math.ceil(d_dwelling.length / 4);
     console.log("TOTAL PAGES ARE: ", totalPages);
 
-    $('#pagination_fs').append('<li class="page-item cursor-pointer"><a class="page-link" onclick="previousPageDwelling()" >Previous</a></li>');
+    $('#pagination_fs').append('<li class="page-item cursor-pointer"><a class="page-link" onclick="previousPageDwelling()" ><< </a></li>');
     $('#pagination_fs').append('<li class="page-item active cursor-pointer" id="dwelling-page1" ><a class="page-link" onclick="loadPageDwelling(1)" >1</a></li>');
     for(var i = 2; i <= totalPages; i++){
         $('#pagination_fs').append('<li class="page-item cursor-pointer" id="dwelling-page'+i+'"><a class="page-link"  onclick="loadPageDwelling('+i.toString()+')" >'+i.toString()+'</a></li>');
     }
-    $('#pagination_fs').append('<li class="page-item cursor-pointer"><a class="page-link" onclick="nextPageDwelling()">Next</a></li>');
+    $('#pagination_fs').append('<li class="page-item cursor-pointer"><a class="page-link" onclick="nextPageDwelling()"> >> </a></li>');
 }
 
 function sortDwellingByPrice(){
@@ -1180,6 +950,159 @@ $('.dwelling-detail').mouseenter(function(){
     }
 });
 
+function modifyDwelling(){
+    var selected_dwellings = [];
+
+    $.each($("input[name='select-dwelling']:checked"), function(){
+        selected_dwellings.push($(this).val());
+    });
+
+    //location.href = "/dwelling/modify/"+selected_dwellings[0].toString();
+    window.open(base_url+"/dwelling/modify/"+selected_dwellings[0].toString(), '_blank');
+
+}
+
+
+function detailDwelling(){
+
+    var selected_dwellings = [];
+
+    $.each($("input[name='select-dwelling']:checked"), function(){
+        selected_dwellings.push($(this).val());
+    });
+
+    window.open(base_url+"/dwelling/show_details/"+selected_dwellings[0].toString(), '_blank');
+}
+
+function disableDwelling(){
+
+    console.log("Desactivando viviendas");
+
+    var selected_dwellings = [];
+
+    $.each($("input[name='select-dwelling']:checked"), function(){
+        selected_dwellings.push($(this).val());
+    });
+
+    console.log(selected_dwellings);
+
+    var data = {};
+    data["selected_dwellings"] = selected_dwellings;
+
+    $.ajax({
+        url: disable_post_url,
+        method: 'post',
+        data: data,
+        success: function(data){
+            $.each($("input[name='select-dwelling']:checked"), function(){
+                $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').removeClass('d-none');
+                $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').css('opacity','1');
+                $(this).parent().parent().parent().parent().parent().children('.list-photo-overlay').removeClass('d-none');
+                $(this).parent().parent().parent().parent().parent().children('.list-photo-overlay').css('opacity','1');
+            });
+
+            console.log(data);
+
+            for(var i = 0; i < selected_dwellings.length; i++){
+
+                dwelling.find( (x) =>{
+                    return x.id == selected_dwellings[i];
+                }).enable = 0;
+
+                d_dwelling.find( (x) =>{
+                    return x.id == selected_dwellings[i];
+                }).enable = 0;
+            }
+            
+        }
+    });    
+
+}
+
+function enableDwelling(){
+
+    console.log("Activando viviendas");
+
+    var selected_dwellings = [];
+
+    $.each($("input[name='select-dwelling']:checked"), function(){
+        selected_dwellings.push($(this).val());
+    });
+
+    console.log(selected_dwellings);
+
+    var data = {};
+    data["selected_dwellings"] = selected_dwellings;
+
+    $.ajax({
+        url: enable_post_url,
+        method: 'post',
+        data: data,
+        success: function(data){
+            $.each($("input[name='select-dwelling']:checked"), function(){
+                $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').addClass('d-none');
+                $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').css('opacity','0');
+                $(this).parent().parent().parent().parent().parent().children('.list-photo-overlay').addClass('d-none');
+                $(this).parent().parent().parent().parent().parent().children('.list-photo-overlay').css('opacity','0');
+            });
+            console.log(data);
+
+            for(var i = 0; i < selected_dwellings.length; i++){
+
+                dwelling.find( (x) =>{
+                    return x.id == selected_dwellings[i];
+                }).enable = 1;
+
+                d_dwelling.find( (x) =>{
+                    return x.id == selected_dwellings[i];
+                }).enable = 1;
+            }
+        }
+    });   
+
+}
+
+function deleteDwelling(){
+
+    console.log("Borrando viviendas");
+
+    var selected_dwellings = [];
+
+    $.each($("input[name='select-dwelling']:checked"), function(){
+        selected_dwellings.push($(this).val());
+    });
+
+    console.log(selected_dwellings);
+
+    var data = {};
+    data["selected_dwellings"] = selected_dwellings;
+
+    $.ajax({
+        url: delete_post_url,
+        method: 'post',
+        data: data,
+        success: function(data){
+            console.log(data);
+
+            $.each($("input[name='select-dwelling']:checked"), function(){
+            
+                d_dwelling = d_dwelling.filter( (x) =>{
+                    return !(x.id == $(this).val())
+                })
+
+                dwelling = dwelling.filter( (x) =>{
+                    return !(x.id == $(this).val())
+                })
+
+                currentPageDwelling = 1;
+                setNumberOfPages();
+                loadPageDwelling(currentPageDwelling);
+            });
+        }
+    });
+}
+
+
 $('.dwelling-detail').mouseleave(function(){
     $('#description-modal > *').addClass('d-none');
     $('#description-modal').removeClass('d-fixed');
@@ -1187,4 +1110,20 @@ $('.dwelling-detail').mouseleave(function(){
     $('#description-modal').addClass('d-none');
 });
 
-
+$('.dwelling-icon').click(function(){
+    // Find dwelling element clicked
+    var page = $(this).data('id');
+    var pageOffset = (currentPageDwelling - 1)*4;
+    var dwelling_id = d_dwelling[page-1 + pageOffset]['id'];
+    if( $(this).hasClass('see-more-icon')){
+        window.open(base_url+'/dwelling/show_details/'+dwelling_id,'_blank');
+    }
+    else if ($(this).hasClass('modify-icon')){
+        window.open(base_url+'/dwelling/modify/'+dwelling_id,'_blank');
+    }
+    else if ($(this).hasClass('delete-icon')){
+        $('#dwelling-select-photo-cb'+page).prop('checked',true);
+        console.log($('input[name="select-dwelling"]:checked'));
+        //deleteDwelling();
+    }
+});

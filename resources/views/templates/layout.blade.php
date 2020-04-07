@@ -61,13 +61,11 @@
 <script src="{{ asset('external/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script> 
 
-<script src="{{ asset('js/dwelling.js') }}"></script>
-<script src="{{ asset('js/dwelling_disable.js') }}"></script>
-
-<script src="{{ asset('js/sign_up.js') }}"></script> 
+<script src="{{ asset('js/dwelling/dwelling.js') }}"></script>
 <script src="{{ asset('js/sign_in.js') }}"></script>
 <script src="{{ asset('intl-tel-input/build/js/intlTelInput.js')}}"></script>
 <script>
+    base_url = '{{url('')}}'
     console.log("{{request()->path()}}");
      var utilsScript = "{{asset('intl-tel-input/build/js/utils.js')}}";
 </script>

@@ -26,7 +26,7 @@ class SearchDwellingController extends Controller
     public function search_get(){
 
         Session::forget("session_query");
-        
+        $search_type = 1; // 0: Búsqueda regular
         $continents = Continent::all()->sortBy('name');
         $countries = Country::all()->sortBy('name');
         $states = State::all()->sortBy('name');
@@ -35,7 +35,7 @@ class SearchDwellingController extends Controller
         $services = Service::all()->sortBy('name');
         $currency = Currency::all()->sortBy('name');
 
-        return view('dwelling_section.search_section.search',compact('continents','countries','states','cities','comforts','services','currency'));
+        return view('dwelling_section.search_section.search',compact('continents','countries','states','cities','comforts','services','currency','search_type'));
     }
 
     public function keyword_search(Request $request){
