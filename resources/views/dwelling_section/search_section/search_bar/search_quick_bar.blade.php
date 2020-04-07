@@ -8,7 +8,11 @@
 
     <div class="row p-2">
         <div class="col-md-6">
-            <span class="badge badge-info">Pais</span>
+
+            <div class="bg-dark-blue border-small mb-2">
+                <span class="text-white font-weight-bold sm-text p-2">Pais</span>
+            </div>
+            
             <select id="country_fs" class="form-control sm-text" >
                 <option class="disabled" value='' label="Pais" disabled selected value></option>
                 @foreach ($countries as $country)
@@ -17,7 +21,11 @@
             </select>
         </div>
         <div class="col-md-6">
-            <span class="badge badge-info">Estado</span>
+            
+            <div class="bg-dark-blue border-small mb-2">
+                <span class="text-white font-weight-bold sm-text p-2">Estado</span>
+            </div>
+            
             <select id="state_fs" class="form-control sm-text "  >
                 <option class="disabled" value='' label="Estado" disabled selected value></option>
             </select>
@@ -26,7 +34,11 @@
 
     <div class="row p-2">
         <div class="form-group col-6">
-            <span class="badge badge-info">Vivienda en</span>
+            
+            <div class="bg-dark-blue border-small mb-2">
+                <span class="text-white font-weight-bold sm-text p-2">Vivienda en</span>
+            </div>
+            
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="status_fs"  value="0" checked>
                 <label class="form-check-label sm-text">
@@ -48,7 +60,11 @@
         </div>
 
         <div class="form-group col-6">
-            <span class="badge badge-info">Tipo de inmueble</span>
+            
+            <div class="bg-dark-blue border-small mb-2">
+                <span class="text-white font-weight-bold sm-text">Tipo de inmueble</span>
+            </div>
+            
             <select id="property_type_fs" class="form-control  sm-text" onchange=""   >
                 <option value="0">Apartamento</option>
                 <option value="1">Casa</option>
@@ -57,12 +73,12 @@
         </div>                
     </div>
 
-    <div class="row pt-2">
-        <div class="text-center col-6">
-            <button type="submit" onclick="quickSearch()" class="btn btn-primary">Buscar</button>
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <button type="submit" onclick="quickSearch()" class="btn bg-yellow text-white">Buscar</button>
         </div>
-        <div class="text-center col-6">
-            <button type="submit" onclick="cancelQuickSearch()"class="btn btn-primary">Cancelar</button>
+        <div class="col-md-6 text-center">
+            <button type="submit" onclick="cancelQuickSearch()"class="btn bg-yellow text-white">Cancelar</button>
         </div>
     </div>
 </div>

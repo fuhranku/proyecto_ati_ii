@@ -8,7 +8,11 @@
 
     <div class="row p-2">
         <div class="col-md-6">
-            <span class="badge badge-info">Continente</span>
+            
+            <div class="bg-dark-blue border-small mb-2">
+                <span class="text-white font-weight-bold sm-text p-2">Continente</span>
+            </div>
+            
             <select id="continent_ds" class="form-control sm-text" onchange="">
                 <option class="disabled" value='' label="Continente" disabled selected value></option>
                 @foreach ($continents as $continent)
@@ -17,7 +21,11 @@
             </select>
         </div>
         <div class="col-md-6">
-            <span class="badge badge-info">Pais</span>
+            
+            <div class="bg-dark-blue border-small mb-2">
+                <span class="text-white font-weight-bold sm-text p-2">País</span>
+            </div>
+            
             <select id="country_ds" class="form-control  sm-text" onchange=""   >
                 @foreach ($countries as $country)
                     <option class="disabled" value='' label="País" disabled selected value></option>
@@ -29,7 +37,11 @@
     <div class="row p-2">
         
         <div class="col-md-6">
-            <span class="badge badge-info">Estado</span>
+            
+            <div class="bg-dark-blue border-small mb-2">
+                <span class="text-white font-weight-bold sm-text p-2">Estado</span>
+            </div>
+            
             <select id="state_ds" class="form-control sm-text" onchange=""   >
                 @foreach ($states as $state)
                     <option class="disabled" value='' label="Estado" disabled selected value></option>
@@ -37,7 +49,11 @@
             </select>
         </div>
         <div class="col-md-6">
-            <span class="badge badge-info">Ciudad</span>
+            
+            <div class="bg-dark-blue border-small mb-2">
+                <span class="text-white font-weight-bold sm-text p-2">Ciudad</span>
+            </div>
+            
             <select id="city_ds" class="form-control sm-text " onchange=""   >
                 @foreach ($cities as $city)
                     <option class="disabled" value='' label="Ciudad" disabled selected value></option>
@@ -47,9 +63,16 @@
     </div>
 
     <div class="row p-2">
-        <div class="col-12">
-            <span class="badge badge-info">Vivienda en</span>
+        <div class="col-6">
+            
+            <div class="bg-dark-blue border-small mb-2">
+                <span class="text-white font-weight-bold sm-text p-2">Vivienda en</span>
+            </div>
+        
         </div>
+    </div>
+
+    <div class="row p-2">
         <div class="col-4">
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="status_ds" value="0" checked>
@@ -69,7 +92,7 @@
         </div>
 
         <div class="col-4">
-            <div class="form-check">
+            <div class="form-check p-0">
               <input class="form-check-input" type="radio" name="status_ds"  value="2">
               <label class="form-check-label sm-text" >
                 Alquiler y venta
@@ -81,10 +104,17 @@
     </div>
 
     <div class="row p-2">
-        <div class="col-12">
-            <span class="badge badge-info">Tipo de inmueble</span>
+        <div class="col-7">
+            
+            <div class="bg-dark-blue border-small mb-2">
+                <span class="text-white font-weight-bold sm-text p-2">Tipo de inmueble</span>
+            </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6"></div>
+    </div>
+
+    <div class="row ">
+        <div class="col-md-4 ">
             <div class="form-check ">
                 <input class="form-check-input" type="radio" name="property_type_ds"  value="0" checked>
                 <label class="form-check-label sm-text" >
@@ -116,7 +146,11 @@
 
     <div class="row p-2">
         <div class="text-center col-6">
-            <span class="badge badge-info">Habitaciones</span>
+            
+            <div class="bg-dark-blue border-small mb-2">
+                <span class="text-white font-weight-bold sm-text p-2">Habitaciones</span>
+            </div>
+            
         </div>
     </div>
 
@@ -139,8 +173,12 @@
     </div>
 
     <div class="row p-2">
-        <div class="text-center col-6">
-            <span class="badge badge-info">Baños</span>
+        <div class="col-6">
+        
+            <div class="bg-dark-blue border-small mb-2">
+                <span class="text-white font-weight-bold sm-text p-2">Baños</span>
+            </div>
+            
         </div>
     </div>
 
@@ -163,8 +201,12 @@
     </div>
 
     <div class="row p-2">
-        <div class="text-center col-6">
-            <span class="badge badge-info">Estacionamientos</span>
+        <div class="text-center col-7">
+            
+            <div class="bg-dark-blue border-small mb-2">
+                <span class="text-white font-weight-bold sm-text">Estacionamientos</span>
+            </div>
+            
         </div>
     </div>
 
@@ -188,7 +230,11 @@
 
     <div class="row p-2">
         <div class="col-md-12">
-            <span class="badge badge-info">Comodidades</span>
+            
+            <div class="bg-dark-blue border-small mb-2">
+                <span class="text-white font-weight-bold sm-text p-2">Comodidades</span>
+            </div>
+            
             <select id="comfort_ds" class="form-control " onchange=""   >
                 @foreach ($comforts as $comfort)
                     <option value={{$comfort->id}}>{{$comfort->name}}</option>
@@ -199,7 +245,11 @@
 
     <div class="row p-2">
         <div class="col-md-12">
-            <span class="badge badge-info">Servicios</span>
+            
+            <div class="bg-dark-blue border-small mb-2">
+                <span class="text-white font-weight-bold sm-text p-2">Servicios</span>
+            </div>
+            
             <select id="service_ds" class="form-control  " onchange=""   >
                 @foreach ($services as $service)
                     <option value={{$service->id}}>{{$service->name}}</option>
@@ -210,18 +260,51 @@
 
     <div class="row p-2">
         <div class="col-12">
-            <span class="badge badge-info">Precio</span>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="price_ds"  value="1" checked>
-                <label class="form-check-label" >
-                  Por rango
-                </label>
-                <input type="number" class="form-control" id="minimum_ds" placeholder="Mínimo">
-                <input type="number" class="form-control" id="maximum_ds" placeholder="Máximo">
+            
+            <div class="bg-dark-blue border-small mb-2">
+                <span class="text-white font-weight-bold sm-text p-2">Precio</span>
             </div>
+
+        </div>
+
+        <div class="col-md-12">
+            <div class="form-check">
+                <div class="row p-3">
+                    <input class="form-check-input" type="radio" name="price_ds"  value="1" checked>
+                    <label class="form-check-label sm-text" >
+                    Por rango
+                    </label>
+                
+                </div>
+                <div class="row">
+                    <div class="col-md-4 p-2 pl-4">
+                        <p class="sm-text">Mínimo</p>
+                    </div>
+                    
+                    <div class="col-md-8 pl-0">
+                        <input type="number" class="form-control" id="minimum_ds" placeholder="">
+                    </div>
+                </div>
+                
+
+                <div class="row">
+                    <div class="col-md-4 p-2 pl-4">
+                        <p class="sm-text">Máximo</p>
+                    </div>
+                    
+                    <div class="col-md-8 pl-0">
+                        <input type="number" class="form-control" id="maximum_ds" placeholder="">
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+
+        <div class="col-md-12">
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="price_ds" value="2">
-                <label class="form-check-label" >
+                <label class="form-check-label sm-text" >
                   Cualquier precio
                 </label>
             </div>
@@ -230,10 +313,10 @@
 
     <div class="row pt-2">
         <div class="text-center col-6">
-            <button type="submit" onclick="detailedSearch()" class="btn btn-primary">Buscar</button>
+            <button type="submit" onclick="detailedSearch()" class="btn bg-yellow text-white">Buscar</button>
         </div>
         <div class="text-center col-6">
-            <button type="submit" class="btn btn-primary">Cancelar</button>
+            <button type="submit" class="btn bg-yellow text-white">Cancelar</button>
         </div>
     </div>
    

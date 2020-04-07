@@ -10,6 +10,13 @@ main{
 }
 
 
+.border-small{
+    border-radius: 5px;
+}
+
+.bg-dark-blue{
+    background-color: #0070c0;
+}
 
 .bg-blue{
     background-color: #00b0f0 !important;
