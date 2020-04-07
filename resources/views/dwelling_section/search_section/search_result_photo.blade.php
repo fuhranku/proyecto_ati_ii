@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 pr-0">
                         <a class="h4 text-danger" href="#"><u id="status_photo_fs1">Venta</u></a>
                     </div>
                 </div>
@@ -68,20 +68,20 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6 mt-3">
+            <div class="col-md-7 mt-3">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalComfort(1)"><u>Ver Comodidades</u></div>
+                        <a class=" font-weight-bold cursor-pointer text-blue dwelling-detail dwelling-comfort" data-id=1 onclick="return onDisplayModalComfort(1)"><u>Ver Comodidades</u></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalService(1)"><u>Ver Servicios</u></div>
+                        <a class=" font-weight-bold cursor-pointer text-blue dwelling-detail dwelling-services" data-id=1 onclick="return onDisplayModalService(1)"><u>Ver Servicios</u></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation(1)"><u>Ver Ubicación exacta</u></div>
+                        <a class=" font-weight-bold cursor-pointer text-blue dwelling-detail dwelling-location" data-id=1 onclick="return onDisplayModalLocation(1)"><u>Ver Ubicación exacta</u></a>
                     </div>
                 </div>
                 <div class="row">
@@ -96,14 +96,14 @@
                 </div>
             </div>
 
-            <div class="col-md-6 mt-3">
-                <button type="button" class="btn btn-warning font-weight-bold text-white">Contactar al anunciante</button>
+            <div class="col-md-5 mt-3 pl-0 pr-0 ml-n3">
+                <button type="button" class="btn btn-warning font-weight-bold text-white sm-text">Contactar al anunciante</button>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12 text-center">
-                <a href="#" onclick="return showDetails(1)" id="dwelling-show-details1" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
+                <a href="#" target="_blank" onclick="return showDetails(1)" id="dwelling-show-details1" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
             </div>
         </div>
     </div>
@@ -135,7 +135,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12  pr-0">
                         <a class="h4 text-danger" href="#"><u id="status_photo_fs2">Venta</u></a>
                     </div>
                 </div>
@@ -176,20 +176,20 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6 mt-3">
+            <div class="col-md-7 mt-3">
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalComfort(2)"><u>Ver Comodidades</u></a>
+                        <a class=" font-weight-bold cursor-pointer text-blue dwelling-detail dwelling-comfort" data-id=2 onclick="return onDisplayModalComfort(2)"><u>Ver Comodidades</u></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalService(2)"><u>Ver Servicios</u></a>
+                        <a class=" font-weight-bold cursor-pointer text-blue dwelling-detail dwelling-services" data-id=2 onclick="return onDisplayModalService(2)"><u>Ver Servicios</u></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation(2)"><u>Ver Ubicación exacta</u></a>
+                        <a class=" font-weight-bold cursor-pointer text-blue dwelling-detail dwelling-location" data-id=2 onclick="return onDisplayModalLocation(2)"><u>Ver Ubicación exacta</u></a>
                     </div>
                 </div>
                 <div class="row">
@@ -204,14 +204,14 @@
                 </div>
             </div>
 
-            <div class="col-md-6 mt-3">
-                <button type="button" class="btn btn-warning font-weight-bold text-white">Contactar al anunciante</button>
+            <div class="col-md-5 mt-3 pl-0 pr-0 ml-n3">
+                <button type="button" class="btn btn-warning font-weight-bold text-white sm-text">Contactar al anunciante</button>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12 text-center">
-                <a href="#" onclick="return showDetails(2)" id="dwelling-show-details2" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
+                <a href="#" target="_blank" onclick="return showDetails(2)" id="dwelling-show-details2" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
             </div>
         </div>
     </div>
@@ -243,7 +243,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 pr-0">
                         <a class="h4 text-danger" href="#"><u id="status_photo_fs3">Venta</u></a>
                     </div>
                 </div>
@@ -284,20 +284,20 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6 mt-3">
+            <div class="col-md-7 mt-3">
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalComfort(3)"><u>Ver Comodidades</u></a>
+                        <a class=" font-weight-bold cursor-pointer text-blue dwelling-detail dwelling-comfort" data-id=3 onclick="return onDisplayModalComfort(3)"><u>Ver Comodidades</u></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalService(3)"><u>Ver Servicios</u></a>
+                        <a class=" font-weight-bold cursor-pointer text-blue dwelling-detail dwelling-services" data-id=3 onclick="return onDisplayModalService(3)"><u>Ver Servicios</u></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalLocation(3)"><u>Ver Ubicación exacta</u></a>
+                        <a class=" font-weight-bold cursor-pointer text-blue dwelling-detail dwelling-location" data-id=3 onclick="return onDisplayModalLocation(3)"><u>Ver Ubicación exacta</u></a>
                     </div>
                 </div>
                 <div class="row">
@@ -312,14 +312,14 @@
                 </div>
             </div>
 
-            <div class="col-md-6 mt-3">
-                <button type="button" class="btn btn-warning font-weight-bold text-white">Contactar al anunciante</button>
+            <div class="col-md-5 mt-3 pl-0 pr-0 ml-n3">
+                <button type="button" class="btn btn-warning font-weight-bold text-white sm-text">Contactar al anunciante</button>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12 text-center">
-                <a href="#" onclick="return showDetails(3)" id="dwelling-show-details3" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
+                <a href="#" target="_blank" onclick="return showDetails(3)" id="dwelling-show-details3" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
             </div>
         </div>
     </div>
@@ -351,7 +351,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 pr-0">
                         <a class="h4 text-danger" href="#"><u id="status_photo_fs4">Venta</u></a>
                     </div>
                 </div>
@@ -392,20 +392,20 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6 mt-3">
+            <div class="col-md-7 mt-3">
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalComfort(4)"><u>Ver Comodidades</u></a>
+                        <a class=" font-weight-bold cursor-pointer text-blue dwelling-detail dwelling-comfort" data-id=4 onclick="return onDisplayModalComfort(4)"><u>Ver Comodidades</u></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold cursor-pointer text-blue" onclick="return onDisplayModalService(4)"><u>Ver Servicios</u></a>
+                        <a class=" font-weight-bold cursor-pointer text-blue dwelling-detail dwelling-services" data-id=4 onclick="return onDisplayModalService(4)"><u>Ver Servicios</u></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <a class=" font-weight-bold cursor-pointer text-blue"  onclick="return onDisplayModalLocation(4)"><u>Ver Ubicación exacta</u></a>
+                        <a class=" font-weight-bold cursor-pointer text-blue dwelling-detail dwelling-location"  data-id=4 onclick="return onDisplayModalLocation(4)"><u>Ver Ubicación exacta</u></a>
                     </div>
                 </div>
                 <div class="row">
@@ -420,14 +420,14 @@
                 </div>
             </div>
 
-            <div class="col-md-6 mt-3">
-                <button type="button" class="btn btn-warning font-weight-bold text-white">Contactar al anunciante</button>
+            <div class="col-md-5 mt-3 pl-0 pr-0 ml-n3">
+                <button type="button" class="btn btn-warning font-weight-bold text-white sm-text">Contactar al anunciante</button>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12 text-center">
-                <a href="#" onclick="return showDetails(4)" id="dwelling-show-details4" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
+                <a href="#" target="_blank" onclick="return showDetails(4)" id="dwelling-show-details4" class="m-0 text-danger h5 font-weight-bold  m-3"><u>Ver información Completa</u></a>
             </div>
         </div>
     </div>

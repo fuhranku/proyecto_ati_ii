@@ -10,6 +10,299 @@ var comfort = [];
 var images_url = [];
 var scrollPos = 0;
 
+//load session query
+$(document).ready(()=>{
+    if(session_search_query != -1){
+
+        if(session_search_query.search_type == 1){
+            console.log("making quick search saved on session");
+
+            $.ajaxSetup({
+                headers:{
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            // Ajax POST request
+
+            var country = session_search_query.country[0];
+            var state = session_search_query.state[0];
+            var status = session_search_query.status;
+            var property_type = session_search_query.property_type[0];
+            
+            var data = {};
+            data["country"] = country;
+            data["state"] = state;
+            data["status"] = status;
+            data["property_type"] = property_type;
+
+
+            console.log("country: ",country);
+            console.log("state: ",state);
+            console.log("status: ",status);
+            console.log("property_type: ",property_type);
+
+            // Prepare preloader
+            $('body').prepend('\
+            <div class="modal-bg">\
+            </div>\
+            ');
+            $('#preloader-storing').removeClass('d-none');
+            $('#preloader-storing').appendTo('.modal-bg');
+            $('body').addClass('overflow-hidden');
+
+            $.ajax({
+                url: quickSearch_post_url,
+                method: 'post',
+                data: data,
+                success: function(data){
+
+                    
+                    var parsedData = JSON.parse(data);
+                    dwelling = parsedData["dwellings"];
+                    service = parsedData["services"];
+                    comfort = parsedData["comforts"];
+                    images_url = parsedData["images_url"];
+
+                    console.log(images_url);
+
+                    console.log(dwelling);
+
+                    console.log("USER ID ASDLASLKF: ",userID);
+                    if (userID != -1){
+                        //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
+                        dwelling = dwelling.filter(x => !(x.user_id != userID && x.enable == 0) );
+                    }
+
+                    //copy dwelling to displayed dwelling
+                    d_dwelling = [...dwelling];
+                
+                    console.log("NUMERO DE VIVIENDAS: ",dwelling.length);
+
+                    setNumberOfPages();
+                    loadPageDwelling(1); //load first page
+
+                    //REMOVE PRELOADER
+                    // Send preloader back to body tag
+                    $('#preloader-storing').addClass('d-none');
+                    $('#preloader-storing').appendTo('body');
+                    // Remove modal-bg
+                    $('.modal-bg').remove();
+                    $('body').removeClass('overflow-hidden');
+
+                    $("#dwelling-search-result").removeClass("d-none");
+
+                    if(status == 2){
+                        $("#dwelling_status_filters").removeClass('d-none');
+                    }
+                    else{
+                        $("#dwelling_status_filters").addClass('d-none');
+                    }
+
+                    //DISPLAY BUTTON FILTERS 
+                    if(property_type == 2){
+                        $("#dwelling_prop_filters").removeClass('d-none');
+                    }
+                    else{
+                        $("#dwelling_prop_filters").addClass('d-none');
+                    }
+                }
+            }); 
+        }   
+        else if(session_search_query.search_type == 0){
+            //making session detailed search
+            console.log("making detailed search saved in session");
+
+            $.ajaxSetup({
+                headers:{
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            // Ajax POST request
+
+            var continent = parseInt(session_search_query.continent[0]);
+            var country = parseInt(session_search_query.country[0]);
+            var state = parseInt(session_search_query.state[0]);
+            var city = parseInt(session_search_query.city[0]);
+            var status = parseInt(session_search_query.status);
+            var property_type = parseInt(session_search_query.property_type);
+            var room = parseInt(session_search_query.rooms);
+            var bathroom = parseInt(session_search_query.bathrooms);
+            var park = parseInt(session_search_query.parking);
+            var comfort_array = parseInt(session_search_query.comfort[0]);
+            var service_array = parseInt(session_search_query.service[0]);
+            var active_price = parseInt(session_search_query.price_type);
+            var minimum_price = parseInt(session_search_query.min_price);
+            var maximum_price = parseInt(session_search_query.max_price);
+
+            if(active_price == 2){//any price
+                minimum_price = -1;
+                maximum_price = -1;
+            }
+
+            // Prepare preloader
+            $('body').prepend('\
+            <div class="modal-bg">\
+            </div>\
+            ');
+            $('#preloader-storing').removeClass('d-none');
+            $('#preloader-storing').appendTo('.modal-bg');
+            $('body').addClass('overflow-hidden');
+
+            var data = {};
+
+            data["continent"] = continent;
+            data["country"] = country;
+            data["state"] = state;
+            data["city"] = city;
+            data["status"] = status;
+            data["property_type"] = property_type;
+            data["room"] = room;
+            data["bathroom"] = bathroom;
+            data["park"] = park;
+            data["comfort"] = comfort_array;
+            data["service"] = service_array;
+            data["active_price"] = active_price;
+            data["minimum_price"] = minimum_price
+            data["maximum_price"] = maximum_price;
+
+            $.ajax({
+                url: detailedSearch_post_url,
+                method: 'post',
+                data: data,
+                success: function(data){
+
+                    var parsedData = JSON.parse(data);
+                    dwelling = parsedData["dwellings"];
+                    service = parsedData["services"];
+                    comfort = parsedData["comforts"];
+                    images_url = parsedData["images_url"];
+
+                    console.log(comfort);
+                    console.log(dwelling);
+
+                    console.log("NUMERO DE VIVIENDAS: ",dwelling.length);
+                    // if (userID != -1){
+                    //     //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
+                    //     dwelling = dwelling.filter(x => !(x.user_id != userID && x.enable == 0) );
+                    // }
+                    //copy dwelling to displayed dwelling
+                    d_dwelling = [...dwelling];
+
+                    setNumberOfPages();
+                    loadPageDwelling(1); //load first page
+
+                    //REMOVE PRELOADER
+                    // Send preloader back to body tag
+                    $('#preloader-storing').addClass('d-none');
+                    $('#preloader-storing').appendTo('body');
+                    // Remove modal-bg
+                    $('.modal-bg').remove();
+                    $('body').removeClass('overflow-hidden');
+
+                    $("#dwelling-search-result").removeClass("d-none");
+
+                    if(status == 2){
+                        $("#dwelling_status_filters").removeClass('d-none');
+                    }
+                    else{
+                        $("#dwelling_status_filters").addClass('d-none');
+                    }
+
+                    //DISPLAY BUTTON FILTERS 
+                    if(property_type == 2){
+                        $("#dwelling_prop_filters").removeClass('d-none');
+                    }
+                    else{
+                        $("#dwelling_prop_filters").addClass('d-none');
+                    }
+                }
+            });    
+        }
+        else if(session_search_query.search_type == 2){
+            console.log("SEARCH BY KEY");
+
+            $.ajaxSetup({
+                headers:{
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            // Ajax POST request
+
+            var keyword = session_search_query.keyword;
+
+            var data = {};
+            data["keyword"] = keyword;
+
+            // Prepare preloader
+            $('body').prepend('\
+            <div class="modal-bg">\
+            </div>\
+            ');
+            $('#preloader-storing').removeClass('d-none');
+            $('#preloader-storing').appendTo('.modal-bg');
+            $('body').addClass('overflow-hidden');
+
+            $.ajax({
+                url: keywordSearch_post_url,
+                method: 'post',
+                data: data,
+                success: function(data){
+
+                    var parsedData = JSON.parse(data);
+                    dwelling = parsedData["dwellings"];
+                    service = parsedData["services"];
+                    comfort = parsedData["comforts"];
+                    images_url = parsedData["images_url"];
+
+                    console.log(images_url);
+
+                    console.log(dwelling);
+
+                    console.log("USER ID ASDLASLKF: ",userID);
+                    if (userID != -1){
+                        //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
+                        dwelling = dwelling.filter(x => !(x.user_id != userID && x.enable == 0) );
+                    }
+
+                    //copy dwelling to displayed dwelling
+                    d_dwelling = [...dwelling];
+                
+                    console.log("NUMERO DE VIVIENDAS: ",dwelling.length);
+
+                    setNumberOfPages();
+                    loadPageDwelling(1); //load first page
+
+                    //REMOVE PRELOADER
+                    // Send preloader back to body tag
+                    $('#preloader-storing').addClass('d-none');
+                    $('#preloader-storing').appendTo('body');
+                    // Remove modal-bg
+                    $('.modal-bg').remove();
+                    $('body').removeClass('overflow-hidden');
+
+                    $("#dwelling-search-result").removeClass("d-none");
+
+                    if(status == 2){
+                        $("#dwelling_status_filters").removeClass('d-none');
+                    }
+                    else{
+                        $("#dwelling_status_filters").addClass('d-none');
+                    }
+
+                    //DISPLAY BUTTON FILTERS 
+                    if(property_type == 2){
+                        $("#dwelling_prop_filters").removeClass('d-none');
+                    }
+                    else{
+                        $("#dwelling_prop_filters").addClass('d-none');
+                    }
+                }
+            }); 
+        }
+    }
+});
+
+
 function showDetails(dwelling_number){
 
     if(activeMode == 1){
@@ -46,6 +339,7 @@ function onDisplayModalLocation(dwelling_number){
     ');
     $("#dwell-location-modal").removeClass("d-none");
     $("#dwell-location-modal").appendTo(".modal-bg");
+    $('body').addClass('overflow-hidden');
     getScrollPos();
 
     //SET INFORMATION
@@ -63,6 +357,7 @@ function onDisplayModalService(dwelling_number){
     ');
     $("#dwell-service-modal").removeClass("d-none");
     $("#dwell-service-modal").appendTo(".modal-bg");
+    $('body').addClass('overflow-hidden');
     getScrollPos();
 
     //SET INFORMATION
@@ -96,6 +391,7 @@ function onDisplayModalComfort(dwelling_number){
     ');
     $("#dwell-comfort-modal").removeClass("d-none");
     $("#dwell-comfort-modal").appendTo(".modal-bg");
+    $('body').addClass('overflow-hidden');
     getScrollPos();
 
     //SET INFORMATION
@@ -146,9 +442,8 @@ $('.accept-btn').click(function(){
     $("#dwell-location-modal").addClass("d-none");
     $("#dwell-service-modal").addClass("d-none");
     $("#dwell-comfort-modal").addClass("d-none");
-    $('body').removeClass('overflow-hidden');
     $('.modal-bg').remove();
-    console.log(scrollPos);
+    $('body').removeClass('overflow-hidden');
     $('html, body').animate({scrollTop:scrollPos}, 50);
 });
 
@@ -328,6 +623,7 @@ function detailedSearch(){
     var continent = $('#continent_ds').children('option:selected').val();
     var country = $('#country_ds').children('option:selected').val();
     var state = $('#state_ds').children('option:selected').val();
+    var city = $('#city_ds').children('option:selected').val();
     var status = $("input[name='status_ds']:checked").val();
     var property_type = $("input[name='property_type_ds']:checked").val();
     var room = $('#counterRoom').val();
@@ -341,6 +637,7 @@ function detailedSearch(){
 
     console.log("country: ",country);
     console.log("state: ",state);
+    console.log("city: ",city);
     console.log("status: ",status);
     console.log("property_type: ",property_type);
 
@@ -378,6 +675,7 @@ function detailedSearch(){
     data["continent"] = continent;
     data["country"] = country;
     data["state"] = state;
+    data["city"] = city;
     data["status"] = status;
     data["property_type"] = property_type;
     data["room"] = room;
@@ -471,19 +769,19 @@ function cancelQuickSearch(){
 }
 
 function nextPageDwelling(){
-    if(currentPageDwelling + 1 > totalPages) return; //page out of boundary
+    var nextPage = currentPageDwelling + 1;
+    if(nextPage> totalPages) return; //page out of boundary
 
-    currentPageDwelling++;
-    console.log("pagina siguiente: ",currentPageDwelling);
-    loadPageDwelling(currentPageDwelling);
+    console.log("pagina siguiente: ",nextPage);
+    loadPageDwelling(nextPage);
 }
 
 function previousPageDwelling(){
-    if(currentPageDwelling - 1<= 0) return; //page out of boundary
+    var nextPage = currentPageDwelling - 1;
+    if(nextPage<= 0) return; //page out of boundary
 
-    currentPageDwelling--;
-    console.log("pagina anterior: ",currentPageDwelling);
-    loadPageDwelling(currentPageDwelling);
+    console.log("pagina anterior: ",nextPage);
+    loadPageDwelling(nextPage);
 }
 
 //ALWAYS STARTS AT PAGE 1
@@ -614,7 +912,14 @@ function loadPageDwelling(page){
 
     displayNonePagesLeft(dwellingsPerPage);
 
+
+    //remove active page
+    $("#dwelling-page"+currentPageDwelling).removeClass('active');
+
     currentPageDwelling = page;
+
+    //set active page
+    $("#dwelling-page"+currentPageDwelling).addClass('active');
 
 }
 
@@ -626,8 +931,9 @@ function setNumberOfPages(){
     console.log("TOTAL PAGES ARE: ", totalPages);
 
     $('#pagination_fs').append('<li class="page-item cursor-pointer"><a class="page-link" onclick="previousPageDwelling()" >Previous</a></li>');
-    for(var i = 1; i <= totalPages; i++){
-        $('#pagination_fs').append('<li class="page-item cursor-pointer"><a class="page-link" id="dwelling-page'+i+'" onclick="loadPageDwelling('+i.toString()+')" >'+i.toString()+'</a></li>');
+    $('#pagination_fs').append('<li class="page-item active cursor-pointer" id="dwelling-page1" ><a class="page-link" onclick="loadPageDwelling(1)" >1</a></li>');
+    for(var i = 2; i <= totalPages; i++){
+        $('#pagination_fs').append('<li class="page-item cursor-pointer" id="dwelling-page'+i+'"><a class="page-link"  onclick="loadPageDwelling('+i.toString()+')" >'+i.toString()+'</a></li>');
     }
     $('#pagination_fs').append('<li class="page-item cursor-pointer"><a class="page-link" onclick="nextPageDwelling()">Next</a></li>');
 }
@@ -715,12 +1021,14 @@ $('#state_ds').change(function(){
     });
 });
 
-$('.photo-carousel-thrigger').click(function(){
+$('.photo-carousel-thrigger').click(function(e){
+    e.stopPropagation();
     $('body').prepend('\
     <div class="modal-bg">\
     </div>\
     ');
     $('body').addClass('overflow-hidden');
+    getScrollPos();
     // Find dwelling element clicked
     var page = $(this).data('id');
     var pageOffset = (currentPageDwelling - 1)*4;
@@ -744,10 +1052,10 @@ $('.photo-carousel-thrigger').click(function(){
                     '<li data-target="#carousel-pictures" data-slide-to="'+index+'" class="active"></li>' :
                     '<li data-target="#carousel-pictures" data-slide-to="'+index+'"></li>' ;
             var image_element = index == 0 ?    '<div class="carousel-item active">\
-                                                    <img class="d-block" src="'+images[key]['url']+'">\
+                                                    <img class="d-block mw-100 mh-100" src="'+images[key]['url']+'">\
                                                 </div>' :
                                                 '<div class="carousel-item">\
-                                                    <img class="d-block" src="'+images[key]['url']+'">\
+                                                    <img class="d-block mw-100 mh-100" src="'+images[key]['url']+'">\
                                                 </div>';
             carousel_indicator.append(image_list);
             carousel_container.append(image_element);
@@ -771,7 +1079,6 @@ $('.video-carousel-thrigger').click(function(){
     var pageOffset = (currentPageDwelling - 1)*4;
     // Dwelling videos array
     var videos = d_dwelling[page-1 + pageOffset]['videos'];
-    console.log(videos);
     // Check if dwelling has any video
     if (videos.length == 0){
         $('#dwell-no-photos-modal').appendTo('.modal-bg');
@@ -815,3 +1122,69 @@ $('body').on('click','.icon-container-modal',function(){
     $('.modal-bg').addClass('d-none');
     $('body').removeClass('overflow-hidden');
 });
+
+$('.dwelling-detail').mouseenter(function(){
+    var modal = $('#description-modal');
+    modal.addClass('d-fixed');
+    var offset = $(this).offset();
+    modal.css('left', offset.left+170+'px');
+    modal.css('top', offset.top+35+'px');
+    modal.removeClass('d-none');
+    var pageOffset = (currentPageDwelling - 1)*4;
+    var dwelling_number = $(this).data('id');
+
+    // Dwelling
+    if ($(this).hasClass('dwelling-comfort')){
+        modal.find('#comfort-text').removeClass('d-none');
+        var comforts_id = JSON.parse(d_dwelling[dwelling_number-1+pageOffset].comforts);
+        var comforts_name = [];
+    
+        for(var j = 0; j < comforts_id.array.length; j++){
+            var obj = comfort.find( (x) =>{
+                return x.id == parseInt(comforts_id.array[j]); 
+            } )
+            comforts_name.push(obj.name);
+        }
+    
+        var finalTextComforts = "";
+        for(var j = 0; j < comforts_name.length-1; j++){
+            finalTextComforts+= comforts_name[j] + ", ";
+        }
+        finalTextComforts += comforts_name[comforts_name.length-1];
+        modal.find('#comfort-text').children().find('span:nth-child(2)').text(finalTextComforts);
+    // Services
+    }else if($(this).hasClass('dwelling-services')){
+        var services_id = JSON.parse(d_dwelling[dwelling_number-1+pageOffset].services);
+        var services_name = [];
+    
+        for(var j = 0; j < services_id.array.length; j++){
+            var obj = service.find( (x) =>{
+                return x.id == parseInt(services_id.array[j]); 
+            } )
+            services_name.push(obj.name);
+        }
+    
+        var finalTextService = "";
+        for(var j = 0; j < services_name.length-1; j++){
+            finalTextService+= services_name[j] + ", ";
+        }
+        finalTextService += services_name[services_name.length-1];
+
+        modal.find('#services-text').children().find('span:nth-child(2)').text(finalTextService);
+        modal.find('#services-text').removeClass('d-none');
+    // Location
+    }else{
+        modal.find('#location-text').removeClass('d-none');
+        var location_text = d_dwelling[dwelling_number-1+pageOffset].location_details;
+        modal.find('#location-text').children().find('span:nth-child(2)').text(location_text);
+    }
+});
+
+$('.dwelling-detail').mouseleave(function(){
+    $('#description-modal > *').addClass('d-none');
+    $('#description-modal').removeClass('d-fixed');
+    $('#description-modal').addClass('d-none');
+    $('#description-modal').addClass('d-none');
+});
+
+

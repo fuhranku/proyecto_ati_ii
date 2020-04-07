@@ -200,6 +200,15 @@
 }
 
 #carousel-container{
+    width: 900px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-inner{
     position: relative;
     top: 50%;
     transform: translateY(-50%);
@@ -222,4 +231,33 @@ iframe > * {
 
 .w-540{
     height:360px;
+}
+
+.image-container{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 800px;
+    height: 500px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#description-modal{
+    position: absolute;
+    width: 350px;
+    height: fit-content;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    border: solid 3px #ffc000;
+    z-index: 1000;
+}
+
+.modal-border{
+    border: 1px solid #000;
+}
+
+.md-text{
+    font-size: 0.9em;
 }

@@ -88,17 +88,17 @@
     
         <div class="col-md-2 border border-warning" >
             <div class="row">
-                <div class="col-md-12">
-                    <a class="text-danger font-weight-bold" href="#"><u id="status_list_fs1">Venta</u></a>
+                <div class="col-md-12 pr-0">
+                    <a class="text-danger font-weight-bold md-text" href="#"><u id="status_list_fs1">Venta</u></a>
                 </div>
                 <div class="col-md-12">
                     <div class=" font-weight-bold text-underline cursor-pointer text-blue photo-carousel-thrigger sm-text" data-id=1> Ver Fotos </div>
                 </div>
                 <div class="col-md-12">
-                    <div class=" font-weight-bold text-underline cursor-pointer text-blue video-carousel-thrigger" data-id=1> Ver Videos </div>
+                    <div class=" font-weight-bold text-underline cursor-pointer text-blue video-carousel-thrigger sm-text" data-id=1> Ver Videos </div>
                 </div>
                 <div class="col-md-12">
-                    <a class=" font-weight-bold sm-text" onclick="return showDetails(1)" id="dwelling-show-details_list1" href="#"><u>Ver información Completa</u></a>
+                    <a class=" font-weight-bold text-underline cursor-pointer text-blue sm-text" target="_blank" onclick="return showDetails(1)" id="dwelling-show-details_list1" href="#"><u>Ver información Completa</u></a>
                 </div>
             </div>
         </div>
@@ -192,17 +192,17 @@
     
         <div class="col-md-2 border border-warning">
             <div class="row">
-                <div class="col-md-12">
-                    <a class="text-danger font-weight-bold" href="#"><u id="status_list_fs2">Venta</u></a>
+                <div class="col-md-12  pr-0">
+                    <a class="text-danger font-weight-bold md-text" href="#"><u id="status_list_fs2">Venta</u></a>
                 </div>
                 <div class="col-md-12">
                     <div class=" font-weight-bold text-underline cursor-pointer text-blue photo-carousel-thrigger sm-text" data-id=2> Ver Fotos </div>
                 </div>
                 <div class="col-md-12">
-                    <div class=" font-weight-bold text-underline cursor-pointer text-blue video-carousel-thrigger" data-id=2> Ver Videos </div>
+                    <div class=" font-weight-bold text-underline cursor-pointer text-blue video-carousel-thrigger sm-text" data-id=2> Ver Videos </div>
                 </div>
                 <div class="col-md-12">
-                    <a class=" font-weight-bold sm-text" onclick="return showDetails(2)" id="dwelling-show-details_list2" href="#"><u>Ver información Completa</u></a>
+                    <a class=" font-weight-bold text-underline cursor-pointer text-blue sm-text" target="_blank" onclick="return showDetails(2)" id="dwelling-show-details_list2"><u>Ver información Completa</u></a>
                 </div>
             </div>
         </div>
@@ -296,17 +296,17 @@
     
         <div class="col-md-2 border border-warning">
             <div class="row">
-                <div class="col-md-12">
-                    <a class="text-danger font-weight-bold" href="#"><u id="status_list_fs3">Venta</u></a>
+                <div class="col-md-12 pr-0">
+                    <a class="text-danger font-weight-bold md-text" href="#"><u id="status_list_fs3">Venta</u></a>
                 </div>
                 <div class="col-md-12">
                     <div class=" font-weight-bold text-underline cursor-pointer text-blue photo-carousel-thrigger sm-text" data-id=3> Ver Fotos </div>
                 </div>
                 <div class="col-md-12">
-                    <div class=" font-weight-bold text-underline cursor-pointer text-blue video-carousel-thrigger" data-id=3> Ver Videos </div>
+                    <div class=" font-weight-bold text-underline cursor-pointer text-blue video-carousel-thrigger sm-text" data-id=3> Ver Videos </div>
                 </div>
                 <div class="col-md-12">
-                    <a class=" font-weight-bold sm-text" onclick="return showDetails(3)" id="dwelling-show-details_list3" href="#"><u>Ver información Completa</u></a>
+                    <a class=" font-weight-bold text-underline cursor-pointer text-blue sm-text" target="_blank" onclick="return showDetails(3)"id="dwelling-show-details_list3" href="#"><u>Ver información Completa</u></a>
                 </div>
             </div>
         </div>
@@ -400,17 +400,17 @@
     
         <div class="col-md-2 border border-warning">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 md-text pr-0">
                     <a class="text-danger font-weight-bold" href="#"><u id="status_list_fs4">Venta</u></a>
                 </div>
                 <div class="col-md-12">
                     <div class=" font-weight-bold text-underline cursor-pointer text-blue photo-carousel-thrigger sm-text" data-id=4> Ver Fotos </div>
                 </div>
                 <div class="col-md-12">
-                    <div class=" font-weight-bold text-underline cursor-pointer text-blue video-carousel-thrigger" data-id=4> Ver Videos </div>
+                    <div class=" font-weight-bold text-underline cursor-pointer text-blue video-carousel-thrigger sm-text" data-id=4> Ver Videos </div>
                 </div>
                 <div class="col-md-12">
-                    <a class=" font-weight-bold sm-text" onclick="return showDetails(4)" id="dwelling-show-details_list4" href="#"><u>Ver información Completa</u></a>
+                    <a class=" font-weight-bold text-underline cursor-pointer text-blue sm-text" target="_blank" onclick="return showDetails(4)" id="dwelling-show-details_list4"><u>Ver información Completa</u></a>
                 </div>
             </div>
         </div>

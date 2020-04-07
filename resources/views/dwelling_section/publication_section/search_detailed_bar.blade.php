@@ -52,8 +52,8 @@
         </div>
         <div class="col-4">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="status_ds" id="exampleRadios1" value="0" checked>
-                <label class="form-check-label sm-text" for="exampleRadios1">
+                <input class="form-check-input" type="radio" name="status_ds" value="0" checked>
+                <label class="form-check-label sm-text" >
                   Alquiler
                 </label>
             </div>
@@ -61,8 +61,8 @@
 
         <div class="col-4">
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="status_ds" id="exampleRadios2" value="1">
-                <label class="form-check-label sm-text" for="exampleRadios2">
+                <input class="form-check-input" type="radio" name="status_ds" value="1">
+                <label class="form-check-label sm-text" >
                 Venta
                 </label>
               </div>
@@ -70,8 +70,8 @@
 
         <div class="col-4">
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="status_ds" id="exampleRadios3" value="2">
-              <label class="form-check-label sm-text" for="exampleRadios3">
+              <input class="form-check-input" type="radio" name="status_ds" value="2">
+              <label class="form-check-label sm-text" >
                 Alquiler y venta
               </label>
             </div>
@@ -86,8 +86,8 @@
         </div>
         <div class="col-md-4">
             <div class="form-check ">
-                <input class="form-check-input" type="radio" name="property_type_ds" id="exampleRadios1" value="0" checked>
-                <label class="form-check-label sm-text" for="exampleRadios1">
+                <input class="form-check-input" type="radio" name="property_type_ds" value="0" checked>
+                <label class="form-check-label sm-text">
                   Apartamento
                 </label>
             </div>
@@ -95,8 +95,8 @@
 
         <div class="col-md-3 ">
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="property_type_ds" id="exampleRadios2" value="1">
-                <label class="form-check-label sm-text" for="exampleRadios2">
+                <input class="form-check-input" type="radio" name="property_type_ds" value="1">
+                <label class="form-check-label sm-text">
                   Casa
                 </label>
               </div>
@@ -104,8 +104,8 @@
 
         <div class="col-md-5 ">
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="property_type_ds" id="exampleRadios3" value="2">
-              <label class="form-check-label sm-text" for="exampleRadios3">
+              <input class="form-check-input" type="radio" name="property_type_ds" value="2">
+              <label class="form-check-label sm-text" >
                 Apartamento y casa
               </label>
             </div>
@@ -212,16 +212,16 @@
         <div class="col-12">
             <span class="badge badge-info">Precio</span>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="price_ds" id="exampleRadios1" value="1" checked>
-                <label class="form-check-label" for="exampleRadios1">
+                <input class="form-check-input" type="radio" name="price_ds" value="1" checked>
+                <label class="form-check-label" >
                   Por rango
                 </label>
                 <input type="number" class="form-control" id="minimum_ds" placeholder="Mínimo">
                 <input type="number" class="form-control" id="maximum_ds" placeholder="Máximo">
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="price_ds" id="exampleRadios2" value="2">
-                <label class="form-check-label" for="exampleRadios2">
+                <input class="form-check-input" type="radio" name="price_ds" value="2">
+                <label class="form-check-label" >
                   Cualquier precio
                 </label>
             </div>

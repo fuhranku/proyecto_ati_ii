@@ -57,7 +57,7 @@ class SignInController extends Controller
                 $sessionInfo = Session::get('info');
                 
                 // return redirect()->back();
-                return view('main_sections.index');
+                return redirect()->route('index.get');
                 
             }else {
                 Session::put('error-login', true);
@@ -78,9 +78,7 @@ class SignInController extends Controller
     {
         Session::forget('info');
         Session::forget('info_specific');
-        // Session::flush();
-        // echo 'hi';
-        return redirect("/index");
+        return redirect()->route('index.get');
     }
 
     public function forgotForm(Request $request)

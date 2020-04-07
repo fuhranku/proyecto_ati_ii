@@ -12,7 +12,11 @@
         Iniciar sesión
         @endslot
         @slot('content')
+<<<<<<< HEAD
         <form method="post" action="{{ route('main.sign_in') }}">
+=======
+        <form method="post" action="{{ action('SignInController@login') }}">
+>>>>>>> FP-dev
             {{-- @component('components.general_error')
                 @slot('error_id')
                     error-sign-in
@@ -64,7 +68,6 @@
             
         @endcomponent
         <!-- sign in end -->
-
         @include('sign_in_section.sign_in_forgot')
 
         

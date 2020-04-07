@@ -17,7 +17,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 mt-2 pl-2 pr-2">
-                    <a class="btn btn-yellow text-center accept-btn" onclick="$('#dwell-no-photos-modal').addClass('d-none');" href="#">Aceptar</a>
+                    <a class="btn btn-yellow text-center accept-btn" href='#'>Aceptar</a>
                 </div>
             </div>
             </div>

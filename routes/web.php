@@ -17,9 +17,10 @@ Route::get('/', function () {
 
 
 // Inicio
-Route::get('/index', function () {
-    return view('main_sections.index');
-});
+Route::get('index', 'IndexController@index_get')->name('index.get');
+Route::post('index/quick_search', 'IndexController@quick_search')->name('index.quick_search');
+Route::post('index/detailed_search', 'IndexController@detailed_search')->name('index.detailed_search');
+Route::post('index/keyword_search', 'IndexController@keyword_search')->name('index.keyword_search');
 
 // Registro
 // Route::get('sign_up/{step?}', 'SignUpController@sign_up_get');
@@ -64,6 +65,7 @@ Route::post('dwelling/store_dwelling', 'Dwelling\PublishDwellingController@store
 Route::get('dwelling/search', 'Dwelling\SearchDwellingController@search_get')->name('dwelling.search');
 Route::post('dwelling/quick_search', 'Dwelling\SearchDwellingController@quick_search')->name('dwelling.quick_search');
 Route::post('dwelling/detailed_search', 'Dwelling\SearchDwellingController@detailed_search')->name('dwelling.detailed_search');
+Route::post('dwelling/keyword_search', 'Dwelling\SearchDwellingController@keyword_search')->name('dwelling.keyword_search');
 // Publication routes
 Route::get('dwelling/publication', 'Dwelling\PublicationDwellingController@search_get')->name('dwelling.publication_search');
 Route::post('dwelling/publication/quick_search', 'Dwelling\PublicationDwellingController@quick_search')->name('dwelling.publication_quick_search');
