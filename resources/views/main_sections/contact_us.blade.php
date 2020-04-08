@@ -81,31 +81,94 @@
                 </div>
 
                 <div class="border border-dark p-3">
-
                     <p class="text-center font-weight-bold">Formulario de contacto</p>
-    
-                    <form>
+                    
+                    {{-- <form> --}}
+                        {{-- @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div><br />
+                        @endif --}}
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Para</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        @component('components.field_error')
+                        @slot('grid_size')
+                            6
+                        @endslot
+                        @slot('error_row_id')
+                            error_row_email_contact
+                        @endslot
+                        @slot('error_ul_id')
+                            error_ul_email_contact
+                        @endslot
+                        @endcomponent
+                        <label for="email_contact">Para</label>
+                        <input type="email" class="form-control" name="email_contact" aria-describedby="emailHelp" placeholder="Correo">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Nombre y Apellido</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nombre y apellido">
+                        @component('components.field_error')
+                        @slot('grid_size')
+                            6
+                        @endslot
+                        @slot('error_row_id')
+                            error_row_name_contact
+                        @endslot
+                        @slot('error_ul_id')
+                            error_ul_name_contact
+                        @endslot
+                        @endcomponent
+                        <label for="name_contact">Nombre y Apellido</label>
+                        <input type="text" class="form-control" name="name_contact" placeholder="Nombre y apellido">
                     </div>
+
                     <div class="form-group">
-                        <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10" placeholder="Mensaje"></textarea>
+                        @component('components.field_error')
+                        @slot('grid_size')
+                            6
+                        @endslot
+                        @slot('error_row_id')
+                            error_row_message_contact
+                        @endslot
+                        @slot('error_ul_id')
+                            error_ul_message_contact
+                        @endslot
+                        @endcomponent
+                        <textarea class="form-control rounded-0" id="message_contact" name="message_contact" rows="10" placeholder="Mensaje"></textarea>
                     </div>
-    
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <button type="button" id="contact_us_button" class="btn btn-primary">Enviar</button>
                     </div>
-                    </form>
+                    {{-- </form> --}}
                 </div>
 
             </div>
             
         </div>
     </div>
-    
+    <script type="text/javascript">
+        var contact_post_url="{{ url('/send-mail-contact')}}";
+    </script>
+    @component('components.modal')
+        @slot('modal_id')
+            contact_confirm
+        @endslot
+        @slot('title')
+            Contáctenos
+        @endslot
+        @slot('content')
+        
+        <p>Se envió su mensaje</p>
+        <div class="button-group">
+            <br>
+                <button type="button" id="button-phone" data-toggle="modal" data-dismiss="modal" class="btn modal-button">
+                    Aceptar
+                </button>
+                <br>
+            </div>
+        @endslot
+    @endcomponent
+
 @endsection

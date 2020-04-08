@@ -116,3 +116,4 @@ Route::get('about_us', 'MainController@about_us')->name('main.about_us');
 
 // Idioma
 Route::get('languages', 'MainController@languages')->name('main.languages');
+Route::post('send-mail-contact', 'MainController@sendMailContact');

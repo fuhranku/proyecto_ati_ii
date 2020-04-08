@@ -162,3 +162,59 @@ $("#counterPark").keydown(function (e) {
       }
 });
 
+$('#contact_us_button').click(function(e) {
+    var data = {
+        type: 'contact'
+    };
+
+    data['email_contact'] = $('input[name="email_contact"]').val();
+    data['name_contact'] = $('input[name="name_contact"]').val();
+    data['message_contact'] = $.trim($("#message_contact").val());
+    
+    console.log(data);
+    // AJAX VALIDATION
+    e.preventDefault();
+    $.ajaxSetup({
+        headers:{
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+    
+    // Ajax POST request
+    $.ajax({
+        url: contact_post_url,
+        method: 'post',
+        data: data,
+        // dataType: "json",
+        success: function(data){
+            // If there's an error don't let go to next step
+        
+            if( !$.isEmptyObject((data.errors))){
+                validation = false;
+                // data.errors = JSON.parse(JSON.stringify(data.errors));                      
+                $.each((data.errors), function(key, value){
+                    console.log(key);
+                    console.log(value);
+                    
+                    $('#error_row_'+key).removeClass('d-none');
+                    $('#error_ul_'+key).empty();
+                    $.each(value, function(key2,value2){
+                        $('#error_ul_'+key).append('<li>'+value2+'</li>');
+                    })
+                });
+                $('#contact_confirm').modal("hide");
+            }
+            if (!$.isEmptyObject((data.success))) {
+                $('#error_row_email_contact').addClass('d-none');
+                $('#error_row_name_contact').addClass('d-none');
+                $('#error_row_message_contact').addClass('d-none');
+                $('input[name="email_contact"]').val('');
+                $('input[name="name_contact"]').val('');
+                $("#message_contact").val('');
+                
+                $('#contact_confirm').modal("show");
+                
+            }
+        }
+    })
+})
