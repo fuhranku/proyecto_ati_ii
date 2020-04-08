@@ -16,7 +16,11 @@
         <div class="row p-2">
             <div class="col-md-3"></div>
             <div class="col-md-3">
-                <span class="badge badge-info">Pais</span>
+                
+                
+                <span class="badge badge-label">Pais</span>
+
+
                 <select name="quick_countries[]" id="country_fs" class="form-control sm-text" >
                     <option class="disabled" value='' label="Pais" disabled selected value></option>
                     @foreach ($countries as $country)

@@ -9,13 +9,14 @@
             </div>
             <div class="col-md-6">
                 <p class="d-inline">Haga click aqui:</p>
-                <a href="{{ url('help') }}" class="text-blue d-inline" target="_blank"><u>Ver preguntas frecuentes</u></a>
+                <a href="{{ url('help') }}" class="text-blue d-inline font-weight-bold" target="_blank"><u>Ver preguntas frecuentes</u></a>
                 
             </div>
         </div>
 
         <div class="row m-3">
-            <div class="col-md-12 text-center">
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
                 <p class="font-weight-bold text-danger ">¿Cómo publico mi vivienda con ustedes?</p>
             </div>
         </div>
@@ -37,7 +38,7 @@
                 <p>2- Luego debes iniciar sesión, haciendo clic en: </p>
             </div>
             <div class="col-md-3 pl-0">
-                <button class="btn btn-warning text-white sign_in_button">Iniciar Sesión</button>
+                <button class="btn btn-warning text-white sign_in_button">Iniciar sesión</button>
             </div>
             <div class="col-md-2"></div>
         </div>
