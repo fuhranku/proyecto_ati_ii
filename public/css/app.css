@@ -252,6 +252,12 @@ The navbar toggle appears at this breakpoint */
     border-radius: 50%;
 } */
 
+
+/* .fa-search{
+    color:white;
+    background-color: #00BBF2;
+} */
+
 .fa:hover {
     opacity: 0.7;
 }

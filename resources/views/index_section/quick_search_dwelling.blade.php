@@ -16,11 +16,7 @@
         <div class="row p-2">
             <div class="col-md-3"></div>
             <div class="col-md-3">
-                
-                
-                <span class="badge badge-label">Pais</span>
-
-
+                <span class="badge badge-label bg-dark-blue text-white">Pais</span>
                 <select name="quick_countries[]" id="country_fs" class="form-control sm-text" >
                     <option class="disabled" value='' label="Pais" disabled selected value></option>
                     @foreach ($countries as $country)
@@ -29,7 +25,7 @@
                 </select>
             </div>
             <div class="col-md-3">
-                <span class="badge badge-info">Estado</span>
+                <span class="badge badge-label bg-dark-blue text-white">Estado</span>
                 <select name="quick_states[]" id="state_fs" class="form-control sm-text "  >
                     <option class="disabled" value='' label="Estado" disabled selected value></option>
                 </select>
@@ -40,7 +36,7 @@
         <div class="row p-2">
             <div class="col-md-3"></div>
             <div class="form-group col-3">
-                <span class="badge badge-info">Vivienda en</span>
+                <span class="badge badge-label bg-dark-blue text-white">Vivienda en</span>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="status_fs"  value="0" checked>
                     <label class="form-check-label sm-text" >
@@ -62,7 +58,7 @@
             </div>
 
             <div class="form-group col-3">
-                <span class="badge badge-info">Tipo de inmueble</span>
+                <span class="badge badge-label bg-dark-blue text-white">Tipo de inmueble</span>
                 <select name="quick_property_type[]" id="property_type_fs" class="form-control  sm-text" onchange=""   >
                     <option value="0">Apartamento</option>
                     <option value="1">Casa</option>
