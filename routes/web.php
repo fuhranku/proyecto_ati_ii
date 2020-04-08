@@ -48,6 +48,7 @@ Route::get('user_data/2/{type}', 'UserDataController@user_data_get_person_type')
 // Iniciar sesión
 Route::post('sign_in', 'SignInController@login')->name('main.sign_in');
 Route::post('forgot', 'SignInController@forgotForm');
+Route::post('password', 'SignInController@passwordInput');
 Route::get('sign_in', 'SignInController@getSessionInfo')->name('sign_in.get');
 Route::get('sign_in', 'SignInController@logout')->name('sign_in.logout');
 Route::get('sign_in/{userId}/{token}', 'SignInController@forgot')->name('sign_in.forgot');

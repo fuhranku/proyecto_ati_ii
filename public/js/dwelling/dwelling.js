@@ -232,8 +232,6 @@ $('#publish-dwelling-currency-dropdown').change(function(){
 
 
 $(document).ready(function(){
-    $('#radio-btn-video-1').prop('checked',true);
-
     var counter = 0;
     $('#image-drop-container').bind({
         dragenter: function(e){
@@ -298,6 +296,8 @@ $(document).ready(function(){
             createVideoFormData(video);
         }
     });
+
+    $('.radio-btn-video-publish[value="1"]').prop('checked',true);
 
     // Initialize sign_up screen phones input tag
     mobile_input = document.querySelector("#mobile-publish-dwelling");
@@ -810,11 +810,25 @@ function validatePhones(){
         $('#error_row_landline_dwelling').removeClass('d-none');
         $('#error_ul_landline_dwelling').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
     }
+    // Validate mobile number
+    if( $('#mobile-checkbox-modify-dwelling').is(':checked') && !mobile_input_modify.isValidNumber()){
+        validation = false;
+        var errorCode = mobile_input_modify.getValidationError();
+        $('#error_row_mobile_dwelling').removeClass('d-none');
+        $('#error_ul_mobile_dwelling').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
+    }
+    // Validate landline number
+    if ($('#landline-checkbox-modify-dwelling').is(':checked') && !landline_input_modify.isValidNumber()){
+        validation = false;
+        var errorCode = landline_input_modify.getValidationError();
+        $('#error_row_landline_dwelling').removeClass('d-none');
+        $('#error_ul_landline_dwelling').append('<li>'+telephoneErrorMap[errorCode]+'</li>');
+    }
     return validation;
 }
 
 
-$('#accept-publish-modal').click(function(){3
+$('#accept-publish-modal').click(function(){
 
     var action = $("input[name='success-modal']:checked").val();
     switch(action){

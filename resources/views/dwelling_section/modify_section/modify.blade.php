@@ -1,6 +1,6 @@
 @extends('templates.layout')    
 
-@section('title','Index')
+@section('title','Modificar')
 
 @section('content')
 <section>
@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10 text-center">
-                <p class="font-weight-bold ml-4 mt-4">Verifique sus datos y modifique los deseados</p>
+                <p class="font-weight-bold ml-4 mt-4">Proporcione los datos especificados a continuación</p>
             </div>
             <div class="col-md-2"></div>
         </div>

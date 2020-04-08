@@ -1,6 +1,6 @@
 @extends('templates.layout')   
 
-@section('title','Index')
+@section('title','Datos de usuario')
 
 @section('content')
     @include('user_data_section.panel')

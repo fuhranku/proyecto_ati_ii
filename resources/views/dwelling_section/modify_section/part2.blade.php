@@ -15,7 +15,7 @@
             <div class="position-absolute centered-overlay d-none" id="image-drop-text"> Arrastra una imagen aquí </div>
             <div class="row m-3">
                 <div class="col-md-12 text-center font-weight-bold">
-                    <p>Arrastre las fotos que desea cargar en cada uno de los recuadros</p>
+                    <p>Arrastre las fotos que desea cargar</p>
                 </div>
             </div>
 
@@ -72,7 +72,7 @@
                 <div class="col-md-2"></div>
                 <div class="form-group col-md-4">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="radio-btn-video" value=1>
+                        <input class="form-check-input radio-btn-video-modify" type="radio" name="radio-btn-video" value=1>
                         <label class="form-check-label sm-text">
                           Sí
                         </label>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="form-group col-md-4">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="radio-btn-video" value=0>
+                        <input class="form-check-input radio-btn-video-modify" type="radio" name="radio-btn-video" value=0>
                         <label class="form-check-label sm-text">
                           No
                         </label>
@@ -102,9 +102,9 @@
                 {{-- End Preloader --}}
             <div class="position-absolute centered-overlay d-none" id="video-drop-text"> Arrastra un video aquí </div>
                 <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-4">
-                        <span class="badge badge-info">Cantidad de videos</span>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <span class="badge badge-label bg-dark-blue text-white">Cantidad de videos</span>
                     </div>
                     
                     <div class="col-md-5">

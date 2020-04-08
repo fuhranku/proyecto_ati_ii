@@ -186,7 +186,12 @@ class PublishDwellingController extends Controller
         $dwelling->transport_details = $data['whats_next_to_dwelling'];
         $dwelling->location_details = $data['precise_dwelling_location'];
         $dwelling->price = $data['input_price'];
-        $dwelling->currency_id = $data['currency_select'] === "other" ? 3 : $data['currency_select'];
+        if($data['currency_select'] === "other" ){
+            $dwelling->currency_id =  3 ;
+            $dwelling->currency_name = $data['other_currency_input'];
+        }else{
+            $dwelling->currency_id =  $data['currency_select'];
+        }
         //Contact data
         $dwelling->contact_name = $data['name_contact'];
         $dwelling->contact_lastname = $data['lastname_contact'];

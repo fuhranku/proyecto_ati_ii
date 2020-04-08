@@ -3,7 +3,7 @@
 <div class="col-md-2">
     <div class="row">
         <div class="col-md-12 ">
-            <span class="badge badge-info">Tipo de inmueble</span>
+            <span class="badge badge-label bg-dark-blue text-white">Tipo de inmueble</span>
         </div>
     </div>
 
@@ -31,7 +31,7 @@
 
     <div class="row">
         <div class="col-md-12 ">
-            <span class="badge badge-info">Cantidad</span>
+            <span class="badge badge-label bg-dark-blue text-white">Cantidad</span>
         </div>
     </div>
 
@@ -105,6 +105,11 @@
 
 <div class="col-md-2">
     <div class="row">
+        <div class="col-md-12 ">
+            <span class="badge badge-label bg-dark-blue text-white">Comodidades</span>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-12 form-check">
             <ul class="checkbox-dropdown" id='checkbox-dropdown-comfort'>
                 <li class="dropdown mt-2">
@@ -132,6 +137,11 @@
 </div>
 
 <div class="col-md-2">
+    <div class="row">
+        <div class="col-md-12 ">
+            <span class="badge badge-label bg-dark-blue text-white">Servicios</span>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-12 form-check">
             <ul class="checkbox-dropdown" >

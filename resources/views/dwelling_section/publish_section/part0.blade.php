@@ -1,8 +1,8 @@
 {{-- Primera parte: Dropdowns --}}
 <div class="row p-2">
     <div class="col-md-2">
-        <div class="row"> 
-            <span class="badge badge-info">Continente</span>
+        <div class="row mr-1"> 
+            <span class="badge badge-label bg-dark-blue text-white">Continente</span>
             <select id="continent-select" class="form-control sm-text">
                 <option class="disabled" value='' label="Continente" disabled selected value></option>
                 @foreach($continents as $continent)
@@ -23,8 +23,8 @@
         @endcomponent
     </div>
     <div class="col-md-2">
-        <div class="row">
-            <span class="badge badge-info">Pais</span>
+        <div class="row mr-1">
+            <span class="badge badge-label bg-dark-blue text-white">Pais</span>
             <select id="country-select" class="form-control  sm-text">
                 <option class="disabled" value='' label="País" disabled selected value></option>
             </select>
@@ -43,8 +43,8 @@
     </div>
 
     <div class="col-md-2">
-        <div class='row'>
-            <span class="badge badge-info">Estado</span>
+        <div class='row mr-1'>
+            <span class="badge badge-label bg-dark-blue text-white">Estado</span>
             <select id="state-select" class="form-control sm-text">
                 <option class="disabled" value='' label="Estado" disabled selected value></option>
             </select>
@@ -63,8 +63,8 @@
     </div>
 
     <div class="col-md-2">
-        <div class="row">
-            <span class="badge badge-info">Ciudad</span>
+        <div class="row mr-1">
+            <span class="badge badge-label bg-dark-blue text-white">Ciudad</span>
             <select id="city-select" class="form-control sm-text">
                 <option class="disabled" value='' label="Ciudad" disabled selected value></option>
             </select>
@@ -85,7 +85,7 @@
     <div class="col-md-2">
         <div class="row">
             <div class="col-md-12 ">
-                <span class="badge badge-info">Vivienda en</span>
+                <span class="badge badge-label bg-dark-blue text-white">Vivienda en</span>
             </div>
         </div>
         <div class="row">

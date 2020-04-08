@@ -140,6 +140,9 @@ class PublicationDwellingController extends Controller
         $json_dwelling = json_decode(json_encode($dwelling->dwellings), true);
         //$json_dwelling = json_decode($json_dwelling);
             foreach ($json_dwelling as $key => $value){
+                $currency_id = $json_dwelling[$key]['currency_id'];
+                $currency_id == 3 ? $json_dwelling[$key]['currency_name'] = $json_dwelling[$key]['currency_name'] :
+                                    $json_dwelling[$key]['currency_name'] = Currency::find($currency_id)->name;
                 $json_dwelling[$key]['images'] = Dwelling::find($json_dwelling[$key]['id'])->images;
         }
         // Add videos
@@ -388,6 +391,9 @@ class PublicationDwellingController extends Controller
         $json_dwelling = json_decode(json_encode($dwelling->dwellings), true);
         //$json_dwelling = json_decode($json_dwelling);
             foreach ($json_dwelling as $key => $value){
+                $currency_id = $json_dwelling[$key]['currency_id'];
+                $currency_id == 3 ? $json_dwelling[$key]['currency_name'] = $json_dwelling[$key]['currency_name'] :
+                                    $json_dwelling[$key]['currency_name'] = Currency::find($currency_id)->name;
                 $json_dwelling[$key]['images'] = Dwelling::find($json_dwelling[$key]['id'])->images;
         }
         // Add videos

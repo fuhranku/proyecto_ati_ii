@@ -1,6 +1,6 @@
 @extends('templates.layout')   
 
-@section('title','Index')
+@section('title','Registro')
 
 @section('content')
     @include('sign_up_section.panel')

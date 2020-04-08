@@ -82,11 +82,11 @@
                 <div class="row mb-3">
                     <div class="col-md-1"></div>
                     <div class="col-md-5 form-check">
-                        <input type="checkbox" class="form-check-input" id="mobile-checkbox-publish-dwelling" name="phone-checkbox-publish-dwelling" value="mobile">
+                        <input type="checkbox" class="form-check-input" id="mobile-checkbox-modify-dwelling" name="phone-checkbox-publish-dwelling" value="mobile">
                         <label class="form-check-label bg-yellow text-white tlf-checkbox">Móvil</label>
                     </div>
                     <div class="col-md-5 form-check">
-                        <input type="checkbox" class="form-check-input" id="landline-checkbox-publish-dwelling" name="phone-checkbox-publish-dwelling" value="landline">
+                        <input type="checkbox" class="form-check-input" id="landline-checkbox-modify-dwelling" name="phone-checkbox-publish-dwelling" value="landline">
                         <label class="form-check-label bg-yellow text-white tlf-checkbox">Fijo</label>
                     </div>
                     <div class="col-md-1"></div>
@@ -106,7 +106,7 @@
 
                 <div class="row m-3 d-none" id='input-publish-dwelling-mobile'>
                     <div class="col-md-5"> 
-                    <input class="phone-step0 form-control" name="mobile_dwelling" type="tel" id='mobile-publish-dwelling'>
+                    <input class="phone-step0 form-control" name="mobile_dwelling" type="tel" id='mobile-modify-dwelling'>
                     </div>
                 </div>
 
@@ -124,7 +124,7 @@
 
                 <div class="row landline-phone m-3 d-none" id='input-publish-dwelling-landline'>
                     <div class="col-md-5"> 
-                    <input class="phone-step0 form-control" name="landline_dwelling" type="tel" id='landline-publish-dwelling'>
+                    <input class="phone-step0 form-control" name="landline_dwelling" type="tel" id='landline-modify-dwelling'>
                     </div>
                     <div class="col-sm-2 font-weight-bold my-auto">
                             Ext

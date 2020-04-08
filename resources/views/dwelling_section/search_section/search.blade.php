@@ -1,12 +1,17 @@
 @extends('templates.layout')
 
-@section('title','Index')
+@if($search_type == 0)
+    @section('title','Ver publicaciones')
+@else
+    @section('title','Buscar vivienda')
+@endif
 
 @section('content')
 <section id="search-section">
     <div class="container">
         <div class="row">
             {{-- Modals --}}
+            @include('dwelling_section.search_section.modals.search_modal_media')
             @include('dwelling_section.search_section.modals.search_modal_location')
             @include('dwelling_section.search_section.modals.search_modal_service')
             @include('dwelling_section.search_section.modals.search_modal_details')

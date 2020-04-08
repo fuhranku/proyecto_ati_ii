@@ -76,6 +76,10 @@ h1{
     width: 30% !important;
 }
 
+.w-40{
+    width: 40% !important;
+}
+
 .break-work{
     word-wrap:break-word;
 }

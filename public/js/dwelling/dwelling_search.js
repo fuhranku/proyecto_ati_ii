@@ -582,7 +582,7 @@ function loadPageDwelling(page){
         var roomBath = d_dwelling[i + pageOffset].rooms.toString() + " habitaciones, " 
                     + d_dwelling[i + pageOffset].bathrooms.toString() + " baños";
         // $('#price_photo_fs'+(i+1).toString()).text(d_dwelling[i + pageOffset].price);
-        $('#price_photo_fs'+(i+1).toString()).text(Intl.NumberFormat('de-DE').format(d_dwelling[i + pageOffset].price));
+        $('#price_photo_fs'+(i+1).toString()).text(Intl.NumberFormat('de-DE').format(d_dwelling[i + pageOffset].price)+' '+d_dwelling[i + pageOffset].currency_name);
         $('#prop_type_photo_fs'+(i+1).toString()).text(propMap[d_dwelling[i + pageOffset].property_type]);
         $('#country_photo_fs'+(i+1).toString()).text(d_dwelling[i + pageOffset].country_name);
         $('#state_photo_fs'+(i+1).toString()).text(d_dwelling[i + pageOffset].state_name);
@@ -791,53 +791,55 @@ $('#state_ds').change(function(){
     });
 });
 
-$('.photo-carousel-thrigger').click(function(e){
+$('.photo-modal-thrigger').click(function(e){
     e.stopPropagation();
-    $('body').prepend('\
-    <div class="modal-bg">\
-    </div>\
-    ');
-    $('body').addClass('overflow-hidden');
-    getScrollPos();
-    // Find dwelling element clicked
-    var page = $(this).data('id');
-    var pageOffset = (currentPageDwelling - 1)*4;
-    // Dwelling photos array
-    var images = d_dwelling[page-1 + pageOffset]['images'];
-    // Check if dwelling has any image
-    console.log(images);
-    if (images.length == 0){
-        $('#dwell-no-photos-modal').appendTo('.modal-bg');
-        $('#dwell-no-photos-modal').removeClass('d-none');
-    }else{
-        $('.modal-bg').append('<div class="icon-container-modal" id="close-btn-modal-carousel"><i class="fas fa-times close-btn"></i></div>');
-        // Dinamically put photos into carousel
-        var carousel_indicator = $(".carousel-indicators");
-        var carousel_container = $(".carousel-inner");
-        var index = 0;
-        $("#carousel-container").appendTo('.modal-bg');
-        $("#carousel-container").removeClass('d-none');
-        $.each(images, function(key,value){
-            var image_list = index == 0 ?
-                    '<li data-target="#carousel-pictures" data-slide-to="'+index+'" class="active"></li>' :
-                    '<li data-target="#carousel-pictures" data-slide-to="'+index+'"></li>' ;
-            var image_element = index == 0 ?    '<div class="carousel-item active">\
-                                                    <img class="d-block mw-100 mh-100" src="'+images[key]['url']+'">\
-                                                </div>' :
-                                                '<div class="carousel-item">\
-                                                    <img class="d-block mw-100 mh-100" src="'+images[key]['url']+'">\
-                                                </div>';
-            carousel_indicator.append(image_list);
-            carousel_container.append(image_element);
-            index++;
-        });
-    }   
-    // Dwelling videos array
-    var videos = d_dwelling[page-1 + pageOffset]['videos'];
+    if (!$.contains(document, $('.modal-bg'))) {
+        $('body').prepend('\
+        <div class="modal-bg">\
+        </div>\
+        ');
+    }
+    // $('body').addClass('overflow-hidden');
+    // getScrollPos();
+    // // Find dwelling element clicked
+    // var page = $(this).data('id');
+    // var pageOffset = (currentPageDwelling - 1)*4;
+    // // Dwelling photos array
+    // var images = d_dwelling[page-1 + pageOffset]['images'];
+    // // Check if dwelling has any image
+    // console.log(images);
+    // if (images.length == 0){
+    //     $('#dwell-no-photos-modal').appendTo('.modal-bg');
+    //     $('#dwell-no-photos-modal').removeClass('d-none');
+    // }else{
+    //     $('.modal-bg').append('<div class="icon-container-modal" id="close-btn-modal-carousel"><i class="fas fa-times close-btn"></i></div>');
+    //     // Dinamically put photos into carousel
+    //     var carousel_indicator = $(".carousel-indicators");
+    //     var carousel_container = $(".carousel-inner");
+    //     var index = 0;
+    //     $("#carousel-container").appendTo('.modal-bg');
+    //     $("#carousel-container").removeClass('d-none');
+    //     $.each(images, function(key,value){
+    //         var image_list = index == 0 ?
+    //                 '<li data-target="#carousel-pictures" data-slide-to="'+index+'" class="active"></li>' :
+    //                 '<li data-target="#carousel-pictures" data-slide-to="'+index+'"></li>' ;
+    //         var image_element = index == 0 ?    '<div class="carousel-item active">\
+    //                                                 <img class="d-block mw-100 mh-100" src="'+images[key]['url']+'">\
+    //                                             </div>' :
+    //                                             '<div class="carousel-item">\
+    //                                                 <img class="d-block mw-100 mh-100" src="'+images[key]['url']+'">\
+    //                                             </div>';
+    //         carousel_indicator.append(image_list);
+    //         carousel_container.append(image_element);
+    //         index++;
+    //     });
+    // }   
+    // // Dwelling videos array
+    // var videos = d_dwelling[page-1 + pageOffset]['videos'];
 
 });
 
-$('.video-carousel-thrigger').click(function(){
+$('.video-modal-thrigger').click(function(){
     $('body').prepend('\
     <div class="modal-bg">\
     </div>\
@@ -1081,6 +1083,7 @@ function deleteDwelling(){
     $.ajax({
         url: delete_post_url,
         method: 'post',
+        async: false,
         data: data,
         success: function(data){
             console.log(data);
@@ -1125,5 +1128,6 @@ $('.dwelling-icon').click(function(){
     else if ($(this).hasClass('delete-icon')){
         $('#dwelling-select-photo-cb'+page).prop('checked',true);
         deleteDwelling();
+        $('#dwelling-select-photo-cb'+page).prop('checked',false);
     }
 });

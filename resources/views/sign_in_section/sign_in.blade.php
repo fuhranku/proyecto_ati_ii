@@ -12,6 +12,7 @@
         Iniciar sesión
         @endslot
         @slot('content')
+        {{-- <form method="post" action="{{ route('main.sign_in') }}"> --}}
         <form method="post" action="{{ action('SignInController@login') }}">
             {{-- @component('components.general_error')
                 @slot('error_id')
@@ -65,10 +66,10 @@
         @endcomponent
         <!-- sign in end -->
         @include('sign_in_section.sign_in_forgot')
-        @include('sign_in_section.sign_in_forgot_conf')
 
         
 </div>
 <script type="text/javascript">
-    var forgot_post_url = "{{ url('/forgot')}}";    
+    var forgot_post_url = "{{ url('/forgot')}}";
+    var pass_post_url = "{{ url('/password')}}";
 </script>

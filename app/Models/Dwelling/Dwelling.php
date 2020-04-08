@@ -45,6 +45,7 @@ class Dwelling extends Model
         'location_details',
         'price',
         'currency_id',
+        'currency_name',
         //Contact Data
         'contact_name',
         'contact_lastname',
