@@ -92,12 +92,12 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class=" font-weight-bold cursor-pointer text-blue photo-carousel-thrigger" data-id={{$index}}>&bull; <u>Ver Fotos</u> </div>
+                    <div class=" font-weight-bold cursor-pointer text-blue photo-modal-thrigger" data-id={{$index}}>&bull; <u>Ver Fotos</u> </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class=" font-weight-bold cursor-pointer text-blue video-carousel-thrigger" data-id={{$index}}>&bull; <u>Ver Videos</u> </div>
+                    <div class=" font-weight-bold cursor-pointer text-blue video-modal-thrigger" data-id={{$index}}>&bull; <u>Ver Videos</u> </div>
                 </div>
             </div>
         </div>

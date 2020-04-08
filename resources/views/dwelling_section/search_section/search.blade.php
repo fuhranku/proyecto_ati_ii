@@ -11,6 +11,7 @@
     <div class="container">
         <div class="row">
             {{-- Modals --}}
+            @include('dwelling_section.search_section.modals.search_modal_media')
             @include('dwelling_section.search_section.modals.search_modal_location')
             @include('dwelling_section.search_section.modals.search_modal_service')
             @include('dwelling_section.search_section.modals.search_modal_details')

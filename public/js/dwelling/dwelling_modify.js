@@ -1,4 +1,5 @@
 console.log(dwelling_data);
+var mobile_input_modify, landline_input_modify;
 
 $.each($("input[name='vivienda-en-radio-btn']"),function(){
     if(dwelling_data['status'] == parseInt($(this).val())){
@@ -38,17 +39,17 @@ $.each($('input[name="services"]'),function(){
 
 $(document).ready(function(){
         // Initialize sign_up screen phones input tag
-        mobile_input = document.querySelector("#mobile-modify-dwelling");
-        landline_input = document.querySelector("#landline-modify-dwelling");
+        mobile_input_modify = document.querySelector("#mobile-modify-dwelling");
+        landline_input_modify = document.querySelector("#landline-modify-dwelling");
         // Initialize natural mobile number input
-        mobile_input = window.intlTelInput(mobile_input,{
+        mobile_input_modify = window.intlTelInput(mobile_input_modify,{
             utilsScript: utilsScript,
             onlyCountries: ['es','ve'],
             separateDialCode:true,
             initialCountry:""
         });
         // Initialize natural legal number input
-        landline_input = window.intlTelInput(landline_input,{
+        landline_input_modify = window.intlTelInput(landline_input_modify,{
             utilsScript: utilsScript,
             onlyCountries: ['es','ve'],
             separateDialCode:true,
@@ -67,7 +68,7 @@ $(document).ready(function(){
     });
     // Load videos
     if( !dwelling_data['videos'].length){
-        $('input[name="radio-btn-video"][value="0"]').prop('checked',true);
+        $('.radio-btn-video-modify[value="0"]').prop('checked',true);
         $('#video-info-yes').addClass('d-none');
     }else{
         $.each(dwelling_data['videos'], function(key,value){
@@ -111,14 +112,14 @@ $(document).ready(function(){
     });
     // Load mobile  telephone number
     if (dwelling_data['contact_mobilenumber']){
-        mobile_input.setNumber(dwelling_data['contact_mobilenumber']);
-        $('#mobile-checkbox-publish-dwelling').prop('checked',true);
+        mobile_input_modify.setNumber(dwelling_data['contact_mobilenumber']);
+        $('#mobile-checkbox-modify-dwelling').prop('checked',true);
         $('#input-publish-dwelling-mobile').removeClass('d-none');
     }
     // Load landline telephone number
     if (dwelling_data['contact_landlinenumber']){
-        landline_input.setNumber(dwelling_data['contact_landlinenumber']);
-        $('#landline-checkbox-publish-dwelling').prop('checked',true);
+        landline_input_modify.setNumber(dwelling_data['contact_landlinenumber']);
+        $('#landline-checkbox-modify-dwelling').prop('checked',true);
         $('#input-publish-dwelling-landline').removeClass('d-none');
         if(dwelling_data['contact_landlinenumberEXT']){
             $('input[name="landline_ext_dwelling"]').val(dwelling_data['contact_landlinenumberEXT']);
@@ -228,8 +229,8 @@ $('#modify_btn_dwelling').click(function(){
         lastname_contact: $('#lastname-contact-publish-dwelling-input').val(),
         email_contact: $('#email-contact-publish-dwelling-input').val(),
         phone_checkbox: $('input[name="phone-checkbox-publish-dwelling"]:checked').val(),
-        mobile_phone: mobile_input.getNumber(),
-        landline_phone: landline_input.getNumber(),
+        mobile_phone: mobile_input_modify.getNumber(),
+        landline_phone: landline_input_modify.getNumber(),
         ext_landline_phone: $("input[name='landline_ext_dwelling']").val(),
         contact_days_checkbox: contact_days_array,
         contact_hour_array: hour_array,

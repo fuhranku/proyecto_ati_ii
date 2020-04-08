@@ -275,3 +275,20 @@ iframe > * {
     margin-bottom: 5px;
     width: 100%;
 }
+
+.modal-images-container{
+    display:flex;
+    flex-direction: column;
+}
+
+.modal-images-container>.row{
+    justify-content: center;
+}
+
+.modal-images-container>.row:not(:first-child){
+    margin-top:20px;
+}
+
+.row>.image-box:not(:first-child){
+    margin-left:25px;
+}
