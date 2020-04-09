@@ -1123,6 +1123,10 @@ function disableDwelling(){
 
     console.log(selected_dwellings);
 
+    selected_dwellings = Array.from(new Set(selected_dwellings)); //remove duplicates
+
+    console.log(selected_dwellings);
+
     var data = {};
     data["selected_dwellings"] = selected_dwellings;
 
@@ -1134,29 +1138,10 @@ function disableDwelling(){
         success: function(data){
 
             $.each($("input[name='select-dwelling']:checked"), function(){
-
-                console.log("asdasd");
-
-                $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').removeClass('d-none');
-                $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').css('opacity','1');
-                $(this).parent().parent().children('.list-photo-overlay').removeClass('d-none');
-                $(this).parent().parent().children('.list-photo-overlay').css('opacity','1');
-
-                var dwell_id = $(this).data("id");
-
-                console.log("DWELLASDA  ID: ",dwell_id);
-
-                console.log("disable-icon"+dwell_id);
-                $(".disable-icon"+dwell_id.toString()).removeClass('d-none');
-                $(".enable-icon"+dwell_id.toString()).addClass('d-none');
-
                 $(this).prop('checked',false);
-
-                console.log("asdasd2");
-            
             });
 
-            console.log(data);
+            // console.log(data);
 
             for(var i = 0; i < selected_dwellings.length; i++){
 
@@ -1169,9 +1154,8 @@ function disableDwelling(){
                 }).enable = 0;
             }
 
-            
-            
-            //$("input[name='select-dwelling']:checked").prop("checked",false);
+            loadPageDwelling(currentPageDwelling);
+
         }
     });    
 
@@ -1189,6 +1173,10 @@ function enableDwelling(){
 
     console.log(selected_dwellings);
 
+    selected_dwellings = Array.from(new Set(selected_dwellings)); //remove duplicates
+
+    console.log(selected_dwellings);
+
     var data = {};
     data["selected_dwellings"] = selected_dwellings;
 
@@ -1198,20 +1186,10 @@ function enableDwelling(){
         data: data,
         async:false,
         success: function(data){
-            $.each($("input[name='select-dwelling']:checked"), function(){
-                $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').addClass('d-none');
-                $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').css('opacity','0');
-                $(this).parent().parent().children('.list-photo-overlay').removeClass('d-none');
-                $(this).parent().parent().children('.list-photo-overlay').css('opacity','1');
             
-                var dwell_id = $(this).data("id");
-
-                $(".disable-icon"+dwell_id).removeClass('d-none');
-                $(".enable-icon"+dwell_id).addClass('d-none');
-
+            $.each($("input[name='select-dwelling']:checked"), function(){
                 $(this).prop('checked',false);
             });
-            console.log(data);
 
             for(var i = 0; i < selected_dwellings.length; i++){
 
@@ -1223,6 +1201,8 @@ function enableDwelling(){
                     return x.id == selected_dwellings[i];
                 }).enable = 1;
             }
+
+            loadPageDwelling(currentPageDwelling);
         }
     });   
 
@@ -1237,6 +1217,8 @@ function deleteDwelling(){
     $.each($("input[name='select-dwelling']:checked"), function(){
         selected_dwellings.push($(this).val());
     });
+
+    selected_dwellings = Array.from(new Set(selected_dwellings)); //remove duplicates
 
     console.log("VIVIENDAS A BORRAR:");
     console.log(selected_dwellings);
@@ -1284,21 +1266,22 @@ $('.dwelling-icon').click(function(){
     var pageOffset = (currentPageDwelling - 1)*4;
     var dwelling_id = d_dwelling[page-1 + pageOffset]['id'];
     if( $(this).hasClass('enable-icon'+page)){
-        $('.dwelling-select-photo-cb'+page+":first").prop('checked',true);
+        $('.dwelling-select-photo-cb'+page).prop('checked',true);
         enableDwelling();
-        $('.dwelling-select-photo-cb'+page+":first").prop('checked',false);
+        $('.dwelling-select-photo-cb'+page).prop('checked',false);
     }
     else if ($(this).hasClass('modify-icon')){
         window.open(base_url+'/dwelling/modify/'+dwelling_id,'_blank');
     }
     else if ($(this).hasClass('delete-icon')){
-        $('.dwelling-select-photo-cb'+page+":first").prop('checked',true);
+        $('.dwelling-select-photo-cb'+page).prop('checked',true);
         deleteDwelling();
-        $('.dwelling-select-photo-cb'+page+":first").prop('checked',false);
+        $('.dwelling-select-photo-cb'+page).prop('checked',false);
     }
     else if($(this).hasClass('disable-icon'+page)){
-        $('.dwelling-select-photo-cb'+page+":first").prop('checked',true);
+
+        $('.dwelling-select-photo-cb'+page).prop('checked',true);
         disableDwelling();
-        $('.dwelling-select-photo-cb'+page+":first").prop('checked',false);
+        $('.dwelling-select-photo-cb'+page).prop('checked',false);
     }
 });

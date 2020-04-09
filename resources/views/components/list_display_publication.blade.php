@@ -3,7 +3,7 @@
     <div class="list-photo-overlay d-none"></div>
 
     <div class="col-md-1 border border-warning input-list-select-dwelling">
-            <input onchange="onSelectDwelling()" value="dwelling3" name="select-dwelling" data-id={{$index}} type="checkbox"  class="dwelling-select-photo-cb{{$index}} overlay-input-dwelling">
+        <input onchange="onSelectDwelling()" value="dwelling3" name="select-dwelling" data-id={{$index}} type="checkbox" class="dwelling-select-photo-cb{{$index}} overlay-input-dwelling">
     </div>
 
     <div class="col-md-1 border border-warning" >
