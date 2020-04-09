@@ -2,24 +2,24 @@
     <div class="list-photo-overlay d-none"></div>
     <div class="row">
         <div class="col-md-6 mt-3">
-            <img id={{'image-dwelling-photo'.$index}} class="border border-primary font-weight-bold text-center dwelling-image" src="" alt="">
-        </div>
-
-        <div class="col-md-6 mt-3">
-            @if ($search_type == '0')
-                <div class="row  position-relative select-dwelling">
-                    <div class="col-md-9 pl-5">
-                        <label class="form-check-label font-weight-bold" for="dwelling-select-cb3">
-                            Seleccionar
-                        </label>
-                    </div>
-                    <div class="col-md-3">
+            <div class="row">
+                @if ($search_type == '0')
+                    <div class="col-md-2 mt-3">
                         <div class="form-check">
                             <input class="form-check-input" onchange="onSelectDwelling()" value="dwelling3" name="select-dwelling" data-id={{$index}} type="checkbox" id={{"dwelling-select-photo-cb".$index}}>
                         </div>
                     </div>
-                </div>
-            @endif
+                    <div class="col-md-10 mt-3 pl-0">
+                        <img id={{'image-dwelling-photo'.$index}} class="border border-primary font-weight-bold text-center dwelling-image" src="" alt="">
+                    </div>
+                @else
+                    <div class="col-md-12 mt-3">
+                        <img id={{'image-dwelling-photo'.$index}} class="border border-primary font-weight-bold text-center dwelling-image" src="" alt="">
+                    </div>
+                @endif
+            </div>
+        </div>
+        <div class="col-md-6 mt-3">
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-uppercase text-underline text-blue font-weight-bold" id={{'prop_type_photo_fs'.$index}}>Apartamento</div>
@@ -38,6 +38,7 @@
                     <img id={{'delete-dwelling'.$index}} class="dwelling-icon delete-icon cursor-pointer" data-id={{$index}} src="{{url('/images/delete_icon.png')}}">
                 </div>
             @endif
+        
         </div>
     </div>
     

@@ -98,6 +98,9 @@ $(document).ready(function(){
     $('#precise_dwelling_location').val(dwelling_data['location_details']);
     // Load money price
     $('#publish-dwelling-input-price').val(dwelling_data['price']);
+    if (dwelling_data['currency_id'] == 3){
+        $('#dwelling-other-currency-input').val(dwelling_data['currency_name']);
+    }
     // Set currency option
     $('#publish-dwelling-currency-dropdown').children("option").each(function(){
         console.log($(this).val());
