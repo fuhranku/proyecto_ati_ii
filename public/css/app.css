@@ -354,6 +354,10 @@ The navbar toggle appears at this breakpoint */
     cursor:pointer;
 }
 
+.hover-state-modal:hover{
+    cursor:pointer;
+}
+
 .dwelling-image{
     width: 100%;
     height: 100%;
