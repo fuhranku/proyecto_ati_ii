@@ -34,39 +34,69 @@
 
                     <div class="col-md-4" style="background: rgba(0,176,240,.2); ">
                         
-                        <div class='row'>
-                            <div class="col-md-4 social-btn">
-                                <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="https://www.facebook.com/" target="_blank">
+                            <div class='row'>
+                                <div class="col-md-4 social-btn">
+                                    <img src="{{asset('images/facebook.png')}}" alt="avatar image" class="avatar-image">        
+                                    {{-- <a href="#" class="fab fa-facebook-f"></a> --}}
+                                </div>
+                                <div class="col my-auto">
+                                    <p class="my-auto text-dark">Facebook</p>
+                                </div>
                             </div>
-                            <p class="my-auto">Facebook</p>
-                        </div>
+                        </a>
 
-                        <div class='row'>
-                            <div class="col-md-4 social-btn">
-                                <a href="#" class="fab fa-twitter"></a>
-                            </div>
-                            <p class="my-auto">Twitter</p>
-                        </div>
+                        <a href="https://twitter.com/" target="_blank" >
+                            <div class='row'>
+                                <div class="col-md-4 social-btn">
+                                    <img src="{{asset('images/twitter.png')}}" alt="avatar image" class="avatar-image">        
+                                    {{-- <a href="#" class="fab fa-twitter"></a> --}}
+                                </div>
+                                <div class="col my-auto">
 
-                        <div class='row'>
-                            <div class="col-md-4 social-btn">
-                                <i href="#" class="fab  fa-circle fa-youtube"></i>
+                                    <p class="my-auto text-dark">Twitter</p>
+                                </div>
+
                             </div>
-                            <p class="my-auto">Youtube</p>
-                        </div>
+                        </a>
+
+                        <a href="https://youtube.com/" target="_blank">
                         <div class='row'>
-                            <div class="col-md-4 social-btn">
-                                <a href="#" class="fab fa-instagram"></a>
+                                <div class="col-md-4 social-btn">
+                                    <img src="{{asset('images/youtube.png')}}" alt="avatar image" class="avatar-image">        
+                                    {{-- <i href="#" class="fab  fa-circle fa-youtube"></i> --}}
+                                </div>
+                                <div class="col my-auto">
+                                    <p class="my-auto text-dark">Youtube</p>
+                                </div>
+
                             </div>
-                            <p class="my-auto">Instagram</p>
-                        </div>
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank">
+                        <div class='row'>
+                                <div class="col-md-4 social-btn">
+                                    <img src="{{asset('images/instagram.png')}}" alt="avatar image" class="avatar-image">        
+                                    {{-- <a href="#" class="fab fa-instagram"></a> --}}
+                                </div>
+                                <div class="col my-auto">
+                                    <p class="my-auto text-dark">Instagram</p>
+                                </div>
+
+                            </div>
+                        </a>
                         
+                        <a href="https://www.linkedin.com/" target="_blank">
                         <div class='row'>
-                            <div class="col-md-4 social-btn">
-                                <a href="#" class="fab fa-linkedin"></a>
+                                <div class="col-md-4 social-btn">
+                                    <img src="{{asset('images/linkedin.png')}}" alt="avatar image" class="avatar-image">        
+                                    {{-- <a href="#" class="fab fa-linkedin"></a> --}}
+                                </div>
+                                <div class="col my-auto">
+                                    <p class="my-auto text-dark">Linkedin</p>
+                                </div>
+
                             </div>
-                            <p class="my-auto">Linkedin</p>
-                        </div>
+                        </a>
 
                     </div>
 
