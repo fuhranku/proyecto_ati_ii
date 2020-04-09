@@ -90,6 +90,19 @@ class SearchDwellingController extends Controller
         $status = $request->get('status');
         $property_type = $request->get('property_type');
 
+         //VALIDATE INPUTS
+         $validations = [];
+         $validations['country'] = 'required';
+         $validations['state'] = 'required';
+         $validations['status'] = 'required';
+         $validations['property_type'] = 'required';
+ 
+         // Validate what needs to be validated
+         $validator = Validator::make($request->all(), $validations);
+         if ($validator->fails()){                
+             return response()->json(['errors'=>$validator->getMessageBag()]);
+         }
+
         $dwelling = new \stdClass();
 
         $dwelling->comforts = DB::table('comforts')
@@ -209,6 +222,26 @@ class SearchDwellingController extends Controller
         $active_price = $request->get("active_price");
         $minimum_price = $request->get("minimum_price");
         $maximum_price = $request->get("maximum_price");
+
+        //VALIDATE INPUTS
+        $validations = [];
+        $validations['continent'] = 'required';
+        $validations['country'] = 'required';
+        $validations['state'] = 'required';
+        $validations['city'] = 'required';
+        $validations['status'] = 'required';
+        $validations['property_type'] = 'required';
+
+        if($active_price == 1){
+            $validations['minimum_price'] = 'required';
+            $validations['maximum_price'] = 'required';
+        }
+
+        // Validate what needs to be validated
+        $validator = Validator::make($request->all(), $validations);
+        if ($validator->fails()){                
+            return response()->json(['errors'=>$validator->getMessageBag()]);
+        }
 
         $dwelling = new \stdClass();
 

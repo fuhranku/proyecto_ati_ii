@@ -210,6 +210,25 @@ return [
         'contact_hour_array' => [
             'required' => 'You must choose a complete contact hour',
         ],
+        'continent' =>[
+            'required' => 'You must choose a continent',
+        ],
+        'country' => [
+            'required' => 'You must choose a country',
+        ],
+        'state' => [
+            'required' => 'You must choose a state',
+        ],
+        'city' => [
+            'required' => 'You must choose a city',
+        ],
+        'maximum_price' => [
+            'required' => 'You must write a maximum price',
+        ],
+        'minimum_price' => [
+            'required' => 'You must write a minimum price',
+        ]
+
     ],
     /*
     |--------------------------------------------------------------------------

@@ -43,6 +43,19 @@ class PublicationDwellingController extends Controller
         $property_type = $request->get('property_type');
 
 
+        //VALIDATE INPUTS
+        $validations = [];
+        $validations['country'] = 'required';
+        $validations['state'] = 'required';
+        $validations['status'] = 'required';
+        $validations['property_type'] = 'required';
+
+        // Validate what needs to be validated
+        $validator = Validator::make($request->all(), $validations);
+        if ($validator->fails()){                
+            return response()->json(['errors'=>$validator->getMessageBag()]);
+        }
+
         $user_id = Session::get('info')->id;
 
 
@@ -158,6 +171,7 @@ class PublicationDwellingController extends Controller
         $continent = $request->get('continent');
         $country = $request->get('country');
         $state = $request->get('state');
+        $city = $request->get('city');
         $status = $request->get('status');
         $property_type = $request->get('property_type');
         $room = $request->get("room");
@@ -169,6 +183,26 @@ class PublicationDwellingController extends Controller
         $minimum_price = $request->get("minimum_price");
         $maximum_price = $request->get("maximum_price");
         $user_id = Session::get('info')->id;
+
+        //VALIDATE INPUTS
+        $validations = [];
+        $validations['continent'] = 'required';
+        $validations['country'] = 'required';
+        $validations['state'] = 'required';
+        $validations['city'] = 'required';
+        $validations['status'] = 'required';
+        $validations['property_type'] = 'required';
+
+        if($active_price == 1){
+            $validations['minimum_price'] = 'required';
+            $validations['maximum_price'] = 'required';
+        }
+
+        // Validate what needs to be validated
+        $validator = Validator::make($request->all(), $validations);
+        if ($validator->fails()){                
+            return response()->json(['errors'=>$validator->getMessageBag()]);
+        }
 
         $dwelling = new \stdClass();
 
@@ -183,7 +217,6 @@ class PublicationDwellingController extends Controller
 
         if($status == 2){ //STATUS BOTH
             if($property_type == 2){ //all kind of property type
-        
                 if($active_price == 1){ //case searching with price max min
     
                     $dwelling->dwellings = DB::table('dwellings')
@@ -196,8 +229,7 @@ class PublicationDwellingController extends Controller
                                     ->where('dwellings.continent_id', '=',$continent)
                                     ->where('dwellings.country_id', '=', $country) 
                                     ->where('dwellings.state_id','=', $state)
-                                    ->where('dwellings.property_type','=',0)
-                                    ->where('dwellings.property_type','=',1)
+                                    ->where('dwellings.city_id','=', $city)
                                     ->where('dwellings.rooms','=', $room)
                                     ->where('dwellings.bathrooms','=', $bathroom)
                                     ->where('dwellings.parking','=',$park)
@@ -220,8 +252,7 @@ class PublicationDwellingController extends Controller
                                     ->where('dwellings.continent_id', '=',$continent)
                                     ->where('dwellings.country_id', '=', $country) 
                                     ->where('dwellings.state_id','=', $state)
-                                    ->where('dwellings.property_type','=',0)
-                                    ->where('dwellings.property_type','=',1)
+                                    ->where('dwellings.city_id','=', $city)
                                     ->where('dwellings.rooms','=', $room)
                                     ->where('dwellings.bathrooms','=', $bathroom)
                                     ->where('dwellings.parking','=',$park)
@@ -246,6 +277,7 @@ class PublicationDwellingController extends Controller
                                     ->where('dwellings.continent_id', '=',$continent)
                                     ->where('dwellings.country_id', '=', $country) 
                                     ->where('dwellings.state_id','=', $state)
+                                    ->where('dwellings.city_id','=', $city)
                                     ->where('dwellings.property_type','=',$property_type)
                                     ->where('dwellings.rooms','=', $room)
                                     ->where('dwellings.bathrooms','=', $bathroom)
@@ -269,6 +301,7 @@ class PublicationDwellingController extends Controller
                                     ->where('dwellings.continent_id', '=',$continent)
                                     ->where('dwellings.country_id', '=', $country) 
                                     ->where('dwellings.state_id','=', $state)
+                                    ->where('dwellings.city_id','=', $city)
                                     ->where('dwellings.property_type','=',$property_type)
                                     ->where('dwellings.rooms','=', $room)
                                     ->where('dwellings.bathrooms','=', $bathroom)
@@ -298,8 +331,7 @@ class PublicationDwellingController extends Controller
                                     ->where('dwellings.country_id', '=', $country) 
                                     ->where('dwellings.state_id','=', $state)
                                     ->where('dwellings.status','=',$status)
-                                    ->where('dwellings.property_type','=',0)
-                                    ->where('dwellings.property_type','=',1)
+                                    ->where('dwellings.city_id','=', $city)
                                     ->where('dwellings.rooms','=', $room)
                                     ->where('dwellings.bathrooms','=', $bathroom)
                                     ->where('dwellings.parking','=',$park)
@@ -322,9 +354,8 @@ class PublicationDwellingController extends Controller
                                     ->where('dwellings.continent_id', '=',$continent)
                                     ->where('dwellings.country_id', '=', $country) 
                                     ->where('dwellings.state_id','=', $state)
+                                    ->where('dwellings.city_id','=', $city)
                                     ->where('dwellings.status','=',$status)
-                                    ->where('dwellings.property_type','=',0)
-                                    ->where('dwellings.property_type','=',1)
                                     ->where('dwellings.rooms','=', $room)
                                     ->where('dwellings.bathrooms','=', $bathroom)
                                     ->where('dwellings.parking','=',$park)
@@ -349,6 +380,7 @@ class PublicationDwellingController extends Controller
                                     ->where('dwellings.continent_id', '=',$continent)
                                     ->where('dwellings.country_id', '=', $country) 
                                     ->where('dwellings.state_id','=', $state)
+                                    ->where('dwellings.city_id','=', $city)
                                     ->where('dwellings.status','=',$status)
                                     ->where('dwellings.property_type','=',$property_type)
                                     ->where('dwellings.rooms','=', $room)
@@ -373,6 +405,7 @@ class PublicationDwellingController extends Controller
                                     ->where('dwellings.continent_id', '=',$continent)
                                     ->where('dwellings.country_id', '=', $country) 
                                     ->where('dwellings.state_id','=', $state)
+                                    ->where('dwellings.city_id','=', $city)
                                     ->where('dwellings.status','=',$status)
                                     ->where('dwellings.property_type','=',$property_type)
                                     ->where('dwellings.rooms','=', $room)
