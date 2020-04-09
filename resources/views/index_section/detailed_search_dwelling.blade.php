@@ -207,8 +207,8 @@
             <div class="col-md-2">
                 <div class="row">
                     <div class="col-md-12 form-check">
-                        <span class="badge badge-label bg-dark-blue text-white">Comodidades</span>
-                        <select name="detailed_comforts_dwelling[]" id="comfort_ds" class="form-control " onchange=""   >
+                        <span class="badge badge-label bg-dark-blue text-white sm-text">Comodidades</span>
+                        <select name="detailed_comforts_dwelling[]" id="comfort_ds" class="form-control sm-text" onchange=""   >
                             @foreach ($comforts as $comfort)
                                 <option value={{$comfort->id}}>{{$comfort->name}}</option>
                             @endforeach
@@ -220,8 +220,8 @@
             <div class="col-md-2">
                 <div class="row">
                     <div class="col-md-12 form-check">
-                        <span class="badge badge-label bg-dark-blue text-white">Servicios</span>
-                        <select name="detailed_services_dwelling[]" id="service_ds" class="form-control  " onchange=""   >
+                        <span class="badge badge-label bg-dark-blue text-white sm-text">Servicios</span>
+                        <select name="detailed_services_dwelling[]" id="service_ds" class="form-control sm-text" onchange=""   >
                             @foreach ($services as $service)
                                 <option value={{$service->id}}>{{$service->name}}</option>
                             @endforeach
@@ -235,18 +235,26 @@
         <div class="row p-2">
             <div class="col-md-2"></div>
             <div class="col-5">
-                <span class="badge badge-label bg-dark-blue text-white">Precio</span>
+                <span class="badge badge-label bg-dark-blue text-white sm-text">Precio</span>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="detailed_price_type" value="1" checked>
-                    <label class="form-check-label" >
+                    <label class="form-check-label sm-text" >
                         Por rango
                     </label>
-                    <input type="number" name="detailed_minimum_price" class="form-control" placeholder="Mínimo">
-                    <input type="number" name="detailed_maximum_price" class="form-control" placeholder="Máximo">
+                    <div class="price-div" >
+                        <label for="detailed-minimum-price" class="sm-text my-auto">Mínimo: </label>
+                        <input type="number" name="detailed_minimum_price" id="detailed-minimum-price" class="form-control price-input" >
+                    </div>
+
+                    <div class="price-div">
+                        <label for="detailed_maximum_price" class="sm-text my-auto">Máximo: </label>
+                        <input type="number" name="detailed_maximum_price" id="detailed-maximum-price" class="form-control price-input" >
+                    </div>
+                    
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="detailed_price_type"  value="2">
-                    <label class="form-check-label" >
+                    <label class="form-check-label sm-text" >
                         Cualquier precio
                     </label>
                 </div>
@@ -259,10 +267,10 @@
         <div class="row pt-2">
             <div class="col-md-3"></div>
             <div class="text-center col-3">
-                <button type="submit" class="btn btn-primary">Buscar</button>
+                <button type="submit" class="btn bg-yellow text-white">Buscar</button>
             </div>
             <div class="text-center col-3">
-                <button type="submit" class="btn btn-primary">Cancelar</button>
+                <button type="submit" class="btn bg-yellow text-white">Cancelar</button>
             </div>
             <div class="col-md-3"></div>
         </div>

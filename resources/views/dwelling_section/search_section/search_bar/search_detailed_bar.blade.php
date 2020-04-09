@@ -218,7 +218,7 @@
                         <span class="fas fa-minus"></span>
                     </button>
                 </span>
-                <input type="text" name="quant[3]" id="counterPark" class="form-control input-number" value="1" min="1" max="10">
+                <input type="text" name="quant[3]" id="counterPark" class="form-control input-number" value="0" min="0" max="10">
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[3]">
                         <span class="fas fa-plus"></span>

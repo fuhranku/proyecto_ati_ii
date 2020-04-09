@@ -64,7 +64,6 @@ $(document).ready(()=>{
                     images_url = parsedData["images_url"];
 
                     console.log(images_url);
-
                     console.log(dwelling);
 
                     console.log("USER ID ASDLASLKF: ",userID);
@@ -611,7 +610,6 @@ function loadPageDwelling(page){
         var comforts_name = [];
 
         console.log(comfort);
-        console.log("ARRE LOCO!!");
         console.log(comforts_id);
 
         for(var j = 0; j < comforts_id.array.length; j++){
@@ -670,13 +668,24 @@ function loadPageDwelling(page){
             $('#dwelling_photo_fs'+(i+1).toString()).children('.list-photo-overlay').css('opacity','0');
             $('#dwelling_list_fs'+(i+1).toString()).children('.list-photo-overlay').addClass('d-none');
             $('#dwelling_list_fs'+(i+1).toString()).children('.list-photo-overlay').css('opacity','0');
+
+            //SET ICON
+            $('#enable-dwelling'+(i+1).toString()).addClass('d-none');
+            $('#disable-dwelling'+(i+1).toString()).removeClass('d-none');
         }
         else{
             $('#dwelling_photo_fs'+(i+1).toString()).children('.list-photo-overlay').removeClass('d-none');
             $('#dwelling_photo_fs'+(i+1).toString()).children('.list-photo-overlay').css('opacity','1');
             $('#dwelling_list_fs'+(i+1).toString()).children('.list-photo-overlay').removeClass('d-none');
             $('#dwelling_list_fs'+(i+1).toString()).children('.list-photo-overlay').css('opacity','1');
+
+            //SET ICON
+            $('#enable-dwelling'+(i+1).toString()).removeClass('d-none');
+            $('#disable-dwelling'+(i+1).toString()).addClass('d-none');
         }
+
+        
+                
         
     }
 
@@ -995,12 +1004,22 @@ function disableDwelling(){
         url: disable_post_url,
         method: 'post',
         data: data,
+        async:false,
         success: function(data){
+
             $.each($("input[name='select-dwelling']:checked"), function(){
                 $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').removeClass('d-none');
                 $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').css('opacity','1');
                 $(this).parent().parent().parent().parent().parent().children('.list-photo-overlay').removeClass('d-none');
                 $(this).parent().parent().parent().parent().parent().children('.list-photo-overlay').css('opacity','1');
+            
+                var dwell_id = $(this).data("id");
+
+                $("#disable-dwelling"+dwell_id).addClass('d-none');
+                $("#enable-dwelling"+dwell_id).removeClass('d-none');
+
+                $(this).prop('checked',false);
+            
             });
 
             console.log(data);
@@ -1015,7 +1034,10 @@ function disableDwelling(){
                     return x.id == selected_dwellings[i];
                 }).enable = 0;
             }
+
             
+            
+            //$("input[name='select-dwelling']:checked").prop("checked",false);
         }
     });    
 
@@ -1040,12 +1062,20 @@ function enableDwelling(){
         url: enable_post_url,
         method: 'post',
         data: data,
+        async:false,
         success: function(data){
             $.each($("input[name='select-dwelling']:checked"), function(){
                 $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').addClass('d-none');
                 $(this).parent().parent().parent().parent().parent().parent().children('.list-photo-overlay').css('opacity','0');
                 $(this).parent().parent().parent().parent().parent().children('.list-photo-overlay').addClass('d-none');
                 $(this).parent().parent().parent().parent().parent().children('.list-photo-overlay').css('opacity','0');
+            
+                var dwell_id = $(this).data("id");
+
+                $("#disable-dwelling"+dwell_id).removeClass('d-none');
+                $("#enable-dwelling"+dwell_id).addClass('d-none');
+
+                $(this).prop('checked',false);
             });
             console.log(data);
 
@@ -1119,8 +1149,10 @@ $('.dwelling-icon').click(function(){
     var page = $(this).data('id');
     var pageOffset = (currentPageDwelling - 1)*4;
     var dwelling_id = d_dwelling[page-1 + pageOffset]['id'];
-    if( $(this).hasClass('see-more-icon')){
-        window.open(base_url+'/dwelling/show_details/'+dwelling_id,'_blank');
+    if( $(this).hasClass('enable-icon')){
+        $('#dwelling-select-photo-cb'+page).prop('checked',true);
+        enableDwelling();
+        $('#dwelling-select-photo-cb'+page).prop('checked',false);
     }
     else if ($(this).hasClass('modify-icon')){
         window.open(base_url+'/dwelling/modify/'+dwelling_id,'_blank');
@@ -1128,6 +1160,11 @@ $('.dwelling-icon').click(function(){
     else if ($(this).hasClass('delete-icon')){
         $('#dwelling-select-photo-cb'+page).prop('checked',true);
         deleteDwelling();
+        $('#dwelling-select-photo-cb'+page).prop('checked',false);
+    }
+    else if($(this).hasClass('disable-icon')){
+        $('#dwelling-select-photo-cb'+page).prop('checked',true);
+        disableDwelling();
         $('#dwelling-select-photo-cb'+page).prop('checked',false);
     }
 });

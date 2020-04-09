@@ -23,11 +23,11 @@
         <div class="row m-3">
             <div class="col-md-3"></div>
             <div class="col-md-3">
-                <button class="btn btn-warning text-white" onclick="displaySD()">Buscar vivienda</button>
+                <button class="btn bg-yellow text-white" onclick="displaySD()">Buscar vivienda</button>
             </div>
 
             <div class="col-md-4">
-                <button class="btn btn-warning text-white" onclick="displaySoRD()">Vender o alquilar vivienda</button>
+                <button class="btn bg-yellow text-white" onclick="displaySoRD()">Vender o alquilar vivienda</button>
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -50,6 +50,8 @@
 
         var userID = {{ Session::has('info') ? Session::get('info')->id : -1}};
     </script>
+
+    <script src="{{ asset('js/dwelling/dwelling_search.js') }}"></script>
     
     <script>
         displaySD = () =>{

@@ -15,7 +15,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-check">
-                            <input class="form-check-input" onchange="onSelectDwelling()" value="dwelling3" name="select-dwelling" type="checkbox" id={{"dwelling-select-photo-cb".$index}}>
+                            <input class="form-check-input" onchange="onSelectDwelling()" value="dwelling3" name="select-dwelling" data-id={{$index}} type="checkbox" id={{"dwelling-select-photo-cb".$index}}>
                         </div>
                     </div>
                 </div>
@@ -32,7 +32,8 @@
             </div>
             @if ($search_type == '0')
                 <div class="row float-right">
-                    <img id={{'see-dwelling'.$index}} class="dwelling-icon see-more-icon cursor-pointer" data-id={{$index}} src="{{url('/images/eye_icon.png')}}">
+                    <img id={{'disable-dwelling'.$index}} class="dwelling-icon disable-icon cursor-pointer d-none" data-id={{$index}} src="{{url('/images/disable_publication_icon.png')}}">
+                    <img id={{'enable-dwelling'.$index}} class="dwelling-icon enable-icon cursor-pointer d-none" data-id={{$index}} src="{{url('/images/enable_publication_icon.png')}}">
                     <img id={{'edit-dwelling'.$index}} class="dwelling-icon modify-icon cursor-pointer" data-id={{$index}} src="{{url('/images/edit_icon.png')}}">
                     <img id={{'delete-dwelling'.$index}} class="dwelling-icon delete-icon cursor-pointer" data-id={{$index}} src="{{url('/images/delete_icon.png')}}">
                 </div>

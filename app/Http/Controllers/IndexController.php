@@ -25,7 +25,9 @@ class IndexController extends Controller
 {
 
     public function keyword_search(Request $request){
-        
+
+        $search_type = 1;
+    
         Session::forget("session_query");
 
         $continents = Continent::all()->sortBy('name');
@@ -50,10 +52,13 @@ class IndexController extends Controller
                 'cities',
                 'comforts',
                 'services',
-                'currency'));
+                'currency',
+                'search_type'));
     }
 
     public function quick_search(Request $request){
+
+        $search_type = 1;
 
         Session::forget("session_query");
 
@@ -84,10 +89,13 @@ class IndexController extends Controller
                 'cities',
                 'comforts',
                 'services',
-                'currency'));
+                'currency',
+                'search_type'));
     }
 
     public function detailed_search(Request $request){
+
+        
 
         $continents = Continent::all()->sortBy('name');
         $countries = Country::all()->sortBy('name');
@@ -113,6 +121,7 @@ class IndexController extends Controller
         $session_query->min_price = $request->input("detailed_minimum_price");
         $session_query->max_price = $request->input("detailed_maximum_price");
 
+        $search_type = 1;
         //set type of query as detailed query
         $session_query->search_type = 0;
 
@@ -126,7 +135,8 @@ class IndexController extends Controller
                 'cities',
                 'comforts',
                 'services',
-                'currency'));
+                'currency',
+                'search_type'));
     }
 
 

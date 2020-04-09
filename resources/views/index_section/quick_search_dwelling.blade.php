@@ -71,10 +71,10 @@
         <div class="row pt-2">
             <div class="col-md-3"></div>
             <div class="text-center col-3">
-                <button type="submit" class="btn btn-primary">Buscar</button>
+                <button type="submit" class="btn bg-yellow text-white">Buscar</button>
             </div>
             <div class="text-center col-3">
-                <button type="submit" class="btn btn-primary">Cancelar</button>
+                <button type="submit" class="btn bg-yellow text-white">Cancelar</button>
             </div>
             <div class="col-md-3"></div>
         </div>
