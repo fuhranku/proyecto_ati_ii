@@ -39,7 +39,7 @@
             <div class="col-md-3"></div>
             <div class="col-md-8 pr-0">
                 <p class="d-inline">3- Luego de iniciar sesión seleccionas la opción </p>
-                <a href="#" class="text-blue d-inline"><u>Viviendas->Publicar</u></a>
+                <div class="text-blue d-inline"><u>Viviendas->Publicar</u></div>
             </div>
         </div>
 
