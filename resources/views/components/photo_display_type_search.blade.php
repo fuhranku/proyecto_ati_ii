@@ -6,7 +6,7 @@
                 @if ($search_type == '0')
                     <div class="col-md-2 mt-3">
                         <div class="form-check">
-                            <input class="form-check-input" onchange="onSelectDwelling()" value="dwelling3" name="select-dwelling" data-id={{$index}} type="checkbox" id={{"dwelling-select-photo-cb".$index}}>
+                            <input class="form-check-input dwelling-select-photo-cb{{$index}} overlay-input-dwelling" onchange="onSelectDwelling()" value="dwelling3" name="select-dwelling" data-id={{$index}} type="checkbox">
                         </div>
                     </div>
                     <div class="col-md-10 mt-3 pl-0">
@@ -32,10 +32,10 @@
             </div>
             @if ($search_type == '0')
                 <div class="row float-right">
-                    <img id={{'disable-dwelling'.$index}} class="dwelling-icon disable-icon cursor-pointer d-none" data-id={{$index}} src="{{url('/images/disable_publication_icon.png')}}">
-                    <img id={{'enable-dwelling'.$index}} class="dwelling-icon enable-icon cursor-pointer d-none" data-id={{$index}} src="{{url('/images/enable_publication_icon.png')}}">
-                    <img id={{'edit-dwelling'.$index}} class="dwelling-icon modify-icon cursor-pointer" data-id={{$index}} src="{{url('/images/edit_icon.png')}}">
-                    <img id={{'delete-dwelling'.$index}} class="dwelling-icon delete-icon cursor-pointer" data-id={{$index}} src="{{url('/images/delete_icon.png')}}">
+                    <img class="dwelling-icon cursor-pointer d-none disable-icon{{$index}}" data-id={{$index}} src="{{url('/images/disable_publication_icon.png')}}">
+                    <img class="dwelling-icon cursor-pointer d-none enable-icon{{$index}}" data-id={{$index}} src="{{url('/images/enable_publication_icon.png')}}">
+                    <img class="dwelling-icon modify-icon cursor-pointer" data-id={{$index}} src="{{url('/images/edit_icon.png')}}">
+                    <img class="dwelling-icon delete-icon cursor-pointer" data-id={{$index}} src="{{url('/images/delete_icon.png')}}">
                 </div>
             @endif
         

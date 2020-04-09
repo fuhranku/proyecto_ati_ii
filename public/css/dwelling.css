@@ -264,7 +264,10 @@ iframe > * {
 
 .dwelling-icon{
     width: 27%;
-    margin-top: 5px;
+}
+
+.overlay-input-dwelling{
+    z-index: 1000;
 }
 
 .badge-label{

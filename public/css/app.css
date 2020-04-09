@@ -176,6 +176,23 @@ div.sub-menu > div:not(:last-child){
 .price-div:last-child{
     margin-top: 10px;
 }
+
+.input-list-select-dwelling{
+    padding: 10px 6px;
+    max-width: fit-content;
+}
+
+.icon-list-dwelling{
+    max-width: fit-content;
+    padding: 13px;
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-list-dwelling>img{
+    width: 83%;
+    max-width: 27px;
+}
   
 /* Medium devices (tablets, 768px and up) 
 The navbar toggle appears at this breakpoint */
