@@ -110,7 +110,6 @@
   </style>
 </head>
 <body>
-    <div class="container">
         @component('components.modal_mail')
             @slot('modal_id')
                 modal_pass
@@ -134,8 +133,7 @@
             
             @endslot
         @endcomponent    
-        <button type="button" class="btn btn-primary">Primary</button>
-    </div>
+        
     {{-- <script src="{{ asset('external/all.min.js') }}"></script>
     <script src="{{ asset('external/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('external/popper.min.js') }}"></script>  --}}
