@@ -76,6 +76,20 @@ class IndexController extends Controller
         $session_query->status = $request->input("status_fs");
         $session_query->property_type =$request->quick_property_type;
 
+        //VALIDATE INPUTS
+        $validations = [];
+        $validations['quick_countries'] = 'required';
+        $validations['quick_states'] = 'required';
+        $validations['status_fs'] = 'required';
+        $validations['quick_property_type'] = 'required';
+
+        // Validate what needs to be validated
+        $validator = Validator::make($request->all(), $validations);
+        if ($validator->fails()){                
+            $error_type = 1;
+            return redirect()->back()->withErrors($validator)->with("error_type",$error_type);
+        }
+
         //set type of query as quick query
         $session_query->search_type = 1;
 
@@ -120,6 +134,29 @@ class IndexController extends Controller
         $session_query->price_type = $request->input("detailed_price_type");
         $session_query->min_price = $request->input("detailed_minimum_price");
         $session_query->max_price = $request->input("detailed_maximum_price");
+
+         //VALIDATE INPUTS
+         $validations = [];
+         $validations['detailed_continents'] = 'required';
+         $validations['detailed_countries'] = 'required';
+         $validations['detailed_states'] = 'required';
+         $validations['detailed_cities'] = 'required';
+         $validations['status_ds'] = 'required';
+         $validations['detailed_property_type'] = 'required';
+ 
+         if($session_query->price_type == 1){
+             $validations['detailed_minimum_price'] = 'required';
+             $validations['detailed_maximum_price'] = 'required';
+         }
+ 
+         // Validate what needs to be validated
+         $validator = Validator::make($request->all(), $validations);
+         if ($validator->fails()){                
+            $error_type = 2;
+            return redirect()->back()->withErrors($validator)->with("error_type",$error_type);
+         }
+ 
+
 
         $search_type = 1;
         //set type of query as detailed query

@@ -210,6 +210,49 @@ return [
         'contact_hour_array' => [
             'required' => 'You must choose a complete contact hour',
         ],
+        'continent' =>[
+            'required' => 'You must choose a continent',
+        ],
+        'country' => [
+            'required' => 'You must choose a country',
+        ],
+        'state' => [
+            'required' => 'You must choose a state',
+        ],
+        'city' => [
+            'required' => 'You must choose a city',
+        ],
+        'maximum_price' => [
+            'required' => 'You must write a maximum price',
+        ],
+        'minimum_price' => [
+            'required' => 'You must write a minimum price',
+        ],
+        'quick_countries' => [
+            'required' => 'You must choose a country',
+        ],
+        'quick_states' => [
+            'required' => 'You must choose a state',
+        ],
+        'detailed_continents' => [
+            'required' => 'You must choose a continent',
+        ],
+        'detailed_countries' => [
+            'required' => 'You must choose a country',
+        ],
+        'detailed_states' => [
+            'required' => 'You must choose a state',
+        ],
+        'detailed_cities' => [
+            'required' => 'You must choose a city',
+        ],
+        'detailed_minimum_price' => [
+            'required' => 'You must write a maximum price',
+        ],
+        'detailed_maximum_price' => [
+            'required' => 'You must write a minimum price',
+        ],
+
     ],
     /*
     |--------------------------------------------------------------------------

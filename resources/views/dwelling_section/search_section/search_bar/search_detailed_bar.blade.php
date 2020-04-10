@@ -6,6 +6,18 @@
 
 <div class="border border-info p-1 d-none" id="busqueda-detallada2">
 
+    @component('components.field_error')
+        @slot('error_row_id')
+            errors_row_detailed_search
+        @endslot
+        @slot('grid_size')
+            12
+        @endslot
+        @slot('error_ul_id')
+            errors_ul_detailed_search
+        @endslot
+    @endcomponent
+
     <div class="row p-2">
         <div class="col-md-6">
             
@@ -235,7 +247,7 @@
                 <span class="text-white font-weight-bold sm-text p-2">Comodidades</span>
             </div>
             
-            <select id="comfort_ds" class="form-control " onchange=""   >
+            <select id="comfort_ds" class="form-control sm-text" onchange=""   >
                 @foreach ($comforts as $comfort)
                     <option value={{$comfort->id}}>{{$comfort->name}}</option>
                 @endforeach
@@ -250,7 +262,7 @@
                 <span class="text-white font-weight-bold sm-text p-2">Servicios</span>
             </div>
             
-            <select id="service_ds" class="form-control  " onchange=""   >
+            <select id="service_ds" class="form-control sm-text" onchange=""   >
                 @foreach ($services as $service)
                     <option value={{$service->id}}>{{$service->name}}</option>
                 @endforeach

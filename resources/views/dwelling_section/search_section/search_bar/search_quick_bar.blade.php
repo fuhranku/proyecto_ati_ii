@@ -6,6 +6,18 @@
 
 <div class="border border-info p-1 d-none" id="busqueda-rapida2">
 
+    @component('components.field_error')
+        @slot('error_row_id')
+            errors_row_quick_search
+        @endslot
+        @slot('grid_size')
+            12
+        @endslot
+        @slot('error_ul_id')
+            errors_ul_quick_search
+        @endslot
+    @endcomponent
+
     <div class="row p-2">
         <div class="col-md-6">
 

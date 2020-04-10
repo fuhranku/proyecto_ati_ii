@@ -58,7 +58,6 @@ $(document).ready(()=>{
                 data: data,
                 success: function(data){
 
-                    
                     var parsedData = JSON.parse(data);
                     dwelling = parsedData["dwellings"];
                     service = parsedData["services"];
@@ -134,11 +133,6 @@ $(document).ready(()=>{
             var active_price = parseInt(session_search_query.price_type);
             var minimum_price = parseInt(session_search_query.min_price);
             var maximum_price = parseInt(session_search_query.max_price);
-
-            if(active_price == 2){//any price
-                minimum_price = -1;
-                maximum_price = -1;
-            }
 
             // Prepare preloader
             $('body').prepend('\
@@ -1202,7 +1196,7 @@ function enableDwelling(){
         data: data,
         async:false,
         success: function(data){
-            
+
             $.each($("input[name='select-dwelling']:checked"), function(){
                 $(this).prop('checked',false);
             });

@@ -13,6 +13,23 @@
 <form method="post" action="{{ action( 'IndexController@detailed_search') }}">
     @csrf
     <div class="m-3 d-none" id="busqueda-detallada">
+
+        <div class='row error-row d-none' id="error_detailed_search_index">
+            <div class="col-md-3"></div>
+            <div class='col-sm-6'>
+                <div class="alert alert-danger form-error p-0">
+                    <ul class="mt-3">
+                        @if($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        @endif
+                    </ul>
+                </div><br />
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
         <div class="row p-2">
             <div class="col-md-1"></div>
             <div class="col-md-2">

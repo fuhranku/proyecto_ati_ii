@@ -49,9 +49,13 @@
         var cities = @json($cities);
 
         var userID = {{ Session::has('info') ? Session::get('info')->id : -1}};
+
+        var error_type = {{ Session::has('error_type') ? Session::get('error_type') : -1 }};
+        
     </script>
 
     <script src="{{ asset('js/dwelling/dwelling_search.js') }}"></script>
+    <script src="{{ asset('js/dwelling/dwelling_index.js') }}"></script>
     
     <script>
         displaySD = () =>{
