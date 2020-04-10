@@ -45,6 +45,7 @@ function quickSearch(){
             $("#errors_ul_quick_search").empty();
             //hide errors
             $("#errors_row_quick_search").addClass('d-none');
+            $("#errors_row_detailed_search").addClass('d-none');
 
             if(data.hasOwnProperty("errors")){
                 //Displaying errors
@@ -69,11 +70,14 @@ function quickSearch(){
                 console.log(images_url);
     
                 console.log(dwelling);
-    
-                console.log("USER ID ASDLASLKF: ",userID);
+
+                //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
                 if (userID != -1){
-                    //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
+                    console.log("USER ID ASDLASLKF: ",userID);
                     dwelling = dwelling.filter(x => !(x.user_id != userID && x.enable == 0) );
+                }
+                else{
+                    dwelling = dwelling.filter(x => !(x.enable == 0) );
                 }
     
                 //copy dwelling to displayed dwelling
@@ -195,6 +199,7 @@ function detailedSearch(){
             //clear errors field
             $("#errors_ul_detailed_search").empty();
             //hide errors
+            $("#errors_row_quick_search").addClass('d-none');
             $("#errors_row_detailed_search").addClass('d-none');
 
             if(data.hasOwnProperty("errors")){
@@ -231,6 +236,16 @@ function detailedSearch(){
     
                 console.log(comfort);
                 console.log(dwelling);
+
+                //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
+                if (userID != -1){
+                    console.log("USER ID ASDLASLKF: ",userID);
+                    dwelling = dwelling.filter(x => !(x.user_id != userID && x.enable == 0) );
+                }
+                else{
+                    dwelling = dwelling.filter(x => !(x.enable == 0) );
+                }
+    
     
                 console.log("NUMERO DE VIVIENDAS: ",dwelling.length);
                 // if (userID != -1){

@@ -3,7 +3,7 @@
     <div class="list-photo-overlay d-none"></div>
 
     <div class="col-md-1 border border-warning input-list-select-dwelling">
-        <input onchange="onSelectDwelling()" value="dwelling3" name="select-dwelling" data-id={{$index}} type="checkbox" class="dwelling-select-photo-cb{{$index}} overlay-input-dwelling">
+        <input id={{"display-checkbox-edit-list".$index}} onchange="onSelectDwelling()" value="dwelling3" name="select-dwelling" data-id={{$index}} type="checkbox" class="dwelling-select-photo-cb{{$index}} overlay-input-dwelling">
     </div>
 
     <div class="col-md-1 border border-warning" >
@@ -94,9 +94,9 @@
     </div>
 
     <div class="col-md-1 icon-list-dwelling text-center border border-warning">
-        <img class="dwelling-icon cursor-pointer d-none disable-icon{{$index}}" data-id={{$index}} src="{{url('/images/disable_publication_icon.png')}}">
-        <img class="dwelling-icon cursor-pointer d-none enable-icon{{$index}} z-1000" data-id={{$index}} src="{{url('/images/enable_publication_icon.png')}}">
-        <img class="dwelling-icon modify-icon cursor-pointer" data-id={{$index}} src="{{url('/images/edit_icon.png')}}">
-        <img class="dwelling-icon delete-icon cursor-pointer" data-id={{$index}} src="{{url('/images/delete_icon.png')}}">
+        <img class="display-icons-edit-list{{$index}} dwelling-icon cursor-pointer d-none disable-icon{{$index}}" data-id={{$index}} src="{{url('/images/disable_publication_icon.png')}}">
+        <img class="display-icons-edit-list{{$index}} dwelling-icon cursor-pointer d-none enable-icon{{$index}} z-1000" data-id={{$index}} src="{{url('/images/enable_publication_icon.png')}}">
+        <img class="display-icons-edit-list{{$index}} dwelling-icon modify-icon cursor-pointer" data-id={{$index}} src="{{url('/images/edit_icon.png')}}">
+        <img class="display-icons-edit-list{{$index}} dwelling-icon delete-icon cursor-pointer" data-id={{$index}} src="{{url('/images/delete_icon.png')}}">
     </div>
 </div>

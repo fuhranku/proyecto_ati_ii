@@ -183,7 +183,7 @@ div.sub-menu > div:not(:last-child){
 
 .input-list-select-dwelling{
     padding: 10px 6px;
-    max-width: fit-content;
+    max-width: 26px;
     z-index: 1000;
 }
 
@@ -192,7 +192,7 @@ div.sub-menu > div:not(:last-child){
 }
 
 .icon-list-dwelling{
-    max-width: fit-content;
+    max-width: 56px;
     padding: 13px;
     display: flex;
     flex-direction: column;

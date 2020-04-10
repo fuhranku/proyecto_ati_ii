@@ -45,6 +45,8 @@
             console.log(user_info);
             var session_search_query = {!! Session::has('session_query') ? Session::get('session_query') : -1 !!};
 
+            var search_type = @json($search_type);
+
         </script>
         <script src="{{ asset('js/dwelling/dwelling_search.js') }}"></script>
         @if ($search_type == 0)

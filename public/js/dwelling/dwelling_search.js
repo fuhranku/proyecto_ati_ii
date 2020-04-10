@@ -67,10 +67,13 @@ $(document).ready(()=>{
                     console.log(images_url);
                     console.log(dwelling);
 
-                    console.log("USER ID ASDLASLKF: ",userID);
+                    //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
                     if (userID != -1){
-                        //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
+                        console.log("USER ID ASDLASLKF: ",userID);
                         dwelling = dwelling.filter(x => !(x.user_id != userID && x.enable == 0) );
+                    }
+                    else{
+                        dwelling = dwelling.filter(x => !(x.enable == 0) );
                     }
 
                     //copy dwelling to displayed dwelling
@@ -176,10 +179,15 @@ $(document).ready(()=>{
                     console.log(dwelling);
 
                     console.log("NUMERO DE VIVIENDAS: ",dwelling.length);
-                    // if (userID != -1){
-                    //     //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
-                    //     dwelling = dwelling.filter(x => !(x.user_id != userID && x.enable == 0) );
-                    // }
+                    //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
+                    if (userID != -1){
+                        console.log("USER ID ASDLASLKF: ",userID);
+                        dwelling = dwelling.filter(x => !(x.user_id != userID && x.enable == 0) );
+                    }
+                    else{
+                        dwelling = dwelling.filter(x => !(x.enable == 0) );
+                    }
+
                     //copy dwelling to displayed dwelling
                     d_dwelling = [...dwelling];
 
@@ -250,13 +258,15 @@ $(document).ready(()=>{
                     images_url = parsedData["images_url"];
 
                     console.log(images_url);
-
                     console.log(dwelling);
 
-                    console.log("USER ID ASDLASLKF: ",userID);
+                    //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
                     if (userID != -1){
-                        //REMOVE ALL DISABED PUBLICATIONS FROM OTHER USERS
+                        console.log("USER ID ASDLASLKF: ",userID);
                         dwelling = dwelling.filter(x => !(x.user_id != userID && x.enable == 0) );
+                    }
+                    else{
+                        dwelling = dwelling.filter(x => !(x.enable == 0) );
                     }
 
                     //copy dwelling to displayed dwelling
@@ -606,9 +616,10 @@ function loadPageDwelling(page){
 
         var pageOffset = (page - 1)*4;
 
+
         //CASE PHOTO
         //update selector dwelling id
-        $(".dwelling-select-photo-cb"+(i+1).toString()).val(d_dwelling[i + pageOffset].id);
+        $(".dwelling-select-photo-cb"+(i+1).toString()).val(d_dwelling[i + pageOffset].id);       
 
         var roomBath = d_dwelling[i + pageOffset].rooms.toString() + " habitaciones, " 
                     + d_dwelling[i + pageOffset].bathrooms.toString() + " baños";
@@ -721,7 +732,47 @@ function loadPageDwelling(page){
             $('.disable-icon'+(i+1).toString()).addClass('d-none');
         }
 
-        
+        //CHANGES ON PUBLICATION MODE OR SEARCH MODE
+        if(search_type == 0){ //publication mode
+            $("#display-checkbox-edit-photo"+(i+1).toString()).removeClass("d-none");
+            $("#display-checkbox-edit-list"+(i+1).toString()).removeClass("d-none");
+            $("#display-icons-edit-photo"+(i+1).toString()).removeClass("d-none");
+            $(".display-icons-edit-list"+(i+1).toString()).removeClass("d-none");
+
+            if(d_dwelling[i + pageOffset].enable){
+                $('.enable-icon'+(i+1).toString()).addClass('d-none');
+                $('.disable-icon'+(i+1).toString()).removeClass('d-none');
+            }
+            else{
+                //SET ICON
+                $('.enable-icon'+(i+1).toString()).removeClass('d-none');
+                $('.disable-icon'+(i+1).toString()).addClass('d-none');
+            }
+        }
+        else{ //search mode
+            if(d_dwelling[i+pageOffset].user_id == userID){
+                $("#display-checkbox-edit-photo"+(i+1).toString()).removeClass("d-none");
+                $("#display-checkbox-edit-list"+(i+1).toString()).removeClass("d-none");
+                $("#display-icons-edit-photo"+(i+1).toString()).removeClass("d-none");
+                $(".display-icons-edit-list"+(i+1).toString()).removeClass("d-none");
+
+                if(d_dwelling[i + pageOffset].enable){
+                    $('.enable-icon'+(i+1).toString()).addClass('d-none');
+                    $('.disable-icon'+(i+1).toString()).removeClass('d-none');
+                }
+                else{
+                    //SET ICON
+                    $('.enable-icon'+(i+1).toString()).removeClass('d-none');
+                    $('.disable-icon'+(i+1).toString()).addClass('d-none');
+                }
+            }
+            else{
+                $("#display-checkbox-edit-photo"+(i+1).toString()).addClass("d-none");
+                $("#display-checkbox-edit-list"+(i+1).toString()).addClass("d-none");
+                $("#display-icons-edit-photo"+(i+1).toString()).addClass("d-none");
+                $(".display-icons-edit-list"+(i+1).toString()).addClass("d-none");
+            }
+        }
                 
         
     }

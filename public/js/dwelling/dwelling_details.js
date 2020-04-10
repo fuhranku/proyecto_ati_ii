@@ -12,6 +12,7 @@ $("#enable_show_details").text( dwelling_details["enable"] == 1 ? "Si":"No");
 $("#status_show_details").text( dwelling_details["status"] == 3 ? "Alquiler y Venta": dwelling_details["status"] == 1 ? "Alquiler": "Venta" );
 $("#property_type_show_details").text(dwelling_details["property_type"] == 2 ? "Casa": "Apartamento" );
 $("#rooms_show_details").text(dwelling_details["rooms"]);
+$('#bath_show_details').text(dwelling_details["bathrooms"]);
 $("#parking_show_details").text(dwelling_details["parking"]);
 
 //getting comforts
@@ -36,35 +37,43 @@ $("#comforts_show_details").text(finalTextComforts_details);
 
 //getting services
 var services_name_details = [];
-var services_id_details = JSON.parse(dwelling_details["services"]).array;
 
-for(var j = 0; j < services_id_details.length; j++){
-    var obj = services_details.find( (x) =>{
-        return x.id == parseInt(services_id_details[j]); 
-    } )
-    services_name_details.push(obj.name);
-    console.log(obj.name);
-}
+var parsedServices = JSON.parse(dwelling_details["services"]);
+var services_id_details = parsedServices.array;
+
+console.log("services id details");
+console.log(services_id_details);
+
+console.log("service details");
+console.log(services_details);
+
 
 var finalTextServices_details = "";
-for(var j = 0; j < services_name_details.length-1; j++){
-    finalTextServices_details+= services_name_details[j] + ", ";
+for(var j = 0; j < services_id_details.length-1; j++){
+    finalTextServices_details += services_details[parseInt(services_id_details[j])-1].name + ", ";
 }
-finalTextServices_details += services_name_details[services_name_details.length-1];
+
+if(services_details[parseInt(services_id_details[services_id_details.length-1])-1].id ==  5)
+    finalTextServices_details += parsedServices.other;
+else
+    finalTextServices_details += services_details[parseInt(services_id_details[services_id_details.length-1])-1].name;
 
 
-$("#services_show_details").text(finalTextServices_details == "" ? "No hay" : finalTextServices_details);
-$("#details_show_details").text(dwelling_details["details"] == "" ? "No hay" : dwelling_details["details"]);
-$("#trasport_details_show_details").text(dwelling_details["transport_details"] == "" ? "No hay" : dwelling_details["transport_details"]);
-$("#location_details_show_details").text(dwelling_details["location_details"] == "" ? "No hay" : dwelling_details["location_details"]);
+$("#services_show_details").text(finalTextServices_details == null ? "No hay" : finalTextServices_details);
+$("#details_show_details").text(dwelling_details["details"] == null ? "No hay" : dwelling_details["details"]);
+$("#trasport_details_show_details").text(dwelling_details["transport_details"] == null ? "No hay" : dwelling_details["transport_details"]);
+$("#location_details_show_details").text(dwelling_details["location_details"] == null ? "No hay" : dwelling_details["location_details"]);
 $("#price_show_details").text(dwelling_details["price"]);
-$("#currency_show_details").text(dwelling_details["currency"] == 1? "EUR" : "USD");
+
+$("#currency_show_details").text(dwelling_details["currency"] == 1 ? "EUR" : dwelling_details["currency"] == 2 ? "USD" : dwelling_details["currency_name"]);
+
 $("#contact_name_show_details").text(dwelling_details["contact_name"]);
 $("#contact_lastname_show_details").text(dwelling_details["contact_lastname"]);
 $("#contact_email_show_details").text(dwelling_details["contact_email"]);
-$("#contact_number_show_details").text(dwelling_details["contact_mobilenumber"] == "" ? "No hay" : dwelling_details["contact_mobilenumber"]);
-$("#contact_landline_show_details").text(dwelling_details["contact_landlinenumber"] == "" ? "No hay" : dwelling_details["contact_landlinenumber"]);
-$("#contact_ext_show_details").text( dwelling_details["contact_landlinenumberEXT"] == "" ? "No hay" : dwelling_details["contact_landlinenumberEXT"] );
+
+$("#contact_number_show_details").text(dwelling_details["contact_mobilenumber"] == undefined ? "No hay" : dwelling_details["contact_mobilenumber"]);
+$("#contact_landline_show_details").text(dwelling_details["contact_landlinenumber"] == undefined ? "No hay" : dwelling_details["contact_landlinenumber"]);
+$("#contact_ext_show_details").text( dwelling_details["contact_landlinenumberEXT"] == undefined ? "No hay" : dwelling_details["contact_landlinenumberEXT"] );
 
 
 var contact_days_details = JSON.parse(dwelling_details["contact_days"]);
@@ -89,3 +98,7 @@ if(dwelling_details["contact_hourfrom"] && dwelling_details["contact_hourto"]){
 }
 
 $("#contact_hours_show_details").text(text_hours_details == "" ? "No hay" : text_hours_details);
+
+
+//set main image
+$("#main-photo-modal-container").children("img").attr("src",dwelling_details["images"][0].url);
