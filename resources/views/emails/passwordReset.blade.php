@@ -19,22 +19,12 @@
   <!-- Styles -->
   <style>
         body {
-            /* background-color: #fff;
-            color: #636b6f;
-            font-family: 'Nunito', sans-serif;
-            font-weight: 200;
-            height: 100vh; */
+            
             display: flex;
+            height: 100%;
             align-content:center;
-            width: fit-content;
-        }
-
-        .full-height {
-            height: 100vh;
-        } 
-
-        .content {
-            text-align: center;
+            align-items: center;
+            justify-content: center;
         }
 
         .title {
@@ -43,9 +33,9 @@
         } 
         .modal-content{
             border-radius: 0px;
-            margin: 120px;
+            width: 80%;
+            margin: auto;
             border: 1px solid rgb(47, 82, 143);
-            margin: 20%;
         }
         .modal-header{
             padding: 0rem;
@@ -54,6 +44,8 @@
             background-color: #00b0f0;
             align-items: center;
             color: #ffffff;
+            font-weight: bold;
+            /* display: flex; */
         }
         
         .modal-title{
@@ -62,51 +54,10 @@
             text-align: center;
         }
 
-        .close{
-            opacity: 1;
-            font-weight: 200;
-            color: #ffffff;
-            /* color: #ffc000;
-            color: #00b0f0; */
-        }
         .modal-container{
             padding: 15px;
         }
-        .modal-header .icon {
-            background-color: transparent;
-            border: 0;
-            padding: 1rem 1rem;
-            margin: -1rem -1rem -1rem auto;
-            color: #ffffff;
-            text-shadow: 0 1px 0 #fff;
-            font-size: 1.2rem;
-            border: none;
-        }
-        .close{
-            opacity: 1;
-            font-weight: 200;
-            background-color: transparent;
-            color: #ffffff;
-            border: none;
-            /* color: #ffc000;
-            color: #00b0f0; */
-        }
-
-        .grid-container {
-            display: flex;
-           
-        }
-
-        /* .grid-container > div {
-            background-color: rgba(255, 255, 255, 0.8);
-            text-align: center;
-            padding: 20px 0;
-            font-size: 30px;
-        } */
-
-        .icons {
-            flex-direction:row;
-        }
+        
   </style>
 </head>
 <body>
