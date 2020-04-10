@@ -18,6 +18,7 @@
             @include('dwelling_section.search_section.modals.search_modal_comfort')
             @include('dwelling_section.search_section.modals.search_modal_no_images')
             @include('dwelling_section.search_section.modals.search_media_carousel')
+            @include('dwelling_section.search_section.modals.search_modal_contact_announcer')
             {{-- Search bar --}}
             @include('dwelling_section.search_section.search_bar.search_bar')
             {{-- Result --}}
@@ -33,12 +34,15 @@
             var disable_post_url = "{{ url('/dwelling/disable_dwelling')}}";
             var enable_post_url = "{{ url('/dwelling/enable_dwelling')}}";
             var delete_post_url = "{{ url('/dwelling/delete_dwelling')}}";
-
+            var retrieve_dwelling_announcer = "{{ action( 'Dwelling\DwellingController@retrieve_user_data') }}";
             var countries = @json($countries);
             var states = @json($states);
             var cities = @json($cities);
-
-            var userID = {{ Session::has('info') ? Session::get('info')->id : -1}};
+            var userID = {{ Session::has('info') ? Session::get('info')->id : -1 }};
+            var userInfo = {!! Session::has('info') ?  json_encode(Session::get('info')) : -1 !!};
+            var userInfoSpecific = {!! Session::has('info_specific') ?  json_encode(Session::get('info_specific')) : -1 !!};
+            user_info = Object.assign({},userInfo,userInfoSpecific);
+            console.log(user_info);
             var session_search_query = {!! Session::has('session_query') ? Session::get('session_query') : -1 !!};
 
         </script>

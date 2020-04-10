@@ -311,3 +311,50 @@ iframe > * {
 .play-btn-modal:hover{
     color: rgba(255, 255, 255, 0.911);
 }
+
+#contact-announcer-radio-btns-container > .radio:not(:first-child){
+    margin-top:10px;
+}
+
+#dwell-contact-announcer-modal{
+    overflow-y: scroll;
+}
+
+.tlf-checkbox-contact-announcer{
+    padding: 0px 40px;
+}
+
+.phone-contact-announcer{
+    width:80%;
+}
+
+.label-contact-announcer{
+    margin-left: -34px;
+    padding: 5px 15px;
+}
+
+.flex-row > .day-checkbox{
+    zoom:0.7;
+}
+
+.day-label{
+    font-size:9.5px;
+}
+
+.checkbox-container > .day-checkbox{
+    pointer-events: none;
+}
+
+.tiny-checkbox-dropdown{
+    padding-left: 0px;
+}
+
+.tiny-checkbox-dropdown .dropdown-toggle{
+    color: #000;
+    border-color: #000 !important;
+    border-radius: 0;
+}
+
+.w-54{
+    width:54%;
+}
