@@ -9,6 +9,8 @@ var service = [];
 var comfort = [];
 var images_url = [];
 var scrollPos = 0;
+var contact_announcer_mobile_pn;
+var contact_announcer_landline_pn;
 
 //load session query
 $(document).ready(()=>{
@@ -299,6 +301,23 @@ $(document).ready(()=>{
             }); 
         }
     }
+    contact_announcer_mobile_pn = document.querySelector('input[name="mobile_dwelling"]');
+    contact_announcer_landline_pn = document.querySelector('input[name="landline_dwelling"]');
+    // Initialize mobile number input
+    contact_announcer_mobile_pn = window.intlTelInput(contact_announcer_mobile_pn,{
+        utilsScript: utilsScript,
+        onlyCountries: ['es','ve'],
+        separateDialCode:true,
+        initialCountry:""
+    });
+    // Initialize landline number input
+    contact_announcer_landline_pn = window.intlTelInput(contact_announcer_landline_pn,{
+        utilsScript: utilsScript,
+        onlyCountries: ['es','ve'],
+        separateDialCode:true,
+        initialCountry:""
+    });
+    
 });
 
 
@@ -448,16 +467,13 @@ $('.accept-btn').click(function(){
     $('#dwell-no-photos-modal').appendTo('#search-section');
     $('#dwell-no-photos-modal').addClass('d-none');
     // Check if current modal accepted by user is coming from dwelling media modal
-    console.log('media modal length '+$('.modal-bg').has('#dwelling-media-modal').length);
     if($('.modal-bg').has('#dwelling-media-modal').length && $('#dwelling-media-modal').hasClass('d-none')){
-        console.log('active media modal');
         $('.modal-bg').children().not('#dwelling-media-modal').each(function(){
             $(this).appendTo('body');
             $(this).addClass('d-none');
         });
         $('#dwelling-media-modal').removeClass('d-none');
     }else{
-        console.log('active media modal');
         $('.modal-bg').children().each(function() { 
             $(this).appendTo('body');
             $(this).addClass('d-none');
@@ -1285,3 +1301,164 @@ $('.dwelling-icon').click(function(){
         $('.dwelling-select-photo-cb'+page).prop('checked',false);
     }
 });
+
+$('.checkbox-container').click(function(){
+    $(this).find('input[type="checkbox"]').prop('checked') == true ?
+    $(this).find('input[type="checkbox"]').prop('checked',false) :
+    $(this).find('input[type="checkbox"]').prop('checked',true) ;
+});
+
+$('input[name="mobile-phone-checkbox-contact-announcer-dwelling"]').change(function(){
+    $(this).prop('checked') == true ? 
+        $('.mobile-input-contact-announcer-dwelling-mobile').removeClass('d-none') :
+        $('.mobile-input-contact-announcer-dwelling-mobile').addClass('d-none');
+})
+$('input[name="landline-phone-checkbox-contact-announcer-dwelling"]').change(function(){
+    $(this).prop('checked') == true ? 
+    $('.landline-input-contact-announcer-dwelling-mobile').removeClass('d-none') :
+    $('.landline-input-contact-announcer-dwelling-mobile').addClass('d-none');
+})
+
+$('input[name="optradio"]').change(function(){
+    // Adjust modal to fit new section
+    $('#contact-announcer-main-container').removeClass('w-fit-content');
+    $('#contact-announcer-main-container').addClass('w-54');
+    $('#contact-announcer-options-container').removeClass('col-md-12');
+    $('#contact-announcer-options-container').addClass('col-md-5');
+    $('#contact-announcer-windows-container').removeClass('d-none');
+
+    // Hide all previous section (if any) and display selected one
+    $.each($('.contact-announcer-section:not(#section-'+$(this).data('section-id')+')'),function(key,value){
+        $(this).addClass('d-none');
+    });
+    // Set everything to default parameters
+        // Clean phones inputs
+        contact_announcer_mobile_pn.setNumber('');
+        contact_announcer_landline_pn.setNumber('');
+        $('.phone-checkbox').prop('checked',false);
+        // Uncheck mobile checkboxes
+        $('input[name="mobile-phone-checkbox-contact-announcer-dwelling"]').prop('checked',false);
+        $('input[name="landline-phone-checkbox-contact-announcer-dwelling"]').prop('checked',false);
+        $('.mobile-input-contact-announcer-dwelling-mobile').addClass('d-none');
+        $('.landline-input-contact-announcer-dwelling-mobile').addClass('d-none');
+    // Show target section
+    $('.contact-announcer-section#section-'+$(this).data('section-id')).removeClass('d-none');
+    // Populate target section
+    switch($(this).data('section-id')){
+        case 0:
+            console.log('populating section 0 ....');
+            populateSection0();
+            break;
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+
+    }
+});
+
+$('.contact-announcer-btn').click(function(){
+    // Prepend modal background to body tag
+    $('body').prepend('\
+    <div class="modal-bg">\
+    </div>\
+    ');
+    $('body').addClass('overflow-hidden');
+    // Compute current scroll position
+    getScrollPos();
+    // Append modal to modal-bg
+    $('#dwell-contact-announcer-modal').appendTo('.modal-bg');
+    // Display modal
+    $('#dwell-contact-announcer-modal').removeClass('d-none');
+    // Put dwelling id index into modal data-* variables
+    var page = $(this).data('id');
+    var pageOffset = (currentPageDwelling - 1)*4;
+    var dwelling_id = page-1 + pageOffset;
+    $('#dwell-contact-announcer-modal').attr('data-dwelling-id',dwelling_id);
+});
+
+$('.close-btn-contact-announcer').click(function(){
+    $('.modal-bg').children().each(function() { 
+        $(this).appendTo('body');
+        $(this).addClass('d-none');
+    });
+    $('.modal-bg').remove();
+    $('body').removeClass('overflow-hidden');
+    // Return all to default parameters
+    $('#contact-announcer-main-container').addClass('w-fit-content');
+    $('#contact-announcer-main-container').removeClass('w-54');
+    $('#contact-announcer-options-container').addClass('col-md-12');
+    $('#contact-announcer-options-container').removeClass('col-md-5');
+    $('#contact-announcer-windows-container').addClass('d-none');
+    $.each($('.contact-announcer-section'),function(key,value){
+        $(this).addClass('d-none');
+    });
+    $.each($('input[name="optradio"]'),function(){
+        $(this).prop('checked',false);
+    });
+    $('html, body').animate({scrollTop:scrollPos}, 50);
+});
+
+function populateSection0(){
+    // Retrieve dwelling information
+    var dwelling_id = $('#dwell-contact-announcer-modal').attr('data-dwelling-id');
+    var current_dwelling = d_dwelling[dwelling_id];
+    //  Set announcer contact email
+    $('input[name="section-0-announcer-email"]').val(current_dwelling['contact_email']);
+
+    // Preload logged user information (if there's any)
+    if (userID == -1) return;
+    // Set email of logged user
+    $('input[name="section-0-applicant-email"]').val(user_info['email']);
+    // Set name of logged user
+    $('input[name="section-0-applicant-name"]').val(user_info['name']);
+    // Set last name of logged user
+    $('input[name="section-0-applicant-lastname"]').val(user_info['last_name']);
+    // Set mobile number if there's any
+    if (user_info['mobile_number'] != null){
+        $('input[name="mobile-phone-checkbox-contact-announcer-dwelling"]').prop('checked',true);
+        contact_announcer_mobile_pn.setNumber(user_info['mobile_number']);
+        $('.mobile-input-contact-announcer-dwelling-mobile').removeClass('d-none');
+    }
+    // Set landline number if there's any
+    if (user_info['landline_number'] != null){
+        // Set checkbox
+        $('input[name="landline-phone-checkbox-contact-announcer-dwelling"]').prop('checked',true);
+        $('.landline-input-contact-announcer-dwelling-mobile').removeClass('d-none');
+        // Set number
+        contact_announcer_mobile_pn.setNumber(user_info['landline_number']);
+        // Set extension number
+        user_info['landline_number_ext'] != null ? 
+            $('input[name="landline_ext_contact_announcer_dwelling"]').val(user_info['landline_number_ext']) : null ;
+    }
+
+    // Retrieve announcer data
+    // var dwelling_id = $('#dwell-contact-announcer-modal').attr('data-dwelling-id');
+    // var user_id = d_dwelling[dwelling_id]['user_id'];
+    // Ajax POST request to retrieve dwelling announcer information
+    // $.ajaxSetup({
+    //     headers:{
+    //         'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+    //     }
+    // });
+    // var data = {
+    //     'user_id' : user_id
+    // };
+    
+    // // Ajax POST request
+    // $.ajax({
+    //     url: retrieve_dwelling_announcer,
+    //     method: 'post',
+    //     data: data,
+    //     success: function(data){
+    //         // Set announcer email
+
+    //     }
+    // });
+}
+
+

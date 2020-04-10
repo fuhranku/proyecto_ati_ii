@@ -33,7 +33,7 @@
             @if ($search_type == '0')
                 <div class="row float-right">
                     <img class="dwelling-icon cursor-pointer d-none disable-icon{{$index}}" data-id={{$index}} src="{{url('/images/disable_publication_icon.png')}}">
-                    <img class="dwelling-icon cursor-pointer d-none enable-icon{{$index}}" data-id={{$index}} src="{{url('/images/enable_publication_icon.png')}}">
+                    <img class="dwelling-icon cursor-pointer d-none enable-icon{{$index}} z-1000" data-id={{$index}} src="{{url('/images/enable_publication_icon.png')}}">
                     <img class="dwelling-icon modify-icon cursor-pointer" data-id={{$index}} src="{{url('/images/edit_icon.png')}}">
                     <img class="dwelling-icon delete-icon cursor-pointer" data-id={{$index}} src="{{url('/images/delete_icon.png')}}">
                 </div>
@@ -105,7 +105,7 @@
         </div>
 
         <div class="col-md-5 mt-3 pl-0 pr-0 ml-n3">
-            <button type="button" class="btn btn-warning font-weight-bold text-white sm-text">Contactar al anunciante</button>
+            <button type="button" class="btn btn-warning font-weight-bold text-white sm-text contact-announcer-btn" data-id={{$index}}>Contactar al anunciante</button>
         </div>
     </div>
 

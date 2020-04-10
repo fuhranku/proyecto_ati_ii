@@ -30,7 +30,7 @@
             </div>
 
             <div class="col-md-6 mt-3">
-                <button type="button" class="btn btn-warning font-weight-bold text-white sm-text">Contactar al anunciante</button>
+                <button type="button" class="btn btn-warning font-weight-bold text-white sm-text contact-announcer-btn" data-id={{$index}}>Contactar al anunciante</button>
             </div>
         </div>
 

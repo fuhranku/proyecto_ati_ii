@@ -80,6 +80,10 @@ h1{
     width: 40% !important;
 }
 
+.w-fit-content{
+    width:fit-content;
+}
+
 .break-work{
     word-wrap:break-word;
 }
@@ -180,6 +184,11 @@ div.sub-menu > div:not(:last-child){
 .input-list-select-dwelling{
     padding: 10px 6px;
     max-width: fit-content;
+    z-index: 1000;
+}
+
+.z-1000{
+    z-index:1000;
 }
 
 .icon-list-dwelling{
