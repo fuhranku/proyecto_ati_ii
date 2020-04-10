@@ -72,7 +72,7 @@
                 <div class="col-md-2"></div>
                 <div class="form-group col-md-4">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="radio-btn-video" value=1>
+                        <input class="form-check-input radio-btn-video-modify" type="radio" name="radio-btn-video" value=1>
                         <label class="form-check-label sm-text">
                           Sí
                         </label>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="form-group col-md-4">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="radio-btn-video" value=0>
+                        <input class="form-check-input radio-btn-video-modify" type="radio" name="radio-btn-video" value=0>
                         <label class="form-check-label sm-text">
                           No
                         </label>

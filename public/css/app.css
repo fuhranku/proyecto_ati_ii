@@ -76,6 +76,14 @@ h1{
     width: 30% !important;
 }
 
+.w-40{
+    width: 40% !important;
+}
+
+.w-fit-content{
+    width:fit-content;
+}
+
 .break-work{
     word-wrap:break-word;
 }
@@ -157,6 +165,42 @@ div.sub-menu > div:not(:last-child){
 
 .sign-info{
     font-size: 19px;
+}
+
+.price-div{
+    flex-direction: row;
+    display: flex;
+}
+
+.price-input{
+    margin-left: 10px;
+    width: 250px;
+}
+
+.price-div:last-child{
+    margin-top: 10px;
+}
+
+.input-list-select-dwelling{
+    padding: 10px 6px;
+    max-width: fit-content;
+    z-index: 1000;
+}
+
+.z-1000{
+    z-index:1000;
+}
+
+.icon-list-dwelling{
+    max-width: fit-content;
+    padding: 13px;
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-list-dwelling>img{
+    width: 83%;
+    max-width: 27px;
 }
   
 /* Medium devices (tablets, 768px and up) 
@@ -246,6 +290,12 @@ The navbar toggle appears at this breakpoint */
     text-decoration: none;
     margin: 5px 2px;    
     border-radius: 50%;
+} */
+
+
+/* .fa-search{
+    color:white;
+    background-color: #00BBF2;
 } */
 
 .fa:hover {
@@ -347,6 +397,10 @@ The navbar toggle appears at this breakpoint */
 }
 
 .hover-state:hover{
+    cursor:pointer;
+}
+
+.hover-state-modal:hover{
     cursor:pointer;
 }
 

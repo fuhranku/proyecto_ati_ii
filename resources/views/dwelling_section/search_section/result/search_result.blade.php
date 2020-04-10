@@ -26,6 +26,9 @@
                 @slot('index')
                     {{$i+1}}
                 @endslot
+                @slot('search_type')
+                    {{$search_type}}
+                @endslot
             @endcomponent
         @endfor 
     </div>

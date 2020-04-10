@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Session;
 
 use App\Models\Dwelling\Dwelling;
+use App\Models\Sign_up\User;
 
 
 class DwellingController extends Controller
@@ -130,6 +131,12 @@ class DwellingController extends Controller
             $info = '';
             $info_specific = '';
         }
+    }
+
+    public function retrieve_user_data(Request $request){
+        $user = User::find($request['user_id']);
+
+        return response()->json(['user_data'=>$user]);
     }
 
     public function show_details(Request $request,$id){

@@ -165,7 +165,7 @@ class SignUpController extends Controller
             break;
             case 3:
                 $step3 = $this->initialize(3);;
-                $validations['email_login'] = 'required|email';
+                $validations['email_login'] = 'required|email|unique:users,email';
                 $validations['pw_login'] = 'required';
                 // Validate what needs to be validated
                 $validator = Validator::make($request->all(), $validations);

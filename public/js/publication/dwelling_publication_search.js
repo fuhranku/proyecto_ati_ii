@@ -282,7 +282,7 @@ function loadPageDwelling(page){
 
         //CASE PHOTO
         //update selector dwelling id
-        $("#dwelling-select-photo-cb"+(i+1).toString()).val(d_dwelling[i + pageOffset].id);
+        $(".dwelling-select-photo-cb"+(i+1).toString()).val(d_dwelling[i + pageOffset].id);
 
         var roomBath = d_dwelling[i + pageOffset].rooms.toString() + " habitaciones, " 
                     + d_dwelling[i + pageOffset].bathrooms.toString() + " baños";

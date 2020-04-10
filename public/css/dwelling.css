@@ -251,7 +251,7 @@ iframe > * {
     transform: translateY(-50%);
     background-color: white;
     border: solid 3px #ffc000;
-    z-index: 1000;
+    z-index: 10000;
 }
 
 .modal-border{
@@ -264,7 +264,10 @@ iframe > * {
 
 .dwelling-icon{
     width: 27%;
-    margin-top: 5px;
+}
+
+.overlay-input-dwelling{
+    z-index: 1000;
 }
 
 .badge-label{
@@ -274,4 +277,84 @@ iframe > * {
     padding-bottom: 6px;
     margin-bottom: 5px;
     width: 100%;
+}
+
+.modal-media-container{
+    display:flex;
+    flex-direction: column;
+}
+
+.modal-media-container>.row{
+    justify-content: center;
+}
+
+.modal-media-container>.row:not(:first-child){
+    margin-top:20px;
+}
+
+.row>.image-box:not(:first-child), .row>.video-box:not(:first-child){
+    margin-left:25px;
+}
+
+.play-btn-modal{
+    position: absolute;
+    z-index: 2;
+    font-size: 33px;
+    /* left: 15%; */
+    /* top: 6%; */
+    color: rgba(255,255,255,0.7);
+    width: 100%;
+    height: 100%;
+    padding: 10px 20px;
+}
+
+.play-btn-modal:hover{
+    color: rgba(255, 255, 255, 0.911);
+}
+
+#contact-announcer-radio-btns-container > .radio:not(:first-child){
+    margin-top:10px;
+}
+
+#dwell-contact-announcer-modal{
+    overflow-y: scroll;
+}
+
+.tlf-checkbox-contact-announcer{
+    padding: 0px 40px;
+}
+
+.phone-contact-announcer{
+    width:80%;
+}
+
+.label-contact-announcer{
+    margin-left: -34px;
+    padding: 5px 15px;
+}
+
+.flex-row > .day-checkbox{
+    zoom:0.7;
+}
+
+.day-label{
+    font-size:9.5px;
+}
+
+.checkbox-container > .day-checkbox{
+    pointer-events: none;
+}
+
+.tiny-checkbox-dropdown{
+    padding-left: 0px;
+}
+
+.tiny-checkbox-dropdown .dropdown-toggle{
+    color: #000;
+    border-color: #000 !important;
+    border-radius: 0;
+}
+
+.w-54{
+    width:54%;
 }

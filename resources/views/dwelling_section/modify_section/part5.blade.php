@@ -82,11 +82,11 @@
                 <div class="row mb-3">
                     <div class="col-md-1"></div>
                     <div class="col-md-5 form-check">
-                        <input type="checkbox" class="form-check-input" id="mobile-checkbox-publish-dwelling" name="phone-checkbox-publish-dwelling" value="mobile">
+                        <input type="checkbox" class="form-check-input" id="mobile-checkbox-modify-dwelling" name="phone-checkbox-publish-dwelling" value="mobile">
                         <label class="form-check-label bg-yellow text-white tlf-checkbox">Móvil</label>
                     </div>
                     <div class="col-md-5 form-check">
-                        <input type="checkbox" class="form-check-input" id="landline-checkbox-publish-dwelling" name="phone-checkbox-publish-dwelling" value="landline">
+                        <input type="checkbox" class="form-check-input" id="landline-checkbox-modify-dwelling" name="phone-checkbox-publish-dwelling" value="landline">
                         <label class="form-check-label bg-yellow text-white tlf-checkbox">Fijo</label>
                     </div>
                     <div class="col-md-1"></div>
