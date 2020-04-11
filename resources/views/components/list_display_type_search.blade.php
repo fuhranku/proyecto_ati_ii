@@ -28,7 +28,7 @@
             </div>         
         </div>
         <div class="row">
-            <a class="col-md-12 text-underline text-blue sm-text pl-1 font-weight-bold" href='#' target="_blank" onclick="return showDetails({{$index}})">Más detalles</a>
+            <a class="col-md-12 text-underline text-blue sm-text pl-1 font-weight-bold" href='#' target="_blank" onclick="return showDetails({{$index}},)" id={{"dwelling-show-details_list2".$index}}>Más detalles</a>
         </div>
     </div>
 
