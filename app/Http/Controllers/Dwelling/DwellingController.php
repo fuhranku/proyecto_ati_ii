@@ -158,6 +158,7 @@ class DwellingController extends Controller
                 $validations['applicant_email'] = 'required|email';
                 $validations['phone_checkbox'] = 'required';
                 $validations['applicant_message'] = 'required';
+                $validator = Validator::make($request->all(), $validations);
                 if ($validator->fails()){                
                     return response()->json(['errors'=>$validator->getMessageBag()]);
                 }else{
@@ -172,6 +173,7 @@ class DwellingController extends Controller
                 $validations['phone_checkbox'] = 'required';
                 $validations['contact_days_checkbox'] = 'required';
                 $validations['contact_hour_array'] = 'required';
+                $validator = Validator::make($request->all(), $validations);
                 if ($validator->fails()){                
                     return response()->json(['errors'=>$validator->getMessageBag()]);
                 }else{
@@ -200,6 +202,7 @@ class DwellingController extends Controller
                 $validations['applicant_email'] = 'required|email';
                 $validations['phone_checkbox'] = 'required';
                 $validations['applicant_message'] = 'required';
+                $validator = Validator::make($request->all(), $validations);
                 if ($request->get('visit_radio_btn') == "fixed"){
                     $validations['contact_hour_array'] = 'required';
                 }

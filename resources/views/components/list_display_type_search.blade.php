@@ -9,11 +9,14 @@
     <div class="col-md-1 border border-warning" >
         <div class="row">
             <div class="col-md-12 p-0">
-                <img id={{"image-dwelling-list".$index}} class="border border-primary font-weight-bold text-center dwelling-image" src="" alt="">
+                @include('dwelling_section.search_section.modals.list_search_type_carousel')
+                {{-- <img id={{"image-dwelling-list".$index}} class=" font-weight-bold text-center dwelling-image" src="" alt=""> --}}
             </div>
-            <div class="col-md-12 md-text bg-dark text-white font-weight-bold d-flex" style='flex-direction:row'>
-                <i class="fas fa-camera"></i>
-                <span>
+        </div>
+        <div class="row">
+            <div class="col-md-12 md-text bg-dark text-white font-weight-bold d-flex pl-2" style='flex-direction:row'>
+                <i class="fas fa-camera my-auto pr-1 mr-1"></i>
+                <span class="my-auto">
                     1/10
                 </span>        
             </div>         
