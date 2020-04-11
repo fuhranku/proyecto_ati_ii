@@ -252,6 +252,9 @@ return [
         'detailed_maximum_price' => [
             'required' => 'You must write a minimum price',
         ],
+        'applicant_email' => [
+            'email' => 'It must be a valid email address',
+        ],
 
     ],
     /*
@@ -266,6 +269,10 @@ return [
     */
 
     'attributes' => [
+        'applicant_name' => 'name',
+        'applicant_lastname' => 'last name',
+        'applicant_email' => 'e-mail address',
+        'applicant_message' => 'message',
         'nombre_pn' => 'name',
         'apellido_pn' => 'last name',
         'user_id_pn' => 'identification',

@@ -57,13 +57,13 @@
         <div class="container ml-n5">
             <div class="row mt-3 ml-3 mb-3 d-none mobile-input-contact-announcer-dwelling-mobile">
                 <div class="col-md-10 md-text"> 
-                    <input class="phone-contact-announcer w-100" name="mobile_dwelling" type="tel">
+                    
                 </div>
             </div>
     
             <div class="row landline-phone mt-3 ml-3 mb-3 d-none landline-input-contact-announcer-dwelling-mobile">
                 <div class="col-md-10 md-text"> 
-                    <input class="phone-contact-announcer w-100" name="landline_dwelling" type="tel">
+                    
                 </div>
                 <div class="col-md-1 md-text ml-n3 font-weight-bold my-auto">
                         Ext
@@ -83,7 +83,7 @@
                 <label class='font-weight-bold sm-text'>Mensaje a enviar</label>
             </div>
             <div class="col-md-8 pr-0 ">
-                <textarea class="form-control border border-dark rounded-0 resize-none sm-text" rows="3" id="dwelling_other_details"></textarea>
+                <textarea class="form-control border border-dark rounded-0 resize-none sm-text" rows="3" name="section-0-applicant-message"></textarea>
             </div>
         </div>
         <div class="row mt-3">
@@ -99,7 +99,7 @@
         </div>
         <div class="row text-center mb-3">
             <div class="col-sm-12 mt-2 pl-2 pr-2">
-                <a class="btn btn-yellow text-center accept-btn mt-2 md-text" style='padding: 0px 15px;' href="#">Contactar al anunciante</a>
+                <a class="btn btn-yellow text-center post-contact-announcer-btn mt-2 md-text" style='padding: 0px 15px;' data-section-id=0>Contactar al anunciante</a>
             </div>
         </div>
     </div>

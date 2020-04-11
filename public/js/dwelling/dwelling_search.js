@@ -9,8 +9,8 @@ var service = [];
 var comfort = [];
 var images_url = [];
 var scrollPos = 0;
-var contact_announcer_mobile_pn;
-var contact_announcer_landline_pn;
+var contact_announcer_mobile;
+var contact_announcer_landline;
 
 //load session query
 $(document).ready(()=>{
@@ -295,17 +295,17 @@ $(document).ready(()=>{
             }); 
         }
     }
-    contact_announcer_mobile_pn = document.querySelector('input[name="mobile_dwelling"]');
-    contact_announcer_landline_pn = document.querySelector('input[name="landline_dwelling"]');
+    contact_announcer_mobile = document.querySelector('input[name="mobile_dwelling"]');
+    contact_announcer_landline = document.querySelector('input[name="landline_dwelling"]');
     // Initialize mobile number input
-    contact_announcer_mobile_pn = window.intlTelInput(contact_announcer_mobile_pn,{
+    contact_announcer_mobile = window.intlTelInput(contact_announcer_mobile,{
         utilsScript: utilsScript,
         onlyCountries: ['es','ve'],
         separateDialCode:true,
         initialCountry:""
     });
     // Initialize landline number input
-    contact_announcer_landline_pn = window.intlTelInput(contact_announcer_landline_pn,{
+    contact_announcer_landline = window.intlTelInput(contact_announcer_landline,{
         utilsScript: utilsScript,
         onlyCountries: ['es','ve'],
         separateDialCode:true,
@@ -1327,31 +1327,39 @@ $('input[name="optradio"]').change(function(){
     });
     // Set everything to default parameters
         // Clean phones inputs
-        contact_announcer_mobile_pn.setNumber('');
-        contact_announcer_landline_pn.setNumber('');
-        $('.phone-checkbox').prop('checked',false);
+        contact_announcer_mobile.setNumber('');
+        contact_announcer_landline.setNumber('');
         // Uncheck mobile checkboxes
-        $('input[name="mobile-phone-checkbox-contact-announcer-dwelling"]').prop('checked',false);
-        $('input[name="landline-phone-checkbox-contact-announcer-dwelling"]').prop('checked',false);
+        $('.phone-checkbox').prop('checked',false);
+        // $('input[name="mobile-phone-checkbox-contact-announcer-dwelling"]').prop('checked',false);
+        // $('input[name="landline-phone-checkbox-contact-announcer-dwelling"]').prop('checked',false);
         $('.mobile-input-contact-announcer-dwelling-mobile').addClass('d-none');
         $('.landline-input-contact-announcer-dwelling-mobile').addClass('d-none');
+        // Clean and hide errors divs
+        $('#contact-announcer-error-ul').empty();
+        $('#contact-announcer-error-container').addClass('d-none');
     // Show target section
     $('.contact-announcer-section#section-'+$(this).data('section-id')).removeClass('d-none');
+    // Move number input to this section
+    $('input[name="mobile_dwelling"]').parent().appendTo($('#section-'+$(this).data('section-id')).find('.mobile-input-contact-announcer-dwelling-mobile').children('div'));
+    $('input[name="landline_dwelling"]').parent().appendTo($('#section-'+$(this).data('section-id')).find('.landline-input-contact-announcer-dwelling-mobile').children('div').first());
     // Populate target section
     switch($(this).data('section-id')){
         case 0:
-            console.log('populating section 0 ....');
             populateSection0();
             break;
         case 1:
+            populateSection1();
             break;
         case 2:
+            populateSection2();
             break;
         case 3:
+            populateSection3();
             break;
         case 4:
+            populateSection4();
             break;
-
     }
 });
 
@@ -1394,6 +1402,10 @@ $('.close-btn-contact-announcer').click(function(){
     $.each($('input[name="optradio"]'),function(){
         $(this).prop('checked',false);
     });
+    // Clean and hide errors divs
+    $('#contact-announcer-error-ul').empty();
+    $('#contact-announcer-error-container').addClass('d-none');
+    // Put scroll back to where it was
     $('html, body').animate({scrollTop:scrollPos}, 50);
 });
 
@@ -1403,7 +1415,6 @@ function populateSection0(){
     var current_dwelling = d_dwelling[dwelling_id];
     //  Set announcer contact email
     $('input[name="section-0-announcer-email"]').val(current_dwelling['contact_email']);
-
     // Preload logged user information (if there's any)
     if (userID == -1) return;
     // Set email of logged user
@@ -1415,7 +1426,7 @@ function populateSection0(){
     // Set mobile number if there's any
     if (user_info['mobile_number'] != null){
         $('input[name="mobile-phone-checkbox-contact-announcer-dwelling"]').prop('checked',true);
-        contact_announcer_mobile_pn.setNumber(user_info['mobile_number']);
+        contact_announcer_mobile.setNumber(user_info['mobile_number']);
         $('.mobile-input-contact-announcer-dwelling-mobile').removeClass('d-none');
     }
     // Set landline number if there's any
@@ -1424,7 +1435,7 @@ function populateSection0(){
         $('input[name="landline-phone-checkbox-contact-announcer-dwelling"]').prop('checked',true);
         $('.landline-input-contact-announcer-dwelling-mobile').removeClass('d-none');
         // Set number
-        contact_announcer_mobile_pn.setNumber(user_info['landline_number']);
+        contact_announcer_landline.setNumber(user_info['landline_number']);
         // Set extension number
         user_info['landline_number_ext'] != null ? 
             $('input[name="landline_ext_contact_announcer_dwelling"]').val(user_info['landline_number_ext']) : null ;
@@ -1455,4 +1466,334 @@ function populateSection0(){
     // });
 }
 
+function populateSection1(){
+    // Retrieve dwelling information
+    var dwelling_id = $('#dwell-contact-announcer-modal').attr('data-dwelling-id');
+    var current_dwelling = d_dwelling[dwelling_id];
+    // Put announcer's telephone
+        var phones_string ='';
+        // Mobile number
+        if(current_dwelling['contact_mobilenumber']){
+            phones_string = current_dwelling['contact_mobilenumber'];
+        }
+        // landline number
+        if(current_dwelling['contact_landlinenumber'] != null){
+            if (phones_string){
+                phones_string += ', <br>';
+            }
+            // If there's an extension then put it
+            if(current_dwelling['contact_landlinenumberEXT'] != null){
+                phones_string += current_dwelling['contact_landlinenumber']+' <strong>Ext</strong> '+current_dwelling['contact_landlinenumberEXT'];
+            }else{
+                phones_string += current_dwelling['contact_landlinenumber'];
+            }
+        }
+        $('#call-announcer-phone').html(phones_string);
+    // Put announcer's full name
+        var full_name = '';
+        full_name += current_dwelling['contact_name'];
+        full_name += ' ' + current_dwelling['contact_lastname'];
+        $('#call-announcer-full-name').text(full_name);
 
+    // Put dwelling's country
+        $('#call-announcer-country').text(current_dwelling['country_name']);
+
+    // Put contact days
+    var work_days = ['Lunes','Martes','Miercoles','Jueves','Viernes'];
+    var weekend_days = ['Sabado','Domingo'];
+    var contact_days = JSON.parse(current_dwelling["contact_days"]);
+    var work_days_bool = 1;
+    var weekend_days_bool = 1;
+    var contact_days_string = '';
+    // Check if all work days are 
+    console.log(contact_days);
+    for(var i=0;i<5;i++){
+        if(!contact_days.includes(work_days[i])){
+            work_days_bool = false;
+            break;
+        }
+    }
+    // Check if all weekend days are checked
+    for(var i=0;i<2;i++){
+        if(!contact_days.includes(weekend_days[i])){
+            weekend_days_bool = false;
+            break;
+        }
+    }
+    // If all days are checked
+    if (work_days_bool && weekend_days_bool){
+        contact_days_string = 'Todos los días';
+    }
+    // If only work days are checked
+    else if(work_days_bool){
+        contact_days_string = 'Lunes a Viernes';
+    }
+    // If only weekend days are checked
+    else if (weekend_days_bool){
+        contact_days_string = 'Fines de semana';
+    }
+    // If there's only specific days
+    else{
+        for(var i = 0; i < contact_days.length - 1; i++){
+            contact_days_string += contact_days[i] + ", ";
+        }
+        // Add last element without comma
+        contact_days_string += contact_days[contact_days.length-1];
+    }
+    $('#call-announcer-contact-days').text(contact_days_string);
+    // Put contact hours
+    var contact_hours = "";
+    if(current_dwelling["contact_hourfrom"] && current_dwelling["contact_hourto"]){
+        var hoursfrom = current_dwelling["contact_hourfrom"] < 12 ?  (current_dwelling["contact_hourfrom"]).toString() + "AM" : (current_dwelling["contact_hourfrom"]-12).toString() + "PM"; 
+        var hoursto = current_dwelling["contact_hourto"] < 12 ?  (current_dwelling["contact_hourto"]).toString() + "AM" : (current_dwelling["contact_hourto"]-12).toString() + "PM";
+        contact_hours += "Desde " + hoursfrom + " hasta " + hoursto;
+    }
+    $("#call-announcer-contact-hours").text(contact_hours == "" ? "" : contact_hours);
+}
+
+function populateSection2(){
+    // Preload logged user information (if there's any)
+        if (userID == -1) return;
+    // Set mobile number if there's any
+        if (user_info['mobile_number'] != null){
+            $('input[name="mobile-phone-checkbox-contact-announcer-dwelling"]').prop('checked',true);
+            contact_announcer_mobile.setNumber(user_info['mobile_number']);
+            $('.mobile-input-contact-announcer-dwelling-mobile').removeClass('d-none');
+        }
+    // Set landline number if there's any
+        if (user_info['landline_number'] != null){
+            // Set checkbox
+            $('input[name="landline-phone-checkbox-contact-announcer-dwelling"]').prop('checked',true);
+            $('.landline-input-contact-announcer-dwelling-mobile').removeClass('d-none');
+            // Set number
+            contact_announcer_landline.setNumber(user_info['landline_number']);
+            // Set extension number
+            user_info['landline_number_ext'] != null ? 
+                $('input[name="landline_ext_contact_announcer_dwelling"]').val(user_info['landline_number_ext']) : null ;
+        }
+    // Set logged user name
+        $('input[name="section-2-applicant-name"]').val(user_info['name']);
+        $('input[name="section-2-applicant-lastname"]').val(user_info['last_name']);
+}
+
+function populateSection3(){
+    // Preload logged user information (if there's any)
+        if (userID == -1) return;
+    // Set logged user email
+    $('input[name="section-3-applicant-email"]').val(user_info['email']);
+    // Set logged user name
+    $('input[name="section-3-applicant-name"]').val(user_info['name']);
+    // Set logged user last name
+    $('input[name="section-3-applicant-lastname"]').val(user_info['last_name']);
+    // Set mobile number if there's any
+        if (user_info['mobile_number'] != null){
+            $('input[name="mobile-phone-checkbox-contact-announcer-dwelling"]').prop('checked',true);
+            contact_announcer_mobile.setNumber(user_info['mobile_number']);
+            $('.mobile-input-contact-announcer-dwelling-mobile').removeClass('d-none');
+        }
+    // Set landline number if there's any
+        if (user_info['landline_number'] != null){
+            // Set checkbox
+            $('input[name="landline-phone-checkbox-contact-announcer-dwelling"]').prop('checked',true);
+            $('.landline-input-contact-announcer-dwelling-mobile').removeClass('d-none');
+            // Set number
+            contact_announcer_landline.setNumber(user_info['landline_number']);
+            // Set extension number
+            user_info['landline_number_ext'] != null ? 
+                $('input[name="landline_ext_contact_announcer_dwelling"]').val(user_info['landline_number_ext']) : null ;
+        }
+
+}
+
+function populateSection4(){
+    // Set today's date
+    var today = new Date();
+    var dd = today.getDate();
+
+    var mm = today.getMonth()+1; 
+    var yyyy = today.getFullYear();
+    if(dd<10){
+        dd='0'+dd;
+    } 
+
+    if(mm<10){
+        mm='0'+mm;
+    }
+    today = yyyy+'-'+mm+'-'+dd; 
+    console.log('Today\'s date: '+today);
+    $('#section-4').find('input[type="date"]').val(today);
+    $('#section-4').find('input[type="date"]').attr('min',today);
+    // Preload logged user information (if there's any)
+    if (userID == -1) return;
+    // Set logged user email
+    $('input[name="section-4-applicant-email"]').val(user_info['email']);
+        // Set mobile number if there's any
+        if (user_info['mobile_number'] != null){
+            $('input[name="mobile-phone-checkbox-contact-announcer-dwelling"]').prop('checked',true);
+            contact_announcer_mobile.setNumber(user_info['mobile_number']);
+            $('.mobile-input-contact-announcer-dwelling-mobile').removeClass('d-none');
+        }
+    // Set landline number if there's any
+        if (user_info['landline_number'] != null){
+            // Set checkbox
+            $('input[name="landline-phone-checkbox-contact-announcer-dwelling"]').prop('checked',true);
+            $('.landline-input-contact-announcer-dwelling-mobile').removeClass('d-none');
+            // Set number
+            contact_announcer_landline.setNumber(user_info['landline_number']);
+            // Set extension number
+            user_info['landline_number_ext'] != null ? 
+                $('input[name="landline_ext_contact_announcer_dwelling"]').val(user_info['landline_number_ext']) : null ;
+        }
+};
+
+$('.post-contact-announcer-btn').click(function(){
+    // Put scroll back to where it was
+    $('html, body').animate({scrollTop:scrollPos}, 50);
+    //  Put preloader
+    $('#dwell-contact-announcer-modal').find('.preloader1').removeClass('d-none');
+    $('#dwell-contact-announcer-modal').find('.dark-overlay').removeClass('d-none');
+    $('#dwell-contact-announcer-modal').find('.dark-overlay').css('opacity',1);
+    var section = $(this).data('section-id');
+    // Validate and send section data
+    var data = {
+        'section': section,
+    };
+    // Clean errors container
+    $('#contact-announcer-error-ul').empty();
+    $('#contact-announcer-error-container').addClass('d-none');
+    // Sent different data based in section
+    switch(section){
+        case 0:
+            data['applicant_name'] = $('input[name="section-0-applicant-name"]').val();
+            data['applicant_lastname'] = $('input[name="section-0-applicant-lastname"]').val();
+            data['applicant_email'] = $('input[name="section-0-applicant-email"]').val();
+            data['applicant_message'] = $('textarea[name="section-0-applicant-message"]').val();
+            data['phone_checkbox'] = $('#section-0').find('.phone-checkbox:checked').val();
+            data['mobile'] = contact_announcer_mobile.getNumber();
+            data['landline'] = contact_announcer_landline.getNumber();
+            data['landline_ext'] = $('#section-0').find('input[name="landline_ext_contact_announcer_dwelling"]').val();
+            break;
+        case 2:
+            data['phone_checkbox'] = $('#section-2').find('.phone-checkbox:checked').val();
+            data['applicant_name'] = $('input[name="section-2-applicant-name"]').val();
+            data['applicant_lastname'] = $('input[name="section-2-applicant-lastname"]').val();
+            data['mobile'] = contact_announcer_mobile.getNumber();
+            data['landline'] = contact_announcer_landline.getNumber();
+            data['landline_ext'] = $('#section-2').find('input[name="landline_ext_contact_announcer_dwelling"]').val();
+            // Contact days array
+            var contact_days_array = [];
+            $.each($("#section-2").find('.day-checkbox:checked'),function(){
+                contact_days_array.push($(this).val());
+            })
+            data['contact_days_checkbox'] = contact_days_array;
+            // Contact hours
+            var hour_array = [];
+            hour_array.push($('#section-2').find('input[name=from_hour]:checked').val());
+            hour_array.push($('#section-2').find('input[name=from_time]:checked').val());
+            hour_array.push($('#section-2').find('input[name=to_hour]:checked').val());
+            hour_array.push($('#section-2').find('input[name=to_time]:checked').val());
+            data['contact_hour_array'] = hour_array;
+            break;
+        case 3:
+            data['applicant_name'] = $('input[name="section-3-applicant-name"]').val();
+            data['applicant_lastname'] = $('input[name="section-3-applicant-lastname"]').val();
+            data['applicant_email'] = $('input[name="section-3-applicant-email"]').val();
+            data['phone_checkbox'] = $('#section-3').find('.phone-checkbox:checked').val();
+            data['mobile'] = contact_announcer_mobile.getNumber();
+            data['landline'] = contact_announcer_landline.getNumber();
+            data['landline_ext'] = $('#section-3').find('input[name="landline_ext_contact_announcer_dwelling"]').val();
+            data['applicant_message'] = $('#section-3').find('textarea').val();
+            break;
+        case 4:
+            data['schedule_visit_date'] = $('#section-4').find('input[type="date"]').val();
+            data['applicant_email'] = $('input[name="section-4-announcer-email"]').val();
+            data['phone_checkbox'] = $('#section-4').find('.phone-checkbox:checked').val();
+            data['mobile'] = contact_announcer_mobile.getNumber();
+            data['landline'] = contact_announcer_landline.getNumber();
+            data['landline_ext'] = $('#section-4').find('input[name="landline_ext_contact_announcer_dwelling"]').val();
+            data['applicant_message'] = $('#section-4').find('textarea').val();
+            data['visit_radio_btn'] = $('#section-4').find('input[name="opt_schedule_visit"]:checked').val();
+            // Contact hours
+            var hour_array = [];
+            hour_array.push($('#section-4').find('input[name=from_hour]:checked').val());
+            hour_array.push($('#section-4').find('input[name=from_time]:checked').val());
+            hour_array.push($('#section-4').find('input[name=to_hour]:checked').val());
+            hour_array.push($('#section-4').find('input[name=to_time]:checked').val());
+            data['contact_hour_array'] = hour_array;
+            break;
+    }
+
+    console.log('DATA: \n '+JSON.stringify(data));
+    // AJAX POST request
+    $.ajaxSetup({
+        headers:{
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: contact_announcer_url,
+        method: 'post',
+        data: data,
+        success: function(data){
+            var validation = true;
+            // Validate mobile number
+            if( $('input[name="mobile-phone-checkbox-contact-announcer-dwelling"]').is(':checked') && !contact_announcer_mobile.isValidNumber()){
+                validation = false;
+                var errorCode = contact_announcer_mobile.getValidationError();
+                $('#contact-announcer-error-container').removeClass('d-none');
+                $('#contact-announcer-error-ul').append('<li>&bull; '+telephoneErrorMap[errorCode]+'</li>');
+            }
+            // Validate landline number
+            if ($('input[name="landline-phone-checkbox-contact-announcer-dwelling"]').is(':checked') && !contact_announcer_landline.isValidNumber()){
+                validation = false;
+                var errorCode = contact_announcer_landline.getValidationError();
+                $('#contact-announcer-error-container').removeClass('d-none');
+                $('#contact-announcer-error-ul').append('<li>&bull; '+telephoneErrorMap[errorCode]+'</li>');
+            }
+            // AJAX VALIDATION
+            // If there's an error show it
+            if( !$.isEmptyObject(data.errors) ){
+                validation = false;  
+                $('#contact-announcer-error-container').removeClass('d-none');
+                $.each(data.errors, function(key, value){
+                    $('#contact-announcer-error-ul').append('<li>&bull; '+value+'</li>');
+                });
+            }
+            if(validation){
+                // Empty modal background
+                $('.modal-bg').children().each(function() { 
+                    $(this).appendTo('body');
+                    $(this).addClass('d-none');
+                });
+                // Return all to default parameters
+                $('#contact-announcer-main-container').addClass('w-fit-content');
+                $('#contact-announcer-main-container').removeClass('w-54');
+                $('#contact-announcer-options-container').addClass('col-md-12');
+                $('#contact-announcer-options-container').removeClass('col-md-5');
+                $('#contact-announcer-windows-container').addClass('d-none');
+                $.each($('.contact-announcer-section'),function(key,value){
+                    $(this).addClass('d-none');
+                });
+                $.each($('input[name="optradio"]'),function(){
+                    $(this).prop('checked',false);
+                });
+                // Clean and hide errors divs
+                $('#contact-announcer-error-ul').empty();
+                $('#contact-announcer-error-container').addClass('d-none');
+                // Disable pre-loader
+        
+                // Display succesfully sent modal
+                $('#modal-contact-announcer-success').appendTo('.modal-bg');
+                $('#modal-contact-announcer-success').removeClass('d-none');
+                // Empty all input values
+                $('#dwell-contact-announcer-modal').find('input[type="text"]').val('');
+                $('#dwell-contact-announcer-modal').find('input[type="checkbox"]').prop('checked',false);
+                $('#dwell-contact-announcer-modal').find('textarea').val('');
+            }
+            $('#dwell-contact-announcer-modal').find('.preloader1').addClass('d-none');
+            $('#dwell-contact-announcer-modal').find('.dark-overlay').addClass('d-none');
+            $('#dwell-contact-announcer-modal').find('.dark-overlay').css('opacity',0);
+        }
+    });
+
+})

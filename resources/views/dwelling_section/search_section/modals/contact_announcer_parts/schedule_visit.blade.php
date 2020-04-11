@@ -8,7 +8,7 @@
                 <label class='font-weight-bold text-blue sm-text'>Fecha en que desea realizar la visita</label>
             </div>
             <div class="col-md-7 pr-0 ">
-                <input type="date" min="2020-04-09" class='sm-text w-fit-content pl-2'>
+                <input type="date" class='sm-text w-fit-content pl-2'>
             </div>
         </div>
 
@@ -27,7 +27,7 @@
         <div class="row mt-n1">
             <div class="col-md-1 pr-0">
                 <div class="radio">
-                    <input type="radio" name="opt_schedule_visit" checked>
+                    <input type="radio" name="opt_schedule_visit" value='fixed' checked>
                 </div>
             </div>
             <div class="col-md-5 pr-0 my-auto">
@@ -113,7 +113,7 @@
         <div class="row">
             <div class="col-md-1 pr-0">
                 <div class="radio">
-                    <input type="radio" name="opt_schedule_visit">
+                    <input type="radio" name="opt_schedule_visit" value='custom'>
                 </div>
             </div>
             <div class="col-md-5">
@@ -126,7 +126,7 @@
                 <label class='font-weight-bold text-blue sm-text'>Email</label>
             </div>
             <div class="col-md-7 ">
-                <input class='sm-text w-100 pl-1' type="text" placeholder="Email">
+                <input class='sm-text w-100 pl-1' type="text" placeholder="Email" name='section-4-announcer-email'>
             </div>
         </div>
 
@@ -142,30 +142,28 @@
         <div class="row mb-3">
             <div class="col-md-1"></div>
             <div class="col-md-5 form-check">
-                <input type="checkbox" class="form-check-input" id="mobile-checkbox-contact-announcer-dwelling" name="phone-checkbox-contact-announcer-dwelling" value="mobile">
+                <input type="checkbox" class="form-check-input phone-checkbox" name="mobile-phone-checkbox-contact-announcer-dwelling" value="mobile">
                 <label class="form-check-label bg-yellow text-white tlf-checkbox-contact-announcer md-text">Móvil</label>
             </div>
             <div class="col-md-5 form-check">
-                <input type="checkbox" class="form-check-input" id="landline-checkbox-contact-announcer-dwelling" name="phone-checkbox-contact-announcer-dwelling" value="landline">
+                <input type="checkbox" class="form-check-input phone-checkbox" name="landline-phone-checkbox-contact-announcer-dwelling" value="landline">
                 <label class="form-check-label bg-yellow text-white tlf-checkbox-contact-announcer md-text">Fijo</label>
             </div>
         </div>
         <div class="container ml-n5">
-            <div class="row mt-3 ml-3 mb-3" id='input-contact-announcer-dwelling-mobile'>
+            <div class="row mt-3 ml-3 mb-3 d-none mobile-input-contact-announcer-dwelling-mobile">
                 <div class="col-md-10 md-text"> 
-                    <input class="phone-contact-announcer w-100" name="mobile_dwelling" type="tel" id='mobile-contact-announcer-dwelling'>
                 </div>
             </div>
     
-            <div class="row landline-phone mt-3 ml-3 mb-3" id='input-contact-announcer-dwelling-landline'>
+            <div class="row landline-phone mt-3 ml-3 mb-3 d-none landline-input-contact-announcer-dwelling-mobile">
                 <div class="col-md-10 md-text"> 
-                    <input class="phone-contact-announcer w-100" name="landline_dwelling" type="tel" id='landline-contact-announcer-dwelling'>
                 </div>
                 <div class="col-md-1 sm-text ml-n3 font-weight-bold my-auto">
                         Ext
                 </div>
                 <div class="col-md-1 sm-text my-auto">
-                    <input type="text" placeholder="Opcional" name='landline_ext_dwelling' 
+                    <input type="text" placeholder="Opcional" name='landline_ext_contact_announcer_dwelling' 
                     style='
                         padding: 4px 5px;
                         width: 62px;
@@ -195,7 +193,7 @@
         </div>
         <div class="row text-center mb-3">
             <div class="col-sm-12 mt-2 pl-2 pr-2">
-                <a class="btn btn-yellow text-center accept-btn mt-2 md-text" style='padding: 0px 15px;' href="#">Contactar al anunciante</a>
+                <a class="btn btn-yellow text-center post-contact-announcer-btn mt-2 md-text" style='padding: 0px 15px;' href="#" data-section-id=4>Contactar al anunciante</a>
             </div>
         </div>
     </div>

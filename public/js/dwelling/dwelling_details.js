@@ -69,7 +69,6 @@ $("#contact_ext_show_details").text( dwelling_details["contact_landlinenumberEXT
 
 var contact_days_details = JSON.parse(dwelling_details["contact_days"]);
 
-console.log("ARRE LOCO!!");
 console.log(contact_days_details);
 var final_contact_days = "";
 
@@ -83,9 +82,9 @@ $("#contact_days_show_details").text(contact_days_details == "" ? "No hay" : fin
 
 var text_hours_details = "";
 if(dwelling_details["contact_hourfrom"] && dwelling_details["contact_hourto"]){
-    var hourfrom_details = dwelling_details["contact_hourfrom"] < 12 ?  (dwelling_details["contact_hourfrom"]).toString() + " am" : (dwelling_details["contact_hourfrom"]-12).toString() + " pm"; 
-    var hourto_details = dwelling_details["contact_hourto"] < 12 ?  (dwelling_details["contact_hourto"]).toString() + " am" : (dwelling_details["contact_hourto"]-12).toString() + " pm";
-    text_hours_details += "Desde las " + hourfrom_details + " hasta las " + hourto_details;
+    var hourfrom_details = dwelling_details["contact_hourfrom"] < 12 ?  (dwelling_details["contact_hourfrom"]).toString() + "AM" : (dwelling_details["contact_hourfrom"]-12).toString() + "PM"; 
+    var hourto_details = dwelling_details["contact_hourto"] < 12 ?  (dwelling_details["contact_hourto"]).toString() + "AM" : (dwelling_details["contact_hourto"]-12).toString() + "PM";
+    text_hours_details += "Desde " + hourfrom_details + " hasta " + hourto_details;
 }
 
 $("#contact_hours_show_details").text(text_hours_details == "" ? "No hay" : text_hours_details);

@@ -11,6 +11,7 @@
     <div class="container">
         <div class="row">
             {{-- Modals --}}
+            @include('dwelling_section.search_section.modals.contact_announcer_parts.success_modal')
             @include('dwelling_section.search_section.modals.search_modal_media')
             @include('dwelling_section.search_section.modals.search_modal_location')
             @include('dwelling_section.search_section.modals.search_modal_service')
@@ -34,6 +35,7 @@
             var disable_post_url = "{{ url('/dwelling/disable_dwelling')}}";
             var enable_post_url = "{{ url('/dwelling/enable_dwelling')}}";
             var delete_post_url = "{{ url('/dwelling/delete_dwelling')}}";
+            var contact_announcer_url = "{{  action( 'Dwelling\DwellingController@contact_announcer') }}";
             var retrieve_dwelling_announcer = "{{ action( 'Dwelling\DwellingController@retrieve_user_data') }}";
             var countries = @json($countries);
             var states = @json($states);

@@ -1,6 +1,7 @@
 <div class="row h-100 d-none" id="dwell-contact-announcer-modal">
+
     <div class="col-sm-12 my-auto">
-        <div class="w-fit-content mx-auto  bg-white pb-3 modal-border" id='contact-announcer-main-container'>
+        <div class="w-fit-content mx-auto  bg-white modal-border" id='contact-announcer-main-container'>
         {{-- <div class="mx-auto  bg-white pb-3 modal-border" style='width:54%;'> --}}
             <div class="row text-center">
                 <div class="col-sm-12">
@@ -9,8 +10,10 @@
                     </div>
                 </div>
             </div>
-            <div class="container pr-4 pl-4">
-                <div class="row mt-3">
+            <div class="container pr-4 pl-4 pb-5 pt-3 position-relative">
+                <img class="loading-image position-absolute d-none preloader1" src="{{url('/images/preloader1.svg')}}">
+                <div class="dark-overlay d-none"></div>
+                <div class="row">
                     <div class="col-md-12" id='contact-announcer-options-container'>
                         <div class="row">
                             <div class="col-md-12">
@@ -49,6 +52,14 @@
                                 <a class="btn btn-yellow text-center close-btn-contact-announcer mt-2 md-text" style='padding: 0px 15px;' href="#">Cerrar</a>
                             </div>
                         </div>
+                        <div class="container mt-4 sm-text d-none" id="contact-announcer-error-container">
+                            <div class='row'>
+                                <div class='col-sm-12'>
+                                    <ul class="alert alert-danger" id='contact-announcer-error-ul'>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-sm-7 pl-5 d-none" id='contact-announcer-windows-container'>
                         {{-- Enviar correo electrónico --}}
@@ -61,9 +72,12 @@
                         @include('dwelling_section.search_section.modals.contact_announcer_parts.send_query_to_announcer')
                         {{-- Agendar visita --}}
                         @include('dwelling_section.search_section.modals.contact_announcer_parts.schedule_visit')
+                        <input class="phone-contact-announcer w-100" name="mobile_dwelling" type="tel">
+                        <input class="phone-contact-announcer w-100" name="landline_dwelling" type="tel">
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

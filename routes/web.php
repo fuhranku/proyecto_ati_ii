@@ -67,6 +67,7 @@ Route::post('dwelling/quick_search', 'Dwelling\SearchDwellingController@quick_se
 Route::post('dwelling/detailed_search', 'Dwelling\SearchDwellingController@detailed_search')->name('dwelling.detailed_search');
 Route::post('dwelling/keyword_search', 'Dwelling\SearchDwellingController@keyword_search')->name('dwelling.keyword_search');
 Route::post('dwelling/retrieve_user_data', 'Dwelling\DwellingController@retrieve_user_data')->name('dwelling.retrieve_user_data');
+Route::post('dwelling/contact_announcer', 'Dwelling\DwellingController@contact_announcer')->name('dwelling.contact_announcer');
 
 // Publication routes
 Route::get('dwelling/publication', 'Dwelling\PublicationDwellingController@search_get')->name('dwelling.publication_search');

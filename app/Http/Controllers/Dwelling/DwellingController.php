@@ -139,6 +139,44 @@ class DwellingController extends Controller
         return response()->json(['user_data'=>$user]);
     }
 
+    public function contact_announcer(Request $request){
+        $section = $request->get('section');
+        $validations = [];
+        switch($section){
+            case 0: case 3:
+                $validations['applicant_name'] = 'required|regex:/^[a-zA-Z\s]*$/';
+                $validations['applicant_lastname'] = 'required|regex:/^[a-zA-Z\s]*$/';
+                $validations['applicant_email'] = 'required|email';
+                $validations['phone_checkbox'] = 'required';
+                $validations['applicant_message'] = 'required';
+                break;
+            case 2:
+                $validations['applicant_name'] = 'required|regex:/^[a-zA-Z\s]*$/';
+                $validations['applicant_lastname'] = 'required|regex:/^[a-zA-Z\s]*$/';
+                $validations['phone_checkbox'] = 'required';
+                $validations['contact_days_checkbox'] = 'required';
+                $validations['contact_hour_array'] = 'required';
+                break;
+            case 4:
+                $validations['schedule_visit_date'] = 'required';
+                $validations['applicant_email'] = 'required|email';
+                $validations['phone_checkbox'] = 'required';
+                $validations['applicant_message'] = 'required';
+                if ($request->get('visit_radio_btn') == "fixed"){
+                    $validations['contact_hour_array'] = 'required';
+                }
+                break;
+        }
+        $validator = Validator::make($request->all(), $validations);
+        if ($validator->fails()){                
+            return response()->json(['errors'=>$validator->getMessageBag()]);
+        }else{
+            // Send email
+                //  ----- Send email code here
+            return response()->json(['success' => 'e-mail has been successfully sent!']);
+        }
+    }
+
     public function show_details(Request $request,$id){
 
         $dwelling = new \stdClass();

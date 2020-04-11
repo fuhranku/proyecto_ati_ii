@@ -8,7 +8,7 @@
                 <label class='font-weight-bold text-blue sm-text'>Teléfono</label>
             </div>
             <div class="col-md-7 my-auto">
-                <div class='sm-text w-100 pl-1'>0058-0414-389-74-44</div>
+                <div class='sm-text w-100 pl-1' id='call-announcer-phone'></div>
             </div>
         </div>
         <div class="row">
@@ -16,7 +16,7 @@
                 <label class='font-weight-bold text-blue sm-text'>Nombre y apellido</label>
             </div>
             <div class="col-md-7 my-auto">
-                <div class='sm-text w-100 pl-1'>Jose J Sánchez</div>
+                <div class='sm-text w-100 pl-1' id='call-announcer-full-name'></div>
             </div>
         </div>
         <div class="row">
@@ -24,7 +24,7 @@
                 <label class='font-weight-bold text-blue sm-text'>País</label>
             </div>
             <div class="col-md-7 my-auto">
-                <div class='sm-text w-100 pl-1'>Venezuela</div>
+                <div class='sm-text w-100 pl-1' id='call-announcer-country'></div>
             </div>
         </div>
         <div class="row">
@@ -32,7 +32,7 @@
                 <label class='font-weight-bold text-blue sm-text'>Días de contacto</label>
             </div>
             <div class="col-md-7 my-auto">
-                <div class='sm-text w-100 pl-1'>Lunes a Viernes </div> 
+                <div class='sm-text w-100 pl-1' id='call-announcer-contact-days'></div> 
             </div>
         </div>
         <div class="row">
@@ -40,7 +40,7 @@
                 <label class='font-weight-bold text-blue sm-text'>Horas de contacto</label>
             </div>
             <div class="col-md-7 my-auto">
-                <div class='sm-text w-100 pl-1'>Desde 10:00AM hasta 2:00PM </div> 
+                <div class='sm-text w-100 pl-1' id='call-announcer-contact-hours'></div> 
             </div>
         </div>
     </div>

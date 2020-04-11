@@ -286,7 +286,15 @@ $('#modify_btn_dwelling').click(function(){
     });
 });
 
-post_modify_dwelling
+$('#mobile-checkbox-modify-dwelling').change(function(){
+    console.log('hola');
+    $(this).prop('checked') == true ? $('#input-publish-dwelling-mobile').removeClass('d-none') : 
+                                      $('#input-publish-dwelling-mobile').addClass('d-none'); 
+});
+$('#landline-checkbox-modify-dwelling').change(function(){
+    $(this).prop('checked') == true ? $('#input-publish-dwelling-landline').removeClass('d-none') : 
+                                      $('#input-publish-dwelling-landline').addClass('d-none'); 
+});
 
 
 
