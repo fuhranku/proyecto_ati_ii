@@ -838,12 +838,7 @@ $('#accept-publish-modal').click(function(){
             break;
         // Seguir navegando en el portal
         case "2":
-            $('#preloader-storing').appendTo('body');
-            $('#preloader-storing').addClass('d-none');
-            $('#dwell-published-modal').appendTo('body');
-            $('#dwell-published-modal').addClass('d-none');
-            $('.modal-bg').remove();
-            $('body').removeClass('overflow-hidden');
+            location.href = "/dwelling/publish";
             break;
         // Salir
         case "3":
