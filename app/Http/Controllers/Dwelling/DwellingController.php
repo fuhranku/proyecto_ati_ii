@@ -19,6 +19,9 @@ use App\Models\Dwelling\Comfort;
 use App\Models\Dwelling\Service;
 use App\Models\Dwelling\Currency;
 use App\Models\Dwelling\Dwelling;
+use App\Models\Sign_up\User;
+use App\Models\Sign_up\NaturalPerson;
+use App\Models\Sign_up\LegalPerson;
 use Log;
 
 
@@ -150,6 +153,9 @@ class DwellingController extends Controller
 
     public function contact_announcer(Request $request){
         $section = $request->get('section');
+        $dwelling = Dwelling::find($request->get('dwelling_id'));
+        $user_info = User::find($dwelling->user_id);
+        // Para consultar cosas en natural person: $user_info->naturalPerson->person_id
         $validations = [];
         $phone = '';
         if ($request->get('mobile') != null) {
@@ -168,6 +174,7 @@ class DwellingController extends Controller
                 $validations['applicant_email'] = 'required|email';
                 $validations['phone_checkbox'] = 'required';
                 $validations['applicant_message'] = 'required';
+                $validator = Validator::make($request->all(), $validations);
                 if ($validator->fails()){                
                     return response()->json(['errors'=>$validator->getMessageBag()]);
                 }else{
@@ -194,6 +201,7 @@ class DwellingController extends Controller
                 $validations['phone_checkbox'] = 'required';
                 $validations['contact_days_checkbox'] = 'required';
                 $validations['contact_hour_array'] = 'required';
+                $validator = Validator::make($request->all(), $validations);
                 if ($validator->fails()){                
                     return response()->json(['errors'=>$validator->getMessageBag()]);
                 }else{
@@ -247,6 +255,7 @@ class DwellingController extends Controller
                 $validations['applicant_email'] = 'required|email';
                 $validations['phone_checkbox'] = 'required';
                 $validations['applicant_message'] = 'required';
+                $validator = Validator::make($request->all(), $validations);
                 if ($request->get('visit_radio_btn') == "fixed"){
                     $validations['contact_hour_array'] = 'required';
                 }

@@ -640,7 +640,7 @@ function loadPageDwelling(page){
         var roomBath = d_dwelling[i + pageOffset].rooms.toString() + " habitaciones, " 
                     + d_dwelling[i + pageOffset].bathrooms.toString() + " baños";
 
-        $('#price_list_fs'+(i+1).toString()).text(d_dwelling[i + pageOffset].price);
+        $('#price_list_fs'+(i+1).toString()).text(Intl.NumberFormat('de-DE').format(d_dwelling[i + pageOffset].price)+' '+d_dwelling[i + pageOffset].currency_name);
         $('#prop_type_list_fs'+(i+1).toString()).text(propMap[d_dwelling[i + pageOffset].property_type]);
         $('#country_list_fs'+(i+1).toString()).text(d_dwelling[i + pageOffset].country_name);
         $('#state_list_fs'+(i+1).toString()).text(d_dwelling[i + pageOffset].state_name);
@@ -694,20 +694,33 @@ function loadPageDwelling(page){
         $('#services_list_fs'+(i+1).toString()).text(finalTextServices);
 
         //LOAD PHOTOS
-        var img_url;
-        var img = images_url.find( (x) =>{
-            return x.dwelling_id == d_dwelling[i + pageOffset].id
-        });
+        // var img_url;
+        // var img = images_url.find( (x) =>{
+        //     return x.dwelling_id == d_dwelling[i + pageOffset].id
+        // });
 
-        if(img == undefined){
+        // if(img == undefined){
+        //     img_url = "http://localhost:8000/uploads/images/empty.jpg";
+        // }else{
+        //     img_url = img.url;
+        // }
+        
+        // $('#image-dwelling-photo'+(i+1).toString()).attr("src",img_url);
+        // $("#image-dwelling-list"+(i+1).toString()).attr("src",img_url);
+        // Load Photos into item carousel
+        if(!d_dwelling[i + pageOffset].images.length){
             img_url = "http://localhost:8000/uploads/images/empty.jpg";
         }else{
-            img_url = img.url;
+            img_url = d_dwelling[i + pageOffset].images[0].url;
         }
-        
+        // Load main image for photo type
         $('#image-dwelling-photo'+(i+1).toString()).attr("src",img_url);
+        // Load all the images for list type
+            // Main picture first
+            var main_pic = '<div class="carousel-item active">\
+                                <img  class="w-100" style="min-height: 10vh;">\
+                            </div>';
         $("#image-dwelling-list"+(i+1).toString()).attr("src",img_url);
-
         //VERIFY DWELLINGS THAT ARE DISABLED
         //PUT OVERLAY
         if(d_dwelling[i + pageOffset].enable){
@@ -1708,6 +1721,7 @@ $('.post-contact-announcer-btn').click(function(){
     // Validate and send section data
     var data = {
         'section': section,
+        'dwelling_id': d_dwelling[$('#dwell-contact-announcer-modal').attr('data-dwelling-id')].id
     };
     // Clean errors container
     $('#contact-announcer-error-ul').empty();

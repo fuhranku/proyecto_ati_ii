@@ -9,7 +9,7 @@
                     </div>
                 </div>
                 <div class="col-md-10 mt-3 pl-0">
-                    <img id={{'image-dwelling-photo'.$index}} class="border border-primary font-weight-bold text-center dwelling-image" src="" alt="">
+                    <img id={{'image-dwelling-photo'.$index}} class=" font-weight-bold text-center dwelling-image" src="" alt="">
                 </div>
                 {{-- @if ($search_type == '0')
                     <div class="col-md-2 mt-3">
