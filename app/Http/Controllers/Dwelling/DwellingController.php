@@ -155,7 +155,11 @@ class DwellingController extends Controller
         $section = $request->get('section');
         $dwelling = Dwelling::find($request->get('dwelling_id'));
         $user_info = User::find($dwelling->user_id);
-        // Para consultar cosas en natural person: $user_info->naturalPerson->person_id
+        if($user_info->person_type == 'nat'){
+            // Para consultar cosas en natural person: $user_info->naturalPerson->person_id
+        }else{
+            // Para consultar cosas en natural person: $user_info->legalPerson->person_id
+        }
         $validations = [];
         $phone = '';
         if ($request->get('mobile') != null) {
