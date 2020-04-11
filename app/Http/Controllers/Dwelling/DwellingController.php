@@ -156,8 +156,8 @@ class DwellingController extends Controller
         $dwelling = Dwelling::find($request->get('dwelling_id'));
         
         $user_info = User::find($dwelling->user_id);
-        $announcer_email = 'yuliferna123@gmail.com';
         $announcer_email = $dwelling->contact_email;
+        $announcer_email = 'yuliferna123@gmail.com';
         Log::info($dwelling->contact_email);
         if($user_info->person_type == 'nat'){
             // Para consultar cosas en natural person: $user_info->naturalPerson->person_id
@@ -221,13 +221,29 @@ class DwellingController extends Controller
                 }else{
                     // Send email
                         //  ----- Send email code here
-                    
+                    Log::info($request->get('contact_days_checkbox'));
+                    $days = '';
+                    foreach ($request->get('contact_days_checkbox') as $i => $value) {
+                        if ($i != 0) {
+                            $days = $days . ', ';
+                        }
+                        if ($i == count($request->get('contact_days_checkbox')) - 1) {
+                            $days = $days . 'y ';
+                        }
+                        $days = $days . $request->get('contact_days_checkbox')[$i];
+                    }
+
+                    $from_hour_v = $request->get('contact_hour_array')[0];
+                    $from_time_v = $request->get('contact_hour_array')[1];
+                    $to_hour_v = $request->get('contact_hour_array')[2];
+                    $to_time_v = $request->get('contact_hour_array')[3];
+                    $intr = ' Desea que lo llamen, puede ser desde las ' . $from_hour_v . ' '. $from_time_v . ' hasta las ' . $to_hour_v . ' '. $to_time_v . ' los días ' . $days;
                     $details = [
                         'title' => 'Quiere que lo llamen',
                         'name' => $request->get('applicant_name') . ' ' . $request->get('applicant_lastname'),
                         'email' => $request->get('applicant_email'),
                         'phone' => $phone,
-                        'introduction' => 'Quiere que lo llame a su teléfono: ',
+                        'introduction' => $intr,
                         'subject' => $request->get('applicant_name') . ' ' . $request->get('applicant_lastname'). ' quiere que lo llames',
                         'url' => $vivienda,
                         'message' => $phone,
@@ -282,19 +298,25 @@ class DwellingController extends Controller
                 }else{
                     // Send email
                         //  ----- Send email code here
-                    $from_hour_v = $request->get('contact_hour_array')[0];
-                    $from_time_v = $request->get('contact_hour_array')[1];
-                    $to_hour_v = $request->get('contact_hour_array')[2];
-                    $to_time_v = $request->get('contact_hour_array')[3];
-                    $sub = ' Desea agendar una visita desde las ' . $from_hour_v . ' '. $from_time_v . ' hasta las ' . $to_hour_v . ' '. $to_time_v;
-
+                    
+                
+                    if ($request->get('visit_radio_btn') == "fixed"){
+                        $from_hour_v = $request->get('contact_hour_array')[0];
+                        $from_time_v = $request->get('contact_hour_array')[1];
+                        $to_hour_v = $request->get('contact_hour_array')[2];
+                        $to_time_v = $request->get('contact_hour_array')[3];
+                        $intr = ' Desea agendar una visita desde las ' . $from_hour_v . ' '. $from_time_v . ' hasta las ' . $to_hour_v . ' '. $to_time_v;
+                    }else {
+                        $intr = 'Desea convenir un horario a traves del correo: ' . $request->get('applicant_email'); 
+                    }
+                    $intr = $intr . ' el día ' . $request->get('schedule_visit_date') . '. Y el mensaje adjunto es el siguiente: ';
                     $details = [
                         'title' => 'Agendar visita',
-                        'name' => $request->get('applicant_name') . ' ' . $request->get('applicant_lastname'),
+                        'name' => $request->get('applicant_email'),
                         'email' => $request->get('applicant_email'),
                         'phone' => $phone,
-                        'introduction' => ' Desea agendar una visita',
-                        'subject' => $request->get('applicant_name') . ' ' . $request->get('applicant_lastname'). ' quiere agendar una visita',
+                        'introduction' => $intr,
+                        'subject' => 'El usuario ' . $request->get('applicant_email') . ' quiere agendar una visita',
                         'url' => $vivienda,
                         'message' => $request->get('applicant_message'),
                     ];
