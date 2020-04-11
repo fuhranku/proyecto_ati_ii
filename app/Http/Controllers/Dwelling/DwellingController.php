@@ -19,6 +19,9 @@ use App\Models\Dwelling\Comfort;
 use App\Models\Dwelling\Service;
 use App\Models\Dwelling\Currency;
 use App\Models\Dwelling\Dwelling;
+use App\Models\Sign_up\User;
+use App\Models\Sign_up\NaturalPerson;
+use App\Models\Sign_up\LegalPerson;
 use Log;
 
 
@@ -150,6 +153,9 @@ class DwellingController extends Controller
 
     public function contact_announcer(Request $request){
         $section = $request->get('section');
+        $dwelling = Dwelling::find($request->get('dwelling_id'));
+        $user_info = User::find($dwelling->user_id);
+        // Para consultar cosas en natural person: $user_info->naturalPerson->person_id
         $validations = [];
         switch($section){
             case 0: 
