@@ -198,7 +198,7 @@ class SignInController extends Controller
         $infoUser['title'] = 'Usuario y link para restablecer contraseña de ' . $name;
         $infoUser['user'] = $emailUser;
         $infoUser['email'] = $user->email;
-        $infoUser['url'] = 'http://' . strval(request()->getHttpHost()) . '/sign_in' . '/' . strval($user->id) . '/' . $token;
+        $infoUser['url'] = strval(request()->getSchemeAndHttpHost()) . '/sign_in' . '/' . strval($user->id) . '/' . $token;
         $infoUser['token'] = $token;
         
         Session::put('infoUser', $infoUser);
