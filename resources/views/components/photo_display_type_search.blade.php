@@ -3,7 +3,15 @@
     <div class="row">
         <div class="col-md-6 mt-3">
             <div class="row">
-                @if ($search_type == '0')
+                <div class="col-md-2 mt-3">
+                    <div class="form-check" id={{"display-checkbox-edit-photo".$index}}>
+                        <input class="form-check-input dwelling-select-photo-cb{{$index}} overlay-input-dwelling" onchange="onSelectDwelling()" value="dwelling3" name="select-dwelling" data-id={{$index}} type="checkbox">
+                    </div>
+                </div>
+                <div class="col-md-10 mt-3 pl-0">
+                    <img id={{'image-dwelling-photo'.$index}} class="border border-primary font-weight-bold text-center dwelling-image" src="" alt="">
+                </div>
+                {{-- @if ($search_type == '0')
                     <div class="col-md-2 mt-3">
                         <div class="form-check">
                             <input class="form-check-input dwelling-select-photo-cb{{$index}} overlay-input-dwelling" onchange="onSelectDwelling()" value="dwelling3" name="select-dwelling" data-id={{$index}} type="checkbox">
@@ -16,7 +24,7 @@
                     <div class="col-md-12 mt-3">
                         <img id={{'image-dwelling-photo'.$index}} class="border border-primary font-weight-bold text-center dwelling-image" src="" alt="">
                     </div>
-                @endif
+                @endif --}}
             </div>
         </div>
         <div class="col-md-6 mt-3">
@@ -30,14 +38,20 @@
                     <div class="text-uppercase text-underline text-red font-weight-bold" id={{'status_photo_fs'.$index}}>Venta</div>
                 </div>
             </div>
-            @if ($search_type == '0')
+            <div class="row float-right" id={{'display-icons-edit-photo'.$index}} >
+                <img class="dwelling-icon cursor-pointer d-none disable-icon{{$index}}" data-id={{$index}} src="{{url('/images/disable_publication_icon.png')}}">
+                <img class="dwelling-icon cursor-pointer d-none enable-icon{{$index}} z-1000" data-id={{$index}} src="{{url('/images/enable_publication_icon.png')}}">
+                <img class="dwelling-icon modify-icon cursor-pointer" data-id={{$index}} src="{{url('/images/edit_icon.png')}}">
+                <img class="dwelling-icon delete-icon cursor-pointer" data-id={{$index}} src="{{url('/images/delete_icon.png')}}">
+            </div>
+            {{-- @if ($search_type == '0')
                 <div class="row float-right">
                     <img class="dwelling-icon cursor-pointer d-none disable-icon{{$index}}" data-id={{$index}} src="{{url('/images/disable_publication_icon.png')}}">
                     <img class="dwelling-icon cursor-pointer d-none enable-icon{{$index}} z-1000" data-id={{$index}} src="{{url('/images/enable_publication_icon.png')}}">
                     <img class="dwelling-icon modify-icon cursor-pointer" data-id={{$index}} src="{{url('/images/edit_icon.png')}}">
                     <img class="dwelling-icon delete-icon cursor-pointer" data-id={{$index}} src="{{url('/images/delete_icon.png')}}">
                 </div>
-            @endif
+            @endif --}}
         
         </div>
     </div>

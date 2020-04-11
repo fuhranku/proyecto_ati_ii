@@ -45,6 +45,7 @@ function quickSearch(){
             $("#errors_ul_quick_search").empty();
             //hide errors
             $("#errors_row_quick_search").addClass('d-none');
+            $("#errors_row_detailed_search").addClass('d-none');
 
             if(data.hasOwnProperty("errors")){
                 //Displaying errors
@@ -191,6 +192,7 @@ function detailedSearch(){
             $("#errors_ul_detailed_search").empty();
             //hide errors
             $("#errors_row_detailed_search").addClass('d-none');
+            $("#errors_row_quick_search").addClass('d-none');
 
             if(data.hasOwnProperty("errors")){
                 //Displaying errors

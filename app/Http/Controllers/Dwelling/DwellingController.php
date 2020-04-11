@@ -10,8 +10,17 @@ use Requesting;
 use App\Http\Controllers\Controller;
 use Session;
 
+// Database Models
+use App\Models\Location\Continent;
+use App\Models\Location\Country;
+use App\Models\Location\State;
+use App\Models\Location\City;
+use App\Models\Dwelling\Comfort;
+use App\Models\Dwelling\Service;
+use App\Models\Dwelling\Currency;
 use App\Models\Dwelling\Dwelling;
-use App\Models\Sign_up\User;
+use Log;
+
 
 
 class DwellingController extends Controller
@@ -199,6 +208,22 @@ class DwellingController extends Controller
 
         $dwelling->comforts = DB::table('comforts')
             ->get();
+
+        
+        // Add images
+        $json_dwelling = json_decode(json_encode($dwelling->dwellings), true);
+        //$json_dwelling = json_decode($json_dwelling);
+        foreach ($json_dwelling as $key => $value){
+            $currency_id = $json_dwelling[$key]['currency_id'];
+            $currency_id == 3 ? $json_dwelling[$key]['currency_name'] = $json_dwelling[$key]['currency_name'] :
+                                $json_dwelling[$key]['currency_name'] = Currency::find($currency_id)->name;
+            $json_dwelling[$key]['images'] = Dwelling::find($json_dwelling[$key]['id'])->images;
+        }
+        // Add videos
+        foreach ($json_dwelling as $key => $value){
+            $json_dwelling[$key]['videos'] = Dwelling::find($json_dwelling[$key]['id'])->videos;
+        }
+        $dwelling->dwellings = $json_dwelling;
         
         return view('dwelling_section.show_details',compact("dwelling"));
     }
