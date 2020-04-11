@@ -154,26 +154,30 @@ class DwellingController extends Controller
     public function contact_announcer(Request $request){
         $section = $request->get('section');
         $dwelling = Dwelling::find($request->get('dwelling_id'));
-        $vivienda = $request->get('dwelling_id');
-        // $user_info = User::find($dwelling->user_id);
-        $announcer_email = 'yuliferna123@gmail.com';
+        
+        $user_info = User::find($dwelling->user_id);
         $announcer_email = $dwelling->contact_email;
+        $announcer_email = 'yuliferna123@gmail.com';
         Log::info($dwelling->contact_email);
         if($user_info->person_type == 'nat'){
             // Para consultar cosas en natural person: $user_info->naturalPerson->person_id
         }else{
             // Para consultar cosas en natural person: $user_info->legalPerson->person_id
         }
-        $validations = [];
+        //Phone
         $phone = '';
         if ($request->get('mobile') != null) {
             $phone = $phone . ' ';
-            $phone = $request->get('mobile');
+            $phone = $phone . $request->get('mobile');
         }
         if ($request->get('landline') != null) {
             $phone = $phone . ' ';
-            $phone = $request->get('landline');
+            $phone = $phone .$request->get('landline');
         }
+        //vivienda link
+        $vivienda = 'http://' . strval(request()->getHttpHost()) . '/dwelling/show_details/' . strval($request->get('dwelling_id'));
+
+        $validations = [];
         switch($section){
             // Enviar correo
             case 0: 
@@ -193,7 +197,9 @@ class DwellingController extends Controller
                         'name' => $request->get('applicant_name') . ' ' . $request->get('applicant_lastname'),
                         'email' => $request->get('applicant_email'),
                         'phone' => $phone,
-                        'introduction' => 'Está interesado en la vivienda ' . $vivienda .' manda el siguiente mensaje: ',
+                        'introduction' => 'Está interesado en la vivienda manda el siguiente mensaje: ',
+                        'subject' => $request->get('applicant_name') . ' ' . $request->get('applicant_lastname'). ' te envió un correo',
+                        'url' => $vivienda,
                         'message' => $request->get('applicant_message'),
                     ];
                 
@@ -217,11 +223,13 @@ class DwellingController extends Controller
                         //  ----- Send email code here
                     
                     $details = [
-                        'title' => 'Consulta del usuario ' . $request->get('applicant_email'),
+                        'title' => 'Quiere que lo llamen',
                         'name' => $request->get('applicant_name') . ' ' . $request->get('applicant_lastname'),
                         'email' => $request->get('applicant_email'),
                         'phone' => $phone,
                         'introduction' => 'Quiere que lo llame a su teléfono: ',
+                        'subject' => $request->get('applicant_name') . ' ' . $request->get('applicant_lastname'). ' quiere que lo llames',
+                        'url' => $vivienda,
                         'message' => $phone,
                     ];
                 
@@ -244,11 +252,13 @@ class DwellingController extends Controller
                     // Send email
                         //  ----- Send email code here
                     $details = [
-                        'title' => 'Consulta sobre la vivienda ' .$vivienda,
+                        'title' => 'Consulta sobre vivienda',
                         'name' => $request->get('applicant_name') . ' ' . $request->get('applicant_lastname'),
                         'email' => $request->get('applicant_email'),
                         'phone' => $phone,
                         'introduction' => 'Manda el siguiente mensaje: ',
+                        'subject' => $request->get('applicant_name') . ' ' . $request->get('applicant_lastname'). ' te envió una consulta',
+                        'url' => $vivienda,
                         'message' => $request->get('applicant_message'),
                     ];
                 
@@ -273,11 +283,13 @@ class DwellingController extends Controller
                     // Send email
                         //  ----- Send email code here
                     $details = [
-                        'title' => 'Visita por la vivienda ' . $vivienda,
+                        'title' => 'Agendar visita',
                         'name' => $request->get('applicant_name') . ' ' . $request->get('applicant_lastname'),
                         'email' => $request->get('applicant_email'),
                         'phone' => $phone,
                         'introduction' => ' Desea agendar una visita',
+                        'subject' => $request->get('applicant_name') . ' ' . $request->get('applicant_lastname'). ' quiere agendar una visita',
+                        'url' => $vivienda,
                         'message' => $request->get('applicant_message'),
                     ];
                 

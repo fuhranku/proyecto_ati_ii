@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Log;
 
 class contactAnnouncer extends Mailable
 {
@@ -28,8 +29,9 @@ class contactAnnouncer extends Mailable
      */
     public function build()
     {
-
-        return $this->subject('Contactenos')
+        Log::info('build');
+        Log::info($this->details);
+        return $this->subject($this->details['subject'])
                     ->view('emails.contactAnnouncer');
     }
 }
