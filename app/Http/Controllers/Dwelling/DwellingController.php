@@ -157,7 +157,7 @@ class DwellingController extends Controller
         
         $user_info = User::find($dwelling->user_id);
         $announcer_email = $dwelling->contact_email;
-        $announcer_email = 'yuliferna123@gmail.com';
+        // $announcer_email = 'yuliferna123@gmail.com';
         Log::info($dwelling->contact_email);
         if($user_info->person_type == 'nat'){
             // Para consultar cosas en natural person: $user_info->naturalPerson->person_id
