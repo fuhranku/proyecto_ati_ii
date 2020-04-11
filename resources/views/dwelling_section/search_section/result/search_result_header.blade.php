@@ -25,6 +25,7 @@
         <label class="form-check-label text-blue font-weight-bold">
             Tipo foto
         </label>
+        <img class='my-auto' src='{{url("images/photo_type_icon.png")}}'>
     </div>
 
     <div class="col-md-3">
@@ -32,6 +33,7 @@
         <label class="form-check-label text-blue font-weight-bold">
             Tipo lista
         </label>
+        <img class='my-auto position-absolute' style='    top: -10px;height: 39px;' src='{{url("images/list_type_icon.png")}}'>
     </div>
 </div>
 
