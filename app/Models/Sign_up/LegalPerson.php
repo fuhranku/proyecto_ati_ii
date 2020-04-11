@@ -15,7 +15,7 @@ class LegalPerson extends Model
     }
     
     public $timestamps = false;
-    protected $table = 'legalPeople';
+    protected $table = 'legalpeople';
     protected $fillable = [
         // Foreign Keys
         'user_id',

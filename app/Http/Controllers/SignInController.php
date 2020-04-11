@@ -47,9 +47,9 @@ class SignInController extends Controller
             //comprobar password
             if (Hash::check($passQ, $queryUser->password)) {
                 if ($queryUser->person_type == 'nat') {
-                    $queryUserSpe = DB::table('naturalPeople')->select('*')->where('user_id', '=', $queryUser->id)->first();
+                    $queryUserSpe = DB::table('naturalpeople')->select('*')->where('user_id', '=', $queryUser->id)->first();
                 } else {
-                    $queryUserSpe = DB::table('legalPeople')->select('*')->where('user_id', '=', $queryUser->id)->first();
+                    $queryUserSpe = DB::table('legalpeople')->select('*')->where('user_id', '=', $queryUser->id)->first();
                 }
                 
                 Session::put('info', $queryUser);

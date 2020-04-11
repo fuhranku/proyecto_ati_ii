@@ -10,7 +10,7 @@ class NaturalPerson extends Model
         $this->hasOne('App\Models\Location\Country');
     }
     
-    protected $table = 'naturalPeople';
+    protected $table = 'naturalpeople';
     public $timestamps = false;
     protected $fillable = [
         // Foreign Keys
