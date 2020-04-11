@@ -58,8 +58,13 @@
             {{ $details['title'] }}    
             @endslot
             @slot('content')
-            <p> El usuario {{ $details['name'] }} con el correo: <a href="mailto:{{ $details['email'] }}">{{ $details['email'] }}</a>
+            <p> Usuario: {{ $details['name'] }} con el correo: <a href="mailto:{{ $details['email'] }}">{{ $details['email'] }}</a>
             </p>
+            <p>
+                Contacto:{{ $details['phone'] }}
+            </p>
+            <br>
+            <p>{{ $details['introduction'] }}</p>
             <br>
             <p>{{ $details['message'] }}</p>
             @endslot

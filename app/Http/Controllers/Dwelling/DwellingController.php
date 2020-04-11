@@ -151,7 +151,17 @@ class DwellingController extends Controller
     public function contact_announcer(Request $request){
         $section = $request->get('section');
         $validations = [];
+        $phone = '';
+        if ($request->get('mobile') != null) {
+            $phone = $phone . ' ';
+            $phone = $request->get('mobile');
+        }
+        if ($request->get('landline') != null) {
+            $phone = $phone . ' ';
+            $phone = $request->get('landline');
+        }
         switch($section){
+            // Enviar correo
             case 0: 
                 $validations['applicant_name'] = 'required|regex:/^[a-zA-Z\s]*$/';
                 $validations['applicant_lastname'] = 'required|regex:/^[a-zA-Z\s]*$/';
@@ -163,18 +173,21 @@ class DwellingController extends Controller
                 }else{
                     // Send email
                         //  ----- Send email code here
-                    // $details = [
-                    //     'title' => 'Pregunta del usuario ' . $request['applicant_email'],
-                    //     'name' => $request['applicant_name'] . ' ' . $request['applicant_lastname'],
-                    //     'email' => $request['applicant_email'],
-                    //     'message' => $request['applicant_message'],
-                    // ];
+                    $details = [
+                        'title' => 'Correo del usuario ' . $request->get('applicant_email'),
+                        'name' => $request->get('applicant_name') . ' ' . $request->get('applicant_lastname'),
+                        'email' => $request->get('applicant_email'),
+                        'phone' => $phone,
+                        'introduction' => 'Está interesado en la vivienda ' . $vivienda .' manda el siguiente mensaje: ',
+                        'message' => $request->get('applicant_message'),
+                    ];
                 
-                    // // \Mail::to($request['announcer_email'])->send(new \App\Mail\contactAnnouncer($details));
+                    \Mail::to($announcer_email)->send(new \App\Mail\contactAnnouncer($details));
             
                     return response()->json(['success' => 'e-mail has been successfully sent!']);
                 }
                 break;
+            // quiere que lo llamen
             case 2:
                 $validations['applicant_name'] = 'required|regex:/^[a-zA-Z\s]*$/';
                 $validations['applicant_lastname'] = 'required|regex:/^[a-zA-Z\s]*$/';
@@ -186,18 +199,22 @@ class DwellingController extends Controller
                 }else{
                     // Send email
                         //  ----- Send email code here
-                    // $details = [
-                    //     'title' => 'Pregunta del usuario ' . $request['applicant_email'],
-                    //     'name' => $request['applicant_name'] . ' ' . $request['applicant_lastname'],
-                    //     'email' => $request['applicant_email'],
-                    //     'message' => $request['applicant_message'],
-                    // ];
+                    
+                    $details = [
+                        'title' => 'Consulta del usuario ' . $request->get('applicant_email'),
+                        'name' => $request->get('applicant_name') . ' ' . $request->get('applicant_lastname'),
+                        'email' => $request->get('applicant_email'),
+                        'phone' => $phone,
+                        'introduction' => 'Quiere que lo llame a su teléfono: ',
+                        'message' => $phone,
+                    ];
                 
-                    // // \Mail::to($request['announcer_email'])->send(new \App\Mail\contactAnnouncer($details));
+                    \Mail::to($announcer_email)->send(new \App\Mail\contactAnnouncer($details));
             
                     return response()->json(['success' => 'e-mail has been successfully sent!']);
                 }
                 break;
+            //Enviar consulta
             case 3:
                 $validations['applicant_email'] = 'required|email';
                 $validations['applicant_name'] = 'required|regex:/^[a-zA-Z\s]*$/';
@@ -210,18 +227,21 @@ class DwellingController extends Controller
                 }else{
                     // Send email
                         //  ----- Send email code here
-                    // $details = [
-                    //     'title' => 'Pregunta del usuario ' . $request['applicant_email'],
-                    //     'name' => $request['applicant_name'] . ' ' . $request['applicant_lastname'],
-                    //     'email' => $request['applicant_email'],
-                    //     'message' => $request['applicant_message'],
-                    // ];
+                    $details = [
+                        'title' => 'Consulta sobre la vivienda ' .$vivienda,
+                        'name' => $request->get('applicant_name') . ' ' . $request->get('applicant_lastname'),
+                        'email' => $request->get('applicant_email'),
+                        'phone' => $phone,
+                        'introduction' => 'Manda el siguiente mensaje: ',
+                        'message' => $request->get('applicant_message'),
+                    ];
                 
-                    // // \Mail::to($request['announcer_email'])->send(new \App\Mail\contactAnnouncer($details));
+                     \Mail::to($announcer_email)->send(new \App\Mail\contactAnnouncer($details));
             
                     return response()->json(['success' => 'e-mail has been successfully sent!']);
                 }
                 break;
+            //Agendar visita
             case 4:
                 $validations['schedule_visit_date'] = 'required';
                 $validations['applicant_email'] = 'required|email';
@@ -235,14 +255,16 @@ class DwellingController extends Controller
                 }else{
                     // Send email
                         //  ----- Send email code here
-                    // $details = [
-                    //     'title' => 'Pregunta del usuario ' . $request['applicant_email'],
-                    //     'name' => $request['applicant_name'] . ' ' . $request['applicant_lastname'],
-                    //     'email' => $request['applicant_email'],
-                    //     'message' => $request['applicant_message'],
-                    // ];
+                    $details = [
+                        'title' => 'Visita por la vivienda ' . $vivienda,
+                        'name' => $request->get('applicant_name') . ' ' . $request->get('applicant_lastname'),
+                        'email' => $request->get('applicant_email'),
+                        'phone' => $phone,
+                        'introduction' => ' Desea agendar una visita',
+                        'message' => $request->get('applicant_message'),
+                    ];
                 
-                    // // \Mail::to($request['announcer_email'])->send(new \App\Mail\contactAnnouncer($details));
+                    \Mail::to($announcer_email)->send(new \App\Mail\contactAnnouncer($details));
             
                     return response()->json(['success' => 'e-mail has been successfully sent!']);
                 }
