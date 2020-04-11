@@ -4,18 +4,7 @@
     <title>Proyecto ATI 2</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
+   
   <!-- Styles -->
   <style>
         body {
@@ -63,25 +52,16 @@
 <body>
         @component('components.modal_mail')
             @slot('modal_id')
-                modal_pass
+                modal_announcer
             @endslot
             @slot('header')
             {{ $details['title'] }}    
             @endslot
             @slot('content')
-            <p> <b>Su usuario es: </b> {{ $details['user'] }}    </p>
-            <p>Adicionalmente, acabamos de recibir una solicitud para restablecer la contraseña de </p>
-            <a href="mailto:{{ $details['email'] }}">{{ $details['email'] }}</a>
-            <p>
+            <p> El usuario {{ $details['name'] }} con el correo: <a href="mailto:{{ $details['email'] }}">{{ $details['email'] }}</a>
             </p>
-            <a href={{ $details['url'] }}>Haga clic aquí para restablecer tu contraseña</a>
             <br>
-            <a href="">Si el enlace no funciona, copia y pega el siguiente enlace en la barra del navegador</a>
-            <br>
-            <b>Enlace:</b>
-            <br>
-            <p>{{ $details['url'] }}</p>
-            
+            <p>{{ $details['message'] }}</p>
             @endslot
         @endcomponent    
         

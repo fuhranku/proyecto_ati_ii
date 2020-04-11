@@ -163,6 +163,15 @@ class DwellingController extends Controller
                 }else{
                     // Send email
                         //  ----- Send email code here
+                    $details = [
+                        'title' => 'Pregunta del usuario ' . $request['applicant_email'],
+                        'name' => $request['applicant_name'] . ' ' . $request['applicant_lastname'],
+                        'email' => $request['applicant_email'],
+                        'message' => $request['applicant_message'],
+                    ];
+                
+                    // // \Mail::to($request['announcer_email'])->send(new \App\Mail\contactAnnouncer($details));
+            
                     return response()->json(['success' => 'e-mail has been successfully sent!']);
                 }
                 break;
@@ -177,6 +186,15 @@ class DwellingController extends Controller
                 }else{
                     // Send email
                         //  ----- Send email code here
+                    $details = [
+                        'title' => 'Pregunta del usuario ' . $request['applicant_email'],
+                        'name' => $request['applicant_name'] . ' ' . $request['applicant_lastname'],
+                        'email' => $request['applicant_email'],
+                        'message' => $request['applicant_message'],
+                    ];
+                
+                    // // \Mail::to($request['announcer_email'])->send(new \App\Mail\contactAnnouncer($details));
+            
                     return response()->json(['success' => 'e-mail has been successfully sent!']);
                 }
                 break;
@@ -192,6 +210,15 @@ class DwellingController extends Controller
                 }else{
                     // Send email
                         //  ----- Send email code here
+                    $details = [
+                        'title' => 'Pregunta del usuario ' . $request['applicant_email'],
+                        'name' => $request['applicant_name'] . ' ' . $request['applicant_lastname'],
+                        'email' => $request['applicant_email'],
+                        'message' => $request['applicant_message'],
+                    ];
+                
+                    // // \Mail::to($request['announcer_email'])->send(new \App\Mail\contactAnnouncer($details));
+            
                     return response()->json(['success' => 'e-mail has been successfully sent!']);
                 }
                 break;
@@ -208,6 +235,15 @@ class DwellingController extends Controller
                 }else{
                     // Send email
                         //  ----- Send email code here
+                    $details = [
+                        'title' => 'Pregunta del usuario ' . $request['applicant_email'],
+                        'name' => $request['applicant_name'] . ' ' . $request['applicant_lastname'],
+                        'email' => $request['applicant_email'],
+                        'message' => $request['applicant_message'],
+                    ];
+                
+                    // // \Mail::to($request['announcer_email'])->send(new \App\Mail\contactAnnouncer($details));
+            
                     return response()->json(['success' => 'e-mail has been successfully sent!']);
                 }
                 break;
