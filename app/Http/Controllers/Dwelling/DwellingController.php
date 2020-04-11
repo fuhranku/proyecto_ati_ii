@@ -282,6 +282,12 @@ class DwellingController extends Controller
                 }else{
                     // Send email
                         //  ----- Send email code here
+                    $from_hour_v = $request->get('contact_hour_array')[0];
+                    $from_time_v = $request->get('contact_hour_array')[1];
+                    $to_hour_v = $request->get('contact_hour_array')[2];
+                    $to_time_v = $request->get('contact_hour_array')[3];
+                    $sub = ' Desea agendar una visita desde las ' . $from_hour_v . ' '. $from_time_v . ' hasta las ' . $to_hour_v . ' '. $to_time_v;
+
                     $details = [
                         'title' => 'Agendar visita',
                         'name' => $request->get('applicant_name') . ' ' . $request->get('applicant_lastname'),
