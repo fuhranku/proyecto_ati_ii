@@ -16,9 +16,15 @@
         <div class="row">
             <div class="col-md-12 md-text bg-dark text-white font-weight-bold d-flex pl-2" style='flex-direction:row'>
                 <i class="fas fa-camera my-auto pr-1 mr-1"></i>
-                <span class="my-auto">
-                    1/10
-                </span>        
+                <div class="my-auto d-flex " style='flex-direction:row'>
+                    <span class="active-image-number">
+                        1
+                    </span> 
+                    /
+                    <span class="total-images">
+                        10
+                    </span>
+                </div>        
             </div>         
         </div>
         <div class="row">
