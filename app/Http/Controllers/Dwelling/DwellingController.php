@@ -154,7 +154,11 @@ class DwellingController extends Controller
     public function contact_announcer(Request $request){
         $section = $request->get('section');
         $dwelling = Dwelling::find($request->get('dwelling_id'));
-        $user_info = User::find($dwelling->user_id);
+        $vivienda = $request->get('dwelling_id');
+        // $user_info = User::find($dwelling->user_id);
+        $announcer_email = 'yuliferna123@gmail.com';
+        $announcer_email = $dwelling->contact_email;
+        Log::info($dwelling->contact_email);
         if($user_info->person_type == 'nat'){
             // Para consultar cosas en natural person: $user_info->naturalPerson->person_id
         }else{

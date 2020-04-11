@@ -63,9 +63,7 @@
             <p>
                 Contacto:{{ $details['phone'] }}
             </p>
-            <br>
             <p>{{ $details['introduction'] }}</p>
-            <br>
             <p>{{ $details['message'] }}</p>
             @endslot
         @endcomponent    
