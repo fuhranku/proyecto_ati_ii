@@ -175,7 +175,7 @@ class DwellingController extends Controller
             $phone = $phone .$request->get('landline');
         }
         //vivienda link
-        $vivienda = 'http://' . strval(request()->getHttpHost()) . '/dwelling/show_details/' . strval($request->get('dwelling_id'));
+        $vivienda = strval(request()->getSchemeAndHttpHost()) . '/dwelling/show_details/' . strval($request->get('dwelling_id'));
 
         $validations = [];
         switch($section){
