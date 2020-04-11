@@ -20,7 +20,7 @@
                         <div class="row">
 
                             <div class="col-md-4" id='main-photo-modal-container'>
-                                <img src="{{url("images/empty.jpg")}}" style="max-height:300px;" alt="">
+                                <img src="{{url("images/empty.jpg")}}" style="max-height:227px;" alt="">
                             </div>
 
                             <div class="col-md-4  ">

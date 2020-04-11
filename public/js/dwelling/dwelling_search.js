@@ -343,9 +343,9 @@ function showDetails(dwelling_number){
         var dwelling_id = JSON.parse(d_dwelling[dwelling_number-1+pageOffset].id);
 
         $("#dwelling-show-details_list"+dwelling_number.toString()).attr("href", "/dwelling/show_details/"+dwelling_id.toString());
+        $("#dwelling-show-details_list2"+dwelling_number.toString()).attr("href", "/dwelling/show_details/"+dwelling_id.toString());
         
     } 
-
 
     return true;
 }
