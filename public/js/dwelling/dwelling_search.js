@@ -616,7 +616,8 @@ function loadPageDwelling(page){
 
         var pageOffset = (page - 1)*4;
 
-
+        // Clean list type carousel
+        $('#carousel-slide-'+(i+1)).find('.images-container').empty();
         //CASE PHOTO
         //update selector dwelling id
         $(".dwelling-select-photo-cb"+(i+1).toString()).val(d_dwelling[i + pageOffset].id);       
@@ -694,20 +695,51 @@ function loadPageDwelling(page){
         $('#services_list_fs'+(i+1).toString()).text(finalTextServices);
 
         //LOAD PHOTOS
-        var img_url;
-        var img = images_url.find( (x) =>{
-            return x.dwelling_id == d_dwelling[i + pageOffset].id
-        });
+        // var img_url;
+        // var img = images_url.find( (x) =>{
+        //     return x.dwelling_id == d_dwelling[i + pageOffset].id
+        // });
 
-        if(img == undefined){
+        // if(img == undefined){
+        //     img_url = "http://localhost:8000/uploads/images/empty.jpg";
+        // }else{
+        //     img_url = img.url;
+        // }
+        
+        // $('#image-dwelling-photo'+(i+1).toString()).attr("src",img_url);
+        // $("#image-dwelling-list"+(i+1).toString()).attr("src",img_url);
+        // Load Photos into item carousel
+        if(!d_dwelling[i + pageOffset].images.length){
             img_url = "http://localhost:8000/uploads/images/empty.jpg";
         }else{
-            img_url = img.url;
+            img_url = d_dwelling[i + pageOffset].images[0].url;
         }
-        
+        // Load main image for photo type
         $('#image-dwelling-photo'+(i+1).toString()).attr("src",img_url);
-        $("#image-dwelling-list"+(i+1).toString()).attr("src",img_url);
+        // Load all the images for list type
+        var images = [...d_dwelling[i + pageOffset].images];
+        images.splice(0,1);
+        // Main picture first
+        var main_pic = '<div class="carousel-item active" data-img-id=1>\
+                            <img  class="d-block w-100" style="min-height: 10vh;" src="'+img_url+'">\
+                        </div>';
+        $('#carousel-slide-'+(i+1)).find('.images-container').append(main_pic);
+        // Load rest of images
+        for(var j = 0; j < images.length; j++){
+            var sec_image = '   <div class="carousel-item" data-img-id="'+(j+2)+'">\
+                                    <img  class="d-block w-100" style="min-height: 10vh;" src="'+images[j]['url']+'">\
+                                </div>';
+            $('#carousel-slide-'+(i+1)).find('.images-container').append(sec_image);               
+        }
+        // Set total images
+        if( !d_dwelling[i + pageOffset].images.length){
+            $('#dwelling_list_fs'+(i+1)).find('.active-image-number').text(0);
+        }else{
+            $('#dwelling_list_fs'+(i+1)).find('.active-image-number').text(1);
+        }
+        $('#dwelling_list_fs'+(i+1)).find('.total-images').text(d_dwelling[i + pageOffset].images.length);
 
+        //$("#image-dwelling-list"+(i+1).toString()).attr("src",img_url);
         //VERIFY DWELLINGS THAT ARE DISABLED
         //PUT OVERLAY
         if(d_dwelling[i + pageOffset].enable){
@@ -1708,6 +1740,7 @@ $('.post-contact-announcer-btn').click(function(){
     // Validate and send section data
     var data = {
         'section': section,
+        'dwelling_id': d_dwelling[$('#dwell-contact-announcer-modal').attr('data-dwelling-id')].id
     };
     // Clean errors container
     $('#contact-announcer-error-ul').empty();
@@ -1846,5 +1879,14 @@ $('.post-contact-announcer-btn').click(function(){
             $('#dwell-contact-announcer-modal').find('.dark-overlay').css('opacity',0);
         }
     });
-
 })
+
+$('.carousel.slide').on('slide.bs.carousel', function (ev) { 
+    var idx = $(ev.relatedTarget).index() + 1;
+    var carousel = $(this);
+    setTimeout(function(){
+        $('#dwelling_list_fs'+carousel.data('id'))
+            .find('.active-image-number')
+            .text(idx);
+    }, 300);
+});
